@@ -1,0 +1,3533 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Exchange-official-API-docs</title>
+    <link href="../images/favicon-e47ea6e2.ico" rel="icon" type="image/ico">
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="../stylesheets/screen-f5120038.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/print-62a209d5.css" rel="stylesheet" media="print" />
+      <script src="../javascripts/all-1decc47a.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="en en_index" data-languages="[]">
+    <div class="header">
+      <img src="../images/logo-3d972316.png" class="logo" alt="" />
+      <div class="tabs">
+        <ul>
+          <li class="active">Exchange</li>
+          <li>
+            <a href="https://doc.wbfutures.pro/index.html">
+              Contract
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="lang">
+        <span>English</span>
+        <img src="../images/down-c11a96e5.png" class="down" alt="" />
+        <ul class="lang-list">
+         <li class="active">
+            <a href="/wbfapi/en">
+              English
+            </a>
+         </li>
+         <li class="">
+            <a href="/wbfapi/cn">
+              简体中文
+            </a>
+         </li>
+        </ul>
+      </div>
+    </div>
+    <a href="#" id="nav-button">
+      <span>
+        <img src="../images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#quick-start" class="toc-h1 toc-link" data-title="Quick Start">Quick Start</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#access-preparation" class="toc-h2 toc-link" data-title="Access Preparation">Access Preparation</a>
+                  </li>
+                  <li>
+                    <a href="#interface-type" class="toc-h2 toc-link" data-title="Interface Type">Interface Type</a>
+                  </li>
+                  <li>
+                    <a href="#access-urls" class="toc-h2 toc-link" data-title="Access URLs">Access URLs</a>
+                  </li>
+                  <li>
+                    <a href="#signature-authentication" class="toc-h2 toc-link" data-title="Signature Authentication"><span id="a4">Signature Authentication</span></a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api-access-instructions" class="toc-h1 toc-link" data-title="API Access Instructions">API Access Instructions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#request-format" class="toc-h2 toc-link" data-title="Request Format"><span id="a3">Request Format</span></a>
+                  </li>
+                  <li>
+                    <a href="#return-format" class="toc-h2 toc-link" data-title="Return Format"><span id="a3">Return Format</span></a>
+                  </li>
+                  <li>
+                    <a href="#error-message" class="toc-h2 toc-link" data-title="Error Message">Error Message</a>
+                  </li>
+                  <li>
+                    <a href="#standard-specifications" class="toc-h2 toc-link" data-title="Standard Specifications"><span id="a9">Standard Specifications</span></a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#account-related" class="toc-h1 toc-link" data-title="Account Related">Account Related</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#assets-balance" class="toc-h2 toc-link" data-title="Assets Balance"><span id="1">Assets Balance</span></a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#order-related" class="toc-h1 toc-link" data-title="Order Related">Order Related</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-orders" class="toc-h2 toc-link" data-title="Get all orders"><span id="2">Get all orders</span></a>
+                  </li>
+                  <li>
+                    <a href="#get-all-trading-records" class="toc-h2 toc-link" data-title="Get all trading records"><span id="3">Get all trading records</span></a>
+                  </li>
+                  <li>
+                    <a href="#cancel-orders" class="toc-h2 toc-link" data-title="Cancel orders"><span id="4">Cancel orders</span></a>
+                  </li>
+                  <li>
+                    <a href="#cancel-all-orders" class="toc-h2 toc-link" data-title="Cancel all orders"><span id="5">Cancel all orders</span></a>
+                  </li>
+                  <li>
+                    <a href="#create-order" class="toc-h2 toc-link" data-title="Create Order"><span id="6">Create Order</span></a>
+                  </li>
+                  <li>
+                    <a href="#batch-ordering-cancellation" class="toc-h2 toc-link" data-title="Batch ordering/cancellation"><span id="13">Batch ordering/cancellation</span></a>
+                  </li>
+                  <li>
+                    <a href="#batch-ordering-cancellation-v2" class="toc-h2 toc-link" data-title="Batch ordering/cancellation - V2"><span id="27">Batch ordering/cancellation - V2</span></a>
+                  </li>
+                  <li>
+                    <a href="#get-current-orders" class="toc-h2 toc-link" data-title="Get current orders"><span id="14">Get current orders</span></a>
+                  </li>
+                  <li>
+                    <a href="#get-order-details" class="toc-h2 toc-link" data-title="Get order details"><span id="15">Get order details</span></a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#tickers-related" class="toc-h1 toc-link" data-title="Tickers Related">Tickers Related</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-symbol-tickers" class="toc-h2 toc-link" data-title="Get all symbol tickers"><span id="7">Get all symbol tickers</span></a>
+                  </li>
+                  <li>
+                    <a href="#get-k-line-data" class="toc-h2 toc-link" data-title="Get K-line data"><span id="8">Get K-line data</span></a>
+                  </li>
+                  <li>
+                    <a href="#get-current-tickers" class="toc-h2 toc-link" data-title="Get current tickers"><span id="9">Get current tickers</span></a>
+                  </li>
+                  <li>
+                    <a href="#get-trading-records" class="toc-h2 toc-link" data-title="Get trading records"><span id="10">Get trading records</span></a>
+                  </li>
+                  <li>
+                    <a href="#get-the-latest-strike-price-of-each-token-pair" class="toc-h2 toc-link" data-title="Get the latest strike price of each token pair"><span id="11">Get the latest strike price of each token pair</span></a>
+                  </li>
+                  <li>
+                    <a href="#query-asks-depth" class="toc-h2 toc-link" data-title="Query asks depth"><span id="12">Query asks depth</span></a>
+                  </li>
+                  <li>
+                    <a href="#query-all-symbols-supported-by-the-system" class="toc-h2 toc-link" data-title="Query all symbols supported by the system"><span id="17">Query all symbols supported by the system</span></a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#websocket-ticker-data" class="toc-h1 toc-link" data-title="Websocket Ticker Data">Websocket Ticker Data</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#introduction-2" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
+                  <li>
+                    <a href="#subscribe-to-k-line-ticker" class="toc-h2 toc-link" data-title="Subscribe to K-line ticker"><span id="19">Subscribe to K-line ticker</span></a>
+                  </li>
+                  <li>
+                    <a href="#subscribe-to-24-hour-ticker" class="toc-h2 toc-link" data-title="Subscribe to 24-hour Ticker"><span id="20">Subscribe to 24-hour Ticker</span></a>
+                  </li>
+                  <li>
+                    <a href="#subscribe-to-market-depth-ticker-data" class="toc-h2 toc-link" data-title="Subscribe to Market Depth Ticker Data"><span id="21">Subscribe to Market Depth Ticker Data</span></a>
+                  </li>
+                  <li>
+                    <a href="#subscribe-to-real-time-trading-information" class="toc-h2 toc-link" data-title="Subscribe to Real-time Trading Information "><span id="23">Subscribe to Real-time Trading Information </span></a>
+                  </li>
+                  <li>
+                    <a href="#request-k-line-historical-data" class="toc-h2 toc-link" data-title="Request K-line Historical Data"><span id="24">Request K-line Historical Data</span></a>
+                  </li>
+                  <li>
+                    <a href="#request-trading-historical-data" class="toc-h2 toc-link" data-title="Request Trading Historical Data "><span id="25">Request Trading Historical Data </span></a>
+                  </li>
+                  <li>
+                    <a href="#request-home-24-ticker-data" class="toc-h2 toc-link" data-title="Request Home 24 Ticker Data"><span id="26">Request Home 24 Ticker Data</span></a>
+                  </li>
+                  <li>
+                    <a href="#open-api-demo-java" class="toc-h2 toc-link" data-title="open-api Demo（java） "><span id="open-api-java">open-api Demo（java） </span></a>
+                  </li>
+                  <li>
+                    <a href="#ws-api-demo-java" class="toc-h2 toc-link" data-title="ws-api Demo (java) "><span id="ws-api-java">ws-api Demo (java) </span></a>
+                  </li>
+              </ul>
+          </li>
+        <li class="create_api"><a target="_blank" href="https://www.wbf.live/personal/apiManagement">Create API Key</a></li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to WBF Developer Documentation. It is the only official documentation of WBF API.</p>
+
+<p>This documentation provides an introduction to the use of related APIs. RESTful API includes interfaces such as assets, orders and tickers. Websocket provides ticker-related interface and push service. The capabilities provided by WBF API will be continuously updated here, so stay tuned for updates.</p>
+
+<p>You can switch among the APIs of different transactions by clicking the menu at the top, and switch the documentation language by clicking the language button at the top right.</p>
+
+<p>On the right side of the documentation are examples of request parameters and response results.</p>
+<h1 id='quick-start'>Quick Start</h1><h2 id='access-preparation'>Access Preparation</h2>
+<p>To use API, please log into the webpage first, create an API key through [User Center] - [API], and then develop and trade according to the details of this documentation.</p>
+
+<p>You can click <a href="https://www.wbfex.biz/personal/apiManagement">here</a> to create an API Key.</p>
+
+<p>Each user can create 5 groups of API Keys, and each group of API Keys can bind 5 different IP addresses. Once an API key binds an address, the API interface can only be called by using the API key from the bound IP address. For security reasons, it is strongly recommended that you bind the corresponding IP address for API key.</p>
+
+<p>Please remember the following information upon successful creation:</p>
+
+<ul>
+<li><code>API Key</code>  API access key</li>
+<li><code>Secret Key</code> Key for encryption of signature authentication</li>
+</ul>
+<h2 id='interface-type'>Interface Type</h2>
+<p>WBF provides users with two interfaces, and you can choose the appropriate way to query the tickers and trade according to your own usage scenarios and preferences.</p>
+
+<p><strong>REST API</strong></p>
+
+<p>REST, the abbreviation of Representational State Transfer, is a popular Internet transmission architecture. It has the characteristics of clear structure, standards compliance, easy understanding and expansion, and is being adopted by more and more websites with the benefits as follows:</p>
+
+<ul>
+<li>In RESTful architecture, each URL represents a resource;</li>
+<li>Some representation layer of this resource is transferred between the client and the server;</li>
+<li>The client operates the server-side resources through four HTTP instructions to realize &quot;presentation layer state transformation. </li>
+</ul>
+
+<p>Developers are advised to use REST API for one-time operations such as trades or assets.</p>
+
+<p><strong>WebSocket API</strong></p>
+
+<p>WebSocket is a new HTML5 Protocol. It realizes full-duplex communication between client and server, and the connection between client and server can be established by a simple handshake. The server can actively push information to the client according to business rules.</p>
+
+<p>Developers are advised to use WebSocket API to obtain market tickers, asks/bids depth and other information.</p>
+<h3 id='interface-authentication'>Interface Authentication</h3>
+<p>The above two interfaces include public interface and private interface.</p>
+
+<p>Public interface can be used to obtain basic information and ticker data. Public interfaces can be called without authentication.</p>
+
+<p>Private interface can be used for trading management and account management. Every private request must use your API Key for signature verification.</p>
+<h2 id='access-urls'>Access URLs</h2>
+<p><strong>REST API</strong></p>
+
+<p><code>https://openapi.wbfex.biz</code></p>
+
+<p><strong>WebSocket</strong></p>
+
+<p><code>wss://ws.wbfex.biz/kline-api/ws</code></p>
+
+<p>To ensure the stability of API service, it is recommended to access using Japanese AWS cloud server. If the client server in Chinese mainland is used, it would be difficult to guarantee the stability of the connection.</p>
+<h2 id='signature-authentication'><span id="a4">Signature Authentication</span></h2>
+<p><strong>Signature Description</strong></p>
+
+<p>The API request is very likely to be tampered in the process of transmission through the Internet. In order to ensure that the request has not been changed, all private interfaces other than public interfaces (basic information, ticker data) must use your API Key for signature authentication to verify whether the parameters or parameter values have changed during transmission.</p>
+
+<p><strong>Signature Steps (recommended)</strong></p>
+
+<p>1、Request a method (GET or POST), followed by a line break  “\n”</p>
+
+<p>Example: <code>GET\n</code></p>
+
+<p>2、Visit the domain name, followed by a line break &quot;\n&quot;</p>
+
+<p>Example：<code>openapi.wbfex.biz\n</code></p>
+
+<p>3、Access interface path, followed by a line break &quot;\n&quot;</p>
+
+<p>Example：<code>/open/api/create_order\n</code></p>
+
+<p>4、Sort the interface parameters in ascending dictionary order of their parameter names and connect them with the character &quot;&amp;&quot;
+Example：</p>
+
+<p><code>api_key=b80609d133fd8baa0999f232c7d24331&amp;price=17&amp;side=BUY&amp;symbol=abcusdt&amp;time=1596253598000&amp;type=1&amp;volume=10</code></p>
+
+<p>5、Compose the string to be signed finally
+Example：</p>
+
+<p><code>GET\n</code></p>
+
+<p><code>openapi.wbfex.biz\n</code></p>
+
+<p><code>/open/api/create_order\n</code></p>
+
+<p><code>api_key=b80609d133fd8baa0999f232c7d24331&amp;price=17&amp;side=BUY&amp;symbol=abcusdt&amp;time=1596253598000&amp;type=1&amp;volume=10</code></p>
+
+<p>6、Use the final &quot;request string&quot; and your Secret Key to generate a digital signature
+1. With the request string and API private key obtained in the previous step as two parameters, call HmacSHA256 hash function to obtain hash value.
+2. Encode this hash value with base-64 to get the value as the digital signature for this interface call.</p>
+
+<p><code>89ADx5A3TLyMWVQj8Gqp+N6w+ivaA8I5Oi2SuYtKKYo=</code></p>
+
+<p>7、Add the digital signature to the request parameter 
+<code>sign=89ADx5A3TLyMWVQj8Gqp+N6w+ivaA8I5Oi2SuYtKKYo=</code></p>
+
+<p><strong>Signature Steps (backward compatible)</strong></p>
+
+<p>For security reasons, this signature method is not recommended</p>
+
+<p>Generate a string to be signed
+    -   <a href="#open-api-java">open-api Demo</a></p>
+
+<p>1、First sort the parameters in ascending dictionary order of their parameter names</p>
+
+<p>2、Traverse the sorted dictionary, and concatenate all parameters together in the format of &quot;keyvalue&quot; (non-nullable parameters)</p>
+
+<p>Example：
+<code>api_key1234567time1596250406402type1</code></p>
+
+<p>3、Concatenate the user&#39;s Secret Key API
+<code>api_key1234567time1596250406402type109d133fd8baa0999f232c7d24331</code></p>
+
+<p>4、Use MD5 against the above string to obtain a signature string</p>
+
+<p><code>sign = md5(&quot;api_key1234567time1596250406402type109d133fd8baa0999f232c7d24331&quot;)</code></p>
+<h1 id='api-access-instructions'>API Access Instructions</h1><h2 id='request-format'><span id="a3">Request Format</span></h2>
+<p>All API requests are restful, and there are only two methods at present: GET and POST. 
+- GET request: all parameters are in path parameters;
+- POST request: all parameters are sent in JSON format to request body.</p>
+
+<p>A licit request consists of the following parts：
+- method request address: i.e. the access server address.https://openapi.wbfex.biz/open/api/create_order
+- required and optional parameters.</p>
+
+<p>The following parameters must be provided for all interfaces requiring signature authentication:
+  - API key: access Key in API Key applied by user, with its field name of &quot;api_key&quot;
+  - request time: time when the request was initiated, with its field name of &quot;time&quot;
+  - signature: value obtained through signature calculation, with its field name of &quot;sign&quot;</p>
+
+<p>All requests must contain the following Header:</p>
+
+<ul>
+<li>The ACCESS-KEY API KEY is used as a string.</li>
+<li>ACCESS-SIGN uses base64 encoding for signing (see signing messages).</li>
+<li>ACCESS-TIMESTAMP is used as the timestamp of your request.</li>
+<li>Content-Type needs to be uniformly set to: &#39;application/x-www-form-urlencoded&#39;.</li>
+</ul>
+<h2 id='return-format'><span id="a3">Return Format</span></h2>
+<p>All interface returns are in JSON format. There are three fields in the first layer of JSON: code, msg and data. The first two fields indicate the request status and description, and the actual business data is in the data field.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">per</span><span class="w"> </span><span class="err">API</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">data</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">nested</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">object</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The following is an example of a return format：</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>Return status</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>string</td>
+<td>Status or error description</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>Transaction data</td>
+</tr>
+</tbody></table>
+<h2 id='error-message'>Error Message</h2>
+<p><strong>HTTP Status Code</strong></p>
+
+<p>Common error codes for HTTP are as follows: 
+- 400 Bad Request - Invalid request format  </p>
+
+<ul>
+<li><p>401 Unauthorized – Invalid API Key </p></li>
+<li><p>403 Forbidden – You do not have access to the requested resource </p></li>
+<li><p>404 Not Found </p></li>
+<li><p>429 Too Many Requests </p></li>
+<li><p>500 Internal Server Error – We had a problem with our server </p></li>
+</ul>
+
+<p><strong>Transaction Status Code</strong></p>
+
+<p>In case of failure, the response body carries error description information, and the corresponding status code is described as follows：</p>
+
+<table><thead>
+<tr>
+<th>Status Code</th>
+<th>Description</th>
+<th>Remarks</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Success</td>
+<td>code=0 success， code &gt;0 failure</td>
+</tr>
+<tr>
+<td>1</td>
+<td>System error</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Parameter error</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>User is not logged in</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Insufficient balance</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Ordering failed</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Quantity is less than min. value</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Quantity is greater than max. value</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Order cancellation failed</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Trading is frozen</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Incorrect or expired SMS verification code</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Unknown token code</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Incorrect verification code</td>
+<td></td>
+</tr>
+<tr>
+<td>19</td>
+<td>Insufficient available balance</td>
+<td></td>
+</tr>
+<tr>
+<td>21</td>
+<td>Incorrect or expired Google verification code</td>
+<td></td>
+</tr>
+<tr>
+<td>22</td>
+<td>Order doesn&#39;t exist</td>
+<td></td>
+</tr>
+<tr>
+<td>25</td>
+<td>Price or quantity precision exceeds the max. limit</td>
+<td></td>
+</tr>
+<tr>
+<td>26</td>
+<td>User doesn&#39;t exist</td>
+<td></td>
+</tr>
+<tr>
+<td>28</td>
+<td>Incorrect or expired Email verification code</td>
+<td></td>
+</tr>
+<tr>
+<td>31</td>
+<td>Price or amount is less than the min. value</td>
+<td></td>
+</tr>
+<tr>
+<td>32</td>
+<td>Price exceeds the limit move range of the day, and order cannot be placed</td>
+<td></td>
+</tr>
+<tr>
+<td>33</td>
+<td>Orders exceed the max. limit</td>
+<td></td>
+</tr>
+<tr>
+<td>34</td>
+<td>Order exceeds frequency limit</td>
+<td></td>
+</tr>
+<tr>
+<td>10069</td>
+<td>Limit move limits the token pair, and market orders are not allowed</td>
+<td></td>
+</tr>
+<tr>
+<td>100100</td>
+<td>Incorrect username or password</td>
+<td></td>
+</tr>
+<tr>
+<td>100101</td>
+<td>User login locked for two hours</td>
+<td></td>
+</tr>
+<tr>
+<td>100102</td>
+<td>User is frozen</td>
+<td></td>
+</tr>
+<tr>
+<td>101115</td>
+<td>Current trading volume exceeds the user&#39;s daily trading limit</td>
+<td></td>
+</tr>
+<tr>
+<td>101117</td>
+<td>Market price dealing is not allowed in current token</td>
+<td></td>
+</tr>
+<tr>
+<td>101999</td>
+<td>This token is not activated</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='standard-specifications'><span id="a9">Standard Specifications</span></h2><h3 id='time-stamp'><span id="b1">Time Stamp</span></h3>
+<p>Unless otherwise specified, all timestamps in the API are returned in ms.</p>
+
+<p>The ACCESS-TIMESTAMP in the request signature is in seconds, allowing a more accurate time to be expressed in decimals. The timestamp of the request must be within 30 seconds of the API service time, otherwise the request will be deemed expired and rejected. In case of a significant deviation between the local server time and the API server time, we recommend that you update the http header by querying the API server time.</p>
+<h3 id='example'><span id="b2">Example</span></h3>
+<p><code>1524801032573</code></p>
+<h3 id='digits'><span id="b3">Digits</span></h3>
+<p>In order to maintain the integrity of cross-platform precision, decimal digits are returned as strings. It is recommended that you convert digits into strings when making requests to avoid truncation and precision errors.</p>
+
+<p>Integers, such as trading numbers and sequences, are not quoted.</p>
+<h3 id='current-limiting'><span id="b4">Current-limiting</span></h3>
+<p>If there are too many requests, the system will automatically limit the requests and return the status code of &quot;429 too many requests&quot; in the http header.</p>
+
+<p>REST API</p>
+
+<ul>
+<li><p>Public interface: We restrict the call of public interface through IP: up to 6 requests every 2 seconds.</p></li>
+<li><p>Private interface: We restrict the call of private interface by user ID: up to 10 requests per second.</p></li>
+<li><p>Special restrictions of some interfaces are indicated on specific interfaces</p></li>
+</ul>
+<h1 id='account-related'>Account Related</h1><h2 id='assets-balance'><span id="1">Assets Balance</span></h2>
+<p>Get user assets balance</p>
+<h3 id='http-request'>HTTP Request:</h3>
+<ul>
+<li>GET /open/api/user/account</li>
+</ul>
+
+<blockquote>
+<p>Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"total_asset"</span><span class="p">:</span><span class="mi">16822</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coin_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"coin"</span><span class="p">:</span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"normal"</span><span class="p">:</span><span class="mf">32323.233</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"locked"</span><span class="p">:</span><span class="mf">32323.233</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"btcValuatin"</span><span class="p">:</span><span class="mf">112.33</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"coin"</span><span class="p">:</span><span class="s2">"ltc"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"normal"</span><span class="p">:</span><span class="mf">68.2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"locked"</span><span class="p">:</span><span class="mf">69.2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"btcValuatin"</span><span class="p">:</span><span class="mf">112.33</span><span class="w">
+            </span><span class="p">},</span><span class="w">       
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Fill-in Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api_key</td>
+<td>Mandatory</td>
+<td>api_key</td>
+</tr>
+<tr>
+<td>time</td>
+<td>Mandatory</td>
+<td>Time stamp</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>Mandatory</td>
+<td>Signature</td>
+</tr>
+</tbody></table>
+<h3 id='response-data'>Response Data</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right:</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id='order-related'>Order Related</h1><h2 id='get-all-orders'><span id="2">Get all orders</span></h2>
+<p>Get all orders</p>
+<h3 id='http-request-2'>HTTP Request:</h3>
+<ul>
+<li><p>GET /open/api/v2/all_order</p></li>
+<li><p>The old interface /open/api/all_order  is retained, but it is no longer recommended</p></li>
+<li><p>v2 version change: The tradeList record in the result return value is removed to improve the efficiency. If the trading information of a single order is required, the  /open/api/order_info interface may be used.</p></li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"orderList"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"side"</span><span class="p">:</span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"total_price"</span><span class="p">:</span><span class="s2">"0.10000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1510993841000</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"avg_price"</span><span class="p">:</span><span class="s2">"0.10000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"countCoin"</span><span class="p">:</span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"source"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"side_msg"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"volume"</span><span class="p">:</span><span class="s2">"1.000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"price"</span><span class="p">:</span><span class="s2">"0.10000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"source_msg"</span><span class="p">:</span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status_msg"</span><span class="p">:</span><span class="s2">"fully filled"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"deal_volume"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">424</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"remain_volume"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"baseCoin"</span><span class="p">:</span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameters-2'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Fill-in Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Mandatory</td>
+<td>Symbol，btcusdt</td>
+</tr>
+<tr>
+<td>startDate</td>
+<td>Optional</td>
+<td>(added) start time, accurate to seconds “yyyy-MM-dd mm:hh:ss”</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td>Optional</td>
+<td>(added) end time, accurate to seconds“yyyy-MM-dd mm:hh:ss”</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>Optional</td>
+<td>Page size</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Optional</td>
+<td>Page</td>
+</tr>
+<tr>
+<td>api_key</td>
+<td>Mandatory</td>
+<td>api_key</td>
+</tr>
+<tr>
+<td>time</td>
+<td>Mandatory</td>
+<td>Time stamp</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>Mandatory</td>
+<td>Signature</td>
+</tr>
+</tbody></table>
+<h3 id='response-data-2'>Response Data</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right:</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='get-all-trading-records'><span id="3">Get all trading records</span></h2>
+<p>Get all trading records</p>
+<h3 id='http-request-3'>HTTP Request:</h3>
+<ul>
+<li>GET /open/api/all_trade</li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"resultList"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"side"</span><span class="p">:</span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"role"</span><span class="p">:</span><span class="s2">"taker"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ask_user_id"</span><span class="p">:</span><span class="mi">10001</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"fee"</span><span class="p">:</span><span class="s2">"0.50000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"returnFeeStatus"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"deal_price"</span><span class="p">:</span><span class="s2">"5.00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"卖出"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_id"</span><span class="p">:</span><span class="mi">10001</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ask_id"</span><span class="p">:</span><span class="mi">10002</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"volume"</span><span class="p">:</span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"feeCoin"</span><span class="p">:</span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"price"</span><span class="p">:</span><span class="s2">"5.00000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ctime"</span><span class="p">:</span><span class="mi">1608345691161</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">10001</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"bid_user_id"</span><span class="p">:</span><span class="mi">10001</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameters-3'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Fill-in Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Mandatory</td>
+<td>Symbol，btcusdt</td>
+</tr>
+<tr>
+<td>startDate</td>
+<td>Optional</td>
+<td>(added) start time, accurate to seconds“yyyy-MM-dd HH:mm:ss”</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td>Optional</td>
+<td>(added) end time, accurate to seconds“yyyy-MM-dd HH:mm:ss”</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>Optional</td>
+<td>Page size</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Optional</td>
+<td>Page</td>
+</tr>
+<tr>
+<td>api_key</td>
+<td>Mandatory</td>
+<td>api_key</td>
+</tr>
+<tr>
+<td>time</td>
+<td>Mandatory</td>
+<td>Time stamp</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>Optional</td>
+<td>1 indicates reverse order</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>Mandatory</td>
+<td>Signature</td>
+</tr>
+</tbody></table>
+<h3 id='response-data-3'>Response Data</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right:</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='cancel-orders'><span id="4">Cancel orders</span></h2>
+<p>Cancel orders</p>
+<h3 id='http-request-4'>HTTP Request:</h3>
+<ul>
+<li>POST /open/api/cancel_order</li>
+</ul>
+<h3 id='request-parameters-4'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Fill-in Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order_id</td>
+<td>Mandatory</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>Mandatory</td>
+<td>Symbol, ethbtc</td>
+</tr>
+<tr>
+<td>api_key</td>
+<td>Mandatory</td>
+<td>api_key</td>
+</tr>
+<tr>
+<td>time</td>
+<td>Mandatory</td>
+<td>Time stamp</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>Mandatory</td>
+<td>Signature</td>
+</tr>
+</tbody></table>
+<h3 id='response-data-4'>Response Data</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>“”</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='cancel-all-orders'><span id="5">Cancel all orders</span></h2>
+<p>Cancel all orders according to token pair (up to 2000 orders can be canceled upon a single request, and the interface needs to be called repeatedly for a request of more than 2000 orders)</p>
+<h3 id='http-request-5'>HTTP Request:</h3>
+<ul>
+<li>POST /open/api/cancel_order_all</li>
+</ul>
+<h3 id='request-parameters-5'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Fill-in Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Mandatory</td>
+<td>Symbol, ethbtc</td>
+</tr>
+<tr>
+<td>api_key</td>
+<td>Mandatory</td>
+<td>api_key</td>
+</tr>
+<tr>
+<td>time</td>
+<td>Mandatory</td>
+<td>Time stamp</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>Mandatory</td>
+<td>Signature</td>
+</tr>
+</tbody></table>
+<h3 id='response-data-5'>Response Data</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>“”</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='create-order'><span id="6">Create Order</span></h2>
+<p>Create Order</p>
+<h3 id='http-request-6'>HTTP Request:</h3>
+<ul>
+<li>POST /open/api/create_order</li>
+</ul>
+<h3 id='request-parameters-6'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Fill-in Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>side</td>
+<td>Mandatory</td>
+<td>BUY/SELL</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Mandatory</td>
+<td>Order type: 1: limit order, 2: market order</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>Mandatory</td>
+<td>Volume (polysemy, reused fields)<br>Type=1: indicates the buying and selling quantity<br>Type=2: indicates the total price (BUY) and the total quantity (SELL)<br>Trading restriction user/me- user information</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Optional</td>
+<td>Order price: type=2: this parameter is not required</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>Mandatory</td>
+<td>Symbol，ethbtc</td>
+</tr>
+<tr>
+<td>fee_is_user_exchange_coin</td>
+<td>Optional</td>
+<td>(redundant field, ignored) 0, when all platform tokens are traded, this parameter indicates whether to use platform tokens to pay the commission charges, 0 - No, 1 - Yes</td>
+</tr>
+<tr>
+<td>api_key</td>
+<td>Mandatory</td>
+<td>api_key</td>
+</tr>
+<tr>
+<td>time</td>
+<td>Mandatory</td>
+<td>Time stamp</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>Mandatory</td>
+<td>Signature</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="mi">34343</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='response-data-6'>Response Data</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right：</td>
+<td>Trade ID returned successfully</td>
+</tr>
+</tbody></table>
+<h2 id='batch-ordering-cancellation'><span id="13">Batch ordering/cancellation</span></h2>
+<p>Place orders in batches, or cancel designated orders in batches</p>
+<h3 id='http-request-7'>HTTP Request:</h3>
+<ul>
+<li>POST /open/api/mass_replace</li>
+</ul>
+<h3 id='request-parameters-7'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Fill-in Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api_key</td>
+<td>Mandatory</td>
+<td>api_key</td>
+</tr>
+<tr>
+<td>time</td>
+<td>Mandatory</td>
+<td>Time stamp</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>Mandatory</td>
+<td>Signature</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>Mandatory</td>
+<td>Coin, for example btcusdt</td>
+</tr>
+<tr>
+<td>mass_cancel</td>
+<td>Optional</td>
+<td>[1234,234....] cancellation parameter, order id</td>
+</tr>
+<tr>
+<td>mass_place</td>
+<td>Optional</td>
+<td>[{side:&quot; BUY&quot;,type:&quot; 1&quot;,volume:&quot; 0.01&quot;,price:&quot; 6400&quot;,fee_is_user_exchange_coin:&quot; 0&quot;}, {}, …]<br>Meaning：<br>symbol: Coin, for example, btcusdt<br>mass_place: Ordering parameter. side: direction (BUY and SELL),<br>--------------------------------type: type (1: limit order, 2: market order)<br>--------------------------------volume: volume (polysemy, reused fields) type=1: indicates the buying and selling quantity type=2: indicates the total price (BUY) and the total quantity (SELL)<br>--------------------------------price: order price: type=2: this parameter is not required<br>--------------------------------fee_is_user_exchange_coin: (redundant field) when all platform coins are traded, this parameter indicates whether to use platform coins to pay the commission charges, 0 - No, 1 - Yes</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>Mass_place indicates a batch of limit orders that need to be sent to the system, with a maximum of 100 orders at a time</li>
+<li>Mass_cancel indicates a batch of orders that need to be canceled, with a maximum of 100 orders at a time</li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"mass_place"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"order_id"</span><span class="p">:</span><span class="s2">"101180"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
+                </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"suc"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+            </span><span class="err">...</span><span class="w"> </span><span class="err">...</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"mass_cancel"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"order_id"</span><span class="p">:</span><span class="s2">"101180"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
+                </span><span class="nl">"msg"</span><span class="p">:</span><span class="s2">"suc"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+            </span><span class="err">...</span><span class="w"> </span><span class="err">...</span><span class="w">       
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='response-data-7'>Response Data</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right</td>
+<td><br>Ordering return: order id, status code, success (0)/ failure (1)<br> <br>Cancellation return: order id, status code, success (0)/ failure (1)<br></td>
+</tr>
+</tbody></table>
+<h2 id='batch-ordering-cancellation-v2'><span id="27">Batch ordering/cancellation - V2</span></h2>
+<p>Place orders in batches, or cancel designated orders in batches</p>
+<h3 id='http-request-8'>HTTP Request:</h3>
+<ul>
+<li>POST /open/api/mass_replaceV2</li>
+</ul>
+<h3 id='request-parameters-8'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Fill-in Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api_key</td>
+<td>Mandatory</td>
+<td>api_key</td>
+</tr>
+<tr>
+<td>time</td>
+<td>Mandatory</td>
+<td>Time stamp</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>Mandatory</td>
+<td>Signature</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>Mandatory</td>
+<td>Coin, for example,  btcusdt</td>
+</tr>
+<tr>
+<td>mass_cancel</td>
+<td>Optional</td>
+<td>[1234,234....] \ [1234,234 ...] cancellation parameter, order id</td>
+</tr>
+<tr>
+<td>mass_place</td>
+<td>Optional</td>
+<td>[{side:&quot;BUY&quot;,type:&quot;1&quot;,volume:&quot;0.01&quot;,price:&quot;6400&quot;,fee_is_user_exchange_coin:&quot;0&quot;}, {}, …]<br>Meaning：<br>symbol: Coin, for example, btcusdt<br>mass_place: ordering parameter --&gt;side: direction (BUY and SELL),<br>--------------------------------type: type (1: limit order, 2: market order)<br>--------------------------------volume: volume (polysemy, reused fields) type=1: indicates the buying and selling quantity type=2: indicates the total price (BUY) and the total quantity (SELL)<br>--------------------------------price: order price: type=2: this parameter is not required<br>--------------------------------fee_is_user_exchange_coin: (redundant field) when all platform coins are traded, this parameter indicates whether to use platform coins to pay the commission charges, 0 - No, 1 - Yes</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><p>Mass_place indicates a batch of limit orders that need to be sent to the system, with a maximum of 1000 orders at a time</p></li>
+<li><p>Mass_cancel indicates a batch of orders that need to be canceled, with a maximum of 1000 orders at a time</p></li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"mass_place"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">504</span><span class="p">,</span><span class="mi">505</span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order cancellation failed"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">504</span><span class="p">,</span><span class="mi">505</span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"mass_cancel"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">572</span><span class="p">,</span><span class="mi">573</span><span class="p">,</span><span class="mi">574</span><span class="p">,</span><span class="mi">626</span><span class="p">,</span><span class="mi">629</span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='response-data-8'>Response Data</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right</td>
+<td><br>Ordering return: order id, status code, success (0)/ failure (1)<br> <br>Cancellation return: order id, status code, success (0)/ failure (1)<br></td>
+</tr>
+</tbody></table>
+<h2 id='get-current-orders'><span id="14">Get current orders</span></h2>
+<p>Get current orders, including unfilled orders and partially filled orders</p>
+<h3 id='http-request-9'>HTTP Request:</h3>
+<ul>
+<li><p>GET /open/api/v2/new_order</p></li>
+<li><p>The old interface /open/api/new_order is retained, but it is no longer recommended</p></li>
+<li><p>V2 version change: The tradeList record in the result return value is removed to improve the efficiency. If the trading information of a single order is required, the /open/api/order_info interface may be used.</p></li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"resultList"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"side"</span><span class="p">:</span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"total_price"</span><span class="p">:</span><span class="s2">"0.10000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1510993841000</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"avg_price"</span><span class="p">:</span><span class="s2">"0.10000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"countCoin"</span><span class="p">:</span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"source"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"side_msg"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"volume"</span><span class="p">:</span><span class="s2">"1.000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"price"</span><span class="p">:</span><span class="s2">"0.10000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"source_msg"</span><span class="p">:</span><span class="s2">"WEB"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status_msg"</span><span class="p">:</span><span class="s2">"fully filled"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"deal_volume"</span><span class="p">:</span><span class="s2">"1.00000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">424</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"remain_volume"</span><span class="p">:</span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"baseCoin"</span><span class="p">:</span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameter'>Request Parameter:</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Fill-in Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Mandatory</td>
+<td>Symbol, btcusdt</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>Optional</td>
+<td>Page size</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Optional</td>
+<td>Page</td>
+</tr>
+<tr>
+<td>api_key</td>
+<td>Mandatory</td>
+<td>api_key</td>
+</tr>
+<tr>
+<td>time</td>
+<td>Mandatory</td>
+<td>Time stamp</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>Mandatory</td>
+<td>Signature</td>
+</tr>
+</tbody></table>
+<h3 id='response-data-9'>Response Data:</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right:</td>
+<td>Order status description：<br>INIT (0, &quot;initial order, unfilled and not in the handicap&quot;),<br>NEW_ (1, &quot;new order, unfilled but in the handicap&quot;),<br>FILLED (2, &quot;fully filled&quot;),<br>PART_FILLED (3, &quot;partially filled&quot;),<br>CANCELED (4, &quot;canceled order&quot;),<br>PENDING_CANCEL (5, &quot;pending cancellation&quot;),<br>EXPIRED (6, &quot;abnormal order&quot;);</td>
+</tr>
+</tbody></table>
+<h2 id='get-order-details'><span id="15">Get order details</span></h2>
+<p>Get order details</p>
+<h3 id='http-request-10'>HTTP Request:</h3>
+<ul>
+<li>GET /open/api/order_info</li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"order_info"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">343</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"side_msg"</span><span class="p">:</span><span class="s2">"sell"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"1592461624033"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="mf">222.33</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volume"</span><span class="p">:</span><span class="mf">222.33</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"deal_volume"</span><span class="p">:</span><span class="mf">222.33</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total_price"</span><span class="p">:</span><span class="mf">222.33</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee"</span><span class="p">:</span><span class="mf">222.33</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"source_msg"</span><span class="p">:</span><span class="s2">"API"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"> 
+            </span><span class="nl">"status_msg"</span><span class="p">:</span><span class="s2">"unfilled"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"avg_price"</span><span class="p">:</span><span class="mf">222.33</span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="nl">"trade_list"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">343</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"1592461624033"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"price"</span><span class="p">:</span><span class="mf">222.33</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"volume"</span><span class="p">:</span><span class="mf">222.33</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"deal_price"</span><span class="p">:</span><span class="mf">222.33</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"fee"</span><span class="p">:</span><span class="mf">222.33</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">345</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"created_at"</span><span class="p">:</span><span class="s2">"1592461624033"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"price"</span><span class="p">:</span><span class="mf">222.33</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"volume"</span><span class="p">:</span><span class="mf">222.33</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"deal_price"</span><span class="p">:</span><span class="mf">222.33</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"fee"</span><span class="p">:</span><span class="mf">222.33</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameters-9'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Fill-in Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order_id</td>
+<td>Mandatory</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>Mandatory</td>
+<td>Symbol, ethbtc</td>
+</tr>
+<tr>
+<td>api_key</td>
+<td>Mandatory</td>
+<td>api_key</td>
+</tr>
+<tr>
+<td>time</td>
+<td>Mandatory</td>
+<td>Time stamp</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>Mandatory</td>
+<td>Signature</td>
+</tr>
+</tbody></table>
+<h3 id='response-data-10'>Response Data:</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right:</td>
+<td>Order status description：<br>INIT (0, &quot;initial order, unfilled and not in the handicap&quot;),<br>NEW_ (1, &quot;new order, unfilled but in the handicap&quot;),<br>FILLED (2, &quot;fully filled&quot;),<br>PART_FILLED (3, &quot;partially filled&quot;),<br>CANCELED (4, &quot;canceled order&quot;),<br>PENDING_CANCEL (5, &quot;pending cancellation&quot;),<br>EXPIRED (6, &quot;abnormal order&quot;);</td>
+</tr>
+</tbody></table>
+<h1 id='tickers-related'>Tickers Related</h1><h2 id='get-all-symbol-tickers'><span id="7">Get all symbol tickers</span></h2>
+<p>Get all symbol tickers</p>
+<div class="highlight"><pre class="highlight plaintext"><code>curl https://openapi.wbfex.biz/open/api/get_allticker
+</code></pre></div><h3 id='http-request-11'>HTTP Request:</h3>
+<ul>
+<li>GET /open/api/get_allticker</li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusdt"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11156.757"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25335.3953627840650451"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10963.688"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10842.3909"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"buy"</span><span class="p">:</span><span class="w"> </span><span class="mf">10958.77</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sell"</span><span class="p">:</span><span class="w"> </span><span class="mi">10968</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0158573641955148"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0158573641955148"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wtusdt"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1531"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13960810.11"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.15207"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.150962"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"buy"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.151699</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sell"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.152843</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0061368939082015"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0061368939082015"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameter-2'>Request Parameter:</h3>
+<ul>
+<li>This interface doesn&#39;t require signature verification</li>
+<li>Parameter: None</li>
+</ul>
+<h3 id='response-data-11'>Response Data:</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right：</td>
+<td>Return value description<br>date: server time when data is returned  <br>symbol: Symbol (symbol 1(base) _ symbol 2(quote))  <br>buy: buy price <br>high: highest price  <br>last: last strike price <br>low: lowest price  <br>sell: sell price <br>vol: volume (last 24 hours)<br>rose:rose</td>
+</tr>
+</tbody></table>
+<h2 id='get-k-line-data'><span id="8">Get K-line data</span></h2>
+<p>Get K-line data</p>
+<div class="highlight"><pre class="highlight plaintext"><code>curl https://openapi.wbfex.biz/open/api/get_records?symbol=btcusdt&amp;period=15
+</code></pre></div><h3 id='http-request-12'>HTTP Request:</h3>
+<p>GET /open/api/get_records</p>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="mi">1595727000</span><span class="p">,</span><span class="w">  </span><span class="err">//Time，second</span><span class="w">
+            </span><span class="mf">9674.4758</span><span class="p">,</span><span class="w">   </span><span class="err">//Open</span><span class="w">
+            </span><span class="mf">9675.8867</span><span class="p">,</span><span class="w">   </span><span class="err">//High</span><span class="w">
+            </span><span class="mf">9652.9081</span><span class="p">,</span><span class="w">   </span><span class="err">//Low</span><span class="w">
+            </span><span class="mf">9654.2835</span><span class="p">,</span><span class="w">   </span><span class="err">//Close</span><span class="w">
+            </span><span class="mf">369.67841</span><span class="w">    </span><span class="err">//Amount</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="mi">1595727900</span><span class="p">,</span><span class="w">
+            </span><span class="mf">9654.2835</span><span class="p">,</span><span class="w">
+            </span><span class="mf">9658.4342</span><span class="p">,</span><span class="w">
+            </span><span class="mf">9652.6404</span><span class="p">,</span><span class="w">
+            </span><span class="mf">9658.0308</span><span class="p">,</span><span class="w">
+            </span><span class="mf">159.483355</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="mi">1595728800</span><span class="p">,</span><span class="w">
+            </span><span class="mf">9658.0308</span><span class="p">,</span><span class="w">
+            </span><span class="mf">9658.9791</span><span class="p">,</span><span class="w">
+            </span><span class="mf">9641.8814</span><span class="p">,</span><span class="w">
+            </span><span class="mf">9649.003</span><span class="p">,</span><span class="w">
+            </span><span class="mf">80.145183</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameter-3'>Request Parameter:</h3>
+<ul>
+<li>This interface doesn&#39;t require signature verification</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Fill-in Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Mandatory</td>
+<td>Symbol, bchbtc</td>
+</tr>
+<tr>
+<td>period</td>
+<td>Mandatory</td>
+<td>Unit: minute, 1 minute = 1; 1 day = 1440</td>
+</tr>
+</tbody></table>
+<h3 id='response-data-12'>Response Data:</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right：</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='get-current-tickers'><span id="9">Get current tickers</span></h2>
+<p>Get current tickers</p>
+<div class="highlight"><pre class="highlight plaintext"><code>curl https://openapi.wbfex.biz/open/api/get_ticker?symbol=btcusdt
+</code></pre></div><h3 id='http-request-13'>HTTP Request:</h3>
+<ul>
+<li>GET /open/api/get_ticker</li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11156.757"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25397.4778447840650451"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10958.1839"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10842.3909"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"buy"</span><span class="p">:</span><span class="w"> </span><span class="mf">10952.15</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sell"</span><span class="p">:</span><span class="w"> </span><span class="mf">10964.4335</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"rose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0163514332972378"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1514448473626</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameter-4'>Request Parameter:</h3>
+<ul>
+<li>This interface doesn&#39;t require signature verification</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Fill-in Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Mandatory</td>
+<td>Symbol, btcusdt</td>
+</tr>
+</tbody></table>
+<h3 id='response-data-13'>Response Data:</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right：</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='get-trading-records'><span id="10">Get trading records</span></h2>
+<p>Get the real-time trading records of symbols (up to 200 latest trading records are returned)</p>
+<div class="highlight"><pre class="highlight plaintext"><code>curl https://openapi.wbfex.biz/open/api/get_trades?symbol=btcusdt
+</code></pre></div><h3 id='http-request-14'>HTTP Request:</h3>
+<ul>
+<li>GET /open/api/get_trades</li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusdt"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"count_coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"base_coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wtusdt"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"count_coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"base_coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ltcusdt"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"count_coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"base_coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameter-5'>Request Parameter:</h3>
+<ul>
+<li>This interface doesn&#39;t require signature verification</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Fill-in Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Mandatory</td>
+<td>Symbol, bchbtc</td>
+</tr>
+</tbody></table>
+<h3 id='response-data-14'>Response Data:</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right：</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='get-the-latest-strike-price-of-each-token-pair'><span id="11">Get the latest strike price of each token pair</span></h2>
+<p>Get the latest strike price of each token pair</p>
+<div class="highlight"><pre class="highlight plaintext"><code>curl https://openapi.wbfex.biz/open/api/market
+</code></pre></div><h3 id='http-request-15'>HTTP Request:</h3>
+<ul>
+<li>GET /open/api/market</li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"btcusdt"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ethusdt"</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="err">，</span><span class="w">
+        </span><span class="nl">"eosusdt"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+        </span><span class="err">...</span><span class="w"> </span><span class="err">...</span><span class="w">
+    </span><span class="p">}</span><span class="w">   
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameter-6'>Request Parameter:</h3>
+<ul>
+<li>This interface doesn&#39;t require signature verification</li>
+</ul>
+<h3 id='response-data-15'>Response Data:</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right:</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='query-asks-depth'><span id="12">Query asks depth</span></h2>
+<p>Query asks depth</p>
+<div class="highlight"><pre class="highlight plaintext"><code>curl https://openapi.wbfex.biz/open/api/market_dept?symbol=btcusdt&amp;type=step0
+</code></pre></div><h3 id='http-request-16'>HTTP Request:</h3>
+<ul>
+<li>GET /open/api/market_dept</li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+        </span><span class="nl">"tick"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"asks"</span><span class="p">:[</span><span class="err">//asks，Price</span><span class="w"> </span><span class="err">from</span><span class="w"> </span><span class="err">low</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">high</span><span class="w">
+                </span><span class="p">[</span><span class="mf">10968.4775</span><span class="p">,</span><span class="mf">0.9332</span><span class="p">],</span><span class="w">
+                </span><span class="p">[</span><span class="mf">10985.9564</span><span class="p">,</span><span class="mf">0.1222</span><span class="p">],</span><span class="w">
+                </span><span class="p">[</span><span class="mf">10993.3291</span><span class="p">,</span><span class="mf">0.2778</span><span class="p">],</span><span class="w">
+                </span><span class="p">[</span><span class="mf">10995.8029</span><span class="p">,</span><span class="mf">0.5882</span><span class="p">],</span><span class="w">
+                </span><span class="p">[</span><span class="mf">10998.8093</span><span class="p">,</span><span class="mf">0.2982</span><span class="p">],</span><span class="w">
+                </span><span class="err">...</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"bids"</span><span class="p">:[</span><span class="err">//bids</span><span class="p">,</span><span class="w"> </span><span class="err">Price</span><span class="w"> </span><span class="err">from</span><span class="w"> </span><span class="err">high</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">low</span><span class="w">
+                </span><span class="p">[</span><span class="mf">10953.0857</span><span class="p">,</span><span class="mf">0.1532</span><span class="p">],</span><span class="w">
+                </span><span class="p">[</span><span class="mi">10950</span><span class="p">,</span><span class="mf">0.0226</span><span class="p">],</span><span class="w">
+                </span><span class="p">[</span><span class="mf">10942.8882</span><span class="p">,</span><span class="mf">0.3178</span><span class="p">],</span><span class="w">
+                </span><span class="p">[</span><span class="mf">10941.0563</span><span class="p">,</span><span class="mf">0.1862</span><span class="p">],</span><span class="w">
+                </span><span class="p">[</span><span class="mf">10938.2499</span><span class="p">,</span><span class="mf">0.0912</span><span class="p">],</span><span class="w">
+                </span><span class="err">...</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1595995928119</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameter-7'>Request Parameter:</h3>
+<ul>
+<li>This interface doesn&#39;t require signature verification</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Fill-in Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>Mandatory</td>
+<td>Symbol, ethbtc</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Mandatory</td>
+<td>Depth type, step0, step1, step2 (combined depth 0-2); highest precision at step0</td>
+</tr>
+</tbody></table>
+<h3 id='response-data-16'>Response Data:</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right：</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='query-all-symbols-supported-by-the-system'><span id="17">Query all symbols supported by the system</span></h2>
+<p>Query all symbols supported by the system</p>
+<div class="highlight"><pre class="highlight plaintext"><code>curl https://openapi.wbfex.biz/open/api/common/symbols
+</code></pre></div><h3 id='http-request-17'>HTTP Request:</h3>
+<ul>
+<li>GET /open/api/common/symbols</li>
+</ul>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusdt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"count_coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"base_coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wtusdt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"count_coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"base_coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wptusdt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"count_coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"base_coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WPT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameter-8'>Request Parameter:</h3>
+<ul>
+<li>Parameter: None</li>
+</ul>
+<h3 id='response-data-17'>Response Data:</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>&quot;suc&quot;</td>
+<td>code&gt;0 failure</td>
+</tr>
+<tr>
+<td>data</td>
+<td>As shown on the right：</td>
+<td>symbol <br>base_coin <br>count_coin <br>price_precision (0 is one digit)<br>amount_precision  (0 is one digit)</td>
+</tr>
+</tbody></table>
+<h1 id='websocket-ticker-data'>Websocket Ticker Data</h1><h2 id='introduction-2'>Introduction</h2><h3 id='access-url'>Access URL</h3>
+<p><code>
+wss://ws.wbfex.biz/kline-api/ws
+</code></p>
+<h3 id='data-compression'>Data Compression</h3>
+<p>All the data returned by WebSocket ticker interface are compressed by GZIP, which requires the client to decompress the data after receiving it.</p>
+<h3 id='heartbeat-message'>Heartbeat Message</h3>
+<p>When the Websocket client of the user connects to the Websocket server of WBF, the server will send ping messages to it periodically (currently at 5 seconds) and contain an integer value as shown on the right:</p>
+
+<p><code>
+{&quot;ping&quot;: 1595935723334}
+</code></p>
+
+<p>When the Websocket client of the user receives this heartbeat message, it should return a pong message containing the same integer value:</p>
+
+<p><code>
+{&quot;pong&quot;: 1595935723334}
+</code></p>
+
+<blockquote>
+<p>Subscribe</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"params"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_$base$quote_kline_1min"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cb_id"</span><span class="p">:</span><span class="s2">"10001"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>When the Websocket server sends ping messages for three consecutive times but does not receive any pong messages, the server will actively disconnect from this client.</p>
+
+<blockquote>
+<p>Subscribe Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event_rep"</span><span class="p">:</span><span class="s2">"subed"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_$base$quote_kline_1min"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cb_id"</span><span class="p">:</span><span class="s2">"10001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1506584998239</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='subscribe-to-topics'>Subscribe to Topics</h3>
+<p>After the connection with Websocket server is successfully established, Websocket client sends a request as shown on the right to subscribe to a specific topic.</p>
+
+<p><code>
+{
+    &quot;event&quot;: &quot;sub&quot;, 
+    &quot;params&quot;:{
+        &quot;channel&quot;:&quot;channel name&quot;,
+        &quot;cb_id&quot;:&quot;id generated by client&quot;
+    }
+}
+</code></p>
+
+<p>Upon successful subscription, Websocket client will receive the confirmation. After that, once the subscribed topic is updated, the Websocket client will receive an update message (push) pushed by the server.</p>
+
+<blockquote>
+<p>Unsubscribe</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unsub"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"params"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_$base$quote_kline_1min"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cb_id"</span><span class="p">:</span><span class="s2">"10001"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><code>
+{
+    &quot;event&quot;: &quot;subed&quot;, 
+    &quot;channel&quot;:&quot;channel name&quot;,
+    &quot;cb_id&quot;:&quot;id generated by client&quot;,
+    &quot;ts&quot;: &quot;timestamp&quot;
+    &quot;status&quot;: &quot;subscribe status&quot;
+}
+</code></p>
+<h3 id='unsubscribe'>Unsubscribe</h3>
+<p>The client may unsubscribe the topic in the following format:</p>
+
+<p><code>
+{
+    &quot;event&quot;: &quot;unsub&quot;, 
+    &quot;params&quot;:{
+        &quot;channel&quot;:&quot;channel name&quot;,
+        &quot;cb_id&quot;:&quot;id generated by client&quot;
+    }
+}
+</code></p>
+<h2 id='subscribe-to-k-line-ticker'><span id="19">Subscribe to K-line ticker</span></h2><h3 id='channel'>channel</h3>
+<p><code>market_$symbol_kline_$period</code></p>
+
+<blockquote>
+<p>Subscribe</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"params"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_btcusdt_kline_5min"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cb_id"</span><span class="p">:</span><span class="s2">"10001"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='subscription-parameters'>Subscription Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+<th>Value Range</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel</td>
+<td>string</td>
+<td>Yes</td>
+<td>Topic</td>
+<td>$symbol: Symbol name <br>btcusdt,ethusdt<br> $period: K-line period<br>1min,5min,15min,30min,60min,1day,1week,1month</br></td>
+</tr>
+<tr>
+<td>cb_id</td>
+<td>string</td>
+<td>Yes</td>
+<td>Customized id</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_btcusdt_kline_5min"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1506584998239</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tick"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">1506602880</span><span class="p">,</span><span class="err">//Time</span><span class="w"> </span><span class="err">scale</span><span class="w"> </span><span class="err">start</span><span class="w"> </span><span class="err">value</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="mf">123.1221</span><span class="p">,</span><span class="err">//amount</span><span class="w">
+        </span><span class="nl">"vol"</span><span class="p">:</span><span class="mf">1212.12211</span><span class="p">,</span><span class="err">//volume</span><span class="w">
+        </span><span class="nl">"open"</span><span class="p">:</span><span class="mf">2233.22</span><span class="p">,</span><span class="err">//opening</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="nl">"close"</span><span class="p">:</span><span class="mf">1221.11</span><span class="p">,</span><span class="err">//closing</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="nl">"high"</span><span class="p">:</span><span class="mf">22322.22</span><span class="p">,</span><span class="err">//highest</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="nl">"low"</span><span class="p">:</span><span class="mf">2321.22</span><span class="err">//lowest</span><span class="w"> </span><span class="err">price</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='update-data-fields'>Update Data Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>long</td>
+<td>Time scale start value</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>amount</td>
+</tr>
+<tr>
+<td>vol</td>
+<td>float</td>
+<td>volume</td>
+</tr>
+<tr>
+<td>open</td>
+<td>float</td>
+<td>opening price</td>
+</tr>
+<tr>
+<td>close</td>
+<td>float</td>
+<td>closing price</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>highest price</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>lowest price</td>
+</tr>
+</tbody></table>
+<h2 id='subscribe-to-24-hour-ticker'><span id="20">Subscribe to 24-hour Ticker</span></h2><h3 id='channel-2'>channel</h3>
+<p><code>maket_$symbol_ticker</code></p>
+
+<blockquote>
+<p>Subscribe</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"params"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_btcusdt_ticker"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cb_id"</span><span class="p">:</span><span class="s2">"10002"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='subscription-parameters-2'>Subscription Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+<th>Value Range</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel</td>
+<td>string</td>
+<td>Yes</td>
+<td>Topic</td>
+<td>$symbol: Symbol name <br>btcusdt,ethusdt ...</br></td>
+</tr>
+<tr>
+<td>cb_id</td>
+<td>string</td>
+<td>Yes</td>
+<td>Customized id</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_btcusdt_ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1506584998239</span><span class="p">,</span><span class="err">//</span><span class="w">
+    </span><span class="nl">"tick"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">1506584998</span><span class="p">,</span><span class="err">//Time</span><span class="w"> </span><span class="err">scale</span><span class="w"> </span><span class="err">start</span><span class="w"> </span><span class="err">value</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="mf">123.1221</span><span class="p">,</span><span class="err">//amount</span><span class="w">
+        </span><span class="nl">"vol"</span><span class="p">:</span><span class="mf">1212.12211</span><span class="p">,</span><span class="err">//volume</span><span class="w">
+        </span><span class="nl">"open"</span><span class="p">:</span><span class="mf">2233.22</span><span class="p">,</span><span class="err">//opening</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="nl">"close"</span><span class="p">:</span><span class="mf">1221.11</span><span class="p">,</span><span class="err">//closing</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="nl">"high"</span><span class="p">:</span><span class="mf">22322.22</span><span class="p">,</span><span class="err">//highest</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="nl">"low"</span><span class="p">:</span><span class="mf">2321.22</span><span class="p">,</span><span class="err">//lowest</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="nl">"rose"</span><span class="p">:</span><span class="mf">-0.2922</span><span class="p">,</span><span class="err">//rose</span><span class="w">
+        </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1506584998239</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lower_frame"</span><span class="p">:</span><span class="s2">"0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='update-data-fields-2'>Update Data Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>long</td>
+<td>Time scale start value</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>amount</td>
+</tr>
+<tr>
+<td>vol</td>
+<td>float</td>
+<td>volume</td>
+</tr>
+<tr>
+<td>open</td>
+<td>float</td>
+<td>opening price</td>
+</tr>
+<tr>
+<td>close</td>
+<td>float</td>
+<td>closing price</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>highest price</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>lowest price</td>
+</tr>
+</tbody></table>
+<h2 id='subscribe-to-market-depth-ticker-data'><span id="21">Subscribe to Market Depth Ticker Data</span></h2><h3 id='channel-3'>channel</h3>
+<p><code>maket_$symbol_depth_$step</code></p>
+
+<blockquote>
+<p>Subscribe</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"params"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_btcusdt_depth_step0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cb_id"</span><span class="p">:</span><span class="s2">"10001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"asks"</span><span class="p">:</span><span class="mi">150</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bids"</span><span class="p">:</span><span class="mi">150</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='subscription-parameters-3'>Subscription Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+<th>Value Range</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel</td>
+<td>string</td>
+<td>Yes</td>
+<td>Topic</td>
+<td>$symbol: symbol name  <br>  btcusdt,ethusdt ...</br> <br> $step: aggregation precision <br> step0: disaggregation  <br>step1: system precision is configurable<br>step2: system precision is configurable<br></td>
+</tr>
+<tr>
+<td>cb_id</td>
+<td>string</td>
+<td>Yes</td>
+<td>Customized id</td>
+<td></td>
+</tr>
+<tr>
+<td>asks</td>
+<td>integer</td>
+<td>No</td>
+<td>asks gear</td>
+<td></td>
+</tr>
+<tr>
+<td>bids</td>
+<td>integer</td>
+<td>No</td>
+<td>bids gear</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='update-data-fields-3'>Update Data Fields</h3>
+<ul>
+<li>Note: If the first subscription is successful, the full-volume data will be returned immediately. In addition, the server will regularly push the full-volume data to the front end to avoid data problems.</li>
+</ul>
+
+<blockquote>
+<p>Full-volume Handicap Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_btcusdt_depth_step0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1506584998239</span><span class="p">,</span><span class="err">//Request</span><span class="w"> </span><span class="err">time</span><span class="w">
+    </span><span class="nl">"tick"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"asks"</span><span class="p">:[</span><span class="err">//sell</span><span class="w">
+            </span><span class="p">[</span><span class="mf">22112.22</span><span class="p">,</span><span class="mf">0.9332</span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="mf">22112.21</span><span class="p">,</span><span class="mf">0.2</span><span class="p">],</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"buys"</span><span class="p">:[</span><span class="err">//buy</span><span class="w">
+            </span><span class="p">[</span><span class="mf">22111.22</span><span class="p">,</span><span class="mf">0.9332</span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="mf">22111.21</span><span class="p">,</span><span class="mf">0.2</span><span class="p">],</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='full-volume-handicap-data'>Full-volume Handicap Data</h4>
+<ul>
+<li>It can directly replace the original handicap</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asks</td>
+<td>array object</td>
+<td>asks depth</td>
+</tr>
+<tr>
+<td>buys</td>
+<td>array object</td>
+<td>buys  depth</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Incremental Handicap Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_btcusdt_depth_step0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1506584998239</span><span class="p">,</span><span class="err">//Request</span><span class="w"> </span><span class="err">time</span><span class="w">
+    </span><span class="nl">"tick"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asks"</span><span class="p">,</span><span class="w"> </span><span class="err">//asks/buys</span><span class="w"> </span><span class="err">direction</span><span class="w">   </span><span class="err">asks:</span><span class="w"> </span><span class="err">asks</span><span class="w">  </span><span class="err">buys:</span><span class="w"> </span><span class="err">buys</span><span class="w">
+        </span><span class="nl">"price"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">133.55</span><span class="p">,</span><span class="w">  
+        </span><span class="nl">"volume"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">44.22</span><span class="w">   
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='incremental-handicap-data'>Incremental Handicap Data</h4>
+<ul>
+<li>Replace the quantity corresponding to the price. Delete it when volume=0. Update the volume when price is equal to the price of a certain price segment of the original handicap, and add the new price directly.</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>side</td>
+<td>string</td>
+<td>asks/buys direction <br>asks: asks</br> <br>buys</br></td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>price</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>volume</td>
+</tr>
+</tbody></table>
+<h2 id='subscribe-to-real-time-trading-information'><span id="23">Subscribe to Real-time Trading Information </span></h2><h3 id='channel-4'>channel</h3>
+<p><code>maket_$symbol_trade_ticker</code></p>
+
+<blockquote>
+<p>Subscribe</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"params"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_btcusdt_trade_ticker"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cb_id"</span><span class="p">:</span><span class="s2">"10001"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='subscription-parameters-4'>Subscription Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+<th>Value Range</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel</td>
+<td>string</td>
+<td>Yes</td>
+<td>Topic</td>
+<td>$symbol: symbol name<br>btcusdt,ethusdt ...</br></td>
+</tr>
+<tr>
+<td>cb_id</td>
+<td>string</td>
+<td>Yes</td>
+<td>Customized id</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_btcusdt_trade_ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1506584998239</span><span class="p">,</span><span class="err">//Request</span><span class="w"> </span><span class="err">time</span><span class="w">
+    </span><span class="nl">"tick"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">12121</span><span class="p">,</span><span class="err">//ID</span><span class="w">
+        </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1506584998239</span><span class="p">,</span><span class="err">//</span><span class="w">
+        </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">12121</span><span class="p">,</span><span class="err">//trading</span><span class="w"> </span><span class="err">id</span><span class="w">
+                </span><span class="nl">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="err">//asks/bids</span><span class="w"> </span><span class="err">direction</span><span class="w">
+                </span><span class="nl">"price"</span><span class="p">:</span><span class="mf">32.233</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"vol"</span><span class="p">:</span><span class="mi">232</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="mi">323</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1506584998239</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ds"</span><span class="p">:</span><span class="err">'</span><span class="mi">2017-09-10</span><span class="w"> </span><span class="mi">23</span><span class="err">:</span><span class="mi">12</span><span class="err">:</span><span class="mi">21</span><span class="err">'</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">12120</span><span class="p">,</span><span class="err">//trading</span><span class="w"> </span><span class="err">id</span><span class="w">
+                </span><span class="nl">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="err">//asks/bids</span><span class="w"> </span><span class="err">direction</span><span class="w">
+                </span><span class="nl">"price"</span><span class="p">:</span><span class="mf">32.233</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"vol"</span><span class="p">:</span><span class="mi">232</span><span class="p">,</span><span class="err">//volume</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="mi">323</span><span class="p">,</span><span class="err">//amount</span><span class="w">
+                </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1506584998239</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ds"</span><span class="p">:</span><span class="err">'</span><span class="mi">2017-09-10</span><span class="w"> </span><span class="mi">23</span><span class="err">:</span><span class="mi">12</span><span class="err">:</span><span class="mi">21</span><span class="err">'</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='update-data-fields-4'>Update Data Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>long</td>
+<td>trading id</td>
+</tr>
+<tr>
+<td>side</td>
+<td>string</td>
+<td>asks/buys direction <br>asks: asks</br> <br>buys</br></td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>strike price</td>
+</tr>
+<tr>
+<td>vol</td>
+<td>float</td>
+<td>volume</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>amount</td>
+</tr>
+<tr>
+<td>ts</td>
+<td>long</td>
+<td>trading time</td>
+</tr>
+<tr>
+<td>ds</td>
+<td>string</td>
+<td>date</td>
+</tr>
+</tbody></table>
+<h2 id='request-k-line-historical-data'><span id="24">Request K-line Historical Data</span></h2><h3 id='channel-5'>channel</h3>
+<p><code>maket_$symbol_kline_$period</code></p>
+
+<ul>
+<li>Add request parameters endIdx and pageSize (maximum 300, default 300 entries). If endIdx is null, the latest 300 entries of historical data will be returned.</li>
+</ul>
+
+<blockquote>
+<p>Subscribe</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="s2">"req"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"params"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_btcusdt_kline_5min"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cb_id"</span><span class="p">:</span><span class="s2">"10002"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"since"</span><span class="p">:</span><span class="s2">"1506602880"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='subscription-parameters-5'>Subscription Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+<th>Value Range</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel</td>
+<td>string</td>
+<td>Yes</td>
+<td>Topic</td>
+<td>$symbol: symbol name<br>btcusdt,ethusdt ... </br>   <br> $period: K-line period</br> <br>1min,5min,15min,30min,60min,1day,1week,1month</br></td>
+</tr>
+<tr>
+<td>cb_id</td>
+<td>string</td>
+<td>Yes</td>
+<td>Customized id</td>
+<td></td>
+</tr>
+<tr>
+<td>since</td>
+<td>long</td>
+<td>No</td>
+<td>Customized id</td>
+<td>When since defaults, the latest 300 entries will be returned, and when since is valued, it returns up to one-hour data that is larger than since. As since has strong verification, it cannot be valued at 59 one hour earlier.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event_rep"</span><span class="p">:</span><span class="s2">"rep"</span><span class="p">,</span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_btcusdt_kline_5min"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cb_id"</span><span class="p">:</span><span class="s2">"10001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"since"</span><span class="p">:</span><span class="s2">"1506602880"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1506584998239</span><span class="p">,</span><span class="err">//</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">1506602880</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="mf">123.1221</span><span class="p">,</span><span class="err">//amount</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="mf">1212.12211</span><span class="p">,</span><span class="err">//volume</span><span class="w">
+            </span><span class="nl">"open"</span><span class="p">:</span><span class="mf">2233.22</span><span class="p">,</span><span class="err">//opening</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="nl">"close"</span><span class="p">:</span><span class="mf">1221.11</span><span class="p">,</span><span class="err">//closing</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="nl">"high"</span><span class="p">:</span><span class="mf">22322.22</span><span class="p">,</span><span class="err">//highest</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="nl">"low"</span><span class="p">:</span><span class="mf">2321.22</span><span class="err">//lowest</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">1506602880</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="mf">123.1221</span><span class="p">,</span><span class="err">//amount</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="mf">1212.12211</span><span class="p">,</span><span class="err">//volume</span><span class="w">
+            </span><span class="nl">"open"</span><span class="p">:</span><span class="mf">2233.22</span><span class="p">,</span><span class="err">//opening</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="nl">"close"</span><span class="p">:</span><span class="mf">1221.11</span><span class="p">,</span><span class="err">//closing</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="nl">"high"</span><span class="p">:</span><span class="mf">22322.22</span><span class="p">,</span><span class="err">//highest</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="nl">"low"</span><span class="p">:</span><span class="mf">2321.22</span><span class="err">//lowest</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='update-data-fields-5'>Update Data Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>long</td>
+<td>trading id</td>
+</tr>
+<tr>
+<td>vol</td>
+<td>float</td>
+<td>volume</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>amount</td>
+</tr>
+<tr>
+<td>open</td>
+<td>long</td>
+<td>opening price</td>
+</tr>
+<tr>
+<td>close</td>
+<td>long</td>
+<td>closing price</td>
+</tr>
+<tr>
+<td>high</td>
+<td>long</td>
+<td>highest price</td>
+</tr>
+<tr>
+<td>low</td>
+<td>long</td>
+<td>lowest price</td>
+</tr>
+</tbody></table>
+<h2 id='request-trading-historical-data'><span id="25">Request Trading Historical Data </span></h2><h3 id='channel-6'>channel</h3>
+<p><code>maket_$symbol_trade_ticker</code></p>
+
+<blockquote>
+<p>Subscribe</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event"</span><span class="p">:</span><span class="s2">"req"</span><span class="p">,</span><span class="nl">"params"</span><span class="p">:</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_$base$quote_trade_ticker"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cb_id"</span><span class="p">:</span><span class="s2">"Customized"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"top"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+     </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='subscription-parameters-6'>Subscription Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+<th>Value Range</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel</td>
+<td>string</td>
+<td>Yes</td>
+<td>Topic</td>
+<td>$symbol: symbol name<br>btcusdt,ethusdt ...</br></td>
+</tr>
+<tr>
+<td>cb_id</td>
+<td>string</td>
+<td>Yes</td>
+<td>Customized id</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"event_rep"</span><span class="p">:</span><span class="s2">"rep"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"market_btcusdt_trade_ticker"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cb_id"</span><span class="p">:</span><span class="s2">"10001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1506584998239</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"top"</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">12121</span><span class="p">,</span><span class="err">//trading</span><span class="w"> </span><span class="err">id</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="err">//asks/bids</span><span class="w"> </span><span class="err">direction</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="mf">32.233</span><span class="p">,</span><span class="err">//strike</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="mi">232</span><span class="p">,</span><span class="err">//volume</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="mi">323</span><span class="p">,</span><span class="err">//amount</span><span class="w">
+            </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1506584998239</span><span class="err">//</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">12120</span><span class="p">,</span><span class="err">//trading</span><span class="w"> </span><span class="err">id</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="s2">"buy"</span><span class="p">,</span><span class="err">//asks/bids</span><span class="w"> </span><span class="err">direction</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="mf">32.233</span><span class="p">,</span><span class="err">//strike</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="mi">232</span><span class="p">,</span><span class="err">//volume</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="mi">323</span><span class="p">,</span><span class="err">//amount</span><span class="w">
+            </span><span class="nl">"ts"</span><span class="p">:</span><span class="mi">1506584998239</span><span class="p">,</span><span class="err">//</span><span class="w">
+            </span><span class="nl">"ds"</span><span class="p">:</span><span class="err">'</span><span class="mi">2017-09-10</span><span class="w"> </span><span class="mi">23</span><span class="err">:</span><span class="mi">12</span><span class="err">:</span><span class="mi">21</span><span class="err">'</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='update-data-fields-6'>Update Data Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>long</td>
+<td>trading id</td>
+</tr>
+<tr>
+<td>side</td>
+<td>string</td>
+<td>asks/buys direction  <br>asks: asks</br> <br>buys</br></td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>strike price</td>
+</tr>
+<tr>
+<td>vol</td>
+<td>float</td>
+<td>volume</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>amount</td>
+</tr>
+<tr>
+<td>ts</td>
+<td>long</td>
+<td>trading time</td>
+</tr>
+</tbody></table>
+<h2 id='request-home-24-ticker-data'><span id="26">Request Home 24 Ticker Data</span></h2><h3 id='channel-7'>channel</h3>
+<p><code>review</code></p>
+
+<blockquote>
+<p>Subscribe</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"event"</span><span class="p">:</span><span class="s2">"req"</span><span class="p">,</span><span class="nl">"params"</span><span class="p">:{</span><span class="nl">"channel"</span><span class="p">:</span><span class="s2">"review"</span><span class="p">}}</span><span class="w">
+</span></code></pre></div><h3 id='subscription-parameters-7'>Subscription Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Mandatory or Not</th>
+<th>Description</th>
+<th>Value Range</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>channel</td>
+<td>string</td>
+<td>Yes</td>
+<td>Topic</td>
+<td>review</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"event_rep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rep"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"review"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"bchbtc"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">115.968833484</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.07956</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.086323</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.079251</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.086323</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rose"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.07834528</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mf">1393.247</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"btcusdt"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">115.968833484</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">11110.07956</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">11120.086323</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">11000.079251</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">10999.086323</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"rose"</span><span class="p">:</span><span class="w"> </span><span class="mf">110.07834528</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mf">111393.247</span><span class="w">
+        </span><span class="p">}</span><span class="w">          
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='update-data-fields-7'>Update Data Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>long</td>
+<td>amount</td>
+</tr>
+<tr>
+<td>close</td>
+<td>float</td>
+<td>closing price</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>highest price</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>lowest price</td>
+</tr>
+<tr>
+<td>open</td>
+<td>float</td>
+<td>opening price</td>
+</tr>
+<tr>
+<td>rose</td>
+<td>float</td>
+<td>rose</td>
+</tr>
+<tr>
+<td>vol</td>
+<td>float</td>
+<td>volume</td>
+</tr>
+</tbody></table>
+<h2 id='open-api-demo-java'><span id="open-api-java">open-api Demo（java） </span></h2><div class="highlight"><pre class="highlight java tab-java"><code>
+<span class="kn">package</span> <span class="nn">com.exchange.stats.action</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.UnsupportedEncodingException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.MessageDigest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.NoSuchAlgorithmException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map.Entry</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.TreeMap</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.commons.httpclient.HttpClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.httpclient.methods.GetMethod</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.httpclient.methods.PostMethod</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.commons.io.IOUtils</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="cm">/**
+     * @param args
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="cm">/** 4个变量，api_key,secret_key */</span> 
+ <span class="nc">String</span> <span class="n">api_key</span> <span class="o">=</span> <span class="s">"9750*****************65d1"</span><span class="o">;</span>
+ <span class="nc">String</span> <span class="n">secret_key</span> <span class="o">=</span> <span class="s">"1c16******************2982"</span><span class="o">;</span>
+
+        <span class="cm">/** 封装需要签名的参数 */</span>
+        <span class="nc">TreeMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;();</span>
+        <span class="n">params</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"api_key"</span><span class="o">,</span> <span class="n">api_key</span><span class="o">);</span>
+        <span class="n">params</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"time"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">()</span> <span class="o">+</span> <span class="s">""</span><span class="o">);</span>
+        <span class="cm">/** 拼接签名字符串，md5签名 */</span>
+        <span class="nc">StringBuilder</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+        <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">Entry</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;&gt;</span> <span class="n">entrys</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="na">entrySet</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Entry</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">param</span> <span class="o">:</span> <span class="n">entrys</span><span class="o">)</span> <span class="o">{</span>
+            <span class="cm">/** 去掉签名字段 */</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">param</span><span class="o">.</span><span class="na">getKey</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"sign"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="k">continue</span><span class="o">;</span>
+            <span class="o">}</span><span class="nl">https:</span><span class="c1">//openapi.wbf.info </span>
+
+            <span class="cm">/** 空参数不参与签名 */</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">param</span><span class="o">.</span><span class="na">getValue</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">result</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">param</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+                <span class="n">result</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">param</span><span class="o">.</span><span class="na">getValue</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">result</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">secret_key</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">getMD5</span><span class="o">(</span><span class="n">result</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="n">params</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"sign"</span><span class="o">,</span> <span class="n">sign</span><span class="o">);</span>
+
+        <span class="cm">/** http请求 */</span>
+        <span class="nc">String</span> <span class="n">resultJson</span> <span class="o">=</span> <span class="n">get</span><span class="o">(</span><span class="s">"https://openapi.wbfex.com/open/api/get_trades?symbol=btcusdt"</span><span class="o">,</span> <span class="n">params</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">resultJson</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * 通过post来提交数据，带参数的方法
+     *
+     * @param url    请求地址
+     * @param params 参数
+     * @return
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">post</span><span class="o">(</span><span class="nc">String</span> <span class="n">url</span><span class="o">,</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">params</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="nc">HttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HttpClient</span><span class="o">();</span>
+            <span class="nc">PostMethod</span> <span class="n">method</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PostMethod</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+            <span class="c1">//设定请求头的样式 </span>
+            <span class="n">method</span><span class="o">.</span><span class="na">setRequestHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/x-www-form-urlencoded;charset=utf-8"</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">params</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">params</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">for</span> <span class="o">(</span><span class="nc">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">params</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+                    <span class="n">method</span><span class="o">.</span><span class="na">setParameter</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">(),</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="kt">int</span> <span class="n">code</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">executeMethod</span><span class="o">(</span><span class="n">method</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">code</span> <span class="o">&gt;=</span> <span class="mi">200</span> <span class="o">&amp;&amp;</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">getResponseBodyAsStream</span><span class="o">();</span>
+                <span class="n">str</span> <span class="o">=</span> <span class="nc">IOUtils</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">in</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="c1">// TODO Auto-generated catch block </span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">str</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * 通过get来提交数据，带参数的方法
+     *
+     * @param url    请求地址
+     * @param params 参数
+     * @return
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">get</span><span class="o">(</span><span class="nc">String</span> <span class="n">url</span><span class="o">,</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">params</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">params</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">params</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="k">for</span> <span class="o">(</span><span class="nc">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">params</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s">"?"</span><span class="o">;</span>
+                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                        <span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s">"&amp;"</span><span class="o">;</span>
+                    <span class="o">}</span>
+                    <span class="n">url</span> <span class="o">+=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">+</span> <span class="s">"="</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+                    <span class="n">x</span><span class="o">++;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="nc">HttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HttpClient</span><span class="o">();</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"url:::"</span> <span class="o">+</span> <span class="n">url</span><span class="o">);</span>
+            <span class="nc">GetMethod</span> <span class="n">method</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GetMethod</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+            <span class="c1">//设定请求头的样式 </span>
+            <span class="n">method</span><span class="o">.</span><span class="na">setRequestHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/x-www-form-urlencoded;charset=utf-8"</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">code</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">executeMethod</span><span class="o">(</span><span class="n">method</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">code</span> <span class="o">&gt;=</span> <span class="mi">200</span> <span class="o">&amp;&amp;</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">getResponseBodyAsStream</span><span class="o">();</span>
+                <span class="n">str</span> <span class="o">=</span> <span class="nc">IOUtils</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">in</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// TODO Auto-generated catch block </span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">str</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * 获取String的MD5值
+     *
+     * @param info 字符串
+     * @return 该字符串的MD5值
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">getMD5</span><span class="o">(</span><span class="nc">String</span> <span class="n">info</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">//获取 MessageDigest 对象，参数为 MD5 字符串，表示这是一个 MD5 算法（其他还有 SHA1 算法等）： </span>
+            <span class="nc">MessageDigest</span> <span class="n">md5</span> <span class="o">=</span> <span class="nc">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"MD5"</span><span class="o">);</span>
+
+            <span class="c1">//update(byte[])方法，输入原数据 </span>
+            <span class="c1">//类似StringBuilder对象的append()方法，追加模式，属于一个累计更改的过程 </span>
+            <span class="n">md5</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">info</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">));</span>
+
+            <span class="c1">//digest()被调用后,MessageDigest对象就被重置，即不能连续再次调用该方法计算原数据的MD5值。可以手动调用reset()方法重置输入源。 </span>
+            <span class="c1">//digest()返回值16位长度的哈希值，由byte[]承接 </span>
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">md5Array</span> <span class="o">=</span> <span class="n">md5</span><span class="o">.</span><span class="na">digest</span><span class="o">();</span>
+
+            <span class="c1">//byte[]通常我们会转化为十六进制的32位长度的字符串来使用,本文会介绍三种常用的转换方法 </span>
+            <span class="k">return</span> <span class="nf">bytesToHex</span><span class="o">(</span><span class="n">md5Array</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">NoSuchAlgorithmException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="s">""</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">UnsupportedEncodingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="s">""</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">bytesToHex</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">md5Array</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">StringBuilder</span> <span class="n">strBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">md5Array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="mh">0xff</span> <span class="o">&amp;</span> <span class="n">md5Array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="nc">String</span> <span class="n">hexString</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">hexString</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span><span class="c1">//如果是十六进制的0f，默认只显示f，此时要补上0</span>
+                <span class="n">strBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"0"</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">hexString</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">strBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">hexString</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">strBuilder</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div><h2 id='ws-api-demo-java'><span id="ws-api-java">ws-api Demo (java) </span></h2><div class="highlight"><pre class="highlight java tab-java"><code>
+<span class="kn">package</span> <span class="nn">test</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.ByteArrayInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.ByteArrayOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URI</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.ByteBuffer</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.CharBuffer</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.Charset</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.CharsetDecoder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.cert.CertificateException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.cert.X509Certificate</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.zip.GZIPInputStream</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.net.ssl.SSLContext</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.net.ssl.TrustManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.net.ssl.X509TrustManager</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.java_websocket.client.DefaultSSLWebSocketClientFactory</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.java_websocket.client.WebSocketClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.java_websocket.drafts.Draft</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.java_websocket.drafts.Draft_17</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.java_websocket.handshake.ServerHandshake</span><span class="o">;</span>
+
+<span class="cm">/**
+ * @author 鲫鱼哥 DateTime:2018年11月22日 下午9:25:20 
+ * 建议使用的websocket client版本 
+ * &lt;dependency&gt; 
+ * &lt;groupId&gt;org.java-websocket&lt;/groupId&gt; 
+ * &lt;artifactId&gt;Java-WebSocket&lt;/artifactId&gt; 
+ * &lt;version&gt;1.3.0&lt;/version&gt; 
+ * &lt;/dependency&gt; 
+ *
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WsTest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+<span class="c1">//wsurl </span>
+            <span class="nc">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"wss://ws.wbfex.biz/kline-api/ws"</span><span class="o">;</span>
+<span class="c1">//历史数据请求参数 </span>
+            <span class="nc">String</span> <span class="n">reqParam</span> <span class="o">=</span> <span class="s">"{"</span><span class="n">event</span><span class="s">":"</span><span class="n">req</span><span class="s">","</span><span class="n">params</span><span class="s">":{"</span><span class="n">channel</span><span class="s">":"</span><span class="n">market_btcusdt_trade_ticker</span><span class="s">","</span><span class="n">cb_id</span><span class="s">":"</span><span class="n">btcusdt</span><span class="s">","</span><span class="n">top</span><span class="s">":150}}"</span><span class="o">;</span>
+<span class="c1">//订阅参数 </span>
+            <span class="nc">String</span> <span class="n">subParam</span> <span class="o">=</span> <span class="s">"{"</span><span class="n">event</span><span class="s">":"</span><span class="n">sub</span><span class="s">","</span><span class="n">params</span><span class="s">":{"</span><span class="n">channel</span><span class="s">":"</span><span class="n">market_btcusdt_trade_ticker</span><span class="s">","</span><span class="n">cb_id</span><span class="s">":"</span><span class="n">btcusdt</span><span class="s">","</span><span class="n">top</span><span class="s">":150}}"</span><span class="o">;</span>
+
+<span class="c1">//初始化请求历史数据 </span>
+            <span class="nc">WebSocketUtils</span> <span class="n">wsc</span> <span class="o">=</span> <span class="nc">WebSocketUtils</span><span class="o">.</span><span class="na">executeWebSocket</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">reqParam</span><span class="o">);</span>
+
+<span class="c1">//订阅实时数据 </span>
+            <span class="n">wsc</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">subParam</span><span class="o">);</span>
+
+<span class="c1">//线程不结束，等待新的消息，一般一分钟左右会有新的成交返回</span>
+            <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+            <span class="o">}</span>
+
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">WebSocketUtils</span> <span class="kd">extends</span> <span class="nc">WebSocketClient</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="kd">static</span> <span class="nc">WebSocketUtils</span> <span class="n">wsclient</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="nc">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">WebSocketUtils</span><span class="o">(</span><span class="no">URI</span> <span class="n">serverURI</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">super</span><span class="o">(</span><span class="n">serverURI</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="nf">WebSocketUtils</span><span class="o">(</span><span class="no">URI</span> <span class="n">serverUri</span><span class="o">,</span> <span class="nc">Draft</span> <span class="n">draft</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">super</span><span class="o">(</span><span class="n">serverUri</span><span class="o">,</span> <span class="n">draft</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="nf">WebSocketUtils</span><span class="o">(</span><span class="no">URI</span> <span class="n">serverUri</span><span class="o">,</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">headers</span><span class="o">,</span> <span class="kt">int</span> <span class="n">connecttimeout</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">super</span><span class="o">(</span><span class="n">serverUri</span><span class="o">,</span> <span class="k">new</span> <span class="n">Draft_17</span><span class="o">(),</span> <span class="n">headers</span><span class="o">,</span> <span class="n">connecttimeout</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onOpen</span><span class="o">(</span><span class="nc">ServerHandshake</span> <span class="n">serverHandshake</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"链接已建立"</span><span class="o">);</span>
+
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMessage</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"收到字符串消息"</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClose</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="nc">String</span> <span class="n">s</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"链接已关闭"</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"报错啦"</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMessage</span><span class="o">(</span><span class="nc">ByteBuffer</span> <span class="n">socketBuffer</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">marketStr</span> <span class="o">=</span> <span class="n">byteBufferToString</span><span class="o">(</span><span class="n">socketBuffer</span><span class="o">);</span>
+                <span class="nc">String</span> <span class="n">market</span> <span class="o">=</span> <span class="n">uncompress</span><span class="o">(</span><span class="n">marketStr</span><span class="o">).</span><span class="na">toLowerCase</span><span class="o">();</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">market</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"ping"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"收到消息ping："</span><span class="o">+</span><span class="n">market</span><span class="o">);</span>
+                    <span class="nc">String</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"ping"</span><span class="o">,</span> <span class="s">"pong"</span><span class="o">);</span>
+                    <span class="n">wsclient</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">market</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"ping"</span><span class="o">,</span> <span class="s">"pong"</span><span class="o">));</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="n">market</span><span class="o">;</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"收到消息："</span><span class="o">+</span><span class="n">msg</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="nf">getWebSocketHeaders</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+            <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">headers</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;();</span>
+            <span class="k">return</span> <span class="n">headers</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">trustAllHosts</span><span class="o">(</span><span class="nc">WebSocketUtils</span> <span class="n">appClient</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">TrustManager</span><span class="o">[]</span> <span class="n">trustAllCerts</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TrustManager</span><span class="o">[]</span> <span class="o">{</span> <span class="k">new</span> <span class="nc">X509TrustManager</span><span class="o">()</span> <span class="o">{</span>
+                <span class="kd">public</span> <span class="n">java</span><span class="o">.</span><span class="na">security</span><span class="o">.</span><span class="na">cert</span><span class="o">.</span><span class="na">X509Certificate</span><span class="o">[]</span> <span class="nf">getAcceptedIssuers</span><span class="o">()</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">security</span><span class="o">.</span><span class="na">cert</span><span class="o">.</span><span class="na">X509Certificate</span><span class="o">[]</span> <span class="o">{};</span>
+                <span class="o">}</span>
+
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkClientTrusted</span><span class="o">(</span><span class="nc">X509Certificate</span><span class="o">[]</span> <span class="n">chain</span><span class="o">,</span> <span class="nc">String</span> <span class="n">authType</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">CertificateException</span> <span class="o">{</span>
+                <span class="o">}</span>
+
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">checkServerTrusted</span><span class="o">(</span><span class="nc">X509Certificate</span><span class="o">[]</span> <span class="n">chain</span><span class="o">,</span> <span class="nc">String</span> <span class="n">authType</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">CertificateException</span> <span class="o">{</span>
+                <span class="o">}</span>
+            <span class="o">}</span> <span class="o">};</span>
+
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="nc">SSLContext</span> <span class="n">sc</span> <span class="o">=</span> <span class="nc">SSLContext</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">"TLS"</span><span class="o">);</span>
+                <span class="n">sc</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">trustAllCerts</span><span class="o">,</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">security</span><span class="o">.</span><span class="na">SecureRandom</span><span class="o">());</span>
+                <span class="n">appClient</span><span class="o">.</span><span class="na">setWebSocketFactory</span><span class="o">(</span><span class="k">new</span> <span class="nc">DefaultSSLWebSocketClientFactory</span><span class="o">(</span><span class="n">sc</span><span class="o">));</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="kd">static</span> <span class="nc">WebSocketUtils</span> <span class="nf">executeWebSocket</span><span class="o">(</span><span class="nc">String</span> <span class="n">url</span><span class="o">,</span><span class="nc">String</span> <span class="n">sendMsg</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+            <span class="n">wsclient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WebSocketUtils</span><span class="o">(</span><span class="k">new</span> <span class="no">URI</span><span class="o">(</span><span class="n">url</span><span class="o">),</span> <span class="n">getWebSocketHeaders</span><span class="o">(),</span> <span class="mi">1000</span><span class="o">);</span>
+            <span class="n">trustAllHosts</span><span class="o">(</span><span class="n">wsclient</span><span class="o">);</span>
+            <span class="n">wsclient</span><span class="o">.</span><span class="na">connectBlocking</span><span class="o">();</span>
+            <span class="n">wsclient</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">sendMsg</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">wsclient</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="c1">// buffer 转String </span>
+        <span class="kd">public</span> <span class="nc">String</span> <span class="nf">byteBufferToString</span><span class="o">(</span><span class="nc">ByteBuffer</span> <span class="n">buffer</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">CharBuffer</span> <span class="n">charBuffer</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="nc">Charset</span> <span class="n">charset</span> <span class="o">=</span> <span class="nc">Charset</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"ISO-8859-1"</span><span class="o">);</span>
+                <span class="nc">CharsetDecoder</span> <span class="n">decoder</span> <span class="o">=</span> <span class="n">charset</span><span class="o">.</span><span class="na">newDecoder</span><span class="o">();</span>
+                <span class="n">charBuffer</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="na">decode</span><span class="o">(</span><span class="n">buffer</span><span class="o">);</span>
+                <span class="n">buffer</span><span class="o">.</span><span class="na">flip</span><span class="o">();</span>
+                <span class="k">return</span> <span class="n">charBuffer</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">ex</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="c1">// 解压缩 </span>
+        <span class="kd">public</span> <span class="nc">String</span> <span class="nf">uncompress</span><span class="o">(</span><span class="nc">String</span> <span class="n">str</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">str</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">str</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="nc">ByteArrayOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ByteArrayOutputStream</span><span class="o">();</span>
+            <span class="nc">ByteArrayInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ByteArrayInputStream</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"ISO-8859-1"</span><span class="o">));</span>
+            <span class="nc">GZIPInputStream</span> <span class="n">gunzip</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GZIPInputStream</span><span class="o">(</span><span class="n">in</span><span class="o">);</span>
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">256</span><span class="o">];</span>
+            <span class="kt">int</span> <span class="n">n</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">n</span> <span class="o">=</span> <span class="n">gunzip</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buffer</span><span class="o">))</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buffer</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">n</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">return</span> <span class="n">out</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div>
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
