@@ -12,9 +12,9 @@ language: English
 
 other_language: 简体中文1
 
-url: /wbfapi/cn
+url: /cn
 
-present_url: /wbfapi/en
+present_url: /en
 
 active: active
 
