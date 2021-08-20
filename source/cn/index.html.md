@@ -1,5 +1,5 @@
 ---
-title: Exchange官方API文档
+title: Coinstore官方API文档
 
 language_tabs: # must be one of https://git.io/vQNgJ
   
@@ -43,22 +43,32 @@ code_clipboard: true
 
 # 介绍
 
-欢迎使用Coinstore开发者文档，此文档是Coinstore API的唯一官方文档. 
+欢迎使用Coinstore开发者文档，此文档是Coinstore API的唯一官方文档。
 
-本文档提供了相关API的使用方法介绍。RESTful API包含了资产，订单及行情等接口。Websocket则提供了行情相关的接口及推送服务。Coinstore API提供的能力会在此持续更新，请大家及时关注。
+本文档提供了相关API的使用方法介绍。
+
+RESTful API包含了资产，订单及行情等接口。
+
+Websocket则提供了行情相关的接口及推送服务。
+
+Coinstore API提供的服务会在此持续更新，请大家及时关注。
 
 
 
 # 快速开始
 
 ## 接入准备
-如需使用API，请先联系商务或运营创建。
 
-需要提供调用方的IP，进行白名单绑定。
+如需使用API，请先登录网页端，通过【用户中心】-【API管理】创建一个API key，再据此文档详情进行开发和交易。
+
+您可以点击 'https://www.coinstore.com/#/user/bindAuth/ManagementAPI' 创建 API Key。
+
+每个用户可创建5组API Key，每组API key可以绑定5个不同的IP地址。API key一旦绑定了IP地址，则只能从绑定的IP地址使用该API key调用API接口。出于安全考虑，强烈建议您为API key绑定相应的IP地址。
 
 创建成功后请务必记住以下信息：
 
 - `API Key`  API 访问密钥
+- `Secret Key` 签名认证加密所使用的密钥
 
 ## 接口类型
 Coinstore为用户提供两种接口，您可根据自己的使用场景和偏好来选择适合的方式进行查询行情、交易。
@@ -106,29 +116,66 @@ WebSocket是HTML5一种新的协议（Protocol）。它实现了客户端与服�
 
 API 请求在通过 internet 传输的过程中极有可能被篡改，为了确保请求未被更改，除公共接口（基础信息，行情数据）外的私有接口均必须使用您的 API Key 做签名认证，以校验参数或参数值在传输途中是否发生了更改。
 
-**签名步骤(推荐)**
-    
-注：目前是通过IP白名单做的安全验证，未开启签名。
+**签名算法**
 
+使用HmacSHA256哈希函数作为签名函数
+```
+Mac hmacSha256 = Mac.getInstance("HmacSHA256");
+```
+
+**签名步骤**
+    
+1、签名有效字符串为请求参数和请求体
+
+```
+实例1：GET请求查询字符串
+ ?symbol=aaaa88&size=10
+ String payload = “symbol=aaaa88&size=10”；
+
+实例2 :Post请求体
+ {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
+ String payload = “{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
+ "timestamp":1627384801051}”；
+
+实例3：混合请求
+ ?symbol=aaaa88&size=10
+ {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
+ String payload = “symbol=aaaa88&size=10{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
+ "timestamp":1627384801051}”；
+```
+2、使用签名函数对时间戳获得哈希值
+    
+```
+ String time = String.valueOf(X-CS-EXPIRES / 30_000);
+ hmacSha256.init(new SecretKeySpec(Secret_Key.getBytes(), "HmacSHA256"));
+ byte[] hash = hmacSha256.doFinal(time.getBytes());
+ String key = Hex.toHexString(hash);
+```
+3、使用签名函数对签名有效字符串获得哈希值
+    
+```
+ hmacSha256.reset();
+ hmacSha256.init(new SecretKeySpec(key.getBytes(), "HmacSHA256"));
+ hash = hmacSha256.doFinal(payload.getBytes());
+ String sign= Hex.toHexString(hash);
+
+```
 
 # API接入说明
 
 ## <span id="a3">请求格式</span>
 所有的API请求都是restful，目前只有两种方法：GET和POST。
 - GET请求：所有的参数都在路径参数里
-- POST请求，所有参数以JSON格式发送在请求主体（body）里，没有参数的需要传{}
+- POST请求: 路径里可以设置参数，参数可以以JSON格式发送在请求主体（body）里，没有参数的需要传{}
 
 一个合法的请求由以下几部分组成：
-- 方法请求地址：即访问服务器地址。https://api.coinstore.com/api/trade/order/place
+- 方法请求地址：即访问服务器地址api.coinstore.com，比如https://api.coinstore.com/api/trade/order/place
 - 必须和可选参数。
+- X-CS-APIKEY： 即用户申请的API Key。
+- X-CS-EXPIRES：您发出请求的时间戳。如：1629291143107。
+- X-CS-SIGN：签名计算得出的字符串，用于确保签名有效和未被篡改。
 
-  以下几个参数是所有需要验签接口必须要提供的：
-  - API key： 即用户申请的API Key中的Access Key。其字段名为api-key
-
-所有请求都必须包含以下Header：
-
-- api-key API KEY作为一个字符串。
-- Content-Type  需要统一设置为:'application/json'。
+注意：X-CS-APIKEY ，X-CS-EXPIRES ，X-CS-SIGN 三个参数都在请求头中，另外需要设置'Content-Type':'application/json'。
 
 ## <span id="a3">返回格式</span>
 
@@ -670,13 +717,13 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 < {"S":4,"T":"trade","channel":"80004@trade","time":1604040975,"price":"9811.7494086","takerSide":"SELL","tradeId":26461,"volume":"7.505","symbol":"EOSUSD","instrumentId":80004}
 ```
 
-### **实时订阅/取消数据流**
+## **实时订阅/取消数据流**
 
 * 以下数据可以通过websocket发送以实现订阅或取消订阅数据流。示例如下。
 * 响应内容中的id是无符号整数，作为往来信息的唯一标识。
 * 如果相应内容中的 result 为 null，表示请求发送成功。
 
-#### Client `op` Types
+### Client `op` Types
 
 1. `SUB`
 2. `UNSUB`
@@ -685,7 +732,7 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 5. `LIST`
 6. ...(未来新功能支持)
 
-#### 订阅一个信息流
+### 订阅一个信息流
 
 ```lang=json
 {
@@ -698,7 +745,7 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 }
 ```
 
-#### 取消订阅一个信息流
+### 取消订阅一个信息流
 
 ```lang=json
 {
@@ -710,7 +757,7 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 }
 ```
 
-#### 已订阅信息流
+### 已订阅信息流
 
 ```lang=json
 {
@@ -748,9 +795,9 @@ IMPORTANT:  请优先使用  `symbol` 字段，` instrumentId` 标记为 `Deprec
 
 NOTE:  所有返回数据的时间，单位都是 `秒`
 
-### **公共行情频道**
+## **公共行情频道**
 
-#### **逐笔交易**
+### **逐笔交易**
 
 > Stream Name: `<symbol>@trade`, eg: `88066@trade`
 > param: `param":{"size":2}`
@@ -770,7 +817,7 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 }
 ```
 
-##### Chagnelog: 20210207
+#### Chagnelog: 20210207
 
 > 1. 增加字段 ts & seq, 降序
 > 2. 支持 param.size 参数: sub 命令会默认返回 param.size 条历史数据
@@ -811,7 +858,7 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 
 
 
-#### **K线 Streams**
+### **K线 Streams**
 
 > K线stream逐秒推送所请求的K线种类(最新一根K线)的更新。
 > Stream Name: `<symbol>@kline@<interval>`, eg: `88066@kline@min_1`
@@ -845,7 +892,7 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 }
 ```
 
-#### **K线 Request**
+### **K线 Request**
 
 > 请求历史k线：
 > param: `"{channel":"88066@kline@min_1","endTime":1603766280,"limit":10}`,
@@ -878,7 +925,7 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 ```
 
 
-#### **按 Symbol 的 Ticker信息**
+### **按 Symbol 的 Ticker信息**
 
 > 按Symbol刷新的最近24小时精简 ticker 信息
 > Stream 名称: `<symbol>@ticker`, eg:  `88066@ticker`
@@ -896,7 +943,7 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 }
 ```
 
-#### **全市场所有Symbol 的 Ticker信息**
+### **全市场所有Symbol 的 Ticker信息**
 
 > 按Symbol刷新的最近24小时精简ticker信息
 > Stream 名称: `!@ticker`
@@ -931,7 +978,7 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 }
 ```
 
-#### **有限档深度信息**
+### **有限档深度信息**
 
 > 每秒或每100毫秒推送有限档深度信息。levels表示几档买卖单信息, 可选 5/10/20/50/100档
 > Stream Names: `<symbol>@depth@<levels>` ~~或 `<symbol>@depth@<levels>@100ms`.~~, eg:  `88066@depth@50`
@@ -956,9 +1003,9 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 }
 ```
 
-### **用户私有数据频道**
+## **用户私有数据频道**
 
-#### **登陆**
+### **登陆**
 
 > 登陆时可以同时指定订阅数据
 
@@ -978,7 +1025,7 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 }
 ```
 
-#### **账户**
+### **账户**
 
 > Stream Name: `<currency>@account`, or `!@account` all currency
 
@@ -993,7 +1040,7 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 
 ```
 
-#### **成交**
+### **成交**
 
 > Stream Name: `<symbol>@order`, or `!@order` all symbol's
 
@@ -1040,9 +1087,9 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 }
 ```
 
-### **字典**
+## **字典**
 
-#### OrderState
+### OrderState
 
 * REJECTED
 * SUBMITTING
@@ -1054,23 +1101,23 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 * STOPPED
 * FILLED
 
-#### OrderType
+### OrderType
 
 * MARKET 
 * LIMIT 
 * POST_ONLY
 
-#### TimeInForce
+### TimeInForce
 
 * IOC
 * GTC
 
-#### MatchRole
+### MatchRole
 
 * TAKER
 * MAKER
 
-#### Side
+### Side
 
 * BUY
 * SELL
