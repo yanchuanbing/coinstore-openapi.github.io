@@ -128,52 +128,48 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 1、签名有效字符串为请求参数和请求体
 注意：请求参数和请求体不进行任何排序，直接拼接成字符串作为payload。
 
+```
 实例1：GET请求查询字符串
 
  ?symbol=aaaa88&size=10
  
- `
  String payload = “symbol=aaaa88&size=10”；
- `
 
 实例2 :Post请求体
 
  {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
 
-`
  String payload = “{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
  "timestamp":1627384801051}”；
-`
 
 实例3：混合请求
  
  ?symbol=aaaa88&size=10
  {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
 
-`
  String payload = “symbol=aaaa88&size=10{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
  "timestamp":1627384801051}”；
-`
+```
 
 
 2、使用签名函数对时间戳获得哈希值
 注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥   
 
-`
+```java
  String time = String.valueOf(X-CS-EXPIRES / 30000);
  hmacSha256.init(new SecretKeySpec(Secret_Key.getBytes(), "HmacSHA256"));
  byte[] hash = hmacSha256.doFinal(time.getBytes());
  String key = Hex.toHexString(hash);
-`
+```
 
 3、使用签名函数对签名有效字符串获得哈希值
     
-`
+```java
  hmacSha256.reset();
  hmacSha256.init(new SecretKeySpec(key.getBytes(), "HmacSHA256"));
  hash = hmacSha256.doFinal(payload.getBytes());
  String sign= Hex.toHexString(hash);
-`
+```
 
 # API接入说明
 
