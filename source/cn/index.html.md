@@ -163,8 +163,11 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
  String key = Hex.toHexString(hash);
 ```
 
-2、使用签名函数对时间戳获得哈希值
-注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥   
+2、使用签名函数对时间戳计算哈希值
+
+>注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥(第3步中的变量key的值）
+
+
 
 
 ```java
@@ -174,8 +177,9 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
  String sign= Hex.toHexString(hash);
 ```
 
-3、使用签名函数对签名有效字符串获得哈希值
-    
+3、使用签名函数对有效字符串计算哈希值
+
+>注意： key的值为第2步计算出来的哈希值。
 
 # API接入说明
 
