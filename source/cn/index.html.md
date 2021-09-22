@@ -126,7 +126,7 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 **签名步骤**
     
 1、签名有效字符串为请求参数和请求体
-
+>注意：请求参数和请求体不进行任何排序，直接拼接成字符串作为payload
 ```
 实例1：GET请求查询字符串
  ?symbol=aaaa88&size=10
@@ -144,7 +144,7 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
  "timestamp":1627384801051}”；
 ```
 2、使用签名函数对时间戳获得哈希值
-    
+>注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥   
 ```
  String time = String.valueOf(X-CS-EXPIRES / 30_000);
  hmacSha256.init(new SecretKeySpec(Secret_Key.getBytes(), "HmacSHA256"));
@@ -175,7 +175,7 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 - X-CS-EXPIRES：您发出请求的时间戳。如：1629291143107。
 - X-CS-SIGN：签名计算得出的字符串，用于确保签名有效和未被篡改。
 
-注意：X-CS-APIKEY ，X-CS-EXPIRES ，X-CS-SIGN 三个参数都在请求头中，另外需要设置'Content-Type':'application/json'。
+>注意：X-CS-APIKEY ，X-CS-EXPIRES ，X-CS-SIGN 三个参数都在请求头中，另外需要设置'Content-Type':'application/json'。
 
 ## <span id="a3">返回格式</span>
 
@@ -210,11 +210,11 @@ HTTP常见的错误码如下：
 
 - 429 too many visits 请求太频繁被系统限流
 
-- 500 unkown exception – 服务器内部错误
+- 500 internal server error – 服务器内部错误
 
 **业务状态码**
 
-如果失败，response body 带有错误描述信息, 对应的状态码描述如下：
+如果失败，response message 带有错误描述信息, 对应的状态码描述如下：
 
 | 状态码 | 说明                             | 备注                       |
 | ------ | -------------------------------- | -------------------------- |
@@ -631,11 +631,16 @@ HTTP常见的错误码如下：
 
 `
 wss://ws.coinstore.com/s/ws
-`
+
 1. 所有wss接口的 baseurl为: wss://<host:port>/s/ws
-1. stream名称中所有交易对均为 小写
-1. 每个链接有效期不超过24小时，请妥善处理断线重连。
-1. `每3分钟，服务端会发送ping帧，客户端应当在10分钟内回复pong帧，否则服务端会主动断开链接。允许客户端发送不成对的pong帧(即客户端可以以高于10分钟每次的频率发送pong帧保持链接)。`
+
+2. stream名称中所有交易对均为 小写
+
+3. 每个链接有效期不超过24小时，请妥善处理断线重连。
+
+4. 每3分钟，服务端会发送ping帧，客户端应当在10分钟内回复pong帧，否则服务端会主动断开链接。允许客户端发送不成对的pong帧(即客户端可以以高于10分钟每次的频率发送pong帧保持链接)。
+
+`
 
 ### 服务端推送数据类型说明
 
@@ -673,10 +678,15 @@ wss://ws.coinstore.com/s/ws
 > 以下类型的消息，从执行对应 channel 的 `SUB` 命令开始，到执行 `UNSUB` 结束，如果服务器端数据发生变化则推送，最小推送间隔 100ms
 
 ** `kline`
+
 ** `ticker`
+
 ** `depth`
+
 ** `trade`
+
 ** `account`
+
 ** `order`
 
 ```lang=json
@@ -689,12 +699,13 @@ wss://ws.coinstore.com/s/ws
 
 #### Pong
 
-> 服务器端支持 websocket pong frame 和 pong message 两种形式端 pong 响应
+>服务器端支持 websocket pong frame 和 pong message 两种形式端 pong 响应
 
 #### Websocket Pong frame
 
-1. [[ https://tools.ietf.org/html/rfc6455#section-5.5.3 | here ]]  
-2.  AND [[ https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#Pings%E5%92%8CPongs%EF%BC%9AWebSockets%E7%9A%84%E5%BF%83%E8%B7%B3 | here ]] 
+1. https://tools.ietf.org/html/rfc6455#section-5.5.3 
+
+2. https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#Pings%E5%92%8CPongs%EF%BC%9AWebSockets%E7%9A%84%E5%BF%83%E8%B7%B3 
 
 #### Pong message format
 
@@ -802,7 +813,40 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 > Stream Name: `<symbol>@trade`, eg: `88066@trade`
 > param: `param":{"size":2}`
 > e.g: ``{"op":"SUB","channel":["28@trade"],"param":{"size":2},"id":1}``
-
+> 全量数据：
+```lang=json
+ {
+   "S": 15,
+   "T": "trade",
+   "data": [
+     {
+       "channel": "28@trade",
+       "price": "384.32",
+       "tradeId": 21704,
+       "seq": 10157,
+       "ts": 1612685697087,
+       "takerSide": "BULL",
+       "time": 1612685697,
+       "volume": "2",
+       "symbol": "BTCJJ",
+       "instrumentId": 28
+     },
+     {
+       "channel": "28@trade",
+       "price": "644.96",
+       "tradeId": 21705,
+       "seq": 10158,
+       "ts": 1612685698157,
+       "takerSide": "SELL",
+       "time": 1612685698,
+       "volume": "1.1932988",
+       "symbol": "BTCJJ",
+       "instrumentId": 28
+     }
+   ]
+ }
+```
+> 增量数据：
 ```lang=json
 {
   "instrumentId": 88066,
@@ -816,45 +860,6 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
   "seq": 9935         // 唯一自增序号
 }
 ```
-
-#### Chagnelog: 20210207
-
-> 1. 增加字段 ts & seq, 降序
-> 2. 支持 param.size 参数: sub 命令会默认返回 param.size 条历史数据
-> 3. 订阅时返回批量数据等结构： 
-> ```lang=json
-> {
->   "S": 15,
->   "T": "trade",
->   "data": [
->     {
->       "channel": "28@trade",
->       "price": "384.32",
->       "tradeId": 21704,
->       "seq": 10157,
->       "ts": 1612685697087,
->       "takerSide": "BULL",
->       "time": 1612685697,
->       "volume": "2",
->       "symbol": "BTCJJ",
->       "instrumentId": 28
->     },
->     {
->       "channel": "28@trade",
->       "price": "644.96",
->       "tradeId": 21705,
->       "seq": 10158,
->       "ts": 1612685698157,
->       "takerSide": "SELL",
->       "time": 1612685698,
->       "volume": "1.1932988",
->       "symbol": "BTCJJ",
->       "instrumentId": 28
->     }
->   ]
-> }
-> ```
-
 
 
 
@@ -897,7 +902,7 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 > 请求历史k线：
 > param: `"{channel":"88066@kline@min_1","endTime":1603766280,"limit":10}`,
 > eg:  `{"op":"REQ","param":{"channel":"88066@kline@min_1","limit":10},"id":1}`
->`limit`: 最大不超过 200
+> `limit`: 最大不超过 200
 > `endTime`: 可选，exclusive
 
 ```lang=json
