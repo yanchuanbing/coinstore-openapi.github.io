@@ -132,6 +132,8 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 
  ?symbol=aaaa88&size=10
  
+
+
  ```java
  String payload = “symbol=aaaa88&size=10”；
  ```
@@ -144,6 +146,8 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
  String payload = “{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
  "timestamp":1627384801051}”；
  ```
+
+
 
 实例3：混合请求
  
@@ -158,6 +162,7 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 
 
 
+
 2、使用签名函数对时间戳获得哈希值
 注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥   
 
@@ -167,6 +172,12 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
  byte[] hash = hmacSha256.doFinal(time.getBytes());
  String key = Hex.toHexString(hash);
 ```
+
+
+
+
+
+
 
 
 
