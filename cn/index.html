@@ -532,14 +532,21 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
  <span class="kt">byte</span><span class="o">[]</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">hmacSha256</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">time</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
  <span class="nc">String</span> <span class="n">key</span> <span class="o">=</span> <span class="nc">Hex</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
 </code></pre></div>
-<p>2、使用签名函数对时间戳获得哈希值
-注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥   </p>
+<p>2、使用签名函数对时间戳计算哈希值</p>
+
+<blockquote>
+<p>注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥(第3步中的变量key的值）</p>
+</blockquote>
 <div class="highlight"><pre class="highlight java tab-java"><code> <span class="n">hmacSha256</span><span class="o">.</span><span class="na">reset</span><span class="o">();</span>
  <span class="n">hmacSha256</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">new</span> <span class="nc">SecretKeySpec</span><span class="o">(</span><span class="n">key</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(),</span> <span class="s">"HmacSHA256"</span><span class="o">));</span>
  <span class="n">hash</span> <span class="o">=</span> <span class="n">hmacSha256</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">payload</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
  <span class="nc">String</span> <span class="n">sign</span><span class="o">=</span> <span class="nc">Hex</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
 </code></pre></div>
-<p>3、使用签名函数对签名有效字符串获得哈希值</p>
+<p>3、使用签名函数对有效字符串计算哈希值</p>
+
+<blockquote>
+<p>注意： key的值为第2步计算出来的哈希值。</p>
+</blockquote>
 <h1 id='api'>API接入说明</h1><h2 id='5b7654a66a'><span id="a3">请求格式</span></h2>
 <p>所有的API请求都是restful，目前只有两种方法：GET和POST。
 - GET请求：所有的参数都在路径参数里
