@@ -128,28 +128,34 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 1、签名有效字符串为请求参数和请求体
 注意：请求参数和请求体不进行任何排序，直接拼接成字符串作为payload。
 
-```
 实例1：GET请求查询字符串
 
  ?symbol=aaaa88&size=10
  
+ ```java
  String payload = “symbol=aaaa88&size=10”；
+ ```
 
 实例2 :Post请求体
 
  {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
 
+```java
  String payload = “{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
  "timestamp":1627384801051}”；
+ ```
 
 实例3：混合请求
  
  ?symbol=aaaa88&size=10
  {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
 
+```java
  String payload = “symbol=aaaa88&size=10{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
  "timestamp":1627384801051}”；
-```
+ ```
+
+
 
 
 2、使用签名函数对时间戳获得哈希值
@@ -161,6 +167,8 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
  byte[] hash = hmacSha256.doFinal(time.getBytes());
  String key = Hex.toHexString(hash);
 ```
+
+
 
 3、使用签名函数对签名有效字符串获得哈希值
     
