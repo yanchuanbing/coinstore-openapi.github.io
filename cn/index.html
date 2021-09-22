@@ -509,26 +509,24 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 
 <p>1、签名有效字符串为请求参数和请求体
 注意：请求参数和请求体不进行任何排序，直接拼接成字符串作为payload。</p>
-<div class="highlight"><pre class="highlight plaintext"><code>实例1：GET请求查询字符串
 
- ?symbol=aaaa88&amp;size=10
+<p>实例1：GET请求查询字符串</p>
 
- String payload = “symbol=aaaa88&amp;size=10”；
+<p>?symbol=aaaa88&amp;size=10</p>
+<div class="highlight"><pre class="highlight java tab-java"><code> <span class="nc">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="err">“</span><span class="n">symbol</span><span class="o">=</span><span class="n">aaaa88</span><span class="o">&amp;</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="err">”；</span>
+</code></pre></div>
+<p>实例2 :Post请求体</p>
 
-实例2 :Post请求体
+<p>{&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,&quot;timestamp&quot;:1627384801051}</p>
+<div class="highlight"><pre class="highlight java tab-java"><code> <span class="nc">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="err">“</span><span class="o">{</span><span class="s">"symbol"</span><span class="o">:</span><span class="s">"aaaa88"</span><span class="o">,</span><span class="s">"side"</span><span class="o">:</span><span class="s">"SELL"</span><span class="o">,</span><span class="s">"ordType"</span><span class="o">:</span><span class="s">"LIMIT"</span><span class="o">,</span><span class="s">"ordPrice"</span><span class="o">:</span><span class="mi">2</span><span class="o">,</span><span class="s">"ordQty"</span><span class="o">:</span><span class="mi">1</span><span class="o">,</span>
+ <span class="s">"timestamp"</span><span class="o">:</span><span class="mi">1627384801051</span><span class="o">}</span><span class="err">”；</span>
+</code></pre></div>
+<p>实例3：混合请求</p>
 
- {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
-
- String payload = “{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
- "timestamp":1627384801051}”；
-
-实例3：混合请求
-
- ?symbol=aaaa88&amp;size=10
- {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
-
- String payload = “symbol=aaaa88&amp;size=10{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
- "timestamp":1627384801051}”；
+<p>?symbol=aaaa88&amp;size=10
+ {&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,&quot;timestamp&quot;:1627384801051}</p>
+<div class="highlight"><pre class="highlight java tab-java"><code> <span class="nc">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="err">“</span><span class="n">symbol</span><span class="o">=</span><span class="n">aaaa88</span><span class="o">&amp;</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="o">{</span><span class="s">"symbol"</span><span class="o">:</span><span class="s">"aaaa88"</span><span class="o">,</span><span class="s">"side"</span><span class="o">:</span><span class="s">"SELL"</span><span class="o">,</span><span class="s">"ordType"</span><span class="o">:</span><span class="s">"LIMIT"</span><span class="o">,</span><span class="s">"ordPrice"</span><span class="o">:</span><span class="mi">2</span><span class="o">,</span><span class="s">"ordQty"</span><span class="o">:</span><span class="mi">1</span><span class="o">,</span>
+ <span class="s">"timestamp"</span><span class="o">:</span><span class="mi">1627384801051</span><span class="o">}</span><span class="err">”；</span>
 </code></pre></div>
 <p>2、使用签名函数对时间戳获得哈希值
 注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥   </p>
