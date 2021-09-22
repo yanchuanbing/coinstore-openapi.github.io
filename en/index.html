@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Exchange官方API文档</title>
+    <title>Coinstore官方API文档</title>
     <link href="../images/favicon-ab07c47e.ico" rel="icon" type="image/ico">
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -312,7 +312,7 @@
          </li>
          <li class="">
             <a href="/cn">
-              简体中文1
+              简体中文
             </a>
          </li>
         </ul>
@@ -414,6 +414,18 @@
                   <li>
                     <a href="#5ea2e0cde2" class="toc-h2 toc-link" data-title="简介">简介</a>
                   </li>
+                  <li>
+                    <a href="#61d816b5c6" class="toc-h2 toc-link" data-title="实时订阅/取消数据流"><strong>实时订阅/取消数据流</strong></a>
+                  </li>
+                  <li>
+                    <a href="#edf11a92a0" class="toc-h2 toc-link" data-title="公共行情频道"><strong>公共行情频道</strong></a>
+                  </li>
+                  <li>
+                    <a href="#050d3ff583" class="toc-h2 toc-link" data-title="用户私有数据频道"><strong>用户私有数据频道</strong></a>
+                  </li>
+                  <li>
+                    <a href="#42702c21cd" class="toc-h2 toc-link" data-title="字典"><strong>字典</strong></a>
+                  </li>
               </ul>
           </li>
         <li class="create_api"><a target="_blank" href="https://www.wbf.live/personal/apiManagement">创建 API Key</a></li>
@@ -423,18 +435,27 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='45fa4e00db'>介绍</h1>
-<p>欢迎使用Coinstore开发者文档，此文档是Coinstore API的唯一官方文档. </p>
+<p>欢迎使用Coinstore开发者文档，此文档是Coinstore API的唯一官方文档。</p>
 
-<p>本文档提供了相关API的使用方法介绍。RESTful API包含了资产，订单及行情等接口。Websocket则提供了行情相关的接口及推送服务。Coinstore API提供的能力会在此持续更新，请大家及时关注。</p>
+<p>本文档提供了相关API的使用方法介绍。</p>
+
+<p>RESTful API包含了资产，订单及行情等接口。</p>
+
+<p>Websocket则提供了行情相关的接口及推送服务。</p>
+
+<p>Coinstore API提供的服务会在此持续更新，请大家及时关注。</p>
 <h1 id='9e033de16f'>快速开始</h1><h2 id='c1ae0a8486'>接入准备</h2>
-<p>如需使用API，请先联系商务或运营创建。</p>
+<p>如需使用API，请先登录网页端，通过【用户中心】-【API管理】创建一个API key，再据此文档详情进行开发和交易。</p>
 
-<p>需要提供调用方的IP，进行白名单绑定。</p>
+<p>您可以点击 &#39;https://www.coinstore.com/#/user/bindAuth/ManagementAPI&#39; 创建 API Key。</p>
+
+<p>每个用户可创建5组API Key，每组API key可以绑定5个不同的IP地址。API key一旦绑定了IP地址，则只能从绑定的IP地址使用该API key调用API接口。出于安全考虑，强烈建议您为API key绑定相应的IP地址。</p>
 
 <p>创建成功后请务必记住以下信息：</p>
 
 <ul>
 <li><code>API Key</code>  API 访问密钥</li>
+<li><code>Secret Key</code> 签名认证加密所使用的密钥</li>
 </ul>
 <h2 id='5076603a3e'>接口类型</h2>
 <p>Coinstore为用户提供两种接口，您可根据自己的使用场景和偏好来选择适合的方式进行查询行情、交易。</p>
@@ -477,27 +498,68 @@
 
 <p>API 请求在通过 internet 传输的过程中极有可能被篡改，为了确保请求未被更改，除公共接口（基础信息，行情数据）外的私有接口均必须使用您的 API Key 做签名认证，以校验参数或参数值在传输途中是否发生了更改。</p>
 
-<p><strong>签名步骤(推荐)</strong></p>
+<p><strong>签名算法</strong></p>
 
-<p>注：目前是通过IP白名单做的安全验证，未开启签名。</p>
-<h1 id='api'>API接入说明</h1><h2 id='5b7654a66a'><span id="a3">请求格式</span></h2>
+<p>使用HmacSHA256哈希函数作为签名函数
+<code>
+Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
+</code></p>
+
+<p><strong>签名步骤</strong></p>
+
+<p>1、签名有效字符串为请求参数和请求体</p>
+
+<blockquote>
+<p>注意：请求参数和请求体不进行任何排序，直接拼接成字符串作为payload
+```
+实例1：GET请求查询字符串
+ ?symbol=aaaa88&amp;size=10
+ String payload = “symbol=aaaa88&amp;size=10”；</p>
+</blockquote>
+
+<p>实例2 :Post请求体
+ {&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,&quot;timestamp&quot;:1627384801051}
+ String payload = “{&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,
+ &quot;timestamp&quot;:1627384801051}”；</p>
+
+<p>实例3：混合请求
+ ?symbol=aaaa88&amp;size=10
+ {&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,&quot;timestamp&quot;:1627384801051}
+ String payload = “symbol=aaaa88&amp;size=10{&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,
+ &quot;timestamp&quot;:1627384801051}”；
+```
+2、使用签名函数对时间戳获得哈希值</p>
+
+<blockquote>
+<p>注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥<br>
+<code>
+ String time = String.valueOf(X-CS-EXPIRES / 30_000);
+ hmacSha256.init(new SecretKeySpec(Secret_Key.getBytes(), &quot;HmacSHA256&quot;));
+ byte[] hash = hmacSha256.doFinal(time.getBytes());
+ String key = Hex.toHexString(hash);
+</code>
+3、使用签名函数对签名有效字符串获得哈希值</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code> hmacSha256.reset();
+ hmacSha256.init(new SecretKeySpec(key.getBytes(), "HmacSHA256"));
+ hash = hmacSha256.doFinal(payload.getBytes());
+ String sign= Hex.toHexString(hash);
+
+</code></pre></div><h1 id='api'>API接入说明</h1><h2 id='5b7654a66a'><span id="a3">请求格式</span></h2>
 <p>所有的API请求都是restful，目前只有两种方法：GET和POST。
 - GET请求：所有的参数都在路径参数里
-- POST请求，所有参数以JSON格式发送在请求主体（body）里，没有参数的需要传{}</p>
+- POST请求: 路径里可以设置参数，参数可以以JSON格式发送在请求主体（body）里，没有参数的需要传{}</p>
 
 <p>一个合法的请求由以下几部分组成：
-- 方法请求地址：即访问服务器地址。https://api.coinstore.com/api/trade/order/place
-- 必须和可选参数。</p>
+- 方法请求地址：即访问服务器地址api.coinstore.com，比如https://api.coinstore.com/api/trade/order/place
+- 必须和可选参数。
+- X-CS-APIKEY： 即用户申请的API Key。
+- X-CS-EXPIRES：您发出请求的时间戳。如：1629291143107。
+- X-CS-SIGN：签名计算得出的字符串，用于确保签名有效和未被篡改。</p>
 
-<p>以下几个参数是所有需要验签接口必须要提供的：
-  - API key： 即用户申请的API Key中的Access Key。其字段名为api-key</p>
-
-<p>所有请求都必须包含以下Header：</p>
-
-<ul>
-<li>api-key API KEY作为一个字符串。</li>
-<li>Content-Type  需要统一设置为:&#39;application/json&#39;。</li>
-</ul>
+<blockquote>
+<p>注意：X-CS-APIKEY ，X-CS-EXPIRES ，X-CS-SIGN 三个参数都在请求头中，另外需要设置&#39;Content-Type&#39;:&#39;application/json&#39;。</p>
+</blockquote>
 <h2 id='3ee119c599'><span id="a3">返回格式</span></h2>
 <p>所有的接口返回都是JSON格式。在JSON的第一层有3个字段code，msg和data。前两个字段表示请求状态和描述，实际的业务数据在data字段里。</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -541,12 +603,12 @@
 <li><p>401 signature failed – Invalid API Key 无效的API Key</p></li>
 <li><p>404 service not found 没有找到请求</p></li>
 <li><p>429 too many visits 请求太频繁被系统限流</p></li>
-<li><p>500 unkown exception – 服务器内部错误</p></li>
+<li><p>500 internal server error – 服务器内部错误</p></li>
 </ul>
 
 <p><strong>业务状态码</strong></p>
 
-<p>如果失败，response body 带有错误描述信息, 对应的状态码描述如下：</p>
+<p>如果失败，response message 带有错误描述信息, 对应的状态码描述如下：</p>
 
 <table><thead>
 <tr>
@@ -1665,13 +1727,17 @@
 </tr>
 </tbody></table>
 <h1 id='websocket'>Websocket行情数据</h1><h2 id='5ea2e0cde2'>简介</h2><h3 id='url'>接入URL</h3>
-<p><code>
-wss://ws.coinstore.com/s/ws
-</code>
-1. 所有wss接口的 baseurl为: wss://<a href="host:port">host:port</a>/s/ws
-1. stream名称中所有交易对均为 小写
-1. 每个链接有效期不超过24小时，请妥善处理断线重连。
-1. <code>每3分钟，服务端会发送ping帧，客户端应当在10分钟内回复pong帧，否则服务端会主动断开链接。允许客户端发送不成对的pong帧(即客户端可以以高于10分钟每次的频率发送pong帧保持链接)。</code></p>
+<p>`
+wss://ws.coinstore.com/s/ws</p>
+
+<ol>
+<li><p>所有wss接口的 baseurl为: wss://<a href="host:port">host:port</a>/s/ws</p></li>
+<li><p>stream名称中所有交易对均为 小写</p></li>
+<li><p>每个链接有效期不超过24小时，请妥善处理断线重连。</p></li>
+<li><p>每3分钟，服务端会发送ping帧，客户端应当在10分钟内回复pong帧，否则服务端会主动断开链接。允许客户端发送不成对的pong帧(即客户端可以以高于10分钟每次的频率发送pong帧保持链接)。</p></li>
+</ol>
+
+<p>`</p>
 <h3 id='e3b4b1b9ec'>服务端推送数据类型说明</h3><h4 id='format-schema'>Format Schema</h4><div class="highlight"><pre class="highlight plaintext"><code>{
     "S": 1,  // session 级别的 response 消息序号，session 重连后重置，可用来判断是否漏消息
     "T": "resp", // 响应类型，详见 `Types` 部分
@@ -1702,12 +1768,17 @@ wss://ws.coinstore.com/s/ws
 <p>以下类型的消息，从执行对应 channel 的 <code>SUB</code> 命令开始，到执行 <code>UNSUB</code> 结束，如果服务器端数据发生变化则推送，最小推送间隔 100ms</p>
 </blockquote>
 
-<p>** <code>kline</code>
-** <code>ticker</code>
-** <code>depth</code>
-** <code>trade</code>
-** <code>account</code>
-** <code>order</code></p>
+<p>** <code>kline</code></p>
+
+<p>** <code>ticker</code></p>
+
+<p>** <code>depth</code></p>
+
+<p>** <code>trade</code></p>
+
+<p>** <code>account</code></p>
+
+<p>** <code>order</code></p>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "S": 1,
     "T": "kline|ticker|depth|trade|account",
@@ -1719,8 +1790,8 @@ wss://ws.coinstore.com/s/ws
 </blockquote>
 <h4 id='websocket-pong-frame'>Websocket Pong frame</h4>
 <ol>
-<li>[[ https://tools.ietf.org/html/rfc6455#section-5.5.3 | here ]]<br></li>
-<li> AND [[ https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#Pings%E5%92%8CPongs%EF%BC%9AWebSockets%E7%9A%84%E5%BF%83%E8%B7%B3 | here ]] </li>
+<li><p>https://tools.ietf.org/html/rfc6455#section-5.5.3 </p></li>
+<li><p>https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#Pings%E5%92%8CPongs%EF%BC%9AWebSockets%E7%9A%84%E5%BF%83%E8%B7%B3 </p></li>
 </ol>
 <h4 id='pong-message-format'>Pong message format</h4><div class="highlight"><pre class="highlight plaintext"><code>{
   "op": "pong",
@@ -1732,13 +1803,13 @@ wss://ws.coinstore.com/s/ws
 &lt; {"S":2,"T":"echo","sid":"3ae985ff-cadd-9c96-7a42-4ed29e77f83b","C":200,"M":"command.received","echo":{"op":"SUB","channel":[{"name":"80004@trade","type":{"name":"trade","auth":"PUB"},"instrumentId":"80004","lifeStartTime":1604040964,"msgCount":0,"pub":true}],"id":1}}
 &lt; {"S":3,"T":"resp","sid":"3ae985ff-cadd-9c96-7a42-4ed29e77f83b","C":200,"M":"sub.channel.success"}
 &lt; {"S":4,"T":"trade","channel":"80004@trade","time":1604040975,"price":"9811.7494086","takerSide":"SELL","tradeId":26461,"volume":"7.505","symbol":"EOSUSD","instrumentId":80004}
-</code></pre></div><h3 id='61d816b5c6'><strong>实时订阅/取消数据流</strong></h3>
+</code></pre></div><h2 id='61d816b5c6'><strong>实时订阅/取消数据流</strong></h2>
 <ul>
 <li>以下数据可以通过websocket发送以实现订阅或取消订阅数据流。示例如下。</li>
 <li>响应内容中的id是无符号整数，作为往来信息的唯一标识。</li>
 <li>如果相应内容中的 result 为 null，表示请求发送成功。</li>
 </ul>
-<h4 id='client-op-types'>Client <code>op</code> Types</h4>
+<h3 id='client-op-types'>Client <code>op</code> Types</h3>
 <ol>
 <li><code>SUB</code></li>
 <li><code>UNSUB</code></li>
@@ -1747,7 +1818,7 @@ wss://ws.coinstore.com/s/ws
 <li><code>LIST</code></li>
 <li>...(未来新功能支持)</li>
 </ol>
-<h4 id='2a11d883e8'>订阅一个信息流</h4><div class="highlight"><pre class="highlight plaintext"><code>{
+<h3 id='2a11d883e8'>订阅一个信息流</h3><div class="highlight"><pre class="highlight plaintext"><code>{
     "op": "SUB",
     "channel": [
         "btcusdt@ticker",
@@ -1755,14 +1826,14 @@ wss://ws.coinstore.com/s/ws
     ],
     "id": 1
 }
-</code></pre></div><h4 id='122d1b11ee'>取消订阅一个信息流</h4><div class="highlight"><pre class="highlight plaintext"><code>{
+</code></pre></div><h3 id='122d1b11ee'>取消订阅一个信息流</h3><div class="highlight"><pre class="highlight plaintext"><code>{
     "op": "UNSUB",
     "channel": [
         "btcusdt@depth"
     ],
     "id": 312
 }
-</code></pre></div><h4 id='08abf89cc1'>已订阅信息流</h4><div class="highlight"><pre class="highlight plaintext"><code>{
+</code></pre></div><h3 id='08abf89cc1'>已订阅信息流</h3><div class="highlight"><pre class="highlight plaintext"><code>{
     "op": "LIST",
     "channel":[],
     "id": 3
@@ -1792,64 +1863,60 @@ wss://ws.coinstore.com/s/ws
 <p>IMPORTANT:  请优先使用  <code>symbol</code> 字段，<code>instrumentId</code> 标记为 <code>Deprecated</code></p>
 
 <p>NOTE:  所有返回数据的时间，单位都是 <code>秒</code></p>
-<h3 id='edf11a92a0'><strong>公共行情频道</strong></h3><h4 id='04e6f7872c'><strong>逐笔交易</strong></h4>
+<h2 id='edf11a92a0'><strong>公共行情频道</strong></h2><h3 id='04e6f7872c'><strong>逐笔交易</strong></h3>
 <blockquote>
 <p>Stream Name: <code>&lt;symbol&gt;@trade</code>, eg: <code>88066@trade</code>
 param: <code>param&quot;:{&quot;size&quot;:2}</code>
-e.g: <code>{&quot;op&quot;:&quot;SUB&quot;,&quot;channel&quot;:[&quot;28@trade&quot;],&quot;param&quot;:{&quot;size&quot;:2},&quot;id&quot;:1}</code></p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>{
-  "instrumentId": 88066,
-  "symbol": "USDTBTC",    // 交易对
-  "tradeId": 12345,       // 交易ID
-  "takerSide": "BUY",    // taker side
-  "price": "0.001",     // 成交价格
-  "volume": "100",       // 成交数量
-  "time": 123456785,   // 成交时间 单位 s
-  "ts": 1612685313400, // 单位 ms
-  "seq": 9935         // 唯一自增序号
-}
-</code></pre></div><h5 id='chagnelog-20210207'>Chagnelog: 20210207</h5>
-<blockquote>
-<ol>
-<li>增加字段 ts &amp; seq, 降序</li>
-<li>支持 param.size 参数: sub 命令会默认返回 param.size 条历史数据</li>
-<li>订阅时返回批量数据等结构： 
+e.g: <code>{&quot;op&quot;:&quot;SUB&quot;,&quot;channel&quot;:[&quot;28@trade&quot;],&quot;param&quot;:{&quot;size&quot;:2},&quot;id&quot;:1}</code>
+全量数据：
+<code>lang=json
+ {
+   &quot;S&quot;: 15,
+   &quot;T&quot;: &quot;trade&quot;,
+   &quot;data&quot;: [
+     {
+       &quot;channel&quot;: &quot;28@trade&quot;,
+       &quot;price&quot;: &quot;384.32&quot;,
+       &quot;tradeId&quot;: 21704,
+       &quot;seq&quot;: 10157,
+       &quot;ts&quot;: 1612685697087,
+       &quot;takerSide&quot;: &quot;BULL&quot;,
+       &quot;time&quot;: 1612685697,
+       &quot;volume&quot;: &quot;2&quot;,
+       &quot;symbol&quot;: &quot;BTCJJ&quot;,
+       &quot;instrumentId&quot;: 28
+     },
+     {
+       &quot;channel&quot;: &quot;28@trade&quot;,
+       &quot;price&quot;: &quot;644.96&quot;,
+       &quot;tradeId&quot;: 21705,
+       &quot;seq&quot;: 10158,
+       &quot;ts&quot;: 1612685698157,
+       &quot;takerSide&quot;: &quot;SELL&quot;,
+       &quot;time&quot;: 1612685698,
+       &quot;volume&quot;: &quot;1.1932988&quot;,
+       &quot;symbol&quot;: &quot;BTCJJ&quot;,
+       &quot;instrumentId&quot;: 28
+     }
+   ]
+ }
+</code>
+增量数据：
 <code>lang=json
 {
-&quot;S&quot;: 15,
-&quot;T&quot;: &quot;trade&quot;,
-&quot;data&quot;: [
-{
-  &quot;channel&quot;: &quot;28@trade&quot;,
-  &quot;price&quot;: &quot;384.32&quot;,
-  &quot;tradeId&quot;: 21704,
-  &quot;seq&quot;: 10157,
-  &quot;ts&quot;: 1612685697087,
-  &quot;takerSide&quot;: &quot;BULL&quot;,
-  &quot;time&quot;: 1612685697,
-  &quot;volume&quot;: &quot;2&quot;,
-  &quot;symbol&quot;: &quot;BTCJJ&quot;,
-  &quot;instrumentId&quot;: 28
-},
-{
-  &quot;channel&quot;: &quot;28@trade&quot;,
-  &quot;price&quot;: &quot;644.96&quot;,
-  &quot;tradeId&quot;: 21705,
-  &quot;seq&quot;: 10158,
-  &quot;ts&quot;: 1612685698157,
-  &quot;takerSide&quot;: &quot;SELL&quot;,
-  &quot;time&quot;: 1612685698,
-  &quot;volume&quot;: &quot;1.1932988&quot;,
-  &quot;symbol&quot;: &quot;BTCJJ&quot;,
-  &quot;instrumentId&quot;: 28
+  &quot;instrumentId&quot;: 88066,
+  &quot;symbol&quot;: &quot;USDTBTC&quot;,    // 交易对
+  &quot;tradeId&quot;: 12345,       // 交易ID
+  &quot;takerSide&quot;: &quot;BUY&quot;,    // taker side
+  &quot;price&quot;: &quot;0.001&quot;,     // 成交价格
+  &quot;volume&quot;: &quot;100&quot;,       // 成交数量
+  &quot;time&quot;: 123456785,   // 成交时间 单位 s
+  &quot;ts&quot;: 1612685313400, // 单位 ms
+  &quot;seq&quot;: 9935         // 唯一自增序号
 }
-]
-}
-</code></li>
-</ol>
+</code></p>
 </blockquote>
-<h4 id='k-streams'><strong>K线 Streams</strong></h4>
+<h3 id='k-streams'><strong>K线 Streams</strong></h3>
 <blockquote>
 <p>K线stream逐秒推送所请求的K线种类(最新一根K线)的更新。
 Stream Name: <code>&lt;symbol&gt;@kline@&lt;interval&gt;</code>, eg: <code>88066@kline@min_1</code>
@@ -1880,7 +1947,7 @@ interval 可选值:
     "volume": "1000",    // 这根K线期间成交量
     "amount": "1.0000",  // 这根K线期间成交额
 }
-</code></pre></div><h4 id='k-request'><strong>K线 Request</strong></h4>
+</code></pre></div><h3 id='k-request'><strong>K线 Request</strong></h3>
 <blockquote>
 <p>请求历史k线：
 param: <code>&quot;{channel&quot;:&quot;88066@kline@min_1&quot;,&quot;endTime&quot;:1603766280,&quot;limit&quot;:10}</code>,
@@ -1909,7 +1976,7 @@ eg:  <code>{&quot;op&quot;:&quot;REQ&quot;,&quot;param&quot;:{&quot;channel&quot
         ...
     ]
 }
-</code></pre></div><h4 id='symbol-ticker'><strong>按 Symbol 的 Ticker信息</strong></h4>
+</code></pre></div><h3 id='symbol-ticker'><strong>按 Symbol 的 Ticker信息</strong></h3>
 <blockquote>
 <p>按Symbol刷新的最近24小时精简 ticker 信息
 Stream 名称: <code>&lt;symbol&gt;@ticker</code>, eg:  <code>88066@ticker</code></p>
@@ -1924,7 +1991,7 @@ Stream 名称: <code>&lt;symbol&gt;@ticker</code>, eg:  <code>88066@ticker</code
   "volume": "10000",       // 24小时内成交量
   "amount": "18"          // 24小时内成交额
 }
-</code></pre></div><h4 id='symbol-ticker-2'><strong>全市场所有Symbol 的 Ticker信息</strong></h4>
+</code></pre></div><h3 id='symbol-ticker-2'><strong>全市场所有Symbol 的 Ticker信息</strong></h3>
 <blockquote>
 <p>按Symbol刷新的最近24小时精简ticker信息
 Stream 名称: <code>!@ticker</code></p>
@@ -1956,7 +2023,7 @@ Stream 名称: <code>!@ticker</code></p>
         ...
     ]
 }
-</code></pre></div><h4 id='3b1eaace8a'><strong>有限档深度信息</strong></h4>
+</code></pre></div><h3 id='3b1eaace8a'><strong>有限档深度信息</strong></h3>
 <blockquote>
 <p>每秒或每100毫秒推送有限档深度信息。levels表示几档买卖单信息, 可选 5/10/20/50/100档
 Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&lt;symbol&gt;@depth@&lt;levels&gt;@100ms</code>.</del>, eg:  <code>88066@depth@50</code></p>
@@ -1978,7 +2045,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
     ]
   ]
 }
-</code></pre></div><h3 id='050d3ff583'><strong>用户私有数据频道</strong></h3><h4 id='0de2270bc5'><strong>登陆</strong></h4>
+</code></pre></div><h2 id='050d3ff583'><strong>用户私有数据频道</strong></h2><h3 id='0de2270bc5'><strong>登陆</strong></h3>
 <blockquote>
 <p>登陆时可以同时指定订阅数据</p>
 </blockquote>
@@ -1995,7 +2062,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
     }
     "id": 2
 }
-</code></pre></div><h4 id='2f616316f3'><strong>账户</strong></h4>
+</code></pre></div><h3 id='2f616316f3'><strong>账户</strong></h3>
 <blockquote>
 <p>Stream Name: <code>&lt;currency&gt;@account</code>, or <code>!@account</code> all currency</p>
 </blockquote>
@@ -2007,7 +2074,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
     "timestamp": 1602493840  // 单位 s
 }
 
-</code></pre></div><h4 id='46ef91185e'><strong>成交</strong></h4>
+</code></pre></div><h3 id='46ef91185e'><strong>成交</strong></h3>
 <blockquote>
 <p>Stream Name: <code>&lt;symbol&gt;@order</code>, or <code>!@order</code> all symbol&#39;s</p>
 </blockquote>
@@ -2051,7 +2118,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 
     "timestamp": 1602493840 // 单位 s
 }
-</code></pre></div><h3 id='42702c21cd'><strong>字典</strong></h3><h4 id='orderstate'>OrderState</h4>
+</code></pre></div><h2 id='42702c21cd'><strong>字典</strong></h2><h3 id='orderstate'>OrderState</h3>
 <ul>
 <li>REJECTED</li>
 <li>SUBMITTING</li>
@@ -2063,23 +2130,23 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <li>STOPPED</li>
 <li>FILLED</li>
 </ul>
-<h4 id='ordertype'>OrderType</h4>
+<h3 id='ordertype'>OrderType</h3>
 <ul>
 <li>MARKET </li>
 <li>LIMIT </li>
 <li>POST_ONLY</li>
 </ul>
-<h4 id='timeinforce'>TimeInForce</h4>
+<h3 id='timeinforce'>TimeInForce</h3>
 <ul>
 <li>IOC</li>
 <li>GTC</li>
 </ul>
-<h4 id='matchrole'>MatchRole</h4>
+<h3 id='matchrole'>MatchRole</h3>
 <ul>
 <li>TAKER</li>
 <li>MAKER</li>
 </ul>
-<h4 id='side'>Side</h4>
+<h3 id='side'>Side</h3>
 <ul>
 <li>BUY</li>
 <li>SELL</li>

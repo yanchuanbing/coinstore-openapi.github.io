@@ -508,28 +508,38 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <p><strong>签名步骤</strong></p>
 
 <p>1、签名有效字符串为请求参数和请求体</p>
-<div class="highlight"><pre class="highlight plaintext"><code>实例1：GET请求查询字符串
- ?symbol=aaaa88&amp;size=10
- String payload = “symbol=aaaa88&amp;size=10”；
 
-实例2 :Post请求体
- {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
- String payload = “{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
- "timestamp":1627384801051}”；
-
-实例3：混合请求
+<blockquote>
+<p>注意：请求参数和请求体不进行任何排序，直接拼接成字符串作为payload
+```
+实例1：GET请求查询字符串
  ?symbol=aaaa88&amp;size=10
- {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
- String payload = “symbol=aaaa88&amp;size=10{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
- "timestamp":1627384801051}”；
-</code></pre></div>
-<p>2、使用签名函数对时间戳获得哈希值</p>
-<div class="highlight"><pre class="highlight plaintext"><code> String time = String.valueOf(X-CS-EXPIRES / 30_000);
- hmacSha256.init(new SecretKeySpec(Secret_Key.getBytes(), "HmacSHA256"));
+ String payload = “symbol=aaaa88&amp;size=10”；</p>
+</blockquote>
+
+<p>实例2 :Post请求体
+ {&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,&quot;timestamp&quot;:1627384801051}
+ String payload = “{&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,
+ &quot;timestamp&quot;:1627384801051}”；</p>
+
+<p>实例3：混合请求
+ ?symbol=aaaa88&amp;size=10
+ {&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,&quot;timestamp&quot;:1627384801051}
+ String payload = “symbol=aaaa88&amp;size=10{&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,
+ &quot;timestamp&quot;:1627384801051}”；
+```
+2、使用签名函数对时间戳获得哈希值</p>
+
+<blockquote>
+<p>注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥<br>
+<code>
+ String time = String.valueOf(X-CS-EXPIRES / 30_000);
+ hmacSha256.init(new SecretKeySpec(Secret_Key.getBytes(), &quot;HmacSHA256&quot;));
  byte[] hash = hmacSha256.doFinal(time.getBytes());
  String key = Hex.toHexString(hash);
-</code></pre></div>
-<p>3、使用签名函数对签名有效字符串获得哈希值</p>
+</code>
+3、使用签名函数对签名有效字符串获得哈希值</p>
+</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code> hmacSha256.reset();
  hmacSha256.init(new SecretKeySpec(key.getBytes(), "HmacSHA256"));
  hash = hmacSha256.doFinal(payload.getBytes());
@@ -547,7 +557,9 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 - X-CS-EXPIRES：您发出请求的时间戳。如：1629291143107。
 - X-CS-SIGN：签名计算得出的字符串，用于确保签名有效和未被篡改。</p>
 
+<blockquote>
 <p>注意：X-CS-APIKEY ，X-CS-EXPIRES ，X-CS-SIGN 三个参数都在请求头中，另外需要设置&#39;Content-Type&#39;:&#39;application/json&#39;。</p>
+</blockquote>
 <h2 id='3ee119c599'><span id="a3">返回格式</span></h2>
 <p>所有的接口返回都是JSON格式。在JSON的第一层有3个字段code，msg和data。前两个字段表示请求状态和描述，实际的业务数据在data字段里。</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -591,12 +603,12 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <li><p>401 signature failed – Invalid API Key 无效的API Key</p></li>
 <li><p>404 service not found 没有找到请求</p></li>
 <li><p>429 too many visits 请求太频繁被系统限流</p></li>
-<li><p>500 unkown exception – 服务器内部错误</p></li>
+<li><p>500 internal server error – 服务器内部错误</p></li>
 </ul>
 
 <p><strong>业务状态码</strong></p>
 
-<p>如果失败，response body 带有错误描述信息, 对应的状态码描述如下：</p>
+<p>如果失败，response message 带有错误描述信息, 对应的状态码描述如下：</p>
 
 <table><thead>
 <tr>
@@ -1715,13 +1727,17 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 </tbody></table>
 <h1 id='websocket'>Websocket行情数据</h1><h2 id='5ea2e0cde2'>简介</h2><h3 id='url'>接入URL</h3>
-<p><code>
-wss://ws.coinstore.com/s/ws
-</code>
-1. 所有wss接口的 baseurl为: wss://<a href="host:port">host:port</a>/s/ws
-1. stream名称中所有交易对均为 小写
-1. 每个链接有效期不超过24小时，请妥善处理断线重连。
-1. <code>每3分钟，服务端会发送ping帧，客户端应当在10分钟内回复pong帧，否则服务端会主动断开链接。允许客户端发送不成对的pong帧(即客户端可以以高于10分钟每次的频率发送pong帧保持链接)。</code></p>
+<p>`
+wss://ws.coinstore.com/s/ws</p>
+
+<ol>
+<li><p>所有wss接口的 baseurl为: wss://<a href="host:port">host:port</a>/s/ws</p></li>
+<li><p>stream名称中所有交易对均为 小写</p></li>
+<li><p>每个链接有效期不超过24小时，请妥善处理断线重连。</p></li>
+<li><p>每3分钟，服务端会发送ping帧，客户端应当在10分钟内回复pong帧，否则服务端会主动断开链接。允许客户端发送不成对的pong帧(即客户端可以以高于10分钟每次的频率发送pong帧保持链接)。</p></li>
+</ol>
+
+<p>`</p>
 <h3 id='e3b4b1b9ec'>服务端推送数据类型说明</h3><h4 id='format-schema'>Format Schema</h4><div class="highlight"><pre class="highlight plaintext"><code>{
     "S": 1,  // session 级别的 response 消息序号，session 重连后重置，可用来判断是否漏消息
     "T": "resp", // 响应类型，详见 `Types` 部分
@@ -1752,12 +1768,17 @@ wss://ws.coinstore.com/s/ws
 <p>以下类型的消息，从执行对应 channel 的 <code>SUB</code> 命令开始，到执行 <code>UNSUB</code> 结束，如果服务器端数据发生变化则推送，最小推送间隔 100ms</p>
 </blockquote>
 
-<p>** <code>kline</code>
-** <code>ticker</code>
-** <code>depth</code>
-** <code>trade</code>
-** <code>account</code>
-** <code>order</code></p>
+<p>** <code>kline</code></p>
+
+<p>** <code>ticker</code></p>
+
+<p>** <code>depth</code></p>
+
+<p>** <code>trade</code></p>
+
+<p>** <code>account</code></p>
+
+<p>** <code>order</code></p>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "S": 1,
     "T": "kline|ticker|depth|trade|account",
@@ -1769,8 +1790,8 @@ wss://ws.coinstore.com/s/ws
 </blockquote>
 <h4 id='websocket-pong-frame'>Websocket Pong frame</h4>
 <ol>
-<li>[[ https://tools.ietf.org/html/rfc6455#section-5.5.3 | here ]]<br></li>
-<li> AND [[ https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#Pings%E5%92%8CPongs%EF%BC%9AWebSockets%E7%9A%84%E5%BF%83%E8%B7%B3 | here ]] </li>
+<li><p>https://tools.ietf.org/html/rfc6455#section-5.5.3 </p></li>
+<li><p>https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#Pings%E5%92%8CPongs%EF%BC%9AWebSockets%E7%9A%84%E5%BF%83%E8%B7%B3 </p></li>
 </ol>
 <h4 id='pong-message-format'>Pong message format</h4><div class="highlight"><pre class="highlight plaintext"><code>{
   "op": "pong",
@@ -1846,58 +1867,54 @@ wss://ws.coinstore.com/s/ws
 <blockquote>
 <p>Stream Name: <code>&lt;symbol&gt;@trade</code>, eg: <code>88066@trade</code>
 param: <code>param&quot;:{&quot;size&quot;:2}</code>
-e.g: <code>{&quot;op&quot;:&quot;SUB&quot;,&quot;channel&quot;:[&quot;28@trade&quot;],&quot;param&quot;:{&quot;size&quot;:2},&quot;id&quot;:1}</code></p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>{
-  "instrumentId": 88066,
-  "symbol": "USDTBTC",    // 交易对
-  "tradeId": 12345,       // 交易ID
-  "takerSide": "BUY",    // taker side
-  "price": "0.001",     // 成交价格
-  "volume": "100",       // 成交数量
-  "time": 123456785,   // 成交时间 单位 s
-  "ts": 1612685313400, // 单位 ms
-  "seq": 9935         // 唯一自增序号
-}
-</code></pre></div><h4 id='chagnelog-20210207'>Chagnelog: 20210207</h4>
-<blockquote>
-<ol>
-<li>增加字段 ts &amp; seq, 降序</li>
-<li>支持 param.size 参数: sub 命令会默认返回 param.size 条历史数据</li>
-<li>订阅时返回批量数据等结构： 
+e.g: <code>{&quot;op&quot;:&quot;SUB&quot;,&quot;channel&quot;:[&quot;28@trade&quot;],&quot;param&quot;:{&quot;size&quot;:2},&quot;id&quot;:1}</code>
+全量数据：
+<code>lang=json
+ {
+   &quot;S&quot;: 15,
+   &quot;T&quot;: &quot;trade&quot;,
+   &quot;data&quot;: [
+     {
+       &quot;channel&quot;: &quot;28@trade&quot;,
+       &quot;price&quot;: &quot;384.32&quot;,
+       &quot;tradeId&quot;: 21704,
+       &quot;seq&quot;: 10157,
+       &quot;ts&quot;: 1612685697087,
+       &quot;takerSide&quot;: &quot;BULL&quot;,
+       &quot;time&quot;: 1612685697,
+       &quot;volume&quot;: &quot;2&quot;,
+       &quot;symbol&quot;: &quot;BTCJJ&quot;,
+       &quot;instrumentId&quot;: 28
+     },
+     {
+       &quot;channel&quot;: &quot;28@trade&quot;,
+       &quot;price&quot;: &quot;644.96&quot;,
+       &quot;tradeId&quot;: 21705,
+       &quot;seq&quot;: 10158,
+       &quot;ts&quot;: 1612685698157,
+       &quot;takerSide&quot;: &quot;SELL&quot;,
+       &quot;time&quot;: 1612685698,
+       &quot;volume&quot;: &quot;1.1932988&quot;,
+       &quot;symbol&quot;: &quot;BTCJJ&quot;,
+       &quot;instrumentId&quot;: 28
+     }
+   ]
+ }
+</code>
+增量数据：
 <code>lang=json
 {
-&quot;S&quot;: 15,
-&quot;T&quot;: &quot;trade&quot;,
-&quot;data&quot;: [
-{
-  &quot;channel&quot;: &quot;28@trade&quot;,
-  &quot;price&quot;: &quot;384.32&quot;,
-  &quot;tradeId&quot;: 21704,
-  &quot;seq&quot;: 10157,
-  &quot;ts&quot;: 1612685697087,
-  &quot;takerSide&quot;: &quot;BULL&quot;,
-  &quot;time&quot;: 1612685697,
-  &quot;volume&quot;: &quot;2&quot;,
-  &quot;symbol&quot;: &quot;BTCJJ&quot;,
-  &quot;instrumentId&quot;: 28
-},
-{
-  &quot;channel&quot;: &quot;28@trade&quot;,
-  &quot;price&quot;: &quot;644.96&quot;,
-  &quot;tradeId&quot;: 21705,
-  &quot;seq&quot;: 10158,
-  &quot;ts&quot;: 1612685698157,
-  &quot;takerSide&quot;: &quot;SELL&quot;,
-  &quot;time&quot;: 1612685698,
-  &quot;volume&quot;: &quot;1.1932988&quot;,
-  &quot;symbol&quot;: &quot;BTCJJ&quot;,
-  &quot;instrumentId&quot;: 28
+  &quot;instrumentId&quot;: 88066,
+  &quot;symbol&quot;: &quot;USDTBTC&quot;,    // 交易对
+  &quot;tradeId&quot;: 12345,       // 交易ID
+  &quot;takerSide&quot;: &quot;BUY&quot;,    // taker side
+  &quot;price&quot;: &quot;0.001&quot;,     // 成交价格
+  &quot;volume&quot;: &quot;100&quot;,       // 成交数量
+  &quot;time&quot;: 123456785,   // 成交时间 单位 s
+  &quot;ts&quot;: 1612685313400, // 单位 ms
+  &quot;seq&quot;: 9935         // 唯一自增序号
 }
-]
-}
-</code></li>
-</ol>
+</code></p>
 </blockquote>
 <h3 id='k-streams'><strong>K线 Streams</strong></h3>
 <blockquote>
