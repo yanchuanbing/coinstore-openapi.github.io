@@ -192,7 +192,7 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 
 | 字段 | 数据类型  | 描述       |
 | ---- | -----  | ---------- |
-| code | string | 返回状态 |
+| code | int | 0：成功，其他失败 |
 | msg  | string | 状态或错误描述 |
 | data | object | 业务数据  |
 
@@ -318,13 +318,13 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-  |    |  |
+  |    |   |   |  |
 
 ### 响应数据
 
 |       code        |  type  |                       comment                       |
 | ---- | ----- | ---------- |
-| code | String      |             |
+| code | int      |  0：成功，其他失败           |
 | msg | String  |  错误信息 |
 | data | Object   |   业务数据 |
 |- currencies | List \<Currency>    | 币种列表 |
@@ -332,16 +332,16 @@ HTTP常见的错误码如下：
 |- version  | Long   | 版本号 |
 
 
-> Currency
+#### Currency
 
  |       code        |  type  |                       comment                       |
  | ---- | ----- | ---------- |
  | currencyId | int  | 币种id |
  | name | String  | 币种名称 |
- | disableTransferIn | boolean | N | 是否可以划转至合约  默认false 能划转 |
- | disableTransferOut | boolean | N | 是否可以划转至现货  默认false 能划转 |
+ | disableTransferIn | boolean | 是否可以划转至合约  默认false 能划转 |
+ | disableTransferOut | boolean | 是否可以划转至现货  默认false 能划转 |
 
-> Contract
+#### Contract
 
  |       code        |  type  |                       comment                       |
  | ---- | ----- | ---------- | 
@@ -360,12 +360,12 @@ HTTP常见的错误码如下：
  | makerFeeRate | BigDecimal  | Maker手续费率 | 
  | contractSize | BigDecimal  | 合约单位 |   
  | minMaintRate | BigDecimal  | 最小维持保证金率 | 
- |fundingInterval | Integer  | 互换频率 单位 秒  | 
- |weight | Integer  |排序权重  倒叙 | 
+ |fundingInterval | int  | 互换频率 单位 秒  | 
+ |weight | int  |排序权重  倒叙 | 
  | tags | String[] |  标签    mock, hot, new, ... |  
  | riskLimits | RiskLimit[]  | 风险限额 |  
 
-> RiskLimit
+#### RiskLimit
 
  |       code  |  type  |   comment    |
  | ---- | ----- | ---------- | 
@@ -424,7 +424,7 @@ HTTP常见的错误码如下：
 
 |       code        |  type  |                      comment                       |
 | ---- | ----- | ---------- |
-| code | String        |            |
+| code | int        |   0：成功，其他失败         |
 | msg | String    | 错误信息 |
 | data | Object []    |  业务数据 |
 | - currencyId| string       |   保证金id  |
@@ -500,7 +500,7 @@ HTTP常见的错误码如下：
 
 |       code        |  type  |     comment                       |
 | ---- | ----- | ---------- |
-| code | String        |            |
+| code | int        |  0：成功，其他失败          |
 | msg | String    | 错误信息 |
 | data | Object []    |  业务数据 |
 | - currencyId| string     |   保证金id  |
@@ -521,11 +521,8 @@ HTTP常见的错误码如下：
 | - liquidationPrice| string        | 预估强评价|
 | - lastPrice| string        | 最新成交价|
 | - markPrice| string        | 标记价格 * 持仓数量 * 合约面值|
-| - available| string        | 可用余额  deprecated|
 | - accountId| string        | 账户id|
 | - accountType| string        | 账户类型  1  主账户|
-| - forwardCross| string        | forwardCross  deprecated|
-| - crossMargin| string        | crossMargin deprecated|
 
 ## <span id="1">调整保证金</span>
 
@@ -546,14 +543,14 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-|  contractId| integer|Y| 交易对ID|
-|   margin| integer|Y|  保证金额（>0 : 增加保证金，<0 ：减少保证金）|
+|  contractId| int|Y| 交易对ID|
+|   margin| int|Y|  保证金额（>0 : 增加保证金，<0 ：减少保证金）|
 
 ### 响应数据
 
 |       code        |  type  |                       comment                       |
 | ---- | ----- | ---------- |
-| code | String        |            |
+| code | int        | 0：成功，其他失败           |
 | msg | String    | 错误信息 |
 | data | Object []    |  业务数据 |
 
@@ -576,15 +573,15 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-|  contractId| integer|Y| 交易对ID|
-|   leverage| integer|Y|  杠杆倍数, 0为自动模式  逐仓 不能为0|
-|   isolated| integer|Y|  保证金类型 默认 false 全仓  true 逐仓|
+|  contractId| int|Y| 交易对ID|
+|   leverage| int|Y|  杠杆倍数, 0为自动模式  逐仓 不能为0|
+|   isolated| int|Y|  保证金类型 默认 false 全仓  true 逐仓|
 
 ### 响应数据
 
 |       code        |  type  |                       comment                       |
 | ---- | ----- | ---------- |
-| code | String        |            |
+| code | int        |  0：成功，其他失败          |
 | msg | String    | 错误信息 |
 | data | Object []    |  业务数据 |
 
@@ -600,18 +597,18 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-| accountType| integer|N| 账号类型 |
+| accountType| int|N| 账号类型 |
 | clientOrderId| string|N| 客户端委托ID,如果不传使用uuid |
-| contractId| integer|Y| 合约ID|
+| contractId| int|Y| 合约ID|
 | marginRate| string|Y| 保证金率，全仓时>0，逐仓时>0|
-| leverage| integer|Y| 保证金倍数|
-| marginType| integer|Y| 保证金类型，全仓1，逐仓2|
-| orderSubType| integer|Y|0（默认值），1（被动委托），2（最近价触发条件委托），3（指数触发条件委托），4（标记价触发条件委托）|
-| orderType| integer|Y| 委托类型，1（限价），3（市价）|
-| positionEffect| integer|Y| 开平标志，开仓1，平仓2  平仓单必须传2|
+| leverage| int|Y| 保证金倍数|
+| marginType| int|Y| 保证金类型，全仓1，逐仓2|
+| orderSubType| int|Y|0（默认值），1（被动委托），2（最近价触发条件委托），3（指数触发条件委托），4（标记价触发条件委托）|
+| orderType| int|Y| 委托类型，1（限价），3（市价）|
+| positionEffect| int|Y| 开平标志，开仓1，平仓2  平仓单必须传2|
 | price| string|N| 委托价格,order_type等于3（市价）时非必填|
 | quantity| string|Y| 委托数量|
-| side| integer|Y| 买1，卖-1|
+| side| int|Y| 买1，卖-1|
 | stopPrice| string|optional| 止损价格，order_type等于3（市价）时非必填 //条件单时|                                                                
 
 
@@ -699,20 +696,20 @@ HTTP常见的错误码如下：
 | code            | int    | 0                     |     0：成功，其他失败                                               |
 | msg         | string    |                 |    错误信息                                    |
 | data            |  list  |      |
-| - accountType| integer  | 账号类型 |
+| - accountType| int  | 账号类型 |
 | - clientOrderId| string  | 客户端委托ID,如果不传使用uuid |
-| - contractId| integer  | 合约ID|
+| - contractId| int  | 合约ID|
 | - marginRate| string  | 保证金率，全仓时>0，逐仓时>0|
-| - leverage| integer  | 保证金倍数|
-| - marginType| integer  | 保证金类型，全仓1，逐仓2|
+| - leverage| int  | 保证金倍数|
+| - marginType| int  | 保证金类型，全仓1，逐仓2|
 | - minimalQuantity| string  | 最新成交数量，order_type等于3（市价）时非必填//前端不传|
-| - orderSubType| integer  |0（默认值），1（被动委托），2（最近价触发条件委托），3（指数触发条件委托），4（标记价触发条件委托）|
-| - orderType| integer  | 委托类型，1（限价），3（市价）|
-| - positionEffect| integer  | 开平标志，开仓1，平仓2|
+| - orderSubType| int  |0（默认值），1（被动委托），2（最近价触发条件委托），3（指数触发条件委托），4（标记价触发条件委托）|
+| - orderType| int  | 委托类型，1（限价），3（市价）|
+| - positionEffect| int  | 开平标志，开仓1，平仓2|
 | - price| string  | 委托价格,order_type等于3（市价）时非必填|
 | - quantity| string  | 委托数量|
-| - side| integer  | 买1，卖-1|
-| - stopCondition| integer  | 止损,order_type等于3（市价）时非必填；值域：1（止盈，未启用），2（止损，未启用），3（只减仓，未启用） //前端不传|
+| - side| int  | 买1，卖-1|
+| - stopCondition| int  | 止损,order_type等于3（市价）时非必填；值域：1（止盈，未启用），2（止损，未启用），3（只减仓，未启用） //前端不传|
 | - stopPrice| string  | 止损价格，order_type等于3（市价）时非必填 //条件单时|
 | - symbol| string  | 合约名称|
 
@@ -726,7 +723,7 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-| contractId     | integer | Y   |合约号 |
+| contractId     | int | Y   |合约号 |
 | originalOrderId     | long     | Y    |原始委托号sb |
 
 > 响应
@@ -757,7 +754,7 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-| contractId     | integer | N | 不传撤销所有币对订单 |
+| contractId     | int | N | 不传撤销所有币对订单 |
 
 
 > 响应
@@ -790,15 +787,15 @@ HTTP常见的错误码如下：
 | ---------- | ------- | -------- | -------------------- |
 | orders        | list | Y      |
 | - clientOrderId| string|N| 客户端委托ID,如果不传使用uuid |
-| - contractId| integer|Y| 合约ID|
+| - contractId| int|Y| 合约ID|
 | - initRate| string|Y| 保证金率，全仓时>0，逐仓时>0|
-| - marginType| integer|Y| 保证金类型，全仓1，逐仓2|
-| - orderSubType| integer|Y|0（默认值），1（被动委托）|
-| - orderType| integer|Y| 委托类型，1（限价），3（市价）|
-| - positionEffect| integer|Y| 开平标志，开仓1，平仓2  平仓单必须传2|
+| - marginType| int|Y| 保证金类型，全仓1，逐仓2|
+| - orderSubType| int|Y|0（默认值），1（被动委托）|
+| - orderType| int|Y| 委托类型，1（限价），3（市价）|
+| - positionEffect| int|Y| 开平标志，开仓1，平仓2  平仓单必须传2|
 | - orderPrice| string|N| 委托价格,order_type等于3（市价）时非必填|
 | - orderQty| string|Y| 委托数量|
-| - side| integer|Y| 买1，卖-1|
+| - side| int|Y| 买1，卖-1|
 > body
 ```json
 {"orders":[{
@@ -869,7 +866,7 @@ HTTP常见的错误码如下：
 | ---------- | ------- | -------- | -------------------- |
 | cancels        | list | Y      |
 | - originalOrderId| string|Y| 客户端委托ID,如果不传使用uuid |
-| - contractId| integer|Y| 合约ID|
+| - contractId| int|Y| 合约ID|
 
 > body
 ```json
@@ -980,7 +977,7 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-| contractId| integer|N| 合约id|
+| contractId| int|N| 合约id|
 | endTime| string|N| 结束时间 |
 | startTime| string|N| 开始时间|
 | pageNum| string|N| 页数|
@@ -994,7 +991,7 @@ HTTP常见的错误码如下：
 | code            | int    | 0                     |     0：成功，其他失败                                               |
 | msg         | string    |                 |    错误信息                                    |
 | data | object|    |
-| -	applId	|	Integer	  |	期货ID,2	|
+| -	applId	|	int	  |	期货ID,2	|
 | -	matchTime	|	Long	  |	成交时间	|
 | -	contractId	|	Long	  |	交易对ID、合约号	|
 | -	execId	|	Long	  |	成交编号	|
@@ -1003,24 +1000,24 @@ HTTP常见的错误码如下：
 | -	bidOrderId	|	Long	  |	买方委托号	|
 | -	askOrderId	|	Long	  |	卖方委托号	|
 | -	matchPrice	|	Double	  |	成交价	|
-| -	matchQty	|	Integer	  |	成交数量	|
+| -	matchQty	|	int	  |	成交数量	|
 | -	matchAmt	|	Double	  |	成交金额	|
 | -	bidFee	|	Double	  |	买方手续费	|
 | -	askFee	|	Double	  |	卖方手续费	|
-| -	takerSide	|	Integer	  |	Taker方向,1: 买方吃单，-1：卖方吃单	|
-| -	side	|	Integer	  |	买卖方向	|
+| -	takerSide	|	int	  |	Taker方向,1: 买方吃单，-1：卖方吃单	|
+| -	side	|	int	  |	买卖方向	|
 | -	updateTime	|	Long	  |	最近更新时间	|
-| -	bidPositionEffect	|	Integer	  |	买方开平标志	|
-| -	askPositionEffect	|	Integer	  |	卖方开平标志	|
-| -	bidMarginType	|	Integer	  |	买方保证金类型	|
-| -	askMarginType	|	Integer	  |	卖方保证金类型	|
+| -	bidPositionEffect	|	int	  |	买方开平标志	|
+| -	askPositionEffect	|	int	  |	卖方开平标志	|
+| -	bidMarginType	|	int	  |	买方保证金类型	|
+| -	askMarginType	|	int	  |	卖方保证金类型	|
 | -	bidInitRate	|	Double	  |	买方初始保证金率	|
 | -	askInitRate	|	Double	  |	卖方初始保证金率	|
-| -	bidMatchType	|	Integer	  |	买方成交类型：0普通成交1强平成交2强减成交（破产方）3强减	|
-| -	askMatchType	|	Integer	  |	卖方成交类型：0普通成交1强平成交2强减成交（破产方）3强减	|
-| -	bidPnlType	|	Integer	  |	买方盈亏类型：0正常成交1正常平仓2强平3强减	|
+| -	bidMatchType	|	int	  |	买方成交类型：0普通成交1强平成交2强减成交（破产方）3强减	|
+| -	askMatchType	|	int	  |	卖方成交类型：0普通成交1强平成交2强减成交（破产方）3强减	|
+| -	bidPnlType	|	int	  |	买方盈亏类型：0正常成交1正常平仓2强平3强减	|
 | -	bidPnl	|	Double	  |	买方平仓盈亏	|
-| -	askPnlType	|	Integer	  |	卖方盈亏类型：0正常成交1正常平仓2强平3强减	|
+| -	askPnlType	|	int	  |	卖方盈亏类型：0正常成交1正常平仓2强平3强减	|
 | -	askPnl	|	Double	  |	卖方平仓盈亏	|
 
 ## <span id="3">用户强减记录</span>
@@ -1074,7 +1071,7 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-| contractId| integer|N| 合约id|
+| contractId| int|N| 合约id|
 | endTime| string|N| 结束时间 |
 | startTime| string|N| 开始时间|
 | pageNum| string|N| 页数|
@@ -1088,26 +1085,26 @@ HTTP常见的错误码如下：
 | code            | int    | 0                     |     0：成功，其他失败                                               |
 | msg         | string    |                 |    错误信息                                    |
 | data | object|    |
-| -	applId	|	Integer	  |	期货ID,2	|
+| -	applId	|	int	  |	期货ID,2	|
 | -	timestamp	|	Long	  |	委托时间	|
 | -	contractId	|	Long	  |	交易对ID、合约号	|
 | -	userId	|	Long	  |	用户ID	|
 | -	uuid	|	String	  |	委托编号	|
-| -	side	|	Integer	  |	买卖方向	|
-| -	closeQty	|	Integer	  |	委托量	|
+| -	side	|	int	  |	买卖方向	|
+| -	closeQty	|	int	  |	委托量	|
 | -	closePrice	|	Double	  |	委托量	|
 | -	closeAmt	|	Double	  |	委托量	|
 | -	filledCurrency	|	Double	  |	成交金额	|
-| -	filledQuantity	|	Integer	  |	成交量	|
-| -	canceledQuantity	|	Integer	  |	撤单数量	|
-| -	orderStatus	|	Integer	  |	委托状态 4 成交	|
+| -	filledQuantity	|	int	  |	成交量	|
+| -	canceledQuantity	|	int	  |	撤单数量	|
+| -	orderStatus	|	int	  |	委托状态 4 成交	|
 | -	feeRatio	|	Double	  |	手续费	|
-| -	marginType	|	Integer	  |	保证金类型	|
-| -	lossUserId	|	Integer	  |	强减用户（亏损方）	|
-| -	profitUserId	|	Integer	  |	 被强减用户（盈利方）	|
-| -	execId	|	Integer	  |	成交编号	|
-| -	lossMarginType	|	Integer	  |	强减用户（亏损方）保证金类型	|
-| -	profitMarginType	|	Integer	  |	被强减用户（盈利方）保证金类型	|
+| -	marginType	|	int	  |	保证金类型	|
+| -	lossUserId	|	int	  |	强减用户（亏损方）	|
+| -	profitUserId	|	int	  |	 被强减用户（盈利方）	|
+| -	execId	|	int	  |	成交编号	|
+| -	lossMarginType	|	int	  |	强减用户（亏损方）保证金类型	|
+| -	profitMarginType	|	int	  |	被强减用户（盈利方）保证金类型	|
 
 ## <span id="3">用户强平记录</span>
 获取全部成交记录
@@ -1160,7 +1157,7 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-| contractId| integer|N| 合约id|
+| contractId| int|N| 合约id|
 | endTime| string|N| 结束时间 |
 | startTime| string|N| 开始时间|
 | pageNum| string|N| 页数|
@@ -1174,26 +1171,26 @@ HTTP常见的错误码如下：
 | code            | int    | 0                     |     0：成功，其他失败                                               |
 | msg         | string    |                 |    错误信息                                    |
 | data | object|    |
-| -	applId	|	Integer	  |	期货ID,2	|
+| -	applId	|	int	  |	期货ID,2	|
 | -	timestamp	|	Long	  |	委托时间	|
 | -	contractId	|	Long	  |	交易对ID、合约号	|
 | -	userId	|	Long	  |	用户ID	|
 | -	uuid	|	String	  |	委托编号	|
-| -	side	|	Integer	  |	买卖方向	|
-| -	closeQty	|	Integer	  |	委托量	|
+| -	side	|	int	  |	买卖方向	|
+| -	closeQty	|	int	  |	委托量	|
 | -	closePrice	|	Double	  |	委托量	|
 | -	closeAmt	|	Double	  |	委托量	|
 | -	filledCurrency	|	Double	  |	成交金额	|
-| -	filledQuantity	|	Integer	  |	成交量	|
-| -	canceledQuantity	|	Integer	  |	撤单数量	|
-| -	orderStatus	|	Integer	  |	委托状态 4 成交	|
+| -	filledQuantity	|	int	  |	成交量	|
+| -	canceledQuantity	|	int	  |	撤单数量	|
+| -	orderStatus	|	int	  |	委托状态 4 成交	|
 | -	feeRatio	|	Double	  |	手续费	|
-| -	marginType	|	Integer	  |	保证金类型	|
-| -	lossUserId	|	Integer	  |	强减用户（亏损方）	|
-| -	profitUserId	|	Integer	  |	 被强减用户（盈利方）	|
-| -	execId	|	Integer	  |	成交编号	|
-| -	lossMarginType	|	Integer	  |	强减用户（亏损方）保证金类型	|
-| -	profitMarginType	|	Integer	  |	被强减用户（盈利方）保证金类型	|
+| -	marginType	|	int	  |	保证金类型	|
+| -	lossUserId	|	int	  |	强减用户（亏损方）	|
+| -	profitUserId	|	int	  |	 被强减用户（盈利方）	|
+| -	execId	|	int	  |	成交编号	|
+| -	lossMarginType	|	int	  |	强减用户（亏损方）保证金类型	|
+| -	profitMarginType	|	int	  |	被强减用户（盈利方）保证金类型	|
 
 
 
@@ -1232,7 +1229,7 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-| contractId| integer|Y| 合约id|
+| contractId| int|Y| 合约id|
 | range| string|Y| K线类型      1Min : 60000  3Min : 180000  5Min : 300000  15Min : 900000  30Min : 1800000  1Hour : 3600000  2Hour : 7200000  4Hour : 14400000  6Hour : 21600000  12Hour : 43200000  1Day : 86400000  1Week : 604800000 |
 | end| string|N| 截止时间 默认当前时间，传第一条记录的时间，可以实现滚动翻页|
 | limit| string|N| 查询记录条数  默认 1440 |
@@ -1290,7 +1287,7 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-| contractId| integer|Y| 合约id|
+| contractId| int|Y| 合约id|
 
 
 ### 响应数据: 
@@ -1351,7 +1348,7 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-| contractId| integer|Y| 合约id|
+| contractId| int|Y| 合约id|
 
 ### 响应数据: 
 
@@ -1697,7 +1694,7 @@ ranges的取值范围：
 
 #### 返回结构
 
->资产
+##### 资产
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
@@ -1710,7 +1707,7 @@ ranges的取值范围：
 |initMargin      |double  |  已占用保证金  |
 |closeProfitLoss      |double  |  已实现盈亏  |
 
->持仓
+#####持仓
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
@@ -1731,7 +1728,7 @@ ranges的取值范围：
 | ├─liquidationPrice      |double  |  预估强平价  |
 | ├─unRealizedProfit      |double  |  未实现盈亏  |
 
->持仓配置
+#####持仓配置
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
@@ -1742,7 +1739,7 @@ ranges的取值范围：
 | ├─leverage      |int  |  杠杆倍数, 0为自动模式  |
 | ├─isolated      |boolean  |  保证金类型 默认 false 全仓 |
 
->当前委托
+#####当前委托
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|

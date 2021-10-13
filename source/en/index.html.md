@@ -126,40 +126,60 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 **签名步骤**
     
 1、签名有效字符串为请求参数和请求体
->注意：请求参数和请求体不进行任何排序，直接拼接成字符串作为payload
-```
-实例1：GET请求查询字符串
- ?symbol=aaaa88&size=10
- String payload = “symbol=aaaa88&size=10”；
+注意：请求参数和请求体不进行任何排序，直接拼接成字符串作为payload。
 
-实例2 :Post请求体
- {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
+ ```java
+ String payload = “symbol=aaaa88&size=10”；
+ ```
+
+实例1：GET请求查询字符串
+
+ ?symbol=aaaa88&size=10
+
+```java
  String payload = “{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
  "timestamp":1627384801051}”；
+ ```
 
-实例3：混合请求
- ?symbol=aaaa88&size=10
+实例2 :Post请求体
+
  {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
+
+```java
  String payload = “symbol=aaaa88&size=10{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
  "timestamp":1627384801051}”；
-```
-2、使用签名函数对时间戳获得哈希值
->注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥   
-```
- String time = String.valueOf(X-CS-EXPIRES / 30_000);
+ ```
+
+实例3：混合请求
+ 
+ ?symbol=aaaa88&size=10
+ {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
+
+
+```java
+ String time = String.valueOf(X-CS-EXPIRES / 30000);
  hmacSha256.init(new SecretKeySpec(Secret_Key.getBytes(), "HmacSHA256"));
  byte[] hash = hmacSha256.doFinal(time.getBytes());
  String key = Hex.toHexString(hash);
 ```
-3、使用签名函数对签名有效字符串获得哈希值
-    
-```
+
+2、使用签名函数对时间戳计算哈希值
+
+>注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥(第3步中的变量key的值）
+
+
+
+
+```java
  hmacSha256.reset();
  hmacSha256.init(new SecretKeySpec(key.getBytes(), "HmacSHA256"));
  hash = hmacSha256.doFinal(payload.getBytes());
  String sign= Hex.toHexString(hash);
-
 ```
+
+3、使用签名函数对有效字符串计算哈希值
+
+>注意： key的值为第2步计算出来的哈希值。
 
 # API接入说明
 
@@ -192,7 +212,7 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 
 | 字段 | 数据类型  | 描述       |
 | ---- | -----  | ---------- |
-| code | string | 返回状态 |
+| code | int | 返回状态 |
 | message  | string | 状态或错误描述 |
 | data | object | 业务数据  |
 
@@ -266,16 +286,16 @@ HTTP常见的错误码如下：
 
 ### 响应数据
 
-|       code        |  type  |        example        |                      comment                       |
-| ---- | ----- | ---------- |---------- |
-| code | String      | |            |
-| message | String  | | 错误信息 |
-| data | Object []  | |  业务数据 |
-|- userId | Long  |  |用户id |
-|- accountId | Long  | | 账户id |
-|- currencyId | Integer  | | 币种id |
-|- balance | Decimal  | | 金额 |
-|- type | Decimal | |账户状态 1:可用 4:冻结 |
+|       code        |  type  |                  comment                       |
+| ---- | ----- |---------- |
+| code | int      |   0：成功，其他失败         |
+| message | String  | 错误信息 |
+| data | Object []  |  业务数据 |
+|- userId | Long  | 用户id |
+|- accountId | Long  | 账户id |
+|- currencyId | int  | 币种id |
+|- balance | Decimal  | 金额 |
+|- type | Decimal |账户状态 1:可用 4:冻结 |
 
 # 订单相关
 
@@ -303,27 +323,27 @@ HTTP常见的错误码如下：
 
 ### 响应数据
 
-|       code        |  type  |        example        |                      comment                       |
-| ----------------- | ------ | --------------------- | -------------------------------------------------- |
-| code            | int    | 0                     |     0：成功，其他失败                                               |
-| message         | string    |                 |    错误信息                                    |
-| data            |  list  |    | |
-| ├─ ordId            | long   | 11594964764657880     |   订单id            |
-| ├─ clOrdId            | string   | 7980b2ebf32042ba9dbfbddc555a3985     |   客户端订单id            |
-| ├─symbol | string |  |  币对 |
-| ├─baseCurrency| string |  | base币|
-| ├─quoteCurrency| string |  | quot币|
-| ├─ordPrice | string |  |  订单价格|
-| ├─ordQty| string |  | 订单数量|
-| ├─ordAmt| string |  | 订单金额|
-| ├─side | string |  |  BUY,SELL|
-| ├─cumAmt| string |  | |
-| ├─cumQty| string |  | |
-| ├─leavesQty| string |  | |
-| ├─ordStatus | string |  | NOT_FOUND,SUBMITTING,SUBMITTED,PARTIAL_FILLED,CANCELED,FILLED |
-| ├─ordType | string |  |  MARKET,LIMIT,POST_ONLY|
-| ├─timeInForce| string | GTC | GTC,IOC,FOK |
-| ├─timestamp| long |  | |
+|       code        |  type  |                         comment                       |
+| ----------------- | ------ |------------------------------- |
+| code            | int    |     0：成功，其他失败                                               |
+| message         | string    |         错误信息                                    |
+| data            |  list  |    |
+| ├─ ordId            | long      订单id            |
+| ├─ clOrdId            | string     |   客户端订单id            |
+| ├─symbol | string |   币对 |
+| ├─baseCurrency| string |   base币|
+| ├─quoteCurrency| string |   quot币|
+| ├─ordPrice | string |    订单价格|
+| ├─ordQty| string |   订单数量|
+| ├─ordAmt| string |   订单金额|
+| ├─side | string |    BUY,SELL|
+| ├─cumAmt| string | 成交金额  |
+| ├─cumQty| string |  成交数量 |
+| ├─leavesQty| string |  剩余数量  |
+| ├─ordStatus | string |  订单状态 NOT_FOUND,SUBMITTING,SUBMITTED,PARTIAL_FILLED,CANCELED,FILLED |
+| ├─ordType | string |   MARKET,LIMIT,POST_ONLY|
+| ├─timeInForce| string | GTC,IOC,FOK |
+| ├─timestamp| long | 时间戳 |
 
 
 ## <span id="3">获取用户最新成交</span>
@@ -348,29 +368,29 @@ HTTP常见的错误码如下：
 
 ### 响应数据
 
-|       code        |  type  |        example        |                      comment                       |
-| ----------------- | ------ | --------------------- | -------------------------------------------------- |
-| code            | int    | 0                     |     0：成功，其他失败                                               |
-| message         | string    |                 |    错误信息                                    |
-| data | object|  | |
-| ├─accountId| long| | |
-| ├─instrumentId| int | | |
-| ├─baseCurrencyId| int | | |
-| ├─quoteCurrencyId| int | | |
-| ├─matchRole| int | | TAKER(1),MAKER(-1) |
-| ├─feeCurrencyId| int | | |
-| ├─role| string | | TAKER,MAKER |
-| ├─execQty| string | | |
-| ├─orderState| int | | |
-| ├─matchId| long | | |
-| ├─orderId| long | | |
-| ├─side| int | | BUY(1), SELL(-1) |
-| ├─execAmt| string | | |
-| ├─selfDealingQty| string | | |
-| ├─tradeId| long | | |
-| ├─fee| string | | |
-| ├─matchTime| long  | | |
-| ├─remainingQty| string | | |
+|       code        |  type  |                      comment                       |
+| ----------------- | ------ |---------------------------------- |
+| code            | int    |  0：成功，其他失败                                               |
+| message         | string    |   错误信息                                    |
+| data | object|   |
+| ├─accountId| long| 账户id |
+| ├─instrumentId| int | 币对id |
+| ├─baseCurrencyId| int | 基础货币 BTC |
+| ├─quoteCurrencyId| int | 计价货币USDT |
+| ├─matchRole| int | 撮合角色 TAKER(1),MAKER(-1) |
+| ├─feeCurrencyId| int | 手续费币种id |
+| ├─role| String | 角色 TAKER,MAKER |
+| ├─execQty| String | 成交数量 |
+| ├─orderState| int | 订单状态 |
+| ├─matchId| long | 撮合id |
+| ├─orderId| long | 订单id |
+| ├─side| int | 订单方向 | BUY(1), SELL(-1) |
+| ├─execAmt| String | 成交额 |
+| ├─selfDealingQty| String | 自成交额 |
+| ├─tradeId| long | 成交id |
+| ├─fee| String | 手续费 |
+| ├─matchTime| long  | 撮合时间 |
+| ├─remainingQty| String | 剩余数量 |
 
 
 ##  <span id="4">取消委托单</span>
@@ -388,13 +408,13 @@ HTTP常见的错误码如下：
 
 ### 响应数据
 
-|       code        |  type  |        example        |                      comment                       |
-| ----------------- | ------ | --------------------- | -------------------------------------------------- |
-| code            | int    | 0                     |     0：成功，其他失败                                               |
-| message         | string    |                 |    错误信息                                    |
-| data            |    |      |   返回数据                                                 |
-| ├─state| string|  | |
-| ├─ordId| long |  | |
+|       code        |  type  |                      comment                       |
+| ----------------- | ------ |--------------------------------------- |
+| code            | int    |     0：成功，其他失败                                               |
+| message         | string    |   错误信息                                    |
+| data            |    |   返回数据                    |
+| ├─state| string|   |
+| ├─ordId| long |   |
 
 ##  <span id="5">一键撤单</span>
 
@@ -410,10 +430,10 @@ HTTP常见的错误码如下：
 
 ### 响应数据
 
-|       code        |  type  |        example        |                      comment                       |
-| ----------------- | ------ | --------------------- | -------------------------------------------------- |
-| code            | int    | 0                     |     0：成功，其他失败                                               |
-| message         | string    |                 |    错误信息                                    |
+|       code        |  type  |                      comment                       |
+| ----------------- | ------ |--------------------------------------- |
+| code            | int    |     0：成功，其他失败                                               |
+| message         | string    |    错误信息                                    |
 
 
 ## <span id="6">创建订单</span>
@@ -434,7 +454,7 @@ HTTP常见的错误码如下：
 | ordPrice    | long     | false    | 限价单必选 |
 | ordQty    | long     | false    | 限价单必选，市价卖单必选 |
 | ordAmt    | long     | false    | 市价买单必选 |
-| timestamp    | long     | true    |  |                                                                    
+| timestamp    | long     | true    |时间戳  |                                                                    
 
 
 > 响应
@@ -450,12 +470,12 @@ HTTP常见的错误码如下：
 
 ### 响应数据
 
-|       code        |  type  |        example        |                      comment                       |
-| ----------------- | ------ | --------------------- | -------------------------------------------------- |
-| code            | int    | 0                     |     0：成功，其他失败                                               |
-| message         | string    |                 |    错误信息                                    |
-| data            |     |      |   返回数据                                                 |
-| ├─ ordId            | long   | 11594964764657880     |   订单id                                                 |
+|       code        |  type  |                    comment                       |
+| ----------------- | ------ |------------------------------- |
+| code            | int     |     0：成功，其他失败                                               |
+| message         | string    |    错误信息                                    |
+| data            |     |   返回数据                                                 |
+| ├─ ordId            | long   |  订单id                                                 |
 
 ## <span id="13">批量下单</span>
 批量下单
@@ -477,22 +497,16 @@ HTTP常见的错误码如下：
 | ├─ ordQty    | long     | false    | 限价单必选，市价卖单必选 |
 | ├─ ordAmt    | long     | false    | 市价买单必选 |
 
-> 响应
-
-```json
-
-
-```
 
 ### 响应数据
 
-|       code        |  type  |        example        |                      comment                       |
-| ----------------- | ------ | --------------------- | -------------------------------------------------- |
-| code            | int    | 0                     |     0：成功，其他失败                                               |
-| message         | string    |                 |    错误信息                                    |
-| data            |  list  |      |   返回数据                                                 |
-| ├─ ordId            | long   | 11594964764657880     |   订单id            |
-| ├─ clOrdId            | string   | 7980b2ebf32042ba9dbfbddc555a3985     |   客户端订单id            |
+|       code        |  type  |                     comment                       |
+| ----------------- | ------ | ---------------------------------------- |
+| code            | int    |    0：成功，其他失败                                               |
+| message         | string        |    错误信息                                    |
+| data            |  list    |   返回数据                                                 |
+| ├─ ordId            | long     |   订单id            |
+| ├─ clOrdId            | string     |   客户端订单id            |
 | ├─errno| int|   |  |
 | ├─errMsg| string| | |
 
@@ -518,13 +532,13 @@ HTTP常见的错误码如下：
 
 ### 响应数据
 
-|       code        |  type  |        example        |                      comment                       |
-| ----------------- | ------ | --------------------- | -------------------------------------------------- |
-| code         | string    |0                |    正常返回信息                                |
-| message         | string    |order.id-required                 |    错误信息                                   |
-| data            | Object   |                    |                                             |
-| --success|   List   | [1,2,3]                    |     成功的订单id集合                                         |
-| --reject  |    List   | [1,2,3]                                  |  失败的订单id集合                      |
+|       code        |  type  |          comment                       |
+| ----------------- | ------ |---------------------------------------- |
+| code         | string    |   0：成功，其他失败                               |
+| message         | string    |    错误信息                                   |
+| data            | Object   |                                      |
+| --success|   List   |     成功的订单id集合                                         |
+| --reject  |    List     |  失败的订单id集合                      |
 
 
 ## <span id="14">.获取订单信息</span>
@@ -549,29 +563,30 @@ HTTP常见的错误码如下：
 
 ### 响应数据:
 
-|       code        |  type  |        example        |                      comment                       |
-| ----------------- | ------ | --------------------- | -------------------------------------------------- |
-| code            | int    | 0                     |     0：成功，其他失败                                               |
-| message         | string    |                 |    错误信息                                    |
-| data | object|  | |
-| ├─ordId| long |  | |
-| ├─clOrdId| string |  | |
-| ├─accountId| long |  | |
-| ├─symbol | string |  |   |
-| ├─baseCurrency| string |  | |
-| ├─quoteCurrency| string |  | |
-| ├─ordPrice | string |  | |
-| ├─ordQty| string |  | |
-| ├─ordAmt| string |  | |
-| ├─side | string |  | BUY,SELL|
-| ├─cumAmt| string |  | |
-| ├─cumQty| string |  | |
-| ├─leavesQty| string |  | |
-| ├─ordStatus | string |  | NOT_FOUND,SUBMITTING,SUBMITTED,PARTIAL_FILLED,CANCELED,FILLED |
-| ├─ordType | string |   | MARKET,LIMIT,POST_ONLY |
-| ├─timeInForce| string | GTC |   GTC,IOC,FOK |
-| ├─timestamp| long |  | |
-| ├─avgPrice| long |  | |
+|       code        |  type  |               comment                       |
+| ----------------- | ------ | -------------------------------------- |
+| code            | int     |     0：成功，其他失败                                               |
+| message         | string    |    错误信息                                    |
+| data | object|  | 
+| ├─ordId| long | 订单ID |
+| ├─clOrdId| String | 客户端订单ID |
+| ├─accountId| long | 账户ID |
+| ├─symbol | String |   | 交易对名称 |
+| ├─baseCurrency| String | 基础货币 |
+| ├─quoteCurrency| String | 计价货币 |
+| ├─ordPrice | String | 价格 |
+| ├─ordQty| String | 数量 |
+| ├─ordAmt| String | 金额 |
+| ├─side | Stirng | 方向 BUY,SELL|
+| ├─cumAmt| String | 累计成交额 |
+| ├─cumQty| String | 累计成交量 |
+| ├─leavesQty| String | 剩余数量 |
+| ├─ordStatus | Stirng | 状态 NOT_FOUND, REJECTED, SUBMITTING, SUBMITTED, PARTIAL_FILLED, REPLACING, REPLACED, CANCELING, CANCELED, EXPIRED, STOPPED, FILLED |
+| ├─ordType | Stirng | 订单类型 MARKET,LIMIT,POST_ONLY  |
+| ├─flags| Stirng | 订单类型 POST_ONLY,REDUCE_ONLY,HIDDEN |
+| ├─timeInForce| Stirng | 成交限制类型 GTC,IOC,FOK |
+| ├─timestamp| long | 订单时间 毫秒 |
+| ├─avgPrice| long | 成交均价  |
 
 
 # 行情相关
@@ -612,14 +627,14 @@ HTTP常见的错误码如下：
 
 ### 响应数据: 
 
-|       code        |  type  |        example        |                      comment                       |
-| ----------------- | ------ | --------------------- | -------------------------------------------------- |
-| code            | int    | 0                     |     0：成功，其他失败                                               |
-| message         | string    |                 |    错误信息                                    |
-| data | List[]|  | |
-| ├─id| long |  | |
-| ├─symbol| string |  |交易对 |
-| ├─price| string |  |价格 |
+|       code        |  type   |                      comment                       |
+| ----------------- | ------ ---------------------------------------- |
+| code            | int    |     0：成功，其他失败                                               |
+| message         | string       |    错误信息                                    |
+| data | List[]|   |
+| ├─id| long |  |
+| ├─symbol| string  |交易对 |
+| ├─price| string  |价格 |
 
 
 
