@@ -605,8 +605,8 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>code</td>
-<td>string</td>
-<td>返回状态</td>
+<td>int</td>
+<td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>msg</td>
@@ -763,8 +763,8 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>code</td>
-<td>String</td>
-<td></td>
+<td>int</td>
+<td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>msg</td>
@@ -792,22 +792,14 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>版本号</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Currency</p>
-</blockquote>
-
+<h4 id='currency'>Currency</h4>
 <p>|       code        |  type  |                       comment                       |
  | ---- | ----- | ---------- |
  | currencyId | int  | 币种id |
  | name | String  | 币种名称 |
- | disableTransferIn | boolean | N | 是否可以划转至合约  默认false 能划转 |
- | disableTransferOut | boolean | N | 是否可以划转至现货  默认false 能划转 |</p>
-
-<blockquote>
-<p>Contract</p>
-</blockquote>
-
+ | disableTransferIn | boolean | 是否可以划转至合约  默认false 能划转 |
+ | disableTransferOut | boolean | 是否可以划转至现货  默认false 能划转 |</p>
+<h4 id='contract'>Contract</h4>
 <p>|       code        |  type  |                       comment                       |
  | ---- | ----- | ---------- | 
  | contractId | int  | 合约id | 
@@ -825,15 +817,11 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
  | makerFeeRate | BigDecimal  | Maker手续费率 | 
  | contractSize | BigDecimal  | 合约单位 |<br>
  | minMaintRate | BigDecimal  | 最小维持保证金率 | 
- |fundingInterval | Integer  | 互换频率 单位 秒  | 
- |weight | Integer  |排序权重  倒叙 | 
+ |fundingInterval | int  | 互换频率 单位 秒  | 
+ |weight | int  |排序权重  倒叙 | 
  | tags | String[] |  标签    mock, hot, new, ... |<br>
  | riskLimits | RiskLimit[]  | 风险限额 |  </p>
-
-<blockquote>
-<p>RiskLimit</p>
-</blockquote>
-
+<h4 id='risklimit'>RiskLimit</h4>
 <p>|       code  |  type  |   comment    |
  | ---- | ----- | ---------- | 
  | maxSize | long|  风险限额张数 |
@@ -900,8 +888,8 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>code</td>
-<td>String</td>
-<td></td>
+<td>int</td>
+<td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>msg</td>
@@ -1061,8 +1049,8 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>code</td>
-<td>String</td>
-<td></td>
+<td>int</td>
+<td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>msg</td>
@@ -1165,11 +1153,6 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>标记价格 * 持仓数量 * 合约面值</td>
 </tr>
 <tr>
-<td>- available</td>
-<td>string</td>
-<td>可用余额  deprecated</td>
-</tr>
-<tr>
 <td>- accountId</td>
 <td>string</td>
 <td>账户id</td>
@@ -1178,16 +1161,6 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>- accountType</td>
 <td>string</td>
 <td>账户类型  1  主账户</td>
-</tr>
-<tr>
-<td>- forwardCross</td>
-<td>string</td>
-<td>forwardCross  deprecated</td>
-</tr>
-<tr>
-<td>- crossMargin</td>
-<td>string</td>
-<td>crossMargin deprecated</td>
 </tr>
 </tbody></table>
 <h2 id='b773f9957e'><span id="1">调整保证金</span></h2><h3 id='http-4'>HTTP请求:</h3>
@@ -1212,13 +1185,13 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>contractId</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>交易对ID</td>
 </tr>
 <tr>
 <td>margin</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>保证金额（&gt;0 : 增加保证金，&lt;0 ：减少保证金）</td>
 </tr>
@@ -1233,8 +1206,8 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>code</td>
-<td>String</td>
-<td></td>
+<td>int</td>
+<td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>msg</td>
@@ -1269,19 +1242,19 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>contractId</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>交易对ID</td>
 </tr>
 <tr>
 <td>leverage</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>杠杆倍数, 0为自动模式  逐仓 不能为0</td>
 </tr>
 <tr>
 <td>isolated</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>保证金类型 默认 false 全仓  true 逐仓</td>
 </tr>
@@ -1296,8 +1269,8 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>code</td>
-<td>String</td>
-<td></td>
+<td>int</td>
+<td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>msg</td>
@@ -1327,7 +1300,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>accountType</td>
-<td>integer</td>
+<td>int</td>
 <td>N</td>
 <td>账号类型</td>
 </tr>
@@ -1339,7 +1312,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>contractId</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>合约ID</td>
 </tr>
@@ -1351,31 +1324,31 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>leverage</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>保证金倍数</td>
 </tr>
 <tr>
 <td>marginType</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>保证金类型，全仓1，逐仓2</td>
 </tr>
 <tr>
 <td>orderSubType</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>0（默认值），1（被动委托），2（最近价触发条件委托），3（指数触发条件委托），4（标记价触发条件委托）</td>
 </tr>
 <tr>
 <td>orderType</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>委托类型，1（限价），3（市价）</td>
 </tr>
 <tr>
 <td>positionEffect</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>开平标志，开仓1，平仓2  平仓单必须传2</td>
 </tr>
@@ -1393,7 +1366,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>side</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>买1，卖-1</td>
 </tr>
@@ -1524,7 +1497,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- accountType</td>
-<td>integer</td>
+<td>int</td>
 <td>账号类型</td>
 </tr>
 <tr>
@@ -1534,7 +1507,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- contractId</td>
-<td>integer</td>
+<td>int</td>
 <td>合约ID</td>
 </tr>
 <tr>
@@ -1544,12 +1517,12 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- leverage</td>
-<td>integer</td>
+<td>int</td>
 <td>保证金倍数</td>
 </tr>
 <tr>
 <td>- marginType</td>
-<td>integer</td>
+<td>int</td>
 <td>保证金类型，全仓1，逐仓2</td>
 </tr>
 <tr>
@@ -1559,17 +1532,17 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- orderSubType</td>
-<td>integer</td>
+<td>int</td>
 <td>0（默认值），1（被动委托），2（最近价触发条件委托），3（指数触发条件委托），4（标记价触发条件委托）</td>
 </tr>
 <tr>
 <td>- orderType</td>
-<td>integer</td>
+<td>int</td>
 <td>委托类型，1（限价），3（市价）</td>
 </tr>
 <tr>
 <td>- positionEffect</td>
-<td>integer</td>
+<td>int</td>
 <td>开平标志，开仓1，平仓2</td>
 </tr>
 <tr>
@@ -1584,12 +1557,12 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- side</td>
-<td>integer</td>
+<td>int</td>
 <td>买1，卖-1</td>
 </tr>
 <tr>
 <td>- stopCondition</td>
-<td>integer</td>
+<td>int</td>
 <td>止损,order_type等于3（市价）时非必填；值域：1（止盈，未启用），2（止损，未启用），3（只减仓，未启用） //前端不传</td>
 </tr>
 <tr>
@@ -1620,7 +1593,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>contractId</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>合约号</td>
 </tr>
@@ -1679,7 +1652,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>contractId</td>
-<td>integer</td>
+<td>int</td>
 <td>N</td>
 <td>不传撤销所有币对订单</td>
 </tr>
@@ -1746,7 +1719,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- contractId</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>合约ID</td>
 </tr>
@@ -1758,25 +1731,25 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- marginType</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>保证金类型，全仓1，逐仓2</td>
 </tr>
 <tr>
 <td>- orderSubType</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>0（默认值），1（被动委托）</td>
 </tr>
 <tr>
 <td>- orderType</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>委托类型，1（限价），3（市价）</td>
 </tr>
 <tr>
 <td>- positionEffect</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>开平标志，开仓1，平仓2  平仓单必须传2</td>
 </tr>
@@ -1794,7 +1767,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- side</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>买1，卖-1</td>
 </tr>
@@ -1909,7 +1882,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- contractId</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>合约ID</td>
 </tr>
@@ -2048,7 +2021,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>contractId</td>
-<td>integer</td>
+<td>int</td>
 <td>N</td>
 <td>合约id</td>
 </tr>
@@ -2108,7 +2081,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- applId</td>
-<td>Integer</td>
+<td>int</td>
 <td>期货ID,2</td>
 </tr>
 <tr>
@@ -2153,7 +2126,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- matchQty</td>
-<td>Integer</td>
+<td>int</td>
 <td>成交数量</td>
 </tr>
 <tr>
@@ -2173,12 +2146,12 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- takerSide</td>
-<td>Integer</td>
+<td>int</td>
 <td>Taker方向,1: 买方吃单，-1：卖方吃单</td>
 </tr>
 <tr>
 <td>- side</td>
-<td>Integer</td>
+<td>int</td>
 <td>买卖方向</td>
 </tr>
 <tr>
@@ -2188,22 +2161,22 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- bidPositionEffect</td>
-<td>Integer</td>
+<td>int</td>
 <td>买方开平标志</td>
 </tr>
 <tr>
 <td>- askPositionEffect</td>
-<td>Integer</td>
+<td>int</td>
 <td>卖方开平标志</td>
 </tr>
 <tr>
 <td>- bidMarginType</td>
-<td>Integer</td>
+<td>int</td>
 <td>买方保证金类型</td>
 </tr>
 <tr>
 <td>- askMarginType</td>
-<td>Integer</td>
+<td>int</td>
 <td>卖方保证金类型</td>
 </tr>
 <tr>
@@ -2218,17 +2191,17 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- bidMatchType</td>
-<td>Integer</td>
+<td>int</td>
 <td>买方成交类型：0普通成交1强平成交2强减成交（破产方）3强减</td>
 </tr>
 <tr>
 <td>- askMatchType</td>
-<td>Integer</td>
+<td>int</td>
 <td>卖方成交类型：0普通成交1强平成交2强减成交（破产方）3强减</td>
 </tr>
 <tr>
 <td>- bidPnlType</td>
-<td>Integer</td>
+<td>int</td>
 <td>买方盈亏类型：0正常成交1正常平仓2强平3强减</td>
 </tr>
 <tr>
@@ -2238,7 +2211,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- askPnlType</td>
-<td>Integer</td>
+<td>int</td>
 <td>卖方盈亏类型：0正常成交1正常平仓2强平3强减</td>
 </tr>
 <tr>
@@ -2303,7 +2276,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>contractId</td>
-<td>integer</td>
+<td>int</td>
 <td>N</td>
 <td>合约id</td>
 </tr>
@@ -2363,7 +2336,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- applId</td>
-<td>Integer</td>
+<td>int</td>
 <td>期货ID,2</td>
 </tr>
 <tr>
@@ -2388,12 +2361,12 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- side</td>
-<td>Integer</td>
+<td>int</td>
 <td>买卖方向</td>
 </tr>
 <tr>
 <td>- closeQty</td>
-<td>Integer</td>
+<td>int</td>
 <td>委托量</td>
 </tr>
 <tr>
@@ -2413,17 +2386,17 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- filledQuantity</td>
-<td>Integer</td>
+<td>int</td>
 <td>成交量</td>
 </tr>
 <tr>
 <td>- canceledQuantity</td>
-<td>Integer</td>
+<td>int</td>
 <td>撤单数量</td>
 </tr>
 <tr>
 <td>- orderStatus</td>
-<td>Integer</td>
+<td>int</td>
 <td>委托状态 4 成交</td>
 </tr>
 <tr>
@@ -2433,32 +2406,32 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- marginType</td>
-<td>Integer</td>
+<td>int</td>
 <td>保证金类型</td>
 </tr>
 <tr>
 <td>- lossUserId</td>
-<td>Integer</td>
+<td>int</td>
 <td>强减用户（亏损方）</td>
 </tr>
 <tr>
 <td>- profitUserId</td>
-<td>Integer</td>
+<td>int</td>
 <td>被强减用户（盈利方）</td>
 </tr>
 <tr>
 <td>- execId</td>
-<td>Integer</td>
+<td>int</td>
 <td>成交编号</td>
 </tr>
 <tr>
 <td>- lossMarginType</td>
-<td>Integer</td>
+<td>int</td>
 <td>强减用户（亏损方）保证金类型</td>
 </tr>
 <tr>
 <td>- profitMarginType</td>
-<td>Integer</td>
+<td>int</td>
 <td>被强减用户（盈利方）保证金类型</td>
 </tr>
 </tbody></table>
@@ -2518,7 +2491,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>contractId</td>
-<td>integer</td>
+<td>int</td>
 <td>N</td>
 <td>合约id</td>
 </tr>
@@ -2578,7 +2551,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- applId</td>
-<td>Integer</td>
+<td>int</td>
 <td>期货ID,2</td>
 </tr>
 <tr>
@@ -2603,12 +2576,12 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- side</td>
-<td>Integer</td>
+<td>int</td>
 <td>买卖方向</td>
 </tr>
 <tr>
 <td>- closeQty</td>
-<td>Integer</td>
+<td>int</td>
 <td>委托量</td>
 </tr>
 <tr>
@@ -2628,17 +2601,17 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- filledQuantity</td>
-<td>Integer</td>
+<td>int</td>
 <td>成交量</td>
 </tr>
 <tr>
 <td>- canceledQuantity</td>
-<td>Integer</td>
+<td>int</td>
 <td>撤单数量</td>
 </tr>
 <tr>
 <td>- orderStatus</td>
-<td>Integer</td>
+<td>int</td>
 <td>委托状态 4 成交</td>
 </tr>
 <tr>
@@ -2648,32 +2621,32 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 <tr>
 <td>- marginType</td>
-<td>Integer</td>
+<td>int</td>
 <td>保证金类型</td>
 </tr>
 <tr>
 <td>- lossUserId</td>
-<td>Integer</td>
+<td>int</td>
 <td>强减用户（亏损方）</td>
 </tr>
 <tr>
 <td>- profitUserId</td>
-<td>Integer</td>
+<td>int</td>
 <td>被强减用户（盈利方）</td>
 </tr>
 <tr>
 <td>- execId</td>
-<td>Integer</td>
+<td>int</td>
 <td>成交编号</td>
 </tr>
 <tr>
 <td>- lossMarginType</td>
-<td>Integer</td>
+<td>int</td>
 <td>强减用户（亏损方）保证金类型</td>
 </tr>
 <tr>
 <td>- profitMarginType</td>
-<td>Integer</td>
+<td>int</td>
 <td>被强减用户（盈利方）保证金类型</td>
 </tr>
 </tbody></table>
@@ -2714,7 +2687,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>contractId</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>合约id</td>
 </tr>
@@ -2814,7 +2787,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>contractId</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>合约id</td>
 </tr>
@@ -2953,7 +2926,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>contractId</td>
-<td>integer</td>
+<td>int</td>
 <td>Y</td>
 <td>合约id</td>
 </tr>
@@ -3536,11 +3509,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
     }
 }
 </code></p>
-<h4 id='4ea192405d-5'>返回结构</h4>
-<blockquote>
-<p>资产</p>
-</blockquote>
-
+<h4 id='4ea192405d-5'>返回结构</h4><h5 id='713fd96fb2'>资产</h5>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3589,11 +3558,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <td>已实现盈亏</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>持仓</p>
-</blockquote>
-
+<h5 id='c4b496308a'>持仓</h5>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3682,11 +3647,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <td>未实现盈亏</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>持仓配置</p>
-</blockquote>
-
+<h5 id='7f435f378c'>持仓配置</h5>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3725,11 +3686,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <td>保证金类型 默认 false 全仓</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>当前委托</p>
-</blockquote>
-
+<h5 id='7454c3387f'>当前委托</h5>
 <table><thead>
 <tr>
 <th>code</th>

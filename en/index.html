@@ -511,45 +511,47 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 
 <p><strong>签名步骤</strong></p>
 
-<p>1、签名有效字符串为请求参数和请求体</p>
+<p>1、签名有效字符串为请求参数和请求体
+注意：请求参数和请求体不进行任何排序，直接拼接成字符串作为payload。</p>
+<div class="highlight"><pre class="highlight java tab-java"><code> <span class="nc">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="err">“</span><span class="n">symbol</span><span class="o">=</span><span class="n">aaaa88</span><span class="o">&amp;</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="err">”；</span>
+</code></pre></div>
+<p>实例1：GET请求查询字符串</p>
+
+<p>?symbol=aaaa88&amp;size=10</p>
+<div class="highlight"><pre class="highlight java tab-java"><code> <span class="nc">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="err">“</span><span class="o">{</span><span class="s">"symbol"</span><span class="o">:</span><span class="s">"aaaa88"</span><span class="o">,</span><span class="s">"side"</span><span class="o">:</span><span class="s">"SELL"</span><span class="o">,</span><span class="s">"ordType"</span><span class="o">:</span><span class="s">"LIMIT"</span><span class="o">,</span><span class="s">"ordPrice"</span><span class="o">:</span><span class="mi">2</span><span class="o">,</span><span class="s">"ordQty"</span><span class="o">:</span><span class="mi">1</span><span class="o">,</span>
+ <span class="s">"timestamp"</span><span class="o">:</span><span class="mi">1627384801051</span><span class="o">}</span><span class="err">”；</span>
+</code></pre></div>
+<p>实例2 :Post请求体</p>
+
+<p>{&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,&quot;timestamp&quot;:1627384801051}</p>
+<div class="highlight"><pre class="highlight java tab-java"><code> <span class="nc">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="err">“</span><span class="n">symbol</span><span class="o">=</span><span class="n">aaaa88</span><span class="o">&amp;</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="o">{</span><span class="s">"symbol"</span><span class="o">:</span><span class="s">"aaaa88"</span><span class="o">,</span><span class="s">"side"</span><span class="o">:</span><span class="s">"SELL"</span><span class="o">,</span><span class="s">"ordType"</span><span class="o">:</span><span class="s">"LIMIT"</span><span class="o">,</span><span class="s">"ordPrice"</span><span class="o">:</span><span class="mi">2</span><span class="o">,</span><span class="s">"ordQty"</span><span class="o">:</span><span class="mi">1</span><span class="o">,</span>
+ <span class="s">"timestamp"</span><span class="o">:</span><span class="mi">1627384801051</span><span class="o">}</span><span class="err">”；</span>
+</code></pre></div>
+<p>实例3：混合请求</p>
+
+<p>?symbol=aaaa88&amp;size=10
+ {&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,&quot;timestamp&quot;:1627384801051}</p>
+<div class="highlight"><pre class="highlight java tab-java"><code> <span class="nc">String</span> <span class="n">time</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="no">X</span><span class="o">-</span><span class="no">CS</span><span class="o">-</span><span class="no">EXPIRES</span> <span class="o">/</span> <span class="mi">30000</span><span class="o">);</span>
+ <span class="n">hmacSha256</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">new</span> <span class="nc">SecretKeySpec</span><span class="o">(</span><span class="n">Secret_Key</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(),</span> <span class="s">"HmacSHA256"</span><span class="o">));</span>
+ <span class="kt">byte</span><span class="o">[]</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">hmacSha256</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">time</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+ <span class="nc">String</span> <span class="n">key</span> <span class="o">=</span> <span class="nc">Hex</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
+</code></pre></div>
+<p>2、使用签名函数对时间戳计算哈希值</p>
 
 <blockquote>
-<p>注意：请求参数和请求体不进行任何排序，直接拼接成字符串作为payload
-```
-实例1：GET请求查询字符串
- ?symbol=aaaa88&amp;size=10
- String payload = “symbol=aaaa88&amp;size=10”；</p>
+<p>注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥(第3步中的变量key的值）</p>
 </blockquote>
-
-<p>实例2 :Post请求体
- {&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,&quot;timestamp&quot;:1627384801051}
- String payload = “{&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,
- &quot;timestamp&quot;:1627384801051}”；</p>
-
-<p>实例3：混合请求
- ?symbol=aaaa88&amp;size=10
- {&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,&quot;timestamp&quot;:1627384801051}
- String payload = “symbol=aaaa88&amp;size=10{&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,
- &quot;timestamp&quot;:1627384801051}”；
-```
-2、使用签名函数对时间戳获得哈希值</p>
+<div class="highlight"><pre class="highlight java tab-java"><code> <span class="n">hmacSha256</span><span class="o">.</span><span class="na">reset</span><span class="o">();</span>
+ <span class="n">hmacSha256</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">new</span> <span class="nc">SecretKeySpec</span><span class="o">(</span><span class="n">key</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(),</span> <span class="s">"HmacSHA256"</span><span class="o">));</span>
+ <span class="n">hash</span> <span class="o">=</span> <span class="n">hmacSha256</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">payload</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+ <span class="nc">String</span> <span class="n">sign</span><span class="o">=</span> <span class="nc">Hex</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
+</code></pre></div>
+<p>3、使用签名函数对有效字符串计算哈希值</p>
 
 <blockquote>
-<p>注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥<br>
-<code>
- String time = String.valueOf(X-CS-EXPIRES / 30_000);
- hmacSha256.init(new SecretKeySpec(Secret_Key.getBytes(), &quot;HmacSHA256&quot;));
- byte[] hash = hmacSha256.doFinal(time.getBytes());
- String key = Hex.toHexString(hash);
-</code>
-3、使用签名函数对签名有效字符串获得哈希值</p>
+<p>注意： key的值为第2步计算出来的哈希值。</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code> hmacSha256.reset();
- hmacSha256.init(new SecretKeySpec(key.getBytes(), "HmacSHA256"));
- hash = hmacSha256.doFinal(payload.getBytes());
- String sign= Hex.toHexString(hash);
-
-</code></pre></div><h1 id='api'>API接入说明</h1><h2 id='5b7654a66a'><span id="a3">请求格式</span></h2>
+<h1 id='api'>API接入说明</h1><h2 id='5b7654a66a'><span id="a3">请求格式</span></h2>
 <p>所有的API请求都是restful，目前只有两种方法：GET和POST。
 - GET请求：所有的参数都在路径参数里
 - POST请求: 路径里可以设置参数，参数可以以JSON格式发送在请求主体（body）里，没有参数的需要传{}</p>
@@ -583,7 +585,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </thead><tbody>
 <tr>
 <td>code</td>
-<td>string</td>
+<td>int</td>
 <td>返回状态</td>
 </tr>
 <tr>
@@ -679,56 +681,47 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <th>code</th>
 <th>type</th>
-<th>example</th>
 <th>comment</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>code</td>
-<td>String</td>
-<td></td>
-<td></td>
+<td>int</td>
+<td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>message</td>
 <td>String</td>
-<td></td>
 <td>错误信息</td>
 </tr>
 <tr>
 <td>data</td>
 <td>Object []</td>
-<td></td>
 <td>业务数据</td>
 </tr>
 <tr>
 <td>- userId</td>
 <td>Long</td>
-<td></td>
 <td>用户id</td>
 </tr>
 <tr>
 <td>- accountId</td>
 <td>Long</td>
-<td></td>
 <td>账户id</td>
 </tr>
 <tr>
 <td>- currencyId</td>
-<td>Integer</td>
-<td></td>
+<td>int</td>
 <td>币种id</td>
 </tr>
 <tr>
 <td>- balance</td>
 <td>Decimal</td>
-<td></td>
 <td>金额</td>
 </tr>
 <tr>
 <td>- type</td>
 <td>Decimal</td>
-<td></td>
 <td>账户状态 1:可用 4:冻结</td>
 </tr>
 </tbody></table>
@@ -764,123 +757,103 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <th>code</th>
 <th>type</th>
-<th>example</th>
 <th>comment</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0</td>
 <td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>message</td>
 <td>string</td>
-<td></td>
 <td>错误信息</td>
 </tr>
 <tr>
 <td>data</td>
 <td>list</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>├─ ordId</td>
-<td>long</td>
-<td>11594964764657880</td>
-<td>订单id</td>
+<td>long      订单id</td>
+<td></td>
 </tr>
 <tr>
 <td>├─ clOrdId</td>
 <td>string</td>
-<td>7980b2ebf32042ba9dbfbddc555a3985</td>
 <td>客户端订单id</td>
 </tr>
 <tr>
 <td>├─symbol</td>
 <td>string</td>
-<td></td>
 <td>币对</td>
 </tr>
 <tr>
 <td>├─baseCurrency</td>
 <td>string</td>
-<td></td>
 <td>base币</td>
 </tr>
 <tr>
 <td>├─quoteCurrency</td>
 <td>string</td>
-<td></td>
 <td>quot币</td>
 </tr>
 <tr>
 <td>├─ordPrice</td>
 <td>string</td>
-<td></td>
 <td>订单价格</td>
 </tr>
 <tr>
 <td>├─ordQty</td>
 <td>string</td>
-<td></td>
 <td>订单数量</td>
 </tr>
 <tr>
 <td>├─ordAmt</td>
 <td>string</td>
-<td></td>
 <td>订单金额</td>
 </tr>
 <tr>
 <td>├─side</td>
 <td>string</td>
-<td></td>
 <td>BUY,SELL</td>
 </tr>
 <tr>
 <td>├─cumAmt</td>
 <td>string</td>
-<td></td>
-<td></td>
+<td>成交金额</td>
 </tr>
 <tr>
 <td>├─cumQty</td>
 <td>string</td>
-<td></td>
-<td></td>
+<td>成交数量</td>
 </tr>
 <tr>
 <td>├─leavesQty</td>
 <td>string</td>
-<td></td>
-<td></td>
+<td>剩余数量</td>
 </tr>
 <tr>
 <td>├─ordStatus</td>
 <td>string</td>
-<td></td>
-<td>NOT_FOUND,SUBMITTING,SUBMITTED,PARTIAL_FILLED,CANCELED,FILLED</td>
+<td>订单状态 NOT_FOUND,SUBMITTING,SUBMITTED,PARTIAL_FILLED,CANCELED,FILLED</td>
 </tr>
 <tr>
 <td>├─ordType</td>
 <td>string</td>
-<td></td>
 <td>MARKET,LIMIT,POST_ONLY</td>
 </tr>
 <tr>
 <td>├─timeInForce</td>
 <td>string</td>
-<td>GTC</td>
 <td>GTC,IOC,FOK</td>
 </tr>
 <tr>
 <td>├─timestamp</td>
 <td>long</td>
-<td></td>
-<td></td>
+<td>时间戳</td>
 </tr>
 </tbody></table>
 <h2 id='8b3c19df49'><span id="3">获取用户最新成交</span></h2>
@@ -921,135 +894,113 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <th>code</th>
 <th>type</th>
-<th>example</th>
 <th>comment</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0</td>
 <td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>message</td>
 <td>string</td>
-<td></td>
 <td>错误信息</td>
 </tr>
 <tr>
 <td>data</td>
 <td>object</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>├─accountId</td>
 <td>long</td>
-<td></td>
-<td></td>
+<td>账户id</td>
 </tr>
 <tr>
 <td>├─instrumentId</td>
 <td>int</td>
-<td></td>
-<td></td>
+<td>币对id</td>
 </tr>
 <tr>
 <td>├─baseCurrencyId</td>
 <td>int</td>
-<td></td>
-<td></td>
+<td>基础货币 BTC</td>
 </tr>
 <tr>
 <td>├─quoteCurrencyId</td>
 <td>int</td>
-<td></td>
-<td></td>
+<td>计价货币USDT</td>
 </tr>
 <tr>
 <td>├─matchRole</td>
 <td>int</td>
-<td></td>
-<td>TAKER(1),MAKER(-1)</td>
+<td>撮合角色 TAKER(1),MAKER(-1)</td>
 </tr>
 <tr>
 <td>├─feeCurrencyId</td>
 <td>int</td>
-<td></td>
-<td></td>
+<td>手续费币种id</td>
 </tr>
 <tr>
 <td>├─role</td>
-<td>string</td>
-<td></td>
-<td>TAKER,MAKER</td>
+<td>String</td>
+<td>角色 TAKER,MAKER</td>
 </tr>
 <tr>
 <td>├─execQty</td>
-<td>string</td>
-<td></td>
-<td></td>
+<td>String</td>
+<td>成交数量</td>
 </tr>
 <tr>
 <td>├─orderState</td>
 <td>int</td>
-<td></td>
-<td></td>
+<td>订单状态</td>
 </tr>
 <tr>
 <td>├─matchId</td>
 <td>long</td>
-<td></td>
-<td></td>
+<td>撮合id</td>
 </tr>
 <tr>
 <td>├─orderId</td>
 <td>long</td>
-<td></td>
-<td></td>
+<td>订单id</td>
 </tr>
 <tr>
 <td>├─side</td>
 <td>int</td>
-<td></td>
-<td>BUY(1), SELL(-1)</td>
+<td>订单方向</td>
 </tr>
 <tr>
 <td>├─execAmt</td>
-<td>string</td>
-<td></td>
-<td></td>
+<td>String</td>
+<td>成交额</td>
 </tr>
 <tr>
 <td>├─selfDealingQty</td>
-<td>string</td>
-<td></td>
-<td></td>
+<td>String</td>
+<td>自成交额</td>
 </tr>
 <tr>
 <td>├─tradeId</td>
 <td>long</td>
-<td></td>
-<td></td>
+<td>成交id</td>
 </tr>
 <tr>
 <td>├─fee</td>
-<td>string</td>
-<td></td>
-<td></td>
+<td>String</td>
+<td>手续费</td>
 </tr>
 <tr>
 <td>├─matchTime</td>
 <td>long</td>
-<td></td>
-<td></td>
+<td>撮合时间</td>
 </tr>
 <tr>
 <td>├─remainingQty</td>
-<td>string</td>
-<td></td>
-<td></td>
+<td>String</td>
+<td>剩余数量</td>
 </tr>
 </tbody></table>
 <h2 id='debd6c0464'><span id="4">取消委托单</span></h2>
@@ -1085,25 +1036,21 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <th>code</th>
 <th>type</th>
-<th>example</th>
 <th>comment</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0</td>
 <td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>message</td>
 <td>string</td>
-<td></td>
 <td>错误信息</td>
 </tr>
 <tr>
 <td>data</td>
-<td></td>
 <td></td>
 <td>返回数据</td>
 </tr>
@@ -1111,12 +1058,10 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>├─state</td>
 <td>string</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>├─ordId</td>
 <td>long</td>
-<td></td>
 <td></td>
 </tr>
 </tbody></table>
@@ -1145,20 +1090,17 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <th>code</th>
 <th>type</th>
-<th>example</th>
 <th>comment</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0</td>
 <td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>message</td>
 <td>string</td>
-<td></td>
 <td>错误信息</td>
 </tr>
 </tbody></table>
@@ -1229,7 +1171,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>timestamp</td>
 <td>long</td>
 <td>true</td>
-<td></td>
+<td>时间戳</td>
 </tr>
 </tbody></table>
 
@@ -1247,32 +1189,27 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <th>code</th>
 <th>type</th>
-<th>example</th>
 <th>comment</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0</td>
 <td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>message</td>
 <td>string</td>
-<td></td>
 <td>错误信息</td>
 </tr>
 <tr>
 <td>data</td>
-<td></td>
 <td></td>
 <td>返回数据</td>
 </tr>
 <tr>
 <td>├─ ordId</td>
 <td>long</td>
-<td>11594964764657880</td>
 <td>订单id</td>
 </tr>
 </tbody></table>
@@ -1352,61 +1289,47 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>市价买单必选</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>响应</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
-
-</span></code></pre></div><h3 id='2213f4c32f-7'>响应数据</h3>
+<h3 id='2213f4c32f-7'>响应数据</h3>
 <table><thead>
 <tr>
 <th>code</th>
 <th>type</th>
-<th>example</th>
 <th>comment</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0</td>
 <td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>message</td>
 <td>string</td>
-<td></td>
 <td>错误信息</td>
 </tr>
 <tr>
 <td>data</td>
 <td>list</td>
-<td></td>
 <td>返回数据</td>
 </tr>
 <tr>
 <td>├─ ordId</td>
 <td>long</td>
-<td>11594964764657880</td>
 <td>订单id</td>
 </tr>
 <tr>
 <td>├─ clOrdId</td>
 <td>string</td>
-<td>7980b2ebf32042ba9dbfbddc555a3985</td>
 <td>客户端订单id</td>
 </tr>
 <tr>
 <td>├─errno</td>
 <td>int</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>├─errMsg</td>
 <td>string</td>
-<td></td>
 <td></td>
 </tr>
 </tbody></table>
@@ -1448,38 +1371,32 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <th>code</th>
 <th>type</th>
-<th>example</th>
 <th>comment</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>code</td>
 <td>string</td>
-<td>0</td>
-<td>正常返回信息</td>
+<td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>message</td>
 <td>string</td>
-<td>order.id-required</td>
 <td>错误信息</td>
 </tr>
 <tr>
 <td>data</td>
 <td>Object</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>--success</td>
 <td>List</td>
-<td>[1,2,3]</td>
 <td>成功的订单id集合</td>
 </tr>
 <tr>
 <td>--reject</td>
 <td>List</td>
-<td>[1,2,3]</td>
 <td>失败的订单id集合</td>
 </tr>
 </tbody></table>
@@ -1521,135 +1438,118 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <th>code</th>
 <th>type</th>
-<th>example</th>
 <th>comment</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0</td>
 <td>0：成功，其他失败</td>
 </tr>
 <tr>
 <td>message</td>
 <td>string</td>
-<td></td>
 <td>错误信息</td>
 </tr>
 <tr>
 <td>data</td>
 <td>object</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>├─ordId</td>
 <td>long</td>
-<td></td>
-<td></td>
+<td>订单ID</td>
 </tr>
 <tr>
 <td>├─clOrdId</td>
-<td>string</td>
-<td></td>
-<td></td>
+<td>String</td>
+<td>客户端订单ID</td>
 </tr>
 <tr>
 <td>├─accountId</td>
 <td>long</td>
-<td></td>
-<td></td>
+<td>账户ID</td>
 </tr>
 <tr>
 <td>├─symbol</td>
-<td>string</td>
-<td></td>
+<td>String</td>
 <td></td>
 </tr>
 <tr>
 <td>├─baseCurrency</td>
-<td>string</td>
-<td></td>
-<td></td>
+<td>String</td>
+<td>基础货币</td>
 </tr>
 <tr>
 <td>├─quoteCurrency</td>
-<td>string</td>
-<td></td>
-<td></td>
+<td>String</td>
+<td>计价货币</td>
 </tr>
 <tr>
 <td>├─ordPrice</td>
-<td>string</td>
-<td></td>
-<td></td>
+<td>String</td>
+<td>价格</td>
 </tr>
 <tr>
 <td>├─ordQty</td>
-<td>string</td>
-<td></td>
-<td></td>
+<td>String</td>
+<td>数量</td>
 </tr>
 <tr>
 <td>├─ordAmt</td>
-<td>string</td>
-<td></td>
-<td></td>
+<td>String</td>
+<td>金额</td>
 </tr>
 <tr>
 <td>├─side</td>
-<td>string</td>
-<td></td>
-<td>BUY,SELL</td>
+<td>Stirng</td>
+<td>方向 BUY,SELL</td>
 </tr>
 <tr>
 <td>├─cumAmt</td>
-<td>string</td>
-<td></td>
-<td></td>
+<td>String</td>
+<td>累计成交额</td>
 </tr>
 <tr>
 <td>├─cumQty</td>
-<td>string</td>
-<td></td>
-<td></td>
+<td>String</td>
+<td>累计成交量</td>
 </tr>
 <tr>
 <td>├─leavesQty</td>
-<td>string</td>
-<td></td>
-<td></td>
+<td>String</td>
+<td>剩余数量</td>
 </tr>
 <tr>
 <td>├─ordStatus</td>
-<td>string</td>
-<td></td>
-<td>NOT_FOUND,SUBMITTING,SUBMITTED,PARTIAL_FILLED,CANCELED,FILLED</td>
+<td>Stirng</td>
+<td>状态 NOT_FOUND, REJECTED, SUBMITTING, SUBMITTED, PARTIAL_FILLED, REPLACING, REPLACED, CANCELING, CANCELED, EXPIRED, STOPPED, FILLED</td>
 </tr>
 <tr>
 <td>├─ordType</td>
-<td>string</td>
-<td></td>
-<td>MARKET,LIMIT,POST_ONLY</td>
+<td>Stirng</td>
+<td>订单类型 MARKET,LIMIT,POST_ONLY</td>
+</tr>
+<tr>
+<td>├─flags</td>
+<td>Stirng</td>
+<td>订单类型 POST_ONLY,REDUCE_ONLY,HIDDEN</td>
 </tr>
 <tr>
 <td>├─timeInForce</td>
-<td>string</td>
-<td>GTC</td>
-<td>GTC,IOC,FOK</td>
+<td>Stirng</td>
+<td>成交限制类型 GTC,IOC,FOK</td>
 </tr>
 <tr>
 <td>├─timestamp</td>
 <td>long</td>
-<td></td>
-<td></td>
+<td>订单时间 毫秒</td>
 </tr>
 <tr>
 <td>├─avgPrice</td>
 <td>long</td>
-<td></td>
-<td></td>
+<td>成交均价</td>
 </tr>
 </tbody></table>
 <h1 id='43ee760de5'>行情相关</h1><h2 id='1a3223149b'><span id="7">获取所有交易对最新价格</span></h2>
@@ -1685,51 +1585,14 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <p>查询指定交易对: /v1/ticker/price;symbol=btcusdt,eosusdt,autusdt `</p>
 </blockquote>
 <h3 id='f3324f4e0c-2'>响应数据:</h3>
-<table><thead>
-<tr>
-<th>code</th>
-<th>type</th>
-<th>example</th>
-<th>comment</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>code</td>
-<td>int</td>
-<td>0</td>
-<td>0：成功，其他失败</td>
-</tr>
-<tr>
-<td>message</td>
-<td>string</td>
-<td></td>
-<td>错误信息</td>
-</tr>
-<tr>
-<td>data</td>
-<td>List[]</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>├─id</td>
-<td>long</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>├─symbol</td>
-<td>string</td>
-<td></td>
-<td>交易对</td>
-</tr>
-<tr>
-<td>├─price</td>
-<td>string</td>
-<td></td>
-<td>价格</td>
-</tr>
-</tbody></table>
+<p>|       code        |  type   |                      comment                       |
+| ----------------- | ------ ---------------------------------------- |
+| code            | int    |     0：成功，其他失败                                               |
+| message         | string       |    错误信息                                    |
+| data | List[]|   |
+| ├─id| long |  |
+| ├─symbol| string  |交易对 |
+| ├─price| string  |价格 |</p>
 <h1 id='websocket'>Websocket行情数据</h1><h2 id='5ea2e0cde2'>简介</h2><h3 id='url'>接入URL</h3>
 <p>`
 wss://ws.coinstore.com/s/ws</p>
