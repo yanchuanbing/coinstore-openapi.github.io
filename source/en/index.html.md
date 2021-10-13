@@ -16,9 +16,9 @@ url: /cn
 
 present_url: /en
 
-active: active
+active: 
 
-other_active:
+other_active: active
 
 menu: 菜单
 
@@ -28,11 +28,11 @@ spot_goods: 现货
 
 spot_goods_active: active
 
+spot_goods_url: 'index.html'
+
 contract: 永续合约
 
-contract_active: active
-
-contract_url: 'https://doc.wbfutures.pro/index.html'
+contract_url: 'futures.html'
 
 searchText: 搜索
 

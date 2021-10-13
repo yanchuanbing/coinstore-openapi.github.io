@@ -60,8 +60,12 @@ under the License.
       <%= image_tag "logo.png", class:'logo' %>
       <div class="tabs">
         <ul>
-          <li class="<%= current_page.data.spot_goods_active %>"><%= current_page.data.spot_goods %></li>
-          <li>
+          <li class="<%= current_page.data.spot_goods_active %>">
+              <a href="<%= current_page.data.spot_goods_url %>">
+                <%= current_page.data.spot_goods %>
+              </a>
+          </li>
+          <li class="<%= current_page.data.contract_active %>">
             <a href="<%= current_page.data.contract_url %>">
               <%= current_page.data.contract %>
             </a>

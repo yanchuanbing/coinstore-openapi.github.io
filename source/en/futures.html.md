@@ -16,9 +16,9 @@ url: /en
 
 present_url: /cn
 
-active: active
+active: 
 
-other_active: 
+other_active: active
 
 menu: 菜单
 
