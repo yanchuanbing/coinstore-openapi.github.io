@@ -793,40 +793,162 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 </tbody></table>
 <h4 id='currency'>Currency</h4>
-<p>|       code        |  type  |                       comment                       |
- | ---- | ----- | ---------- |
- | currencyId | int  | 币种id |
- | name | String  | 币种名称 |
- | disableTransferIn | boolean | 是否可以划转至合约  默认false 能划转 |
- | disableTransferOut | boolean | 是否可以划转至现货  默认false 能划转 |</p>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currencyId</td>
+<td>int</td>
+<td>币种id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>币种名称</td>
+</tr>
+<tr>
+<td>disableTransferIn</td>
+<td>boolean</td>
+<td>是否可以划转至合约  默认false 能划转</td>
+</tr>
+<tr>
+<td>disableTransferOut</td>
+<td>boolean</td>
+<td>是否可以划转至现货  默认false 能划转</td>
+</tr>
+</tbody></table>
 <h4 id='contract'>Contract</h4>
-<p>|       code        |  type  |                       comment                       |
- | ---- | ----- | ---------- | 
- | contractId | int  | 合约id | 
- | currencyId | int  | 保证金货币id |
- | name | String  | 合约名称 BTCUSDT | 
- | displayName | String  | 合约显示名称 BTC/USDT |
- | baseAsset | String  | 商品货币名称 BTC |<br>
- | quoteAsset | String  | 计价货币名称 USDT | 
- | marginAsset | String  | 保证金货币名称 USDT |<br>
- | tickSize | BigDecimal  | 最小报价单位 | 
- | priceScale | int  | 价格精度 | 
- | maxOrderSize | int |  单笔下单最大张数，默认0，无限制 | 
- | minOrderSize | int |  单笔下单最小张数，默认0，无限制 |<br>
- | takerFeeRate | BigDecimal  | Taker手续费率 |<br>
- | makerFeeRate | BigDecimal  | Maker手续费率 | 
- | contractSize | BigDecimal  | 合约单位 |<br>
- | minMaintRate | BigDecimal  | 最小维持保证金率 | 
- |fundingInterval | int  | 互换频率 单位 秒  | 
- |weight | int  |排序权重  倒叙 | 
- | tags | String[] |  标签    mock, hot, new, ... |<br>
- | riskLimits | RiskLimit[]  | 风险限额 |  </p>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>contractId</td>
+<td>int</td>
+<td>合约id</td>
+</tr>
+<tr>
+<td>currencyId</td>
+<td>int</td>
+<td>保证金货币id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>合约名称 BTCUSDT</td>
+</tr>
+<tr>
+<td>displayName</td>
+<td>String</td>
+<td>合约显示名称 BTC/USDT</td>
+</tr>
+<tr>
+<td>baseAsset</td>
+<td>String</td>
+<td>商品货币名称 BTC</td>
+</tr>
+<tr>
+<td>quoteAsset</td>
+<td>String</td>
+<td>计价货币名称 USDT</td>
+</tr>
+<tr>
+<td>marginAsset</td>
+<td>String</td>
+<td>保证金货币名称 USDT</td>
+</tr>
+<tr>
+<td>tickSize</td>
+<td>BigDecimal</td>
+<td>最小报价单位</td>
+</tr>
+<tr>
+<td>priceScale</td>
+<td>int</td>
+<td>价格精度</td>
+</tr>
+<tr>
+<td>maxOrderSize</td>
+<td>int</td>
+<td>单笔下单最大张数，默认0，无限制</td>
+</tr>
+<tr>
+<td>minOrderSize</td>
+<td>int</td>
+<td>单笔下单最小张数，默认0，无限制</td>
+</tr>
+<tr>
+<td>takerFeeRate</td>
+<td>BigDecimal</td>
+<td>Taker手续费率</td>
+</tr>
+<tr>
+<td>makerFeeRate</td>
+<td>BigDecimal</td>
+<td>Maker手续费率</td>
+</tr>
+<tr>
+<td>contractSize</td>
+<td>BigDecimal</td>
+<td>合约单位</td>
+</tr>
+<tr>
+<td>minMaintRate</td>
+<td>BigDecimal</td>
+<td>最小维持保证金率</td>
+</tr>
+<tr>
+<td>fundingInterval</td>
+<td>int</td>
+<td>互换频率 单位 秒</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>int</td>
+<td>排序权重  倒叙</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>String[]</td>
+<td>标签    mock, hot, new, ...</td>
+</tr>
+<tr>
+<td>riskLimits</td>
+<td>RiskLimit[]</td>
+<td>风险限额</td>
+</tr>
+</tbody></table>
 <h4 id='risklimit'>RiskLimit</h4>
-<p>|       code  |  type  |   comment    |
- | ---- | ----- | ---------- | 
- | maxSize | long|  风险限额张数 |
- | maintRate | BigDecimal |  维持保证金率 |
- | leverage | int |  杠杆倍数 |</p>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>maxSize</td>
+<td>long</td>
+<td>风险限额张数</td>
+</tr>
+<tr>
+<td>maintRate</td>
+<td>BigDecimal</td>
+<td>维持保证金率</td>
+</tr>
+<tr>
+<td>leverage</td>
+<td>int</td>
+<td>杠杆倍数</td>
+</tr>
+</tbody></table>
 <h1 id='2a0d0be224'>账户相关</h1><h2 id='7c2f2901d7'><span id="1">资产余额</span></h2>
 <p>获取用户资产余额</p>
 <h3 id='http-2'>HTTP请求:</h3>
@@ -3302,10 +3424,8 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <p>注意：未登录时 accounts为null
 注意：订阅时 params.symbols 为空，则 indicators 为 null
 注意：topic默认频率 1s, markets 默认频率 3s，即每3秒有2次推送消息 markets 为null</p>
-
-<p>Indicator</p>
 </blockquote>
-
+<h5 id='indicator'>Indicator</h5>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3314,71 +3434,67 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
 <td>cid</td>
 <td>Long</td>
+<td>交易对id</td>
 </tr>
 <tr>
-<td></td>
 <td>ip</td>
 <td>BigDecimal</td>
+<td>指数价</td>
 </tr>
 <tr>
-<td></td>
 <td>mp</td>
 <td>BigDecimal</td>
+<td>标记价</td>
 </tr>
 <tr>
-<td></td>
 <td>lp</td>
 <td>BigDecimal</td>
+<td>最新价</td>
 </tr>
 <tr>
-<td></td>
 <td>pv</td>
 <td>Long</td>
+<td>持仓量</td>
 </tr>
 <tr>
-<td></td>
 <td>tv</td>
 <td>Long</td>
+<td>24小时成交量</td>
 </tr>
 <tr>
-<td></td>
 <td>tt</td>
 <td>Long</td>
+<td>24小时成交额</td>
 </tr>
 <tr>
-<td></td>
 <td>ph</td>
 <td>BigDecimal</td>
+<td>24小时最高价</td>
 </tr>
 <tr>
-<td></td>
 <td>pl</td>
 <td>BigDecimal</td>
+<td>24小时最低价</td>
 </tr>
 <tr>
-<td></td>
 <td>pcr</td>
 <td>BigDecimal</td>
+<td>24小时涨跌幅率</td>
 </tr>
 <tr>
-<td></td>
 <td>fr</td>
 <td>BigDecimal</td>
+<td>资金费率</td>
 </tr>
 <tr>
-<td></td>
 <td>pfr</td>
 <td>BigDecimal</td>
+<td>预测资金费率</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Market</p>
-</blockquote>
-
+<h5 id='market'>Market</h5>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3387,47 +3503,32 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
 <td>cid</td>
 <td>Long</td>
+<td>交易对id</td>
 </tr>
 <tr>
-<td></td>
 <td>lp</td>
 <td>BigDecimal</td>
+<td>最新价</td>
 </tr>
 <tr>
-<td></td>
 <td>pcr</td>
 <td>BigDecimal</td>
+<td>24小时涨跌幅率</td>
 </tr>
 <tr>
-<td></td>
 <td>tv</td>
 <td>Long</td>
+<td>24小时成交量</td>
 </tr>
 <tr>
-<td></td>
 <td>tt</td>
 <td>Long</td>
+<td>24小时成交额</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Account</p>
-</blockquote>
-
-<p>|    code    |  type   |      comment         |
- |------------|---------|----------------------|
- | aid | Long| 账号id 主账号或者子账号 |
- | at| int| 账号类型  1 主账号  10 体验金账号 |
- | assets| List<Asset>| 资产信息 |
- | posis| List<Posi>| 仓位信息  |</p>
-
-<blockquote>
-<p>Asset</p>
-</blockquote>
-
+<h5 id='account'>Account</h5>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3436,26 +3537,51 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
+<td>aid</td>
+<td>Long</td>
+<td>账号id 主账号或者子账号</td>
+</tr>
+<tr>
+<td>at</td>
+<td>int</td>
+<td>账号类型  1 主账号  10 体验金账号</td>
+</tr>
+<tr>
+<td>assets</td>
+<td>List<Asset></td>
+<td>资产信息</td>
+</tr>
+<tr>
+<td>posis</td>
+<td>List<Posi></td>
+<td>仓位信息</td>
+</tr>
+</tbody></table>
+<h5 id='asset'>Asset</h5>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
 <td>cid</td>
 <td>Long</td>
+<td>币种ID</td>
 </tr>
 <tr>
-<td></td>
 <td>avail</td>
 <td>BigDecimal</td>
+<td>可用余额</td>
 </tr>
 <tr>
-<td></td>
 <td>upnl</td>
 <td>BigDecimal</td>
+<td>全仓未实现盈亏</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Posi</p>
-</blockquote>
-
+<h5 id='posi'>Posi</h5>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3464,35 +3590,35 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 </tr>
 </thead><tbody>
 <tr>
-<td></td>
 <td>pid</td>
 <td>Long</td>
+<td>仓位ID</td>
 </tr>
 <tr>
-<td></td>
 <td>flp</td>
 <td>BigDecimal</td>
+<td>强平价格</td>
 </tr>
 <tr>
-<td></td>
 <td>upnl</td>
 <td>BigDecimal</td>
+<td>未实现盈亏</td>
 </tr>
 <tr>
-<td></td>
 <td>adl</td>
 <td>int</td>
+<td>ADL等级</td>
 </tr>
 <tr>
-<td></td>
 <td>mp</td>
 <td>BigDecimal</td>
+<td>标记价</td>
 </tr>
 </tbody></table>
 
-<blockquote>
-<p>注意：pid为 3012推送仓位的id</p>
-</blockquote>
+<ul>
+<li>注意：pid为 3012推送仓位的id</li>
+</ul>
 <h3 id='8340d3206e'>获取私有数据</h3><h4 id='topic-match'>订阅topic: match</h4>
 <p>消息订阅格式如下所示：
 <code>
