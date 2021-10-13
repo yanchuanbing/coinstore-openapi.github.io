@@ -318,7 +318,7 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-  |    |   |   |  |
+|    |   |   |  |
 
 ### 响应数据
 
@@ -334,44 +334,44 @@ HTTP常见的错误码如下：
 
 #### Currency
 
- |       code        |  type  |                       comment                       |
- | ---- | ----- | ---------- |
- | currencyId | int  | 币种id |
- | name | String  | 币种名称 |
- | disableTransferIn | boolean | 是否可以划转至合约  默认false 能划转 |
- | disableTransferOut | boolean | 是否可以划转至现货  默认false 能划转 |
+|       code        |  type  |                       comment                       |
+| ---- | ----- | ---------- |
+| currencyId | int  | 币种id |
+| name | String  | 币种名称 |
+| disableTransferIn | boolean | 是否可以划转至合约  默认false 能划转 |
+| disableTransferOut | boolean | 是否可以划转至现货  默认false 能划转 |
 
 #### Contract
 
- |       code        |  type  |                       comment                       |
- | ---- | ----- | ---------- | 
- | contractId | int  | 合约id | 
- | currencyId | int  | 保证金货币id |
- | name | String  | 合约名称 BTCUSDT | 
- | displayName | String  | 合约显示名称 BTC/USDT |
- | baseAsset | String  | 商品货币名称 BTC |   
- | quoteAsset | String  | 计价货币名称 USDT | 
- | marginAsset | String  | 保证金货币名称 USDT |  
- | tickSize | BigDecimal  | 最小报价单位 | 
- | priceScale | int  | 价格精度 | 
- | maxOrderSize | int |  单笔下单最大张数，默认0，无限制 | 
- | minOrderSize | int |  单笔下单最小张数，默认0，无限制 |  
- | takerFeeRate | BigDecimal  | Taker手续费率 |  
- | makerFeeRate | BigDecimal  | Maker手续费率 | 
- | contractSize | BigDecimal  | 合约单位 |   
- | minMaintRate | BigDecimal  | 最小维持保证金率 | 
- |fundingInterval | int  | 互换频率 单位 秒  | 
- |weight | int  |排序权重  倒叙 | 
- | tags | String[] |  标签    mock, hot, new, ... |  
- | riskLimits | RiskLimit[]  | 风险限额 |  
+|       code        |  type  |                       comment                       |
+| ---- | ----- | ---------- | 
+| contractId | int  | 合约id | 
+| currencyId | int  | 保证金货币id |
+| name | String  | 合约名称 BTCUSDT | 
+| displayName | String  | 合约显示名称 BTC/USDT |
+| baseAsset | String  | 商品货币名称 BTC |   
+| quoteAsset | String  | 计价货币名称 USDT | 
+| marginAsset | String  | 保证金货币名称 USDT |  
+| tickSize | BigDecimal  | 最小报价单位 | 
+| priceScale | int  | 价格精度 | 
+| maxOrderSize | int |  单笔下单最大张数，默认0，无限制 | 
+| minOrderSize | int |  单笔下单最小张数，默认0，无限制 |  
+| takerFeeRate | BigDecimal  | Taker手续费率 |  
+| makerFeeRate | BigDecimal  | Maker手续费率 | 
+| contractSize | BigDecimal  | 合约单位 |   
+| minMaintRate | BigDecimal  | 最小维持保证金率 | 
+|fundingInterval | int  | 互换频率 单位 秒  | 
+|weight | int  |排序权重  倒叙 | 
+| tags | String[] |  标签    mock, hot, new, ... |  
+| riskLimits | RiskLimit[]  | 风险限额 |  
 
 #### RiskLimit
 
- |       code  |  type  |   comment    |
- | ---- | ----- | ---------- | 
- | maxSize | long|  风险限额张数 |
- | maintRate | BigDecimal |  维持保证金率 |
- | leverage | int |  杠杆倍数 |
+|       code  |  type  |   comment    |
+| ---- | ----- | ---------- | 
+| maxSize | long|  风险限额张数 |
+| maintRate | BigDecimal |  维持保证金率 |
+| leverage | int |  杠杆倍数 |
 
 # 账户相关
 
@@ -418,7 +418,7 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-  |    |  |
+|    |  |
 
 ### 响应数据
 
@@ -494,7 +494,7 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-  |    |  |
+|    |  |
 
 ### 响应数据
 
@@ -686,7 +686,7 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-  |    |  |
+|    |  |
 
 
 ### 响应数据
@@ -1620,58 +1620,59 @@ ranges的取值范围：
 >注意：订阅时 params.symbols 为空，则 indicators 为 null
 >注意：topic默认频率 1s, markets 默认频率 3s，即每3秒有2次推送消息 markets 为null
 
-> Indicator
+##### Indicator
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
- | cid| Long| 交易对id |
- | ip| BigDecimal| 指数价|
- | mp|  BigDecimal| 标记价 |
- | lp| BigDecimal| 最新价|
- | pv| Long| 持仓量 |
- | tv| Long| 24小时成交量 |
- | tt| Long| 24小时成交额 |
- | ph| BigDecimal| 24小时最高价 |
- | pl| BigDecimal| 24小时最低价 |
- | pcr |  BigDecimal| 24小时涨跌幅率 |
- | fr| BigDecimal| 资金费率 |
- | pfr| BigDecimal| 预测资金费率 |
+| cid| Long| 交易对id |
+| ip| BigDecimal| 指数价|
+| mp|  BigDecimal| 标记价 |
+| lp| BigDecimal| 最新价|
+| pv| Long| 持仓量 |
+| tv| Long| 24小时成交量 |
+| tt| Long| 24小时成交额 |
+| ph| BigDecimal| 24小时最高价 |
+| pl| BigDecimal| 24小时最低价 |
+| pcr |  BigDecimal| 24小时涨跌幅率 |
+| fr| BigDecimal| 资金费率 |
+| pfr| BigDecimal| 预测资金费率 |
 
-> Market
-
-|    code    |  type   |      comment         |
-|------------|---------|----------------------|
- | cid| Long| 交易对id |
- | lp| BigDecimal| 最新价 |
- | pcr |  BigDecimal|24小时涨跌幅率 |
- | tv |  Long|  24小时成交量 |
- | tt| Long| 24小时成交额 |
-> Account
-
- |    code    |  type   |      comment         |
- |------------|---------|----------------------|
- | aid | Long| 账号id 主账号或者子账号 |
- | at| int| 账号类型  1 主账号  10 体验金账号 |
- | assets| List<Asset>| 资产信息 |
- | posis| List<Posi>| 仓位信息  |
-
-> Asset
+##### Market
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
- | cid | Long| 币种ID |
- | avail| BigDecimal| 可用余额 |
- | upnl| BigDecimal| 全仓未实现盈亏 |
-> Posi
+| cid| Long| 交易对id |
+| lp| BigDecimal| 最新价 |
+| pcr |  BigDecimal|24小时涨跌幅率 |
+| tv |  Long|  24小时成交量 |
+| tt| Long| 24小时成交额 |
+##### Account
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
- | pid | Long| 仓位ID |
- | flp| BigDecimal| 强平价格 |
- | upnl| BigDecimal| 未实现盈亏 |
- | adl| int| ADL等级 |
- | mp|  BigDecimal| 标记价 |
->注意：pid为 3012推送仓位的id
+| aid | Long| 账号id 主账号或者子账号 |
+| at| int| 账号类型  1 主账号  10 体验金账号 |
+| assets| List<Asset>| 资产信息 |
+| posis| List<Posi>| 仓位信息  |
+
+##### Asset
+
+|    code    |  type   |      comment         |
+|------------|---------|----------------------|
+| cid | Long| 币种ID |
+| avail| BigDecimal| 可用余额 |
+| upnl| BigDecimal| 全仓未实现盈亏 |
+
+##### Posi
+
+|    code    |  type   |      comment         |
+|------------|---------|----------------------|
+| pid | Long| 仓位ID |
+| flp| BigDecimal| 强平价格 |
+| upnl| BigDecimal| 未实现盈亏 |
+| adl| int| ADL等级 |
+| mp|  BigDecimal| 标记价 |
+* 注意：pid为 3012推送仓位的id
 
 ### 获取私有数据
 #### 订阅topic: match
