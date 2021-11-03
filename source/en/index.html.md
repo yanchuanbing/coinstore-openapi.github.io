@@ -1,5 +1,5 @@
----
-title: Coinstore官方API文档
+﻿---
+title: Coinstore Open API document
 
 language_tabs: # must be one of https://git.io/vQNgJ
   
@@ -10,94 +10,94 @@ includes:
   
 language: English
 
-other_language: 简体中文
+other_language: English
 
-url: /cn
+url: /en
 
-present_url: /en
+present_url: /cn
 
-active: 
+active: active
 
-other_active: active
+other_active:
 
-menu: 菜单
+menu: menu
 
-create_api: 创建 API Key
+create_api: create API Key
 
-spot_goods: 现货
+spot_goods: spot goods
 
 spot_goods_active: active
 
-spot_goods_url: 'index.html'
+contract: perpetual swap
 
-contract: 永续合约
+contract_active: active
 
-contract_url: 'futures.html'
+contract_url: 'https://doc.wbfutures.pro/index.html'
 
-searchText: 搜索
+searchText: search
 
 search: true
 
 code_clipboard: true
 ---
 
-# 介绍
+# Introduction
 
-欢迎使用Coinstore开发者文档，此文档是Coinstore API的唯一官方文档。
+Welcome to Coinstore Developer Documentation. It is the only official documentation of Coinstore API.
 
-本文档提供了相关API的使用方法介绍。
+This documentation provides an introduction to the use of related APIs.
 
-RESTful API包含了资产，订单及行情等接口。
+RESTful API includes interfaces such as assets, orders and tickers.
 
-Websocket则提供了行情相关的接口及推送服务。
+Websocket provides ticker-related interface and push service.
 
-Coinstore API提供的服务会在此持续更新，请大家及时关注。
+The services provided by Coinstore API will be continuously updated here, so stay tuned for updates.
 
 
 
-# 快速开始
+# Quick Start
 
-## 接入准备
+## Access Preparation
 
-如需使用API，请先登录网页端，通过【用户中心】-【API管理】创建一个API key，再据此文档详情进行开发和交易。
+To use API, please log into the webpage first, create an API key through [User Center] - [API Managment], and then develop and trade according to the details of this documentation.
 
-您可以点击 'https://www.coinstore.com/#/user/bindAuth/ManagementAPI' 创建 API Key。
+You can click 'https://www.coinstore.com/#/user/bindAuth/ManagementAPI' to create an API Key.
 
-每个用户可创建5组API Key，每组API key可以绑定5个不同的IP地址。API key一旦绑定了IP地址，则只能从绑定的IP地址使用该API key调用API接口。出于安全考虑，强烈建议您为API key绑定相应的IP地址。
+Each user can create 5 groups of API Keys, and each group of API Keys can bind 5 different IP addresses. Once an API key binds an address, the API interface can only be called by using the API key from the bound IP address. For security reasons, it is strongly recommended that you bind the corresponding IP address for API key.
 
-创建成功后请务必记住以下信息：
+Please remember the following information upon successful creation:
 
-- `API Key`  API 访问密钥
-- `Secret Key` 签名认证加密所使用的密钥
+- `API Key`  API access key
+- `Secret Key` Key for encryption of signature authentication
 
-## 接口类型
-Coinstore为用户提供两种接口，您可根据自己的使用场景和偏好来选择适合的方式进行查询行情、交易。
+## Interface Type
+Coinstore provides users with two interfaces, and you can choose the appropriate way to query the ticker and trade according to your own usage scenarios and preferences.
 
 **REST API**
 
-REST，即Representational State Transfer的缩写，是一种流行的互联网传输架构。它具有结构清晰、符合标准、易于理解、扩展方便的，正得到越来越多网站的采用。其优点如右：
+REST, the abbreviation of Representational State Transfer, is a popular Internet transmission architecture. It has the characteristics of clear structure, standards compliance, easy understanding and expansion, and is being adopted by more and more websites with the benefits as follows:
 
-- 在RESTful架构中，每一个URL代表一种资源；
-- 客户端和服务器之间，传递这种资源的某种表现层；
-- 客户端通过四个HTTP指令，对服务器端资源进行操作，实现“表现层状态转化”。 
+- In RESTful architecture, each URL represents a resource;
+- Some representation layer of this resource is transferred between the client and the server;
+- The client operates the server-side resources through four HTTP instructions to realize "presentation layer state transformation". 
 
-交易或资产等一次性操作，建议开发者使用REST API进行操作
+Developers are advised to use REST API for one-time operations such as trades or assets.
 
 **WebSocket API**
 
-WebSocket是HTML5一种新的协议（Protocol）。它实现了客户端与服务器全双工通信，通过一次简单的握手就可以建立客户端和服务器连接，服务器可以根据业务规则主动推送信息给客户端。
+WebSocket is a new HTML5 Protocol. It realizes full-duplex communication between client and server, and the connection between client and server can be established by a simple handshake. The server can actively push information to the client according to business rules.
 
-市场行情和买卖深度等信息，建议开发者使用WebSocket API进行获取。
+Developers are advised to use WebSocket API to obtain market tickers, asks/bids depth and other information.
 
-### 接口鉴权
+### Interface Authentication
 
-以上两种接口均包含公共接口和私有接口两种类型。
+The above two interfaces include public interface and private interface.
 
-公共接口可用于获取基础信息和行情数据。公共接口无需认证即可调用。
+Public interface can be used to obtain basic information and ticker data. Public interfaces can be called without authentication.
 
-私有接口可用于交易管理。每个私有请求必须使用您的API Key进行签名验证。
+Private interface can be used for trading management. Every private request must use your API Key for signature verification.
 
-## 接入URLs
+## Access URLs
 
 **REST API**
 
@@ -107,53 +107,54 @@ WebSocket是HTML5一种新的协议（Protocol）。它实现了客户端与服�
 
 `wss://ws.coinstore.com/s/ws`
 
-为保证API服务的稳定性，建议使用日本AWS云服务器进行访问。如使用中国大陆境内的客户端服务器，连接的稳定性将难以保证。
+To ensure the stability of API service, it is recommended to access using Japanese AWS cloud server. If the client server in Chinese mainland is used, it would be difficult to guarantee the stability of the connection.
 
 
-## <span id="a4">签名认证</span>
+## <span id="a4"> Signature Authentication </span>
 
-**签名说明**
+** Signature Description **
 
-API 请求在通过 internet 传输的过程中极有可能被篡改，为了确保请求未被更改，除公共接口（基础信息，行情数据）外的私有接口均必须使用您的 API Key 做签名认证，以校验参数或参数值在传输途中是否发生了更改。
+The API request is very likely to be tampered in the process of transmission through the Internet. In order to ensure that the request has not been changed, all private interfaces other than public interfaces (basic information, ticker data) must use your API Key for signature authentication to verify whether the parameters or parameter values have changed during transmission.
 
-**签名算法**
+** Signature Algorithm **
 
-使用HmacSHA256哈希函数作为签名函数
+HmacSHA256 hash function is used as signature function.
 ```
 Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 ```
 
-**签名步骤**
+** Signature Steps **
     
-1、签名有效字符串为请求参数和请求体
-注意：请求参数和请求体不进行任何排序，直接拼接成字符串作为payload。
+1. The signature valid string consists of request parameters and request body.
+Note: The request parameters and request body are not sorted but directly spliced into a string as payload.
 
  ```java
  String payload = “symbol=aaaa88&size=10”；
  ```
 
-实例1：GET请求查询字符串
+Example 1: GET Request Query String
 
  ?symbol=aaaa88&size=10
 
 ```java
  String payload = “{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
  "timestamp":1627384801051}”；
- ```
+```
 
-实例2 :Post请求体
+Example 2: POST Request Body
 
- {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
+{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
 
 ```java
- String payload = “symbol=aaaa88&size=10{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
+ String payload = “symbol=aaaa88&size=10
+{"symbol":" aaaa88","side":" SELL","ordType":" LIMIT","ordPrice":2,"ordQty":1,
  "timestamp":1627384801051}”；
- ```
+```
 
-实例3：混合请求
- 
+Example 3: Mixed Request
+
  ?symbol=aaaa88&size=10
- {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
+{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
 
 
 ```java
@@ -163,9 +164,9 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
  String key = Hex.toHexString(hash);
 ```
 
-2、使用签名函数对时间戳计算哈希值
+2. Use signature function to calculate hash value for timestamp
 
->注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥(第3步中的变量key的值）
+> Note: X-CS-EXPIRES is a 13-bit timestamp, which needs to be divided by 30000 to obtain a class timestamp. It is calculated by signature function to obtain the function value as the key of step 3 (the value of variable key in step 3).
 
 
 
@@ -177,29 +178,29 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
  String sign= Hex.toHexString(hash);
 ```
 
-3、使用签名函数对有效字符串计算哈希值
+3. Use signature function to calculate hash value for valid string
 
->注意： key的值为第2步计算出来的哈希值。
+> Note: The value of key is the hash value calculated in step 2.
 
-# API接入说明
+# API Access Instructions
 
-## <span id="a3">请求格式</span>
-所有的API请求都是restful，目前只有两种方法：GET和POST。
-- GET请求：所有的参数都在路径参数里
-- POST请求: 路径里可以设置参数，参数可以以JSON格式发送在请求主体（body）里，没有参数的需要传{}
+## <span id="a3"> Request Format </span>
+All API requests are restful, and there are only two methods at present: GET and POST.
+- GET request: all parameters are in path parameters;
+- POST request: Parameters can be set in the path, and they can be sent in JSON format to the request body. If there are no parameters, {} needs to be sent.
 
-一个合法的请求由以下几部分组成：
-- 方法请求地址：即访问服务器地址api.coinstore.com，比如https://api.coinstore.com/api/trade/order/place
-- 必须和可选参数。
-- X-CS-APIKEY： 即用户申请的API Key。
-- X-CS-EXPIRES：您发出请求的时间戳。如：1629291143107。
-- X-CS-SIGN：签名计算得出的字符串，用于确保签名有效和未被篡改。
+A licit request consists of the following parts:
+- method request address: i.e. the access server address api.coinstore.com. https://api.coinstore.com/api/trade/order/place - required and optional parameters.
+- Required and optional parameters.
+- X-CS-APIKEY: API Key applied by the user.
+- X-CS-EXPIRES： Timestamp when you issued the request. For example: 1629291143107.
+- X-CS-SIGN: A string calculated from the signature, which is used to ensure that the signature is valid and not tampered with.
 
->注意：X-CS-APIKEY ，X-CS-EXPIRES ，X-CS-SIGN 三个参数都在请求头中，另外需要设置'Content-Type':'application/json'。
+> Note: X-CS-APIKEY, X-CS-EXPIRES and X-CS-SIGN are all in the request header, and 'Content-Type':'application/json’ needs to be set.
 
-## <span id="a3">返回格式</span>
+## <span id="a3"> Return Format </span>
 
-所有的接口返回都是JSON格式。在JSON的第一层有3个字段code，msg和data。前两个字段表示请求状态和描述，实际的业务数据在data字段里。
+All interface returns are in JSON format. There are three fields in the first layer of JSON: code, msg and data. The first two fields indicate the request status and description, and the actual business data is in the data field.
 
 ```json
 {
@@ -208,51 +209,51 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
     "data": // per API response data in nested JSON object
 }
 ```
-以下是一个返回格式的样例：
+The following is an example of a return format:
 
-| 字段 | 数据类型  | 描述       |
+| field | data type  | description       |
 | ---- | -----  | ---------- |
-| code | int | 返回状态 |
-| message  | string | 状态或错误描述 |
-| data | object | 业务数据  |
+| code | string | return status |
+| message  | string | status or error description |
+| data | object | transaction data  |
 
 
-## 错误信息
+## Error Message
 
-**HTTP状态码**
+** HTTP Status Code **
 
-HTTP常见的错误码如下：
-- 400 Bad Request – Invalid request forma 请求格式无效
+Common error codes for HTTP are as follows:
+- 400 Bad Request – Invalid request format
 
-- 401 signature failed – Invalid API Key 无效的API Key
+- 401 signature failed – Invalid API Key
 
-- 404 service not found 没有找到请求
+- 404 service not found
 
-- 429 too many visits 请求太频繁被系统限流
+- 429 too many visits
 
-- 500 internal server error – 服务器内部错误
+- 500 internal server error –
 
-**业务状态码**
+** Transaction Status Code **
 
-如果失败，response message 带有错误描述信息, 对应的状态码描述如下：
+In case of failure, the response message carries error description information, and the corresponding status code is described as follows:
 
-| 状态码 | 说明                             | 备注                       |
+| status code | description                             | remarks                       |
 | ------ | -------------------------------- | -------------------------- |
-| 0      | 成功                             | code=0 成功， code >0 失败 |
+| 0      | success                             | code=0 success, code >0 failure |
 
 
-# 账户相关
+# Account Related
 
 
-## <span id="1">资产余额</span>
+## <span id="1"> Assets Balance </span>
 
-获取用户资产余额
+Get user assets balance
 
-### HTTP请求: 
+### HTTP Request: 
 - POST /spot/accountList
 
 
-> 响应 
+> response 
 
 ```json
 {
@@ -278,186 +279,186 @@ HTTP常见的错误码如下：
 }
 ```
 
-### 请求参数
+### Request Parameters
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
 |  |  |  |  |
 
-### 响应数据
+### Response Data
 
-|       code        |  type  |                  comment                       |
-| ---- | ----- |---------- |
-| code | int      |   0：成功，其他失败         |
-| message | String  | 错误信息 |
-| data | Object []  |  业务数据 |
-|- userId | Long  | 用户id |
-|- accountId | Long  | 账户id |
-|- currencyId | int  | 币种id |
-|- balance | Decimal  | 金额 |
-|- type | Decimal |账户状态 1:可用 4:冻结 |
+|       code        |  type  |        example        |                      comment                       |
+| ---- | ----- | ---------- |---------- |
+| code | String      | |            |
+| message | String  | | Error Message |
+| data | Object []  | |  Transaction Data |
+|- userId | Long  |  |User id |
+|- accountId | Long  | | Account id |
+|- currencyId | Integer  | | Currency id |
+|- balance | Decimal  | | Amoun |
+|- type | Decimal | |Account status 1: available 4: deactivated |
 
-# 订单相关
+# Order Related
 
-## <span id="2">获取当前订单</span>
+## <span id="2”> Get current orders </span>
 
-获取当前订单
+Get current order
 
-### HTTP请求: 
+### HTTP Request: 
 
 - GET /trade/order/active
 
 
-> 响应
+> response
 
 ```json
 
 ```
 
-### 请求参数
+### Request Parameters
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
 |  |  |  |  |
 
 
-### 响应数据
+### Response Data
 
-|       code        |  type  |                         comment                       |
-| ----------------- | ------ |------------------------------- |
-| code            | int    |     0：成功，其他失败                                               |
-| message         | string    |         错误信息                                    |
-| data            |  list  |    |
-| ├─ ordId            | long      订单id            |
-| ├─ clOrdId            | string     |   客户端订单id            |
-| ├─symbol | string |   币对 |
-| ├─baseCurrency| string |   base币|
-| ├─quoteCurrency| string |   quot币|
-| ├─ordPrice | string |    订单价格|
-| ├─ordQty| string |   订单数量|
-| ├─ordAmt| string |   订单金额|
-| ├─side | string |    BUY,SELL|
-| ├─cumAmt| string | 成交金额  |
-| ├─cumQty| string |  成交数量 |
-| ├─leavesQty| string |  剩余数量  |
-| ├─ordStatus | string |  订单状态 NOT_FOUND,SUBMITTING,SUBMITTED,PARTIAL_FILLED,CANCELED,FILLED |
-| ├─ordType | string |   MARKET,LIMIT,POST_ONLY|
-| ├─timeInForce| string | GTC,IOC,FOK |
-| ├─timestamp| long | 时间戳 |
+|       code        |  type  |        example        |                      comment                       |
+| ----------------- | ------ | --------------------- | -------------------------------------------------- |
+| code            | int    | 0                     |     0: success, other: failure                                               |
+| message         | string    |                 |    error message                                    |
+| data            |  list  |    | |
+| ├─ ordId            | long   | 11594964764657880     |   order id            |
+| ├─ clOrdId            | string   | 7980b2ebf32042ba9dbfbddc555a3985     |   client order id            |
+| ├─symbol | string |  |  token pair |
+| ├─baseCurrency| string |  | base currency|
+| ├─quoteCurrency| string |  | quot currency|
+| ├─ordPrice | string |  |  order price|
+| ├─ordQty| string |  | order quantity|
+| ├─ordAmt| string |  | order amount|
+| ├─side | string |  |  BUY,SELL|
+| ├─cumAmt| string |  | |
+| ├─cumQty| string |  | |
+| ├─leavesQty| string |  | |
+| ├─ordStatus | string |  | NOT_FOUND,SUBMITTING,SUBMITTED,PARTIAL_FILLED,CANCELED,FILLED |
+| ├─ordType | string |  |  MARKET,LIMIT,POST_ONLY|
+| ├─timeInForce| string | GTC | GTC,IOC,FOK |
+| ├─timestamp| long |  | |
 
 
-## <span id="3">获取用户最新成交</span>
-获取全部成交记录
+## <span id="3"> Get user's latest trade </span>
+Get all trading records
 
-### HTTP请求: 
+### HTTP Request: 
 - GET /trade/match/accountMatches
 
 
-> 响应
+> response
 
 ```json
 
 ```
 
-### 请求参数
+### Request Parameters
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-|symbol | string | Y | 交易对 |
+|symbol | string | Y | symbol |
 |size| int | N | 20 |
 
-### 响应数据
+### Response Data
 
-|       code        |  type  |                      comment                       |
-| ----------------- | ------ |---------------------------------- |
-| code            | int    |  0：成功，其他失败                                               |
-| message         | string    |   错误信息                                    |
-| data | object|   |
-| ├─accountId| long| 账户id |
-| ├─instrumentId| int | 币对id |
-| ├─baseCurrencyId| int | 基础货币 BTC |
-| ├─quoteCurrencyId| int | 计价货币USDT |
-| ├─matchRole| int | 撮合角色 TAKER(1),MAKER(-1) |
-| ├─feeCurrencyId| int | 手续费币种id |
-| ├─role| String | 角色 TAKER,MAKER |
-| ├─execQty| String | 成交数量 |
-| ├─orderState| int | 订单状态 |
-| ├─matchId| long | 撮合id |
-| ├─orderId| long | 订单id |
-| ├─side| int | 订单方向 | BUY(1), SELL(-1) |
-| ├─execAmt| String | 成交额 |
-| ├─selfDealingQty| String | 自成交额 |
-| ├─tradeId| long | 成交id |
-| ├─fee| String | 手续费 |
-| ├─matchTime| long  | 撮合时间 |
-| ├─remainingQty| String | 剩余数量 |
+|       code        |  type  |        example        |                      comment                       |
+| ----------------- | ------ | --------------------- | -------------------------------------------------- |
+| code            | int    | 0                     |     0: success, other: failure                                               |
+| message         | string    |                 |    error message                                    |
+| data | object|  | |
+| ├─accountId| long| | |
+| ├─instrumentId| int | | |
+| ├─baseCurrencyId| int | | |
+| ├─quoteCurrencyId| int | | |
+| ├─matchRole| int | | TAKER(1),MAKER(-1) |
+| ├─feeCurrencyId| int | | |
+| ├─role| string | | TAKER,MAKER |
+| ├─execQty| string | | |
+| ├─orderState| int | | |
+| ├─matchId| long | | |
+| ├─orderId| long | | |
+| ├─side| int | | BUY(1), SELL(-1) |
+| ├─execAmt| string | | |
+| ├─selfDealingQty| string | | |
+| ├─tradeId| long | | |
+| ├─fee| string | | |
+| ├─matchTime| long  | | |
+| ├─remainingQty| string | | |
 
 
-##  <span id="4">取消委托单</span>
-取消委托单
+##  <span id="4”> Cancel orders </span>
+Cancel orders
 
-### HTTP请求: 
+### HTTP Request: 
 - POST /trade/order/cancel
 
-### 请求参数
+### Request Parameters
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
 | symbol     | string | true | |
 | ordId     | long     | true  |  |
 
-### 响应数据
+### Response Data
 
-|       code        |  type  |                      comment                       |
-| ----------------- | ------ |--------------------------------------- |
-| code            | int    |     0：成功，其他失败                                               |
-| message         | string    |   错误信息                                    |
-| data            |    |   返回数据                    |
-| ├─state| string|   |
-| ├─ordId| long |   |
+|       code        |  type  |        example        |                      comment                       |
+| ----------------- | ------ | --------------------- | -------------------------------------------------- |
+| code            | int    | 0                     |     0: success, other: failure                                               |
+| message         | string    |                 |    error message                                    |
+| data            |    |      |   return data                                                 |
+| ├─state| string|  | |
+| ├─ordId| long |  | |
 
-##  <span id="5">一键撤单</span>
+##  <span id="5"> One-click cancellation </span>
 
 
-### HTTP请求: 
+### HTTP Request: 
 - POST /trade/order/cancelAll
 
-### 请求参数
+### Request Parameters
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-| symbol     | string | false| 不传撤销所有币对订单 |
+| symbol     | string | false| cancel all token pair orders without transfer |
 
-### 响应数据
+### Response Data
 
-|       code        |  type  |                      comment                       |
-| ----------------- | ------ |--------------------------------------- |
-| code            | int    |     0：成功，其他失败                                               |
-| message         | string    |    错误信息                                    |
+|       code        |  type  |        example        |                      comment                       |
+| ----------------- | ------ | --------------------- | -------------------------------------------------- |
+| code            | int    | 0                     |     0: success, other: failure                                               |
+| message         | string    |                 |    error message                                    |
 
 
-## <span id="6">创建订单</span>
-创建订单
+## <span id="6"> Create order </span>
+Create order
 
-### HTTP请求: 
+### HTTP Request: 
 - POST /trade/order/place
 
-### 请求参数
+### Request Parameters
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-| clOrdId | string | false    |   客户端订单ID。客户自定义的唯一订单ID。 如果未发送，则自动生成  |
+| clOrdId | string | false    |   client order ID. Unique customer-defined order ID. If not sent, it is automatically generated  |
 | symbol        | string | true    |  |
 | side   | string    | true    |   BUY,SELL    |
 | ordType     | string    | true    |  MARKET,LIMIT,POST_ONLY   |
 | timeInForce    | string     | false    | defaultValue = "GTC"   |
-| ordPrice    | long     | false    | 限价单必选 |
-| ordQty    | long     | false    | 限价单必选，市价卖单必选 |
-| ordAmt    | long     | false    | 市价买单必选 |
-| timestamp    | long     | true    |时间戳  |                                                                    
+| ordPrice    | long     | false    | limit order required |
+| ordQty    | long     | false    | limit order required, market price sell order required |
+| ordAmt    | long     | false    | market price buy order required |
+| timestamp    | long     | true    |  |
 
 
-> 响应
+> response
 
 ```json
 {
@@ -466,57 +467,63 @@ HTTP常见的错误码如下：
         "order_id":11594964764657880
     }
 }
-```                                 
+```
 
-### 响应数据
+### Response Data
 
-|       code        |  type  |                    comment                       |
-| ----------------- | ------ |------------------------------- |
-| code            | int     |     0：成功，其他失败                                               |
-| message         | string    |    错误信息                                    |
-| data            |     |   返回数据                                                 |
-| ├─ ordId            | long   |  订单id                                                 |
+|       code        |  type  |        example        |                      comment                       |
+| ----------------- | ------ | --------------------- | -------------------------------------------------- |
+| code            | int    | 0                     |     0: success, other: failure                                               |
+| message         | string    |                 |    error message                                    |
+| data            |     |      |   return data                                                 |
+| ├─ ordId            | long   | 11594964764657880     |   order id                                                 |
 
-## <span id="13">批量下单</span>
-批量下单
-### HTTP请求: 
+## <span id="13"> Batch ordering </span>
+Batch ordering
+### HTTP Request: 
 - POST /trade/order/placeBatch
 
-### 请求参数
+### Request Parameters
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
 | symbol        | string | true    |  |
 | timestamp    | long     | true    |  |
 | orders        | list | true    |  |
-| ├─ clOrdId | string | false    |   客户端订单ID。客户自定义的唯一订单ID。 如果未发送，则自动生成  |
+| ├─ clOrdId | string | false    |   client order ID. Unique customer-defined order ID. If not sent, it is automatically generated  |
 | ├─ side   | string    | true    |   BUY,SELL    |
 | ├─ ordType     | string    | true    |  MARKET,LIMIT,POST_ONLY   |
 | ├─ timeInForce    | string     | false    | defaultValue = "GTC"   |
-| ├─ ordPrice    | long     | false    | 限价单必选 |
-| ├─ ordQty    | long     | false    | 限价单必选，市价卖单必选 |
-| ├─ ordAmt    | long     | false    | 市价买单必选 |
+| ├─ ordPrice    | long     | false    | limit order required |
+| ├─ ordQty    | long     | false    | limit order required, market price sell order required |
+| ├─ ordAmt    | long     | false    | market price buy order required |
+
+> response
+
+```json
 
 
-### 响应数据
+```
 
-|       code        |  type  |                     comment                       |
-| ----------------- | ------ | ---------------------------------------- |
-| code            | int    |    0：成功，其他失败                                               |
-| message         | string        |    错误信息                                    |
-| data            |  list    |   返回数据                                                 |
-| ├─ ordId            | long     |   订单id            |
-| ├─ clOrdId            | string     |   客户端订单id            |
+### Response Data
+
+|       code        |  type  |        example        |                      comment                       |
+| ----------------- | ------ | --------------------- | -------------------------------------------------- |
+| code            | int    | 0                     |     0: success, other: failure                                               |
+| message         | string    |                 |    error message                                    |
+| data            |  list  |      |   return data                                                 |
+| ├─ ordId            | long   | 11594964764657880     |   order id            |
+| ├─ clOrdId            | string   | 7980b2ebf32042ba9dbfbddc555a3985     |   client order id            |
 | ├─errno| int|   |  |
 | ├─errMsg| string| | |
 
-## <span id="27">根据订单id批量进行撤单</span>
-根据订单id批量进行撤单
+## <span id=”27”> Batch cancellation according to order id </span>
+Batch cancellation according to order id.
 
-### HTTP请求: 
+### HTTP Request: 
 - POST trade/order/cancelBatch
 
-### 请求参数
+### Request Parameters
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
@@ -524,80 +531,79 @@ HTTP常见的错误码如下：
 |orderIds| LIst| Y |[1,2,3]  |
 
 
-> 响应
+> response
 
 ```json
 
 ```
 
-### 响应数据
+### Response Data
 
-|       code        |  type  |          comment                       |
-| ----------------- | ------ |---------------------------------------- |
-| code         | string    |   0：成功，其他失败                               |
-| message         | string    |    错误信息                                   |
-| data            | Object   |                                      |
-| --success|   List   |     成功的订单id集合                                         |
-| --reject  |    List     |  失败的订单id集合                      |
+|       code        |  type  |        example        |                      comment                       |
+| ----------------- | ------ | --------------------- | -------------------------------------------------- |
+| code         | string    |0                |    normal return information                                |
+| message         | string    |order.id-required                 |    error message                                   |
+| data            | Object   |                    |                                             |
+| --success|   List   | [1,2,3]                    |     set of successful order ids                                         |
+| --reject  |    List   | [1,2,3]                                  |  set of failed order ids.                      |
 
 
-## <span id="14">.获取订单信息</span>
-.获取订单信息
+## <span id="14">. Get order information </span>
+. Get order information
 
-### HTTP请求: 
+### HTTP Request: 
 - GET trade/order/orderInfo
 
 
-> 响应
+> response
 
 ```json
 
 ```
 
-### 请求参数:
+### Request Parameters:
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-|clOrdId | string | false | ordId 二选一 |
-|ordId | long | false  | clOrdId 二选一 |
+|clOrdId | string | false | ordId alternative |
+|ordId | long | false  | clOrdId alternative |
 
-### 响应数据:
+### Response Data:
 
-|       code        |  type  |               comment                       |
-| ----------------- | ------ | -------------------------------------- |
-| code            | int     |     0：成功，其他失败                                               |
-| message         | string    |    错误信息                                    |
-| data | object|  | 
-| ├─ordId| long | 订单ID |
-| ├─clOrdId| String | 客户端订单ID |
-| ├─accountId| long | 账户ID |
-| ├─symbol | String |   | 交易对名称 |
-| ├─baseCurrency| String | 基础货币 |
-| ├─quoteCurrency| String | 计价货币 |
-| ├─ordPrice | String | 价格 |
-| ├─ordQty| String | 数量 |
-| ├─ordAmt| String | 金额 |
-| ├─side | Stirng | 方向 BUY,SELL|
-| ├─cumAmt| String | 累计成交额 |
-| ├─cumQty| String | 累计成交量 |
-| ├─leavesQty| String | 剩余数量 |
-| ├─ordStatus | Stirng | 状态 NOT_FOUND, REJECTED, SUBMITTING, SUBMITTED, PARTIAL_FILLED, REPLACING, REPLACED, CANCELING, CANCELED, EXPIRED, STOPPED, FILLED |
-| ├─ordType | Stirng | 订单类型 MARKET,LIMIT,POST_ONLY  |
-| ├─flags| Stirng | 订单类型 POST_ONLY,REDUCE_ONLY,HIDDEN |
-| ├─timeInForce| Stirng | 成交限制类型 GTC,IOC,FOK |
-| ├─timestamp| long | 订单时间 毫秒 |
-| ├─avgPrice| long | 成交均价  |
+|       code        |  type  |        example        |                      comment                       |
+| ----------------- | ------ | --------------------- | -------------------------------------------------- |
+| code            | int    | 0                     |     0: success, other: failure                                               |
+| message         | string    |                 |    error message                                    |
+| data | object|  | |
+| ├─ordId| long |  | |
+| ├─clOrdId| string |  | |
+| ├─accountId| long |  | |
+| ├─symbol | string |  |   |
+| ├─baseCurrency| string |  | |
+| ├─quoteCurrency| string |  | |
+| ├─ordPrice | string |  | |
+| ├─ordQty| string |  | |
+| ├─ordAmt| string |  | |
+| ├─side | string |  | BUY,SELL|
+| ├─cumAmt| string |  | |
+| ├─cumQty| string |  | |
+| ├─leavesQty| string |  | |
+| ├─ordStatus | string |  | NOT_FOUND,SUBMITTING,SUBMITTED,PARTIAL_FILLED,CANCELED,FILLED |
+| ├─ordType | string |   | MARKET,LIMIT,POST_ONLY |
+| ├─timeInForce| string | GTC |   GTC,IOC,FOK |
+| ├─timestamp| long |  | |
+| ├─avgPrice| long |  | |
 
 
-# 行情相关
-##  <span id="7">获取所有交易对最新价格</span>
-获取所有交易对最新价格
+# Ticker Related
+##  <span id="7"> Get the latest price of all symbols </span>
+Get the latest price of all symbols
 
-### HTTP请求: 
+### HTTP Request: 
 - GET /v1/ticker/price
 
 
-> 响应
+> response
 
 ```json
 {
@@ -616,65 +622,65 @@ HTTP常见的错误码如下：
     }
   ]
 }
- ```
+```
 
 
-### 请求参数: 
+### Request Parameters: 
 
-> 默认：查询所有交易对
+> default: Query all symbols
 
-> 查询指定交易对: /v1/ticker/price;symbol=btcusdt,eosusdt,autusdt `
+> query the specified symbol: /v1/ticker/price;symbol=btcusdt,eosusdt,autusdt `
 
-### 响应数据: 
+### Response Data: 
 
-|       code        |  type   |                      comment                       |
-| ----------------- | ------ ---------------------------------------- |
-| code            | int    |     0：成功，其他失败                                               |
-| message         | string       |    错误信息                                    |
-| data | List[]|   |
-| ├─id| long |  |
-| ├─symbol| string  |交易对 |
-| ├─price| string  |价格 |
+|       code        |  type  |        example        |                      comment                       |
+| ----------------- | ------ | --------------------- | -------------------------------------------------- |
+| code            | int    | 0                     |     0: success, other: failure                                               |
+| message         | string    |                 |    error message                                    |
+| data | List[]|  | |
+| ├─id| long |  | |
+| ├─symbol| string |  |symbol|
+| ├─price| string |  |price |
 
 
 
-# Websocket行情数据
+#Websocket Ticker Data
 
-## 简介
+##  Introduction
 
-### 接入URL
+### Access URL
 
 `
 wss://ws.coinstore.com/s/ws
 
-1. 所有wss接口的 baseurl为: wss://<host:port>/s/ws
+1. The baseurl of all wss interfaces is: wss://<host:port>/s/ws
 
-2. stream名称中所有交易对均为 小写
+2. All symbols in stream name are lowercase
 
-3. 每个链接有效期不超过24小时，请妥善处理断线重连。
+3. Each link is valid for no more than 24 hours. Please handle the disconnection and reconnection properly.
 
-4. 每3分钟，服务端会发送ping帧，客户端应当在10分钟内回复pong帧，否则服务端会主动断开链接。允许客户端发送不成对的pong帧(即客户端可以以高于10分钟每次的频率发送pong帧保持链接)。
+4. The server will send a ping frame every 3 minutes, and the clients should reply to the pong frame within 10 minutes, otherwise, the server will actively disconnect the link. Clients are allowed to send unpaired pong frames (that is, clients can send pong frames at a frequency higher than 10 minutes each time to maintain the link).
 
 `
 
-### 服务端推送数据类型说明
+# # # # Description of Server Push Data Type
 
 #### Format Schema
 
 ```lang=json
 {
-    "S": 1,  // session 级别的 response 消息序号，session 重连后重置，可用来判断是否漏消息
-    "T": "resp", // 响应类型，详见 `Types` 部分
+    "S": 1, // response message serial number at session level is reset upon session reconnection, which can be used to judge whether messages are missing.
+    "T": "resp", // response type, see `types' section for details
     ...
 }
 ```
 
 #### Types
 
- 1. request-response 类型的消息
+ 1. Request-response message type
 
-** `echo`: 服务器接受到到每一个消息都会以该种形式返回一个message，确认消息已经呗接收
-** `resp`: 服务器接受到到每一个消息都会以该种形式返回一个处理结果的message，标记消息处理，返回信息中包含处理结果信息
+** `echo`: The server will return a message for each message received in the same form to confirm that the message has been received.
+** `resp`: The server will return a message of processing result for each message received in the same form, marking the message processing. The return message includes the processing result.
 
 ```lang=json
 {
@@ -688,9 +694,9 @@ wss://ws.coinstore.com/s/ws
 }
 ```
 
- 2. subscribe 消息类型
+ 2. subscribe message type
 
-> 以下类型的消息，从执行对应 channel 的 `SUB` 命令开始，到执行 `UNSUB` 结束，如果服务器端数据发生变化则推送，最小推送间隔 100ms
+> the following types of messages start from executing the `SUB` command of the corresponding channel and end with executing the `UNSUB` command, and the messages are pushed if the data on the server side changes, with a minimum push interval of 100ms.
 
 ** `kline`
 
@@ -708,13 +714,13 @@ wss://ws.coinstore.com/s/ws
 {
     "S": 1,
     "T": "kline|ticker|depth|trade|account",
-    ...:  // 详细见下面到每种数据订阅格式 
+    ...:  // see below for details on each data subscription format 
 }
 ```
 
 #### Pong
 
->服务器端支持 websocket pong frame 和 pong message 两种形式端 pong 响应
+> the server supports two forms of end pong response, namely websocket pong frame and pong message.
 
 #### Websocket Pong frame
 
@@ -743,11 +749,11 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 < {"S":4,"T":"trade","channel":"80004@trade","time":1604040975,"price":"9811.7494086","takerSide":"SELL","tradeId":26461,"volume":"7.505","symbol":"EOSUSD","instrumentId":80004}
 ```
 
-## **实时订阅/取消数据流**
+## **Subscribe/unsubscribe data stream in real time**
 
-* 以下数据可以通过websocket发送以实现订阅或取消订阅数据流。示例如下。
-* 响应内容中的id是无符号整数，作为往来信息的唯一标识。
-* 如果相应内容中的 result 为 null，表示请求发送成功。
+* The following data can be sent via websocket to subscribe or unsubscribe the data stream. Examples are as follows.
+* The id in the response content is an unsigned integer, which is the unique identifier of the current information.
+* If the result in the corresponding content is null, it means that the request was sent successfully.
 
 ### Client `op` Types
 
@@ -756,9 +762,9 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 3. `LOGIN`
 4. `REQ`
 5. `LIST`
-6. ...(未来新功能支持)
+6. ... (support new features in the future)
 
-### 订阅一个信息流
+### Subscribe an information stream
 
 ```lang=json
 {
@@ -771,7 +777,7 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 }
 ```
 
-### 取消订阅一个信息流
+### Unsubscribe an information stream
 
 ```lang=json
 {
@@ -783,12 +789,12 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 }
 ```
 
-### 已订阅信息流
+### Subscribed information stream
 
 ```lang=json
 {
     "op": "LIST",
-    "channel":[],
+    "channel": [],
     "id": 3
 }
 ```
@@ -815,20 +821,20 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 }
 ```
 
-NOTE: `<symbol>` 参数暂时请使用 交易对的id，后续支持使用交易对的名称
+NOTE: `<symbol>` Please use the id of the symbol for the parameter temporarily, and the name of the symbol can be used later.
 
-IMPORTANT:  请优先使用  `symbol` 字段，` instrumentId` 标记为 `Deprecated`
+IMPORTANT:  Please use the symbol' field first, and the instrumentId' is marked as Deprecated'.
 
-NOTE:  所有返回数据的时间，单位都是 `秒`
+NOTE:  All the time to return data is in `seconds'.
 
-## **公共行情频道**
+## **Public ticker channel**
 
-### **逐笔交易**
+### **Trade by Trade**
 
 > Stream Name: `<symbol>@trade`, eg: `88066@trade`
-> param: `param":{"size":2}`
-> e.g: ``{"op":"SUB","channel":["28@trade"],"param":{"size":2},"id":1}``
-> 全量数据：
+> param: `param": {"size":2}`
+> e.g: ``{"op":" SUB","channel": ["28@trade"],"param": {"size":2},"id":1}``
+> full-volume data:
 ```lang=json
  {
    "S": 15,
@@ -861,28 +867,28 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
    ]
  }
 ```
-> 增量数据：
+> incremental data:
 ```lang=json
 {
   "instrumentId": 88066,
-  "symbol": "USDTBTC",    // 交易对
-  "tradeId": 12345,       // 交易ID
+  "symbol": "USDTBTC",    // symbol
+  "tradeId": 12345,       // trading ID
   "takerSide": "BUY",    // taker side
-  "price": "0.001",     // 成交价格
-  "volume": "100",       // 成交数量
-  "time": 123456785,   // 成交时间 单位 s
-  "ts": 1612685313400, // 单位 ms
-  "seq": 9935         // 唯一自增序号
+  "price": "0.001",     // strike price
+  "volume": "100",       // trading volume
+  "time": 123456785,   // trading time unit: s
+  "ts": 1612685313400, // unit: ms
+  "seq": 9935         // unique auto-increment serial number
 }
 ```
 
 
 
-### **K线 Streams**
+### **K-line Streams**
 
-> K线stream逐秒推送所请求的K线种类(最新一根K线)的更新。
+> K-line stream pushes the requested k-line type (the latest k-line) every second.
 > Stream Name: `<symbol>@kline@<interval>`, eg: `88066@kline@min_1`
-> interval 可选值:
+> interval optional values:
 > ** min_1
 > ** min_5
 > ** min_15
@@ -897,28 +903,28 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 ```lang=json
 {
    "instrumentId": 88066, 
-   "startTime": 1603732500,  // 这根 k线的开始时间，单位 s
-    "endTime": 1603732559,  // 这根 k线的开始时间，单位 s
-    "symbol": "USDTBTC",  // 交易对
-    "interval": "1m",      // K线间隔
-    "firstTradeId": 100,       // 这根K线期间第一笔成交ID
-    "lastTradeId": 200,       // 这根K线期间末一笔成交ID
-    "open": "0.0010",  // 这根K线期间第一笔成交价
-    "close": "0.0020",  // 这根K线期间末一笔成交价
-    "high": "0.0025",  // 这根K线期间最高成交价
-    "low": "0.0015",  // 这根K线期间最低成交价
-    "volume": "1000",    // 这根K线期间成交量
-    "amount": "1.0000",  // 这根K线期间成交额
+   "startTime": 1603732500,  // start time of this k-line, unit: s
+    "endTime": 1603732559,  // start time of this k-line, unit: s
+    "symbol": "USDTBTC",  // symbol
+    "interval": "1m",      // K-line interval
+    "firstTradeId": 100,       // first trade ID during this k-line period
+    "lastTradeId": 200,       // last trade ID during this k-line period
+    "open": "0.0010",  // first strike price during this k-line period
+    "close": "0.0020",  // last strike price during this K-line period
+    "high": "0.0025",  // highest strike price during this K line period
+    "low": "0.0015",  // lowest strike price during this K line period
+    "volume": "1000",    // trading volume during this K line period
+    "amount": "1.0000",  // trading amount during this k-line period
 }
 ```
 
-### **K线 Request**
+### **K-line Request**
 
-> 请求历史k线：
-> param: `"{channel":"88066@kline@min_1","endTime":1603766280,"limit":10}`,
-> eg:  `{"op":"REQ","param":{"channel":"88066@kline@min_1","limit":10},"id":1}`
-> `limit`: 最大不超过 200
-> `endTime`: 可选，exclusive
+> request historical k-line:
+> param: `"{channel":" 88066@kline@min_1","endTime":1603766280,"limit":10}`,
+> eg:  `{"op":" REQ","param": {"channel":" 88066@kline@min_1","limit":10},"id":1}`
+> `limit`: No more than 200
+> `endTime`: Optional, exclusive
 
 ```lang=json
 {
@@ -945,28 +951,28 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 ```
 
 
-### **按 Symbol 的 Ticker信息**
+### **Ticker Information by Symbol**
 
-> 按Symbol刷新的最近24小时精简 ticker 信息
-> Stream 名称: `<symbol>@ticker`, eg:  `88066@ticker`
+> Streamlined ticker information in the last 24 hours refreshed by Symbol
+> Stream Name: `<symbol>@ticker`, eg:  `88066@ticker`
 
 ```lang=json
 {
   "instrumentId": 88066,
-  "symbol": "USDTBTC",      // 交易对
-  "open": "0.0010",      // 整整24小时前，向后数的第一次成交价格
-  "high": "0.0025",      // 24小时内最高成交价
-  "low": "0.0010",      // 24小时内最低成交加
-  "close": "0.0025",      // 最新成交价格
-  "volume": "10000",       // 24小时内成交量
-  "amount": "18"          // 24小时内成交额
+  "symbol": "USDTBTC",      // symbol
+  "open": "0.0010",      // first strike price counted backwards 24 hours ago
+  "high": "0.0025",      // highest strike price within 24 hours
+  "low": "0.0010",      // lowest strike price within 24 hours
+  "close": "0.0025",      // latest strike price
+  "volume": "10000",       // trading volume within 24 hours
+  "amount": "18"          // trading amount within 24 hours
 }
 ```
 
-### **全市场所有Symbol 的 Ticker信息**
+### **Ticker information of all symbols in the whole market**
 
-> 按Symbol刷新的最近24小时精简ticker信息
-> Stream 名称: `!@ticker`
+> Streamlined ticker information in the last 24 hours refreshed by Symbol
+> Stream Name: `!@ticker`
 
 ```lang=json
 {
@@ -998,10 +1004,10 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 }
 ```
 
-### **有限档深度信息**
+### **Limited level depth information**
 
-> 每秒或每100毫秒推送有限档深度信息。levels表示几档买卖单信息, 可选 5/10/20/50/100档
-> Stream Names: `<symbol>@depth@<levels>` ~~或 `<symbol>@depth@<levels>@100ms`.~~, eg:  `88066@depth@50`
+> Push limited level depth information every second or every 100ms. Levels indicates the levels of the buy or sell orders, and 5/10/20/50/100 level can be selected.
+> Stream Names: `<symbol>@depth@<levels>` ~~or `<symbol>@depth@<levels>@100ms`. ~~, eg:  `88066@depth@50`
 
 ```lang=json
 {
@@ -1023,11 +1029,11 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 }
 ```
 
-## **用户私有数据频道**
+## **User private data channel**
 
-### **登陆**
+### **Login**
 
-> 登陆时可以同时指定订阅数据
+> Specify subscription data when logging in
 
 ```lang=json
 {
@@ -1037,15 +1043,15 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
         "80002@order"
     ],
     "auth": {
-        "user-id":4930,     // 用户登陆账号的 user id 或者子账号的 user id
-        "token": "eb737c84862f3d"  // 登陆之后的 token； 端上登陆用户使用登陆后的token， api 用户填写  api-key
-        "type": "token"      // 可选值范围：token | api , 默认为 token， api 用户填写 api
+        "user-id":4930,     // user id of user login account or user id of sub-account
+        "token": "eb737c84862f3d"  // token after login; the client user uses the token after login, and the api user fills in the api-key
+        "type": "token"      // optional values: token | api; default value is token; api users fill in api
     }
     "id": 2
 }
 ```
 
-### **账户**
+### **Account**
 
 > Stream Name: `<currency>@account`, or `!@account` all currency
 
@@ -1055,12 +1061,12 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
     "currency": "BTC",
     "frozen": "21.03",
     "available": "3128.29",
-    "timestamp": 1602493840  // 单位 s
+    "timestamp": 1602493840  // unit: s
 }
 
 ```
 
-### **成交**
+### **Closing**
 
 > Stream Name: `<symbol>@order`, or `!@order` all symbol's
 
@@ -1103,11 +1109,11 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
     "feeCurrencyId": 12,
     "fee": 0.21,
 
-    "timestamp": 1602493840 // 单位 s
+    "timestamp": 1602493840 // unit: s
 }
 ```
 
-## **字典**
+## **Dictionary**
 
 ### OrderState
 
@@ -1141,7 +1147,6 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 
 * BUY
 * SELL
-
 
 
 
