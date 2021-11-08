@@ -1,47 +1,4 @@
-﻿---
-title: Coinstore Open API document
-
-language_tabs: # must be one of https://git.io/vQNgJ
-  
-
-toc_footers:
-
-includes:
-  
-language: English
-
-other_language: English
-
-url: /en
-
-present_url: /cn
-
-active: active
-
-other_active:
-
-menu: menu
-
-create_api: create API Key
-
-spot_goods: spot goods
-
-spot_goods_active: active
-
-contract: perpetual swap
-
-contract_active: active
-
-contract_url: 'https://doc.wbfutures.pro/index.html'
-
-searchText: search
-
-search: true
-
-code_clipboard: true
----
-
-# Introduction
+﻿# Introduction
 
 Welcome to Coinstore Developer Documentation. It is the only official documentation of Coinstore API.
 
