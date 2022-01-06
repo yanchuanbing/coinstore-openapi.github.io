@@ -69,49 +69,56 @@ To ensure the stability of API service, it is recommended to access using Japane
 
 ## <span id="a4"> Signature Authentication </span>
 
-** Signature Description **
+**Signature Description**
 
 The API request is very likely to be tampered in the process of transmission through the Internet. In order to ensure that the request has not been changed, all private interfaces other than public interfaces (basic information, ticker data) must use your API Key for signature authentication to verify whether the parameters or parameter values have changed during transmission.
 
-** Signature Algorithm **
+**Signature Algorithm**
 
 HmacSHA256 hash function is used as signature function.
 ```
 Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 ```
 
-** Signature Steps **
+**Signature Steps**
     
-1. The signature valid string consists of request parameters and request body.
+- The signature valid string consists of request parameters and request body.
 Note: The request parameters and request body are not sorted but directly spliced into a string as payload.
 
  ```java
- String payload = “symbol=aaaa88&size=10”；
+  Example 1: GET Request Query String
+ ?symbol=aaaa88&size=10
+ 
+ String payload = "symbol=aaaa88&size=10"；
  ```
 
-Example 1: GET Request Query String
 
- ?symbol=aaaa88&size=10
 
 ```java
- String payload = “{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
- "timestamp":1627384801051}”；
-```
-
 Example 2: POST Request Body
-
 {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
 
-```java
- String payload = “symbol=aaaa88&size=10
-{"symbol":" aaaa88","side":" SELL","ordType":" LIMIT","ordPrice":2,"ordQty":1,
- "timestamp":1627384801051}”；
+
+ String payload = "{"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,
+ "timestamp":1627384801051}"；
 ```
 
-Example 3: Mixed Request
 
+```java
+Example 3: Mixed Request
  ?symbol=aaaa88&size=10
 {"symbol":"aaaa88","side":"SELL","ordType":"LIMIT","ordPrice":2,"ordQty":1,"timestamp":1627384801051}
+
+ String payload = "symbol=aaaa88&size=10{"symbol":" aaaa88","side":" SELL","ordType":" LIMIT","ordPrice":2,"ordQty":1,
+ "timestamp":1627384801051}"；
+```
+
+
+
+
+- Use signature function to calculate hash value for timestamp
+
+> Note: X-CS-EXPIRES is a 13-bit timestamp, which needs to be divided by 30000 to obtain a class timestamp. It is calculated by signature function to obtain the function value as the key of step 3 (the value of variable key in step 3).
 
 
 ```java
@@ -121,12 +128,13 @@ Example 3: Mixed Request
  String key = Hex.toHexString(hash);
 ```
 
-2. Use signature function to calculate hash value for timestamp
-
-> Note: X-CS-EXPIRES is a 13-bit timestamp, which needs to be divided by 30000 to obtain a class timestamp. It is calculated by signature function to obtain the function value as the key of step 3 (the value of variable key in step 3).
 
 
 
+
+- Use signature function to calculate hash value for valid string
+
+> Note: The value of key is the hash value calculated in step 2.
 
 ```java
  hmacSha256.reset();
@@ -134,10 +142,6 @@ Example 3: Mixed Request
  hash = hmacSha256.doFinal(payload.getBytes());
  String sign= Hex.toHexString(hash);
 ```
-
-3. Use signature function to calculate hash value for valid string
-
-> Note: The value of key is the hash value calculated in step 2.
 
 # API Access Instructions
 
@@ -177,7 +181,7 @@ The following is an example of a return format:
 
 ## Error Message
 
-** HTTP Status Code **
+**HTTP Status Code**
 
 Common error codes for HTTP are as follows:
 - 400 Bad Request – Invalid request format
@@ -190,7 +194,7 @@ Common error codes for HTTP are as follows:
 
 - 500 internal server error –
 
-** Transaction Status Code **
+**Transaction Status Code**
 
 In case of failure, the response message carries error description information, and the corresponding status code is described as follows:
 
@@ -257,7 +261,7 @@ Get user assets balance
 
 # Order Related
 
-## <span id="2”> Get current orders </span>
+## <span id="2"> Get current orders </span>
 
 Get current order
 
@@ -351,7 +355,7 @@ Get all trading records
 | ├─remainingQty| string | | |
 
 
-##  <span id="4”> Cancel orders </span>
+##  <span id="4"> Cancel orders </span>
 Cancel orders
 
 ### HTTP Request: 
@@ -474,7 +478,7 @@ Batch ordering
 | ├─errno| int|   |  |
 | ├─errMsg| string| | |
 
-## <span id=”27”> Batch cancellation according to order id </span>
+## <span id="27"> Batch cancellation according to order id </span>
 Batch cancellation according to order id.
 
 ### HTTP Request: 
