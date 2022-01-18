@@ -393,13 +393,25 @@
                     <a href="#batch-cancellation-according-to-order-id" class="toc-h2 toc-link" data-title=" Batch cancellation according to order id "><span id="27"> Batch cancellation according to order id </span></a>
                   </li>
                   <li>
-                    <a href="#get-order-information" class="toc-h2 toc-link" data-title=". Get order information "><span id="14">. Get order information </span></a>
+                    <a href="#get-order-information" class="toc-h2 toc-link" data-title="Get order information "><span id="14">Get order information </span></a>
                   </li>
               </ul>
           </li>
           <li>
             <a href="#ticker-related" class="toc-h1 toc-link" data-title="Ticker Related">Ticker Related</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ticker" class="toc-h2 toc-link" data-title="Ticker"><span id="7">Ticker</span></a>
+                  </li>
+                  <li>
+                    <a href="#get-depth" class="toc-h2 toc-link" data-title="Get depth"><span id="7">Get depth</span></a>
+                  </li>
+                  <li>
+                    <a href="#get-k-line" class="toc-h2 toc-link" data-title="Get K line"><span id="7">Get K line</span></a>
+                  </li>
+                  <li>
+                    <a href="#latest-trades" class="toc-h2 toc-link" data-title="Latest trades"><span id="7">Latest trades</span></a>
+                  </li>
                   <li>
                     <a href="#get-the-latest-price-of-all-symbols" class="toc-h2 toc-link" data-title=" Get the latest price of all symbols "><span id="7"> Get the latest price of all symbols </span></a>
                   </li>
@@ -411,11 +423,6 @@
                   <li>
                     <a href="#introduction-2" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
                   </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#description-of-server-push-data-type" class="toc-h1 toc-link" data-title="# # # Description of Server Push Data Type"># # # Description of Server Push Data Type</a>
-              <ul class="toc-list-h2">
                   <li>
                     <a href="#subscribe-unsubscribe-data-stream-in-real-time" class="toc-h2 toc-link" data-title="Subscribe/unsubscribe data stream in real time"><strong>Subscribe/unsubscribe data stream in real time</strong></a>
                   </li>
@@ -427,6 +434,35 @@
                   </li>
                   <li>
                     <a href="#dictionary" class="toc-h2 toc-link" data-title="Dictionary"><strong>Dictionary</strong></a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#other-api" class="toc-h1 toc-link" data-title="Other API">Other API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#introduction-3" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
+                  <li>
+                    <a href="#asset-list" class="toc-h2 toc-link" data-title="Asset list"><span id="114">Asset list</span></a>
+                  </li>
+                  <li>
+                    <a href="#trading-pair-information" class="toc-h2 toc-link" data-title="Trading pair information"><span id="115">Trading pair information</span></a>
+                  </li>
+                  <li>
+                    <a href="#97510c5887" class="toc-h2 toc-link" data-title=""><span id="115"></span></a>
+                  </li>
+                  <li>
+                    <a href="#ticker-2" class="toc-h2 toc-link" data-title="Ticker"><span id="116">Ticker</span></a>
+                  </li>
+                  <li>
+                    <a href="#depth" class="toc-h2 toc-link" data-title="Depth"><span id="117">Depth</span></a>
+                  </li>
+                  <li>
+                    <a href="#market-pair" class="toc-h2 toc-link" data-title="Market Pair"><span id="118">Market Pair</span></a>
+                  </li>
+                  <li>
+                    <a href="#historical-market-pair" class="toc-h2 toc-link" data-title="Historical Market Pair"><span id="119">Historical Market Pair</span></a>
                   </li>
               </ul>
           </li>
@@ -1487,8 +1523,8 @@ Note: The request parameters and request body are not sorted but directly splice
 <td>set of failed order ids.</td>
 </tr>
 </tbody></table>
-<h2 id='get-order-information'><span id="14">. Get order information </span></h2>
-<p>. Get order information</p>
+<h2 id='get-order-information'><span id="14">Get order information </span></h2>
+<p>Get order information</p>
 <h3 id='http-request-9'>HTTP Request:</h3>
 <ul>
 <li>GET trade/order/orderInfo</li>
@@ -1656,9 +1692,294 @@ Note: The request parameters and request body are not sorted but directly splice
 <td></td>
 </tr>
 </tbody></table>
-<h1 id='ticker-related'>Ticker Related</h1><h2 id='get-the-latest-price-of-all-symbols'><span id="7"> Get the latest price of all symbols </span></h2>
+<h1 id='ticker-related'>Ticker Related</h1><h2 id='ticker'><span id="7">Ticker</span></h2>
+<p>Ticker for all trading pairs in the market</p>
+
+<p>### HTTP request:
+ - GET /v1/market/tickers
+ ### Request parameters:</p>
+
+<p>| code | type | required | comment |
+ | ---------- | ------- | -------- | -------------------- |</p>
+
+<p>### Response data:</p>
+
+<p>| code | type | comment |
+ | ----------------- | ------ | ------------------------ ---------------- |
+ | code | int | 0: success, other failure |
+ | message | string | Error message |
+ | data | Object| |
+ | ├─channel| String |Identifier |
+ | ├─instrumentId| Integer |Pair ID |
+ | ├─symbol| String |Trading pair |
+ | ├─count | Integer |24h rolling transaction count |
+ | ├─volume|String |24h transaction volume measured in quote currency |
+ | ├─amount| String |24h transaction volume measured in base currency |
+ | ├─close| String | Last transaction price|
+ | ├─open| String | First transaction price|
+ | ├─high| String | The highest transaction price|
+ | ├─low| String | The lowest transaction price|
+ | ├─bid| String | Buy one price|
+ | ├─bidSize| String | Buy a quantity|
+ | ├─ask| String | Sell one price|
+ | ├─askSize| String | Amount to sell|</p>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"bidSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"454.2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"askSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"542.6"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">41723</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24121351.85"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693799.10798965"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.067998"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.071842"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.072453"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.067985"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0679"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0681"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRXUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='get-depth'><span id="7">Get depth</span></h2>
+<p>Get depth data</p>
+<h3 id='http-request-10'>HTTP request:</h3>
+<ul>
+<li>GET /v1/market/depth/<symbol>
+### Request parameters:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>required</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>trading pair, such as &quot;BTCUSDT&quot;</td>
+</tr>
+<tr>
+<td>depth</td>
+<td>int</td>
+<td>false</td>
+<td>The number of depths, such as &quot;5, 10, 20, 50, 100&quot;, default 20</td>
+</tr>
+</tbody></table>
+<h3 id='response-data-10'>Response data:</h3>
+<p>| code | type | comment |
+| ----------------- | ------ | ------------------------ ---------------- |
+| code | int | 0: success, other failure |
+| message | string | Error message |
+| data | Object| |
+| ├─channel| String |Identifier |
+| ├─level| Integer |Quantity |
+| ├─instrumentId| Integer |Pair ID |
+| ├─symbol| string |Trading pair |
+| ├─a | List | Sell order, [${price}, ${quantity}, ${direction}] ] |
+| ├─b | List | Buy order, [${price}, ${quantity}, ${direction}] ] |</p>
+
+<blockquote>
+<p>Response
+<code>json
+{
+    &quot;data&quot;: {
+        &quot;channel&quot;: &quot;4@depth@5&quot;,
+        &quot;level&quot;: 5,
+        &quot;a&quot;: [
+            [
+                &quot;41995&quot;,
+                &quot;0.018144&quot;,
+                -1
+            ],
+            [
+                &quot;41995.5&quot;,
+                &quot;0.008279&quot;,
+                -1
+            ]
+        ],
+        &quot;b&quot;: [
+            [
+                &quot;41991.5&quot;,
+                &quot;0.548567&quot;,
+                1
+            ],
+            [
+                &quot;41991&quot;,
+                &quot;0.013168&quot;,
+                1
+            ]
+        ],
+        &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+        &quot;instrumentId&quot;: 4
+    },
+    &quot;code&quot;: 0
+}
+</code></p>
+<h2 id='get-k-line'><span id="7">Get K line</span></h2>
+<p>Get trading K line</p>
+</blockquote>
+<h3 id='http-request-11'>HTTP request:</h3>
+<ul>
+<li>GET /v1/market/kline/<symbol>
+### Request parameters:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>required</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>trading pair, such as &quot;BTCUSDT&quot;</td>
+</tr>
+<tr>
+<td>period</td>
+<td>String</td>
+<td>false</td>
+<td>Data granularity, such as &quot;1min, 5min, 15min, 30min, 60min, 4hour, 12hour, 1day, 1week&quot;, the default is 20</td>
+</tr>
+<tr>
+<td>size</td>
+<td>Integer</td>
+<td>false</td>
+<td>Number of data bars, [1,2000]</td>
+</tr>
+</tbody></table>
+<h3 id='response-data-11'>Response data:</h3>
+<p>| code | type | comment |
+| ----------------- | ------ | ------------------------ ---------------- |
+| code | int | 0: success, other failure |
+| message | string | Error message |
+| data | Object| |
+| ├─channel| String |Identifier |
+| ├─instrumentId| Integer |Pair ID |
+| ├─symbol| String |Trading pair |
+| ├─item | List |K-line collection |
+| ├─├─interval | String |K line interval |
+| ├─├─endTime| Long |End time, unit s |
+| ├─├─amount|String |Amount |
+| ├─├─startTime|Long |Start time, unit s|
+| ├─├─firstTradeId|Long |First Trade ID |
+| ├─├─lastTradeId|Long |Last Trade ID |
+| ├─├─volume| String |Volume|
+| ├─├─close| String | Last transaction price|
+| ├─├─open| String | First transaction price|
+| ├─├─high| String |Highest transaction price |
+| ├─├─low| String |Lowest transaction price |</p>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4@kline@week_1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641744059</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98630624.103511453"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"week_1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641744000</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"firstTradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14547884</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"lastTradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14799534</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2307.742209"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43196.0002"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41628.2582"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52250.3884"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39654.039"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='latest-trades'><span id="7">Latest trades</span></h2>
+<p>Get the latest trades record</p>
+<h3 id='http-request-12'>HTTP request:</h3>
+<ul>
+<li>GET /v1/market/trade/<symbol>
+### Request parameters:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>required</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>trading pair, such as &quot;BTCUSDT&quot;</td>
+</tr>
+<tr>
+<td>size</td>
+<td>Integer</td>
+<td>false</td>
+<td>Number of data bars, [1,100]</td>
+</tr>
+</tbody></table>
+<h3 id='response-data-12'>Response data:</h3>
+<p>| code | type | comment |
+| ----------------- | ------ | ------------------------ ---------------- |
+| code | int | 0: success, other failure |
+| message | string | Error message |
+| data | Object| |
+| ├─channel| String |Identifier |
+| ├─instrumentId| Integer |Pair ID |
+| ├─symbol| String |Trading pair |
+| ├─interval | String |K line interval |
+| ├─time| Long |Time, unit s |
+| ├─ts|Long |Time, unit ms |
+| ├─tradeId|Long |The ID of the first transaction |
+| ├─takerSide|String |Direction &quot;BUY&quot;, &quot;SELL&quot; |
+| ├─volume| String |Volume |
+| ├─price| String | Last transaction price|                      </p>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4@trade"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642495112</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.011102"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41732.3305"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14867136</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"takerSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">14867136</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642495112000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='get-the-latest-price-of-all-symbols'><span id="7"> Get the latest price of all symbols </span></h2>
 <p>Get the latest price of all symbols</p>
-<h3 id='http-request-10'>HTTP Request:</h3>
+<h3 id='http-request-13'>HTTP Request:</h3>
 <ul>
 <li>GET /v1/ticker/price</li>
 </ul>
@@ -1688,7 +2009,7 @@ Note: The request parameters and request body are not sorted but directly splice
 
 <p>query the specified symbol: /v1/ticker/price;symbol=btcusdt,eosusdt,autusdt `</p>
 </blockquote>
-<h3 id='response-data-10'>Response Data:</h3>
+<h3 id='response-data-13'>Response Data:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1746,7 +2067,7 @@ wss://ws.coinstore.com/s/ws</p>
 </ol>
 
 <p>`</p>
-<h1 id='description-of-server-push-data-type'># # # Description of Server Push Data Type</h1><h4 id='format-schema'>Format Schema</h4><div class="highlight"><pre class="highlight plaintext"><code>{
+<h4 id='description-of-server-push-data-type'>Description of Server Push Data Type</h4><h4 id='format-schema'>Format Schema</h4><div class="highlight"><pre class="highlight plaintext"><code>{
     "S": 1, // response message serial number at session level is reset upon session reconnection, which can be used to judge whether messages are missing.
     "T": "resp", // response type, see `types' section for details
     ...
@@ -2159,7 +2480,540 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 <li>BUY</li>
 <li>SELL</li>
 </ul>
+<h1 id='other-api'>Other API</h1><h2 id='introduction-3'>Introduction</h2>
+<p>This document covers the API endpoint details including spot exchange API and it was full public access. The access address host is https://api.coinstore.com/</p>
+<h2 id='asset-list'><span id="114">Asset list</span></h2>
+<p>The assets endpoint is to provide a detailed summary for each currency available on the exchange.</p>
+<h3 id='request'>Request</h3>
+<ul>
+<li>GET  /v2/public/assets
+### Response</li>
+</ul>
 
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Y</td>
+<td>Full name of cryptocurrency.</td>
+<td>Trading pair name</td>
+</tr>
+<tr>
+<td>unified_cryptoasset_id</td>
+<td>Long</td>
+<td>Y</td>
+<td>Unique ID of cryptocurrency assigned by Unified Cryptoasset ID.</td>
+<td>Trading pair ID</td>
+</tr>
+<tr>
+<td>can_withdraw</td>
+<td>String</td>
+<td>Y</td>
+<td>Identifies whether withdrawals are enabled or disabled.</td>
+<td>Withdraw enable or not</td>
+</tr>
+<tr>
+<td>can_deposit</td>
+<td>String</td>
+<td>Y</td>
+<td>Identifies whether deposits are enabled or disabled.</td>
+<td>Deposit enable or not</td>
+</tr>
+<tr>
+<td>min_withdraw</td>
+<td>String</td>
+<td>Y</td>
+<td>Identifies the single minimum withdrawal amount of a cryptocurrency.</td>
+<td>Minimum withdraw</td>
+</tr>
+<tr>
+<td>max_withdraw</td>
+<td>String</td>
+<td>Y</td>
+<td>Identifies the single maximum withdrawal amount of a cryptocurrency.</td>
+<td>Maximum withdraw</td>
+</tr>
+<tr>
+<td>maker_fee</td>
+<td>String</td>
+<td>Y</td>
+<td>Fees applied when liquidity is added to the order book.</td>
+<td>Maker trading fee</td>
+</tr>
+<tr>
+<td>taker_fee</td>
+<td>String</td>
+<td>Y</td>
+<td>Fees applied when liquidity is removed from the order book.</td>
+<td>Taker trading fee</td>
+</tr>
+</tbody></table>
+<h3 id='demo'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+ "code": "0",
+ "message": null,
+ "data": {
+     "JJ": {
+         "name": "jj",
+         "unified_cryptoasset_id": 95,
+         "can_withdraw": "true",
+         "can_deposit": "true",
+         "min_withdraw": "10",
+         "max_withdraw": "100",
+         "maker_fee": "0.002",
+         "taker_fee": "0.002"
+     }
+ }
+}
+</code></pre></div><h2 id='trading-pair-information'><span id="115">Trading pair information</span></h2>
+<p>The summary endpoint is to provide an overview of market data for all tickers and all market pairs on the exchange.</p>
+<h3 id='request-2'>Request</h3>
+<ul>
+<li>GET /v2/public/summary
+### Response
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+|trading_pairs|String|Y|Identifier of a ticker with delimiter to separate base/quote, eg. BTC-USD (Price of BTC is quoted in USD)|Trading pair name|
+|last_price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
+|lowest_ask|String|Y|Lowest Ask price of base currency based on given quote currency|lowest ask price|
+|highest_bid|String|Y|Highest bid price of base currency based on given quote currency|Highest bid price|
+|base_volume|String|Y|24-hr volume of market pair denoted in BASE currency|24H volume|
+|quote_volume|String|Y|24-hr volume of market pair denoted in QUOTE currency|24H amount|
+|price_change_percent_24h|String|Y|24-hr % price change of market pair|24h change%|
+|highest_price_24h|String|Y|Highest price of base currency based on given quote currency in the last 24-hrs|24H high|
+|lowest_price_24h|String|Y|Lowest price of base currency based on given quote currency in the last 24-hrs|24H low|
+|base_currency|String|Y|Symbol/currency code of base currency, eg. BTC|base currency|
+|quote_currency|String|Y|Symbol/currency code of quote currency, eg. USD|quote currency|</li>
+</ul>
+<h3 id='demo-2'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>
+</code></pre></div><h2 id='97510c5887'><span id="115"></span></h2><h3 id='request-3'>Request</h3>
+<ul>
+<li>GET
+### Response
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+### Demo
+<code>lang=json
+{
+&quot;code&quot;: &quot;0&quot;,
+&quot;message&quot;: null,
+&quot;data&quot;: [
+ {
+     &quot;trading_pairs&quot;: &quot;btcusdt&quot;,
+     &quot;last_price&quot;: &quot;60000&quot;,
+     &quot;lowest_ask&quot;: &quot;60000&quot;,
+     &quot;highest_bid&quot;: &quot;555&quot;,
+     &quot;base_volume&quot;: &quot;0&quot;,
+     &quot;quote_volume&quot;: &quot;0&quot;,
+     &quot;price_change_percent_24h&quot;: &quot;0&quot;,
+     &quot;highest_price_24h&quot;: &quot;60000&quot;,
+     &quot;lowest_price_24h&quot;: &quot;60000&quot;,
+     &quot;base_currency&quot;: &quot;BTC&quot;,
+     &quot;quote_currency&quot;: &quot;USDT&quot;
+ },
+ {
+     &quot;trading_pairs&quot;: &quot;ethusdt&quot;,
+     &quot;last_price&quot;: &quot;60000&quot;,
+     &quot;lowest_ask&quot;: &quot;60000&quot;,
+     &quot;highest_bid&quot;: &quot;555&quot;,
+     &quot;base_volume&quot;: &quot;0&quot;,
+     &quot;quote_volume&quot;: &quot;0&quot;,
+     &quot;price_change_percent_24h&quot;: &quot;0&quot;,
+     &quot;highest_price_24h&quot;: &quot;60000&quot;,
+     &quot;lowest_price_24h&quot;: &quot;60000&quot;,
+     &quot;base_currency&quot;: &quot;ETH&quot;,
+     &quot;quote_currency&quot;: &quot;USDT&quot;
+ }
+]
+}
+</code></li>
+</ul>
+<h2 id='ticker-2'><span id="116">Ticker</span></h2>
+<p>The ticker endpoint is to provide a 24-hour pricing and volume summary for each market pair available on the exchange.</p>
+<h3 id='request-4'>Request</h3>
+<ul>
+<li>GET /v2/public/ticker
+### Response
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+|base_id|String|Y|The quote pair Unified Cryptoasset ID.|Quote currency ID|
+|quote_id|String|Y|The base pair Unified Cryptoasset ID.|Base currency ID|
+|last_price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
+|quote_volume|String|Y|24 hour trading volume denoted in QUOTE currency|24H amount|
+|base_volume|String|Y|24-hour trading volume denoted in BASE currency|24H volume|
+|isFrozen|Integer|Y|Indicates if the market is currently enabled (0) or disabled (1).|Market enable or not|</li>
+</ul>
+<h3 id='demo-3'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+ "code": "0",
+ "message": null,
+ "data": {
+     "BTC_USDT": {
+         "base_id": "BTC",
+         "quote_id": "USDT",
+         "last_price": "60000",
+         "quote_volume": "0",
+         "base_volume": "0",
+         "isFrozen": 1
+     },
+     "ETH_USDT": {
+         "base_id": "ETH",
+         "quote_id": "USDT",
+         "last_price": "60000",
+         "quote_volume": "0",
+         "base_volume": "0",
+         "isFrozen": 1
+     }
+ }
+}
+</code></pre></div><h2 id='depth'><span id="117">Depth</span></h2>
+<p>The order book endpoint is to provide a complete level 2 order book (arranged by best asks/bids) with full depth returned for a given market pair.</p>
+<h3 id='request-5'>Request</h3>
+<ul>
+<li>GET /v2/public/orderbook/market_pair?market_pair=BTC_USDT&amp;level=3&amp;depth=100</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market_pair</td>
+<td>String</td>
+<td>Y</td>
+<td>A pair such as “LTC_BTC”</td>
+<td>Trading pair name</td>
+</tr>
+<tr>
+<td>depth</td>
+<td>Integer</td>
+<td>Y</td>
+<td>Orders depth quantity: [0,5,10,20,50,100,500] Not defined or 0 = full order book Depth = 100 means 50 for each bid/ask side.</td>
+<td>Depth</td>
+</tr>
+<tr>
+<td>level</td>
+<td>Integer</td>
+<td>Y</td>
+<td>Level 1 – Only the best bid and ask. Level 2 – Arranged by best bids and asks. Level 3 – Complete order book, no aggregation.</td>
+<td>Level</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>timestamp</td>
+<td>String</td>
+<td>Y</td>
+<td>Unix timestamp in milliseconds for when the last updated time occurred.</td>
+<td>Server time</td>
+</tr>
+<tr>
+<td>bids</td>
+<td>String</td>
+<td>Y</td>
+<td>An array containing 2 elements. The offer price and quantity for each bid order.</td>
+<td>Bid</td>
+</tr>
+<tr>
+<td>asks</td>
+<td>String</td>
+<td>Y</td>
+<td>An array containing 2 elements. The ask price and quantity for each ask order.</td>
+<td>Ask</td>
+</tr>
+</tbody></table>
+<h3 id='demo-4'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+ "code": "0",
+ "message": null,
+ "data": {
+     "timestamp": "1622526449",
+     "bids": [
+         [
+             "10",
+             "0.1102"
+         ],
+         [
+             "20",
+             "0.1"
+         ]
+     ],
+     "asks": [
+         [
+             "60000",
+             "91.185787"
+         ],
+         [
+             "66000",
+             "0.30322"
+         ]
+     ]
+ }
+}
+</code></pre></div><h2 id='market-pair'><span id="118">Market Pair</span></h2>
+<p>The trades endpoint is to return data of 100 recently completed trades for a given market pair.</p>
+<h3 id='request-6'>Request</h3>
+<ul>
+<li>GET /v2/public/trades/market_pair?market_pair=BTC_USDT</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market_pair</td>
+<td>String</td>
+<td>Y</td>
+<td>A pair such as LTC_BTC.</td>
+<td>Trading Pair Name</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trade_id</td>
+<td>Integer</td>
+<td>Y</td>
+<td>A unique ID associated with the trade for the currency pair transaction Note: Unix timestamp does not qualify as trade_id.</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>price</td>
+<td>String</td>
+<td>Y</td>
+<td>Last transacted price of base currency based on given quote currency</td>
+<td>Last price</td>
+</tr>
+<tr>
+<td>base_volume</td>
+<td>String</td>
+<td>Y</td>
+<td>Transaction amount in BASE currency.</td>
+<td>Volume</td>
+</tr>
+<tr>
+<td>quote_volume</td>
+<td>String</td>
+<td>Y</td>
+<td>Transaction amount in QUOTE currency.</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>String</td>
+<td>Y</td>
+<td>Unix timestamp in milliseconds for when the transaction occurred.</td>
+<td>Timestamp</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>Y</td>
+<td>Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book.</td>
+<td>Side</td>
+</tr>
+</tbody></table>
+<h3 id='demo-5'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+ "code": "0",
+ "message": null,
+ "data": [
+     {
+         "trade_id": 2101,
+         "price": "60000",
+         "base_volume": "0.003333",
+         "quote_volume": "0",
+         "timestamp": "1622526904",
+         "type": "buy"
+     },
+     {
+         "trade_id": 2100,
+         "price": "60000",
+         "base_volume": "0.008333",
+         "quote_volume": "0",
+         "timestamp": "1622526904",
+         "type": "buy"
+     }
+ ]
+}
+</code></pre></div><h2 id='historical-market-pair'><span id="119">Historical Market Pair</span></h2>
+<p>The trades endpoint is to return data on historical completed trades for a given market pair.</p>
+<h3 id='request-7'>Request</h3>
+<ul>
+<li>GET /v2/public/trades/historical_trades?market_pair=BTC_USDT</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market_pair</td>
+<td>String</td>
+<td>Y</td>
+<td>A pair such as LTC_BTC.</td>
+<td>Trading Pair Name</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>N</td>
+<td>To indicate nature of trade - buy/sell</td>
+<td>type</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>N</td>
+<td>Number of historical trades to retrieve from time of query. [100, 200, 500...]. default returns 100 history.</td>
+<td>limit</td>
+</tr>
+<tr>
+<td>start_time</td>
+<td>Long</td>
+<td>N</td>
+<td>Start time from which to query historical trades from</td>
+<td>start time</td>
+</tr>
+<tr>
+<td>end_time</td>
+<td>Long</td>
+<td>N</td>
+<td>End time for historical trades query</td>
+<td>end time</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trade_id</td>
+<td>Integer</td>
+<td>Y</td>
+<td>A unique ID associated with the trade for the currency pair transaction Note: Unix timestamp does not qualify as trade_id.</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>price</td>
+<td>String</td>
+<td>Y</td>
+<td>Last transacted price of base currency based on given quote currency</td>
+<td>Last price</td>
+</tr>
+<tr>
+<td>base_volume</td>
+<td>String</td>
+<td>Y</td>
+<td>Transaction amount in BASE currency.</td>
+<td>Volume</td>
+</tr>
+<tr>
+<td>quote_volume</td>
+<td>String</td>
+<td>Y</td>
+<td>Transaction amount in QUOTE currency.</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>String</td>
+<td>Y</td>
+<td>Unix timestamp in milliseconds for when the transaction occurred.</td>
+<td>Timestamp</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>Y</td>
+<td>Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book.</td>
+<td>Side</td>
+</tr>
+</tbody></table>
+<h3 id='demo-6'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+ "code": "0",
+ "message": null,
+ "data": {
+    "buy":[
+     {
+         "trade_id": 2101,
+         "price": "60000",
+         "base_volume": "0.003333",
+         "quote_volume": "0",
+         "timestamp": "1622526904",
+         "type": "buy"
+     },
+     {
+         "trade_id": 2100,
+         "price": "60000",
+         "base_volume": "0.008333",
+         "quote_volume": "0",
+         "timestamp": "1622526904",
+         "type": "buy"
+     }],
+    "sell":[
+        {
+            "trade_id": 2101,
+            "price": "60000",
+            "base_volume": "0.003333",
+            "quote_volume": "0",
+            "timestamp": "1622526904",
+            "type": "sell"
+        },
+        {
+            "trade_id": 2100,
+            "price": "60000",
+            "base_volume": "0.008333",
+            "quote_volume": "0",
+            "timestamp": "1622526904",
+            "type": "sell"
+        }]
+ }
+}
+</code></pre></div>
       </div>
       <div class="dark-box">
       </div>
