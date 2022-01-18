@@ -594,62 +594,62 @@ HTTP常见的错误码如下：
 ##  <span id="7">Ticker</span>
  市场所有交易对的Ticker
  
- ### HTTP请求: 
- - GET /v1/market/tickers
- ### 请求参数: 
- 
- |    code    |  type   | required |       comment        |
- | ---------- | ------- | -------- | -------------------- |
+### HTTP请求: 
+- GET /v1/market/tickers
+### 请求参数: 
 
- ### 响应数据: 
- 
- |       code        |  type   |                      comment                       |
- | ----------------- | ------ | ---------------------------------------- |
- | code            | int    |     0：成功，其他失败                                               |
- | message         | string       |    错误信息                                    |
- | data | Object|   |
- | ├─channel| String |标识  |
- | ├─instrumentId| Integer  |交易对ID |
- | ├─symbol| String  |交易对 |
- | ├─count | Integer  |24h滚动交易笔数 |
- | ├─volume|String  |24h以报价币种计量的交易量 |    
- | ├─amount|  String  |24h以基础币种计量的交易量 |           
- | ├─close|  String  | 末一笔成交价| 
- | ├─open|  String  | 第一笔成交价| 
- | ├─high|  String  | 最高一笔成交价| 
- | ├─low|  String  | 最低一笔成交价| 
- | ├─bid|  String  | 买一价| 
- | ├─bidSize|  String  | 买一量| 
- | ├─ask|  String  | 卖一价| 
- | ├─askSize|  String  | 卖一量| 
-                       
- 
- 
- > 响应
- 
- ```json
- {
- 	"data": [
- 		{
- 			"channel": "ticker",
- 			"bidSize": "454.2",
- 			"askSize": "542.6",
- 			"count": 41723,
- 			"volume": "24121351.85",
- 			"amount": "1693799.10798965",
- 			"close": "0.067998",
- 			"open": "0.071842",
- 			"high": "0.072453",
- 			"low": "0.067985",
- 			"bid": "0.0679",
- 			"ask": "0.0681",
- 			"symbol": "TRXUSDT",
- 			"instrumentId": 2
- 		}
- 	],
- 	"code": 0
- }
-  ```
+|    code    |  type   | required |       comment        |
+| ---------- | ------- | -------- | -------------------- |
+
+### 响应数据: 
+
+|       code        |  type   |                      comment                       |
+| ----------------- | ------ | ---------------------------------------- |
+| code            | int    |     0：成功，其他失败                                               |
+| message         | string       |    错误信息                                    |
+| data | Object|   |
+| ├─channel| String |标识  |
+| ├─instrumentId| Integer  |交易对ID |
+| ├─symbol| String  |交易对 |
+| ├─count | Integer  |24h滚动交易笔数 |
+| ├─volume|String  |24h以报价币种计量的交易量 |    
+| ├─amount|  String  |24h以基础币种计量的交易量 |           
+| ├─close|  String  | 末一笔成交价| 
+| ├─open|  String  | 第一笔成交价| 
+| ├─high|  String  | 最高一笔成交价| 
+| ├─low|  String  | 最低一笔成交价| 
+| ├─bid|  String  | 买一价| 
+| ├─bidSize|  String  | 买一量| 
+| ├─ask|  String  | 卖一价| 
+| ├─askSize|  String  | 卖一量| 
+                     
+
+
+> 响应
+
+```json
+{
+  "data": [
+    {
+      "channel": "ticker",
+      "bidSize": "454.2",
+      "askSize": "542.6",
+      "count": 41723,
+      "volume": "24121351.85",
+      "amount": "1693799.10798965",
+      "close": "0.067998",
+      "open": "0.071842",
+      "high": "0.072453",
+      "low": "0.067985",
+      "bid": "0.0679",
+      "ask": "0.0681",
+      "symbol": "TRXUSDT",
+      "instrumentId": 2
+    }
+  ],
+  "code": 0
+}
+```
  
 ##  <span id="7">获取深度</span>
 获取深度数据
@@ -726,6 +726,7 @@ HTTP常见的错误码如下：
 |symbol | string | true | 交易对，如“BTCUSDT” |
 |period | String | false | 数据粒度，如“1min, 5min, 15min, 30min, 60min, 4hour,12hour, 1day, 1week”,默认20 |
 |size | Integer | false | 数据条数，[1,2000] |
+
 ### 响应数据: 
 
 |       code        |  type   |                      comment                       |
@@ -777,39 +778,40 @@ HTTP常见的错误码如下：
 	"code": 0
 }
  ```
- ##  <span id="7">最新成交</span>
- 获取最新成交记录
- 
- ### HTTP请求: 
- - GET /v1/market/trade/<symbol>
- ### 请求参数: 
- 
- |    code    |  type   | required |       comment        |
- | ---------- | ------- | -------- | -------------------- |
- |symbol | string | true | 交易对，如“BTCUSDT” |
- |size | Integer | false | 数据条数，[1,100] |
- ### 响应数据: 
- 
- |       code        |  type   |                      comment                       |
- | ----------------- | ------ | ---------------------------------------- |
- | code            | int    |     0：成功，其他失败                                               |
- | message         | string       |    错误信息                                    |
- | data | Object|   |
- | ├─channel| String |标识  |
- | ├─instrumentId| Integer  |交易对ID |
- | ├─symbol| String  |交易对 |
- | ├─interval | String  |K线间隔 |
- | ├─time| Long |时间，单位 s |         
- | ├─ts|Long  |时间，单位 ms |                  
- | ├─tradeId|Long |第一笔成交ID |    
- | ├─takerSide|String  |方向 "BUY"，"SELL" |    
- | ├─volume|  String  |成交量 |           
- | ├─price|  String  | 末一笔成交价|                       
- 
- 
- > 响应
- 
- ```json
+##  <span id="7">最新成交</span>
+获取最新成交记录
+
+### HTTP请求: 
+- GET /v1/market/trade/<symbol>
+### 请求参数: 
+
+|    code    |  type   | required |       comment        |
+| ---------- | ------- | -------- | -------------------- |
+|symbol | string | true | 交易对，如“BTCUSDT” |
+|size | Integer | false | 数据条数，[1,100] |
+
+### 响应数据: 
+
+|       code        |  type   |                      comment                       |
+| ----------------- | ------ | ---------------------------------------- |
+| code            | int    |     0：成功，其他失败                                               |
+| message         | string       |    错误信息                                    |
+| data | Object|   |
+| ├─channel| String |标识  |
+| ├─instrumentId| Integer  |交易对ID |
+| ├─symbol| String  |交易对 |
+| ├─interval | String  |K线间隔 |
+| ├─time| Long |时间，单位 s |         
+| ├─ts|Long  |时间，单位 ms |                  
+| ├─tradeId|Long |第一笔成交ID |    
+| ├─takerSide|String  |方向 "BUY"，"SELL" |    
+| ├─volume|  String  |成交量 |           
+| ├─price|  String  | 末一笔成交价|                       
+
+
+> 响应
+
+```json
  {
  	"data": [
  		{
@@ -827,7 +829,7 @@ HTTP常见的错误码如下：
  	],
  	"code": 0
  }
-  ```
+```
 ##  <span id="7">获取所有交易对最新价格</span>
 获取所有交易对最新价格
 
@@ -1061,9 +1063,9 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 
 ### **逐笔交易**
 
-> Stream Name: `<symbol>@trade`, eg: `88066@trade`
-> param: `param":{"size":2}`
-> e.g: ``{"op":"SUB","channel":["28@trade"],"param":{"size":2},"id":1}``
+ Stream Name: `<symbol>@trade`, eg: `88066@trade`
+ param: `param":{"size":2}`
+ e.g: ``{"op":"SUB","channel":["28@trade"],"param":{"size":2},"id":1}``
 > 全量数据：
 ```lang=json
  {
@@ -1116,18 +1118,18 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 
 ### **K线 Streams**
 
-> K线stream逐秒推送所请求的K线种类(最新一根K线)的更新。
-> Stream Name: `<symbol>@kline@<interval>`, eg: `88066@kline@min_1`
-> interval 可选值:
-> ** min_1
-> ** min_5
-> ** min_15
-> ** min_30
-> ** hour_1
-> ** hour_4
-> ** hour_12
-> ** day_1
-> ** week_1
+K线stream逐秒推送所请求的K线种类(最新一根K线)的更新。
+Stream Name: `<symbol>@kline@<interval>`, eg: `88066@kline@min_1`
+interval 可选值:
+** min_1
+** min_5
+** min_15
+** min_30
+** hour_1
+** hour_4
+** hour_12
+** day_1
+** week_1
 
 ```lang=json
 {
@@ -1149,11 +1151,11 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 
 ### **K线 Request**
 
-> 请求历史k线：
-> param: `"{channel":"88066@kline@min_1","endTime":1603766280,"limit":10}`,
-> eg:  `{"op":"REQ","param":{"channel":"88066@kline@min_1","limit":10},"id":1}`
-> `limit`: 最大不超过 200
-> `endTime`: 可选，exclusive
+请求历史k线：
+param: `"{channel":"88066@kline@min_1","endTime":1603766280,"limit":10}`,
+eg:  `{"op":"REQ","param":{"channel":"88066@kline@min_1","limit":10},"id":1}`
+`limit`: 最大不超过 200
+`endTime`: 可选，exclusive
 
 ```lang=json
 {
@@ -1182,8 +1184,8 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 
 ### **按 Symbol 的 Ticker信息**
 
-> 按Symbol刷新的最近24小时精简 ticker 信息
-> Stream 名称: `<symbol>@ticker`, eg:  `88066@ticker`
+按Symbol刷新的最近24小时精简 ticker 信息
+Stream 名称: `<symbol>@ticker`, eg:  `88066@ticker`
 
 ```lang=json
 {
@@ -1200,8 +1202,8 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 
 ### **全市场所有Symbol 的 Ticker信息**
 
-> 按Symbol刷新的最近24小时精简ticker信息
-> Stream 名称: `!@ticker`
+按Symbol刷新的最近24小时精简ticker信息
+Stream 名称: `!@ticker`
 
 ```lang=json
 {
@@ -1235,8 +1237,8 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 
 ### **有限档深度信息**
 
-> 每秒或每100毫秒推送有限档深度信息。levels表示几档买卖单信息, 可选 5/10/20/50/100档
-> Stream Names: `<symbol>@depth@<levels>` ~~或 `<symbol>@depth@<levels>@100ms`.~~, eg:  `88066@depth@50`
+每秒或每100毫秒推送有限档深度信息。levels表示几档买卖单信息, 可选 5/10/20/50/100档
+Stream Names: `<symbol>@depth@<levels>` ~~或 `<symbol>@depth@<levels>@100ms`.~~, eg:  `88066@depth@50`
 
 ```lang=json
 {
@@ -1262,7 +1264,7 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 
 ### **登陆**
 
-> 登陆时可以同时指定订阅数据
+ 登陆时可以同时指定订阅数据
 
 ```lang=json
 {
@@ -1282,7 +1284,7 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 
 ### **账户**
 
-> Stream Name: `<currency>@account`, or `!@account` all currency
+ Stream Name: `<currency>@account`, or `!@account` all currency
 
 ```lang=json
 {
@@ -1297,7 +1299,7 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 
 ### **成交**
 
-> Stream Name: `<symbol>@order`, or `!@order` all symbol's
+ Stream Name: `<symbol>@order`, or `!@order` all symbol's
 
 ```lang=json
 {
@@ -1398,6 +1400,7 @@ The assets endpoint is to provide a detailed summary for each currency available
 |max_withdraw|String|Y|Identifies the single maximum withdrawal amount of a cryptocurrency.|Maximum withdraw|
 |maker_fee|String|Y|Fees applied when liquidity is added to the order book.|Maker trading fee|
 |taker_fee|String|Y|Fees applied when liquidity is removed from the order book.|Taker trading fee|
+
 ### Demo
 ```lang=json
 {
@@ -1423,6 +1426,7 @@ The summary endpoint is to provide an overview of market data for all tickers an
 ### Request 
 - GET /v2/public/summary
 ### Response
+
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
 |trading_pairs|String|Y|Identifier of a ticker with delimiter to separate base/quote, eg. BTC-USD (Price of BTC is quoted in USD)|Trading pair name|
@@ -1439,15 +1443,49 @@ The summary endpoint is to provide an overview of market data for all tickers an
 
 ### Demo
 ```lang=json
-
+{
+ "code": "0",
+ "message": null,
+ "data": [
+     {
+         "trading_pairs": "btcusdt",
+         "last_price": "60000",
+         "lowest_ask": "60000",
+         "highest_bid": "555",
+         "base_volume": "0",
+         "quote_volume": "0",
+         "price_change_percent_24h": "0",
+         "highest_price_24h": "60000",
+         "lowest_price_24h": "60000",
+         "base_currency": "BTC",
+         "quote_currency": "USDT"
+     },
+     {
+         "trading_pairs": "ethusdt",
+         "last_price": "60000",
+         "lowest_ask": "60000",
+         "highest_bid": "555",
+         "base_volume": "0",
+         "quote_volume": "0",
+         "price_change_percent_24h": "0",
+         "highest_price_24h": "60000",
+         "lowest_price_24h": "60000",
+         "base_currency": "ETH",
+         "quote_currency": "USDT"
+     }
+ ]
+}
 ```
 
 ## <span id="115"></span>
 ### Request 
 - GET
+
 ### Response
+
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
+
 ### Demo
 ```lang=json
 {
@@ -1489,6 +1527,7 @@ The ticker endpoint is to provide a 24-hour pricing and volume summary for each 
 ### Request 
 - GET /v2/public/ticker
 ### Response
+
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
 |base_id|String|Y|The quote pair Unified Cryptoasset ID.|Quote currency ID|
@@ -1537,12 +1576,15 @@ The order book endpoint is to provide a complete level 2 order book (arranged by
 |level|Integer|Y|Level 1 – Only the best bid and ask. Level 2 – Arranged by best bids and asks. Level 3 – Complete order book, no aggregation.| Level |
 
 ### Response
+
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
 |timestamp|String|Y|Unix timestamp in milliseconds for when the last updated time occurred.|Server time|
 |bids|String|Y|An array containing 2 elements. The offer price and quantity for each bid order.|Bid|
 |asks|String|Y|An array containing 2 elements. The ask price and quantity for each ask order.|Ask|
+
 ### Demo
+
 ```lang=json
 {
  "code": "0",
@@ -1582,7 +1624,9 @@ The trades endpoint is to return data of 100 recently completed trades for a giv
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
 |market_pair	|String	|Y	|A pair such as LTC_BTC.	|Trading Pair Name|
+
 ### Response
+
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
 |trade_id|Integer|Y|A unique ID associated with the trade for the currency pair transaction Note: Unix timestamp does not qualify as trade_id.|Order ID|
@@ -1591,6 +1635,7 @@ The trades endpoint is to return data of 100 recently completed trades for a giv
 |quote_volume|String|Y|Transaction amount in QUOTE currency.|Amount|
 |timestamp|String|Y|Unix timestamp in milliseconds for when the transaction occurred.|Timestamp|
 |type|String|Y|Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book.|Side|
+
 ### Demo
 ```lang=json
 {
@@ -1629,7 +1674,9 @@ The trades endpoint is to return data on historical completed trades for a given
 |limit	|Integer	|N	|Number of historical trades to retrieve from time of query. [100, 200, 500...]. default returns 100 history.	|limit|
 |start_time	|Long	|N	|Start time from which to query historical trades from	|start time|
 |end_time	|Long	|N	|End time for historical trades query	|end time|
+
 ### Response
+
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
 |trade_id|Integer|Y|A unique ID associated with the trade for the currency pair transaction Note: Unix timestamp does not qualify as trade_id.|Order ID|
@@ -1638,7 +1685,9 @@ The trades endpoint is to return data on historical completed trades for a given
 |quote_volume|String|Y|Transaction amount in QUOTE currency.|Amount|
 |timestamp|String|Y|Unix timestamp in milliseconds for when the transaction occurred.|Timestamp|
 |type|String|Y|Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book.|Side|
-### Demo
+
+## Demo
+
 ```lang=json
 {
  "code": "0",

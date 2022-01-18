@@ -561,39 +561,39 @@ Get order information
 ## <span id="7">Ticker</span>
  Ticker for all trading pairs in the market
  
- ### HTTP request:
- - GET /v1/market/tickers
- ### Request parameters:
- 
- | code | type | required | comment |
- | ---------- | ------- | -------- | -------------------- |
+### HTTP request:
+- GET /v1/market/tickers
+### Request parameters:
 
- ### Response data:
+| code | type | required | comment |
+| ---------- | ------- | -------- | -------------------- |
+
+### Response data:
+
+| code | type | comment |
+| ----------------- | ------ | ------------------------ ---------------- |
+| code | int | 0: success, other failure |
+| message | string | Error message |
+| data | Object| |
+| ├─channel| String |Identifier |
+| ├─instrumentId| Integer |Pair ID |
+| ├─symbol| String |Trading pair |
+| ├─count | Integer |24h rolling transaction count |
+| ├─volume|String |24h transaction volume measured in quote currency |
+| ├─amount| String |24h transaction volume measured in base currency |
+| ├─close| String | Last transaction price|
+| ├─open| String | First transaction price|
+| ├─high| String | The highest transaction price|
+| ├─low| String | The lowest transaction price|
+| ├─bid| String | Buy one price|
+| ├─bidSize| String | Buy a quantity|
+| ├─ask| String | Sell one price|
+| ├─askSize| String | Amount to sell|
+
+
+> Response
  
- | code | type | comment |
- | ----------------- | ------ | ------------------------ ---------------- |
- | code | int | 0: success, other failure |
- | message | string | Error message |
- | data | Object| |
- | ├─channel| String |Identifier |
- | ├─instrumentId| Integer |Pair ID |
- | ├─symbol| String |Trading pair |
- | ├─count | Integer |24h rolling transaction count |
- | ├─volume|String |24h transaction volume measured in quote currency |
- | ├─amount| String |24h transaction volume measured in base currency |
- | ├─close| String | Last transaction price|
- | ├─open| String | First transaction price|
- | ├─high| String | The highest transaction price|
- | ├─low| String | The lowest transaction price|
- | ├─bid| String | Buy one price|
- | ├─bidSize| String | Buy a quantity|
- | ├─ask| String | Sell one price|
- | ├─askSize| String | Amount to sell|
- 
- 
- > Response
- 
- ```json
+```json
  {
  	"data": [
  		{
@@ -615,7 +615,7 @@ Get order information
  	],
  	"code": 0
  }
-  ```
+```
  
 ## <span id="7">Get depth</span>
 Get depth data
@@ -691,6 +691,7 @@ Get trading K line
 |symbol | string | true | trading pair, such as "BTCUSDT" |
 |period | String | false | Data granularity, such as "1min, 5min, 15min, 30min, 60min, 4hour, 12hour, 1day, 1week", the default is 20 |
 |size | Integer | false | Number of data bars, [1,2000] |
+
 ### Response data:
 
 | code | type | comment |
@@ -753,6 +754,7 @@ Get the latest trades record
 | ---------- | ------- | -------- | -------------------- |
 |symbol | string | true | trading pair, such as "BTCUSDT" |
 |size | Integer | false | Number of data bars, [1,100] |
+
 ### Response data:
 
 | code | type | comment |
@@ -772,7 +774,7 @@ Get the latest trades record
 | ├─price| String | Last transaction price|                      
  
  
- > Response
+> Response
  
  ```json
  {
@@ -825,9 +827,9 @@ Get the latest price of all symbols
 
 ### Request Parameters: 
 
-> default: Query all symbols
+ default: Query all symbols
 
-> query the specified symbol: /v1/ticker/price;symbol=btcusdt,eosusdt,autusdt `
+ query the specified symbol: /v1/ticker/price;symbol=btcusdt,eosusdt,autusdt `
 
 ### Response Data: 
 
@@ -894,7 +896,7 @@ wss://ws.coinstore.com/s/ws
 
  2. subscribe message type
 
-> the following types of messages start from executing the `SUB` command of the corresponding channel and end with executing the `UNSUB` command, and the messages are pushed if the data on the server side changes, with a minimum push interval of 100ms.
+the following types of messages start from executing the `SUB` command of the corresponding channel and end with executing the `UNSUB` command, and the messages are pushed if the data on the server side changes, with a minimum push interval of 100ms.
 
 ** `kline`
 
@@ -918,7 +920,7 @@ wss://ws.coinstore.com/s/ws
 
 #### Pong
 
-> the server supports two forms of end pong response, namely websocket pong frame and pong message.
+the server supports two forms of end pong response, namely websocket pong frame and pong message.
 
 #### Websocket Pong frame
 
@@ -1029,9 +1031,9 @@ NOTE:  All the time to return data is in `seconds'.
 
 ### **Trade by Trade**
 
-> Stream Name: `<symbol>@trade`, eg: `88066@trade`
-> param: `param": {"size":2}`
-> e.g: ``{"op":" SUB","channel": ["28@trade"],"param": {"size":2},"id":1}``
+Stream Name: `<symbol>@trade`, eg: `88066@trade`
+param: `param": {"size":2}`
+e.g: ``{"op":" SUB","channel": ["28@trade"],"param": {"size":2},"id":1}``
 > full-volume data:
 ```lang=json
  {
@@ -1084,19 +1086,19 @@ NOTE:  All the time to return data is in `seconds'.
 
 ### **K-line Streams**
 
-> K-line stream pushes the requested k-line type (the latest k-line) every second.
-> Stream Name: `<symbol>@kline@<interval>`, eg: `88066@kline@min_1`
-> interval optional values:
-> ** min_1
-> ** min_5
-> ** min_15
-> ** min_30
-> ** hour_1
-> ** hour_4
-> ** hour_12
-> ** day_1
-> ** week_1
-> ** mon_1
+K-line stream pushes the requested k-line type (the latest k-line) every second.
+Stream Name: `<symbol>@kline@<interval>`, eg: `88066@kline@min_1`
+interval optional values:
+** min_1
+** min_5
+** min_15
+** min_30
+** hour_1
+** hour_4
+** hour_12
+** day_1
+** week_1
+** mon_1
 
 ```lang=json
 {
@@ -1118,11 +1120,11 @@ NOTE:  All the time to return data is in `seconds'.
 
 ### **K-line Request**
 
-> request historical k-line:
-> param: `"{channel":" 88066@kline@min_1","endTime":1603766280,"limit":10}`,
-> eg:  `{"op":" REQ","param": {"channel":" 88066@kline@min_1","limit":10},"id":1}`
-> `limit`: No more than 200
-> `endTime`: Optional, exclusive
+request historical k-line:
+param: `"{channel":" 88066@kline@min_1","endTime":1603766280,"limit":10}`,
+eg:  `{"op":" REQ","param": {"channel":" 88066@kline@min_1","limit":10},"id":1}`
+`limit`: No more than 200
+`endTime`: Optional, exclusive
 
 ```lang=json
 {
@@ -1151,8 +1153,8 @@ NOTE:  All the time to return data is in `seconds'.
 
 ### **Ticker Information by Symbol**
 
-> Streamlined ticker information in the last 24 hours refreshed by Symbol
-> Stream Name: `<symbol>@ticker`, eg:  `88066@ticker`
+Streamlined ticker information in the last 24 hours refreshed by Symbol
+Stream Name: `<symbol>@ticker`, eg:  `88066@ticker`
 
 ```lang=json
 {
@@ -1169,8 +1171,8 @@ NOTE:  All the time to return data is in `seconds'.
 
 ### **Ticker information of all symbols in the whole market**
 
-> Streamlined ticker information in the last 24 hours refreshed by Symbol
-> Stream Name: `!@ticker`
+Streamlined ticker information in the last 24 hours refreshed by Symbol
+Stream Name: `!@ticker`
 
 ```lang=json
 {
@@ -1204,8 +1206,8 @@ NOTE:  All the time to return data is in `seconds'.
 
 ### **Limited level depth information**
 
-> Push limited level depth information every second or every 100ms. Levels indicates the levels of the buy or sell orders, and 5/10/20/50/100 level can be selected.
-> Stream Names: `<symbol>@depth@<levels>` ~~or `<symbol>@depth@<levels>@100ms`. ~~, eg:  `88066@depth@50`
+Push limited level depth information every second or every 100ms. Levels indicates the levels of the buy or sell orders, and 5/10/20/50/100 level can be selected.
+Stream Names: `<symbol>@depth@<levels>` ~~or `<symbol>@depth@<levels>@100ms`. ~~, eg:  `88066@depth@50`
 
 ```lang=json
 {
@@ -1231,7 +1233,7 @@ NOTE:  All the time to return data is in `seconds'.
 
 ### **Login**
 
-> Specify subscription data when logging in
+Specify subscription data when logging in
 
 ```lang=json
 {
@@ -1251,7 +1253,7 @@ NOTE:  All the time to return data is in `seconds'.
 
 ### **Account**
 
-> Stream Name: `<currency>@account`, or `!@account` all currency
+Stream Name: `<currency>@account`, or `!@account` all currency
 
 ```lang=json
 {
@@ -1266,7 +1268,7 @@ NOTE:  All the time to return data is in `seconds'.
 
 ### **Closing**
 
-> Stream Name: `<symbol>@order`, or `!@order` all symbol's
+Stream Name: `<symbol>@order`, or `!@order` all symbol's
 
 ```lang=json
 {
@@ -1367,6 +1369,7 @@ The assets endpoint is to provide a detailed summary for each currency available
 |max_withdraw|String|Y|Identifies the single maximum withdrawal amount of a cryptocurrency.|Maximum withdraw|
 |maker_fee|String|Y|Fees applied when liquidity is added to the order book.|Maker trading fee|
 |taker_fee|String|Y|Fees applied when liquidity is removed from the order book.|Taker trading fee|
+
 ### Demo
 ```lang=json
 {
@@ -1392,6 +1395,7 @@ The summary endpoint is to provide an overview of market data for all tickers an
 ### Request 
 - GET /v2/public/summary
 ### Response
+
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
 |trading_pairs|String|Y|Identifier of a ticker with delimiter to separate base/quote, eg. BTC-USD (Price of BTC is quoted in USD)|Trading pair name|
@@ -1408,15 +1412,48 @@ The summary endpoint is to provide an overview of market data for all tickers an
 
 ### Demo
 ```lang=json
-
+{
+ "code": "0",
+ "message": null,
+ "data": [
+     {
+         "trading_pairs": "btcusdt",
+         "last_price": "60000",
+         "lowest_ask": "60000",
+         "highest_bid": "555",
+         "base_volume": "0",
+         "quote_volume": "0",
+         "price_change_percent_24h": "0",
+         "highest_price_24h": "60000",
+         "lowest_price_24h": "60000",
+         "base_currency": "BTC",
+         "quote_currency": "USDT"
+     },
+     {
+         "trading_pairs": "ethusdt",
+         "last_price": "60000",
+         "lowest_ask": "60000",
+         "highest_bid": "555",
+         "base_volume": "0",
+         "quote_volume": "0",
+         "price_change_percent_24h": "0",
+         "highest_price_24h": "60000",
+         "lowest_price_24h": "60000",
+         "base_currency": "ETH",
+         "quote_currency": "USDT"
+     }
+ ]
+}
 ```
 
 ## <span id="115"></span>
 ### Request 
 - GET
 ### Response
+
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
+
 ### Demo
 ```lang=json
 {
@@ -1458,6 +1495,7 @@ The ticker endpoint is to provide a 24-hour pricing and volume summary for each 
 ### Request 
 - GET /v2/public/ticker
 ### Response
+
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
 |base_id|String|Y|The quote pair Unified Cryptoasset ID.|Quote currency ID|
@@ -1506,11 +1544,13 @@ The order book endpoint is to provide a complete level 2 order book (arranged by
 |level|Integer|Y|Level 1 – Only the best bid and ask. Level 2 – Arranged by best bids and asks. Level 3 – Complete order book, no aggregation.| Level |
 
 ### Response
+
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
 |timestamp|String|Y|Unix timestamp in milliseconds for when the last updated time occurred.|Server time|
 |bids|String|Y|An array containing 2 elements. The offer price and quantity for each bid order.|Bid|
 |asks|String|Y|An array containing 2 elements. The ask price and quantity for each ask order.|Ask|
+
 ### Demo
 ```lang=json
 {
@@ -1551,7 +1591,9 @@ The trades endpoint is to return data of 100 recently completed trades for a giv
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
 |market_pair	|String	|Y	|A pair such as LTC_BTC.	|Trading Pair Name|
+
 ### Response
+
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
 |trade_id|Integer|Y|A unique ID associated with the trade for the currency pair transaction Note: Unix timestamp does not qualify as trade_id.|Order ID|
@@ -1560,6 +1602,7 @@ The trades endpoint is to return data of 100 recently completed trades for a giv
 |quote_volume|String|Y|Transaction amount in QUOTE currency.|Amount|
 |timestamp|String|Y|Unix timestamp in milliseconds for when the transaction occurred.|Timestamp|
 |type|String|Y|Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book.|Side|
+
 ### Demo
 ```lang=json
 {
@@ -1598,7 +1641,9 @@ The trades endpoint is to return data on historical completed trades for a given
 |limit	|Integer	|N	|Number of historical trades to retrieve from time of query. [100, 200, 500...]. default returns 100 history.	|limit|
 |start_time	|Long	|N	|Start time from which to query historical trades from	|start time|
 |end_time	|Long	|N	|End time for historical trades query	|end time|
+
 ### Response
+
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
 |trade_id|Integer|Y|A unique ID associated with the trade for the currency pair transaction Note: Unix timestamp does not qualify as trade_id.|Order ID|
@@ -1607,6 +1652,7 @@ The trades endpoint is to return data on historical completed trades for a given
 |quote_volume|String|Y|Transaction amount in QUOTE currency.|Amount|
 |timestamp|String|Y|Unix timestamp in milliseconds for when the transaction occurred.|Timestamp|
 |type|String|Y|Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book.|Side|
+
 ### Demo
 ```lang=json
 {
