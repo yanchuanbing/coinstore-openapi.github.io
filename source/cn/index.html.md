@@ -541,7 +541,7 @@ HTTP常见的错误码如下：
 | --reject  |    List     |  失败的订单id集合                      |
 
 
-## <span id="14">.获取订单信息</span>
+## <span id="14">获取订单信息</span>
 .获取订单信息
 
 ### HTTP请求: 
@@ -590,12 +590,268 @@ HTTP常见的错误码如下：
 
 
 # 行情相关
+
+##  <span id="7">Ticker</span>
+ 市场所有交易对的Ticker
+ 
+ ### HTTP请求: 
+ - GET /v1/market/tickers
+ ### 请求参数: 
+ 
+ |    code    |  type   | required |       comment        |
+ | ---------- | ------- | -------- | -------------------- |
+
+ ### 响应数据: 
+ 
+ |       code        |  type   |                      comment                       |
+ | ----------------- | ------ | ---------------------------------------- |
+ | code            | int    |     0：成功，其他失败                                               |
+ | message         | string       |    错误信息                                    |
+ | data | Object|   |
+ | ├─channel| String |标识  |
+ | ├─instrumentId| Integer  |交易对ID |
+ | ├─symbol| String  |交易对 |
+ | ├─count | Integer  |24h滚动交易笔数 |
+ | ├─volume|String  |24h以报价币种计量的交易量 |    
+ | ├─amount|  String  |24h以基础币种计量的交易量 |           
+ | ├─close|  String  | 末一笔成交价| 
+ | ├─open|  String  | 第一笔成交价| 
+ | ├─high|  String  | 最高一笔成交价| 
+ | ├─low|  String  | 最低一笔成交价| 
+ | ├─bid|  String  | 买一价| 
+ | ├─bidSize|  String  | 买一量| 
+ | ├─ask|  String  | 卖一价| 
+ | ├─askSize|  String  | 卖一量| 
+                       
+ 
+ 
+ > 响应
+ 
+ ```json
+ {
+ 	"data": [
+ 		{
+ 			"channel": "ticker",
+ 			"bidSize": "454.2",
+ 			"askSize": "542.6",
+ 			"count": 41723,
+ 			"volume": "24121351.85",
+ 			"amount": "1693799.10798965",
+ 			"close": "0.067998",
+ 			"open": "0.071842",
+ 			"high": "0.072453",
+ 			"low": "0.067985",
+ 			"bid": "0.0679",
+ 			"ask": "0.0681",
+ 			"symbol": "TRXUSDT",
+ 			"instrumentId": 2
+ 		}
+ 	],
+ 	"code": 0
+ }
+  ```
+ 
+##  <span id="7">获取深度</span>
+获取深度数据
+
+### HTTP请求: 
+- GET /v1/market/depth/<symbol>
+### 请求参数: 
+
+|    code    |  type   | required |       comment        |
+| ---------- | ------- | -------- | -------------------- |
+|symbol | string | true | 交易对，如“BTCUSDT” |
+|depth | int | false | 深度的数量，如“5, 10, 20, 50, 100”,默认20 |
+
+### 响应数据: 
+
+|       code        |  type   |                      comment                       |
+| ----------------- | ------ | ---------------------------------------- |
+| code            | int    |     0：成功，其他失败                                               |
+| message         | string       |    错误信息                                    |
+| data | Object|   |
+| ├─channel| String |标识  |
+| ├─level| Integer  |数量 |
+| ├─instrumentId| Integer  |交易对ID |
+| ├─symbol| string  |交易对 |
+| ├─a | List  |卖盘，[${价格}, ${数量}, ${方向}] ] |
+| ├─b | List  |买盘，[${价格}, ${数量}, ${方向}] ] |
+
+> 响应
+
+```json
+{
+	"data": {
+		"channel": "4@depth@5",
+		"level": 5,
+		"a": [
+			[
+				"41995",
+				"0.018144",
+				-1
+			],
+			[
+				"41995.5",
+				"0.008279",
+				-1
+			]
+		],
+		"b": [
+			[
+				"41991.5",
+				"0.548567",
+				1
+			],
+			[
+				"41991",
+				"0.013168",
+				1
+			]
+		],
+		"symbol": "BTCUSDT",
+		"instrumentId": 4
+	},
+	"code": 0
+}
+ ```
+##  <span id="7">获取K线</span>
+获取交易K线
+
+### HTTP请求: 
+- GET /v1/market/kline/<symbol>
+### 请求参数: 
+
+|    code    |  type   | required |       comment        |
+| ---------- | ------- | -------- | -------------------- |
+|symbol | string | true | 交易对，如“BTCUSDT” |
+|period | String | false | 数据粒度，如“1min, 5min, 15min, 30min, 60min, 4hour,12hour, 1day, 1week”,默认20 |
+|size | Integer | false | 数据条数，[1,2000] |
+### 响应数据: 
+
+|       code        |  type   |                      comment                       |
+| ----------------- | ------ | ---------------------------------------- |
+| code            | int    |     0：成功，其他失败                                               |
+| message         | string       |    错误信息                                    |
+| data | Object|   |
+| ├─channel| String |标识  |
+| ├─instrumentId| Integer  |交易对ID |
+| ├─symbol| String  |交易对 |
+| ├─item | List  |K 线集合 |
+| ├─├─interval | String  |K线间隔 |
+| ├─├─endTime| Long |结束时间，单位 s |         
+| ├─├─amount|String  |成交额 |               
+| ├─├─startTime|Long  |开始时间，单位 s|     
+| ├─├─firstTradeId|Long |第一笔成交ID |    
+| ├─├─lastTradeId|Long  |末一笔成交ID |    
+| ├─├─volume|  String  |成交量 |           
+| ├─├─close|  String  | 末一笔成交价|            
+| ├─├─open|   String  | 第一笔成交价|            
+| ├─├─high|  String  |最高成交价 |             
+| ├─├─low|   String  |最低成交价 |             
+
+
+> 响应
+
+```json
+{
+	"data": {
+		"channel": "4@kline@week_1",
+		"item": [
+			{
+				"endTime": 1641744059,
+				"amount": "98630624.103511453",
+				"interval": "week_1",
+				"startTime": 1641744000,
+				"firstTradeId": 14547884,
+				"lastTradeId": 14799534,
+				"volume": "2307.742209",
+				"close": "43196.0002",
+				"open": "41628.2582",
+				"high": "52250.3884",
+				"low": "39654.039"
+			}
+		],
+		"symbol": "BTCUSDT",
+		"instrumentId": 4
+	},
+	"code": 0
+}
+ ```
+ ##  <span id="7">最新成交</span>
+ 获取最新成交记录
+ 
+ ### HTTP请求: 
+ - GET /v1/market/trade/<symbol>
+ ### 请求参数: 
+ 
+ |    code    |  type   | required |       comment        |
+ | ---------- | ------- | -------- | -------------------- |
+ |symbol | string | true | 交易对，如“BTCUSDT” |
+ |size | Integer | false | 数据条数，[1,100] |
+ ### 响应数据: 
+ 
+ |       code        |  type   |                      comment                       |
+ | ----------------- | ------ | ---------------------------------------- |
+ | code            | int    |     0：成功，其他失败                                               |
+ | message         | string       |    错误信息                                    |
+ | data | Object|   |
+ | ├─channel| String |标识  |
+ | ├─instrumentId| Integer  |交易对ID |
+ | ├─symbol| String  |交易对 |
+ | ├─interval | String  |K线间隔 |
+ | ├─time| Long |时间，单位 s |         
+ | ├─ts|Long  |时间，单位 ms |                  
+ | ├─tradeId|Long |第一笔成交ID |    
+ | ├─takerSide|String  |方向 "BUY"，"SELL" |    
+ | ├─volume|  String  |成交量 |           
+ | ├─price|  String  | 末一笔成交价|                       
+ 
+ 
+ > 响应
+ 
+ ```json
+ {
+ 	"data": [
+ 		{
+ 			"channel": "4@trade",
+ 			"time": 1642495112,
+ 			"volume": "0.011102",
+ 			"price": "41732.3305",
+ 			"tradeId": 14867136,
+ 			"takerSide": "BUY",
+ 			"seq": 14867136,
+ 			"ts": 1642495112000,
+ 			"symbol": "BTCUSDT",
+ 			"instrumentId": 4
+ 		}
+ 	],
+ 	"code": 0
+ }
+  ```
 ##  <span id="7">获取所有交易对最新价格</span>
 获取所有交易对最新价格
 
 ### HTTP请求: 
 - GET /v1/ticker/price
+### 请求参数: 
 
+|    code    |  type   | required |       comment        |
+| ---------- | ------- | -------- | -------------------- |
+|symbol | string | true | 交易对，区分大小写，逗号分割 |
+
+> 默认：查询所有交易对
+> 查询指定交易对: /v1/ticker/price;symbol=BTCUSDT,EOSUSDT,AUTUSDT `
+
+### 响应数据: 
+
+|       code        |  type   |                      comment                       |
+| ----------------- | ------ | ---------------------------------------- |
+| code            | int    |     0：成功，其他失败                                               |
+| message         | string       |    错误信息                                    |
+| data | List[]|   |
+| ├─id| long |  |
+| ├─symbol| string  |交易对 |
+| ├─price| string  |价格 |
 
 > 响应
 
@@ -606,38 +862,18 @@ HTTP常见的错误码如下：
   "data": [
     {
       "id": 1,
-      "symbol": "btcusdt",
+      "symbol": "BTCUSDT",
       "price": "400"
     },
     {
       "id": 4,
-      "symbol": "autusdt",
+      "symbol": "AUTUSDT",
       "price": "1"
     }
   ]
 }
- ```
-
-
-### 请求参数: 
-
-> 默认：查询所有交易对
-
-> 查询指定交易对: /v1/ticker/price;symbol=btcusdt,eosusdt,autusdt `
-
-### 响应数据: 
-
-|       code        |  type   |                      comment                       |
-| ----------------- | ------ ---------------------------------------- |
-| code            | int    |     0：成功，其他失败                                               |
-| message         | string       |    错误信息                                    |
-| data | List[]|   |
-| ├─id| long |  |
-| ├─symbol| string  |交易对 |
-| ├─price| string  |价格 |
-
-
-
+ ```  
+  
 # Websocket行情数据
 
 ## 简介
@@ -892,7 +1128,6 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 > ** hour_12
 > ** day_1
 > ** week_1
-> ** mon_1
 
 ```lang=json
 {
@@ -1141,6 +1376,315 @@ NOTE:  所有返回数据的时间，单位都是 `秒`
 
 * BUY
 * SELL
+
+# Other API
+
+## Introduction
+This document covers the API endpoint details including spot exchange API and it was full public access. The access address host is https://api.coinstore.com/
+
+## <span id="114">Asset list</span>  
+The assets endpoint is to provide a detailed summary for each currency available on the exchange.
+### Request 
+- GET  /v2/public/assets
+### Response
+
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+|name|String|Y|Full name of cryptocurrency.|Trading pair name|
+|unified_cryptoasset_id|Long|Y|Unique ID of cryptocurrency assigned by Unified Cryptoasset ID.|Trading pair ID|
+|can_withdraw|String|Y|Identifies whether withdrawals are enabled or disabled.|Withdraw enable or not|
+|can_deposit|String|Y|Identifies whether deposits are enabled or disabled.|Deposit enable or not|
+|min_withdraw|String|Y|Identifies the single minimum withdrawal amount of a cryptocurrency.|Minimum withdraw|
+|max_withdraw|String|Y|Identifies the single maximum withdrawal amount of a cryptocurrency.|Maximum withdraw|
+|maker_fee|String|Y|Fees applied when liquidity is added to the order book.|Maker trading fee|
+|taker_fee|String|Y|Fees applied when liquidity is removed from the order book.|Taker trading fee|
+### Demo
+```lang=json
+{
+ "code": "0",
+ "message": null,
+ "data": {
+     "JJ": {
+         "name": "jj",
+         "unified_cryptoasset_id": 95,
+         "can_withdraw": "true",
+         "can_deposit": "true",
+         "min_withdraw": "10",
+         "max_withdraw": "100",
+         "maker_fee": "0.002",
+         "taker_fee": "0.002"
+     }
+ }
+}
+```
+
+## <span id="115">Trading pair information</span>  
+The summary endpoint is to provide an overview of market data for all tickers and all market pairs on the exchange.
+### Request 
+- GET /v2/public/summary
+### Response
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+|trading_pairs|String|Y|Identifier of a ticker with delimiter to separate base/quote, eg. BTC-USD (Price of BTC is quoted in USD)|Trading pair name|
+|last_price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
+|lowest_ask|String|Y|Lowest Ask price of base currency based on given quote currency|lowest ask price|
+|highest_bid|String|Y|Highest bid price of base currency based on given quote currency|Highest bid price|
+|base_volume|String|Y|24-hr volume of market pair denoted in BASE currency|24H volume|
+|quote_volume|String|Y|24-hr volume of market pair denoted in QUOTE currency|24H amount|
+|price_change_percent_24h|String|Y|24-hr % price change of market pair|24h change%|
+|highest_price_24h|String|Y|Highest price of base currency based on given quote currency in the last 24-hrs|24H high|
+|lowest_price_24h|String|Y|Lowest price of base currency based on given quote currency in the last 24-hrs|24H low|
+|base_currency|String|Y|Symbol/currency code of base currency, eg. BTC|base currency|
+|quote_currency|String|Y|Symbol/currency code of quote currency, eg. USD|quote currency|
+
+### Demo
+```lang=json
+
+```
+
+## <span id="115"></span>
+### Request 
+- GET
+### Response
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+### Demo
+```lang=json
+{
+ "code": "0",
+ "message": null,
+ "data": [
+     {
+         "trading_pairs": "btcusdt",
+         "last_price": "60000",
+         "lowest_ask": "60000",
+         "highest_bid": "555",
+         "base_volume": "0",
+         "quote_volume": "0",
+         "price_change_percent_24h": "0",
+         "highest_price_24h": "60000",
+         "lowest_price_24h": "60000",
+         "base_currency": "BTC",
+         "quote_currency": "USDT"
+     },
+     {
+         "trading_pairs": "ethusdt",
+         "last_price": "60000",
+         "lowest_ask": "60000",
+         "highest_bid": "555",
+         "base_volume": "0",
+         "quote_volume": "0",
+         "price_change_percent_24h": "0",
+         "highest_price_24h": "60000",
+         "lowest_price_24h": "60000",
+         "base_currency": "ETH",
+         "quote_currency": "USDT"
+     }
+ ]
+}
+```
+
+## <span id="116">Ticker</span>
+The ticker endpoint is to provide a 24-hour pricing and volume summary for each market pair available on the exchange.
+### Request 
+- GET /v2/public/ticker
+### Response
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+|base_id|String|Y|The quote pair Unified Cryptoasset ID.|Quote currency ID|
+|quote_id|String|Y|The base pair Unified Cryptoasset ID.|Base currency ID|
+|last_price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
+|quote_volume|String|Y|24 hour trading volume denoted in QUOTE currency|24H amount|
+|base_volume|String|Y|24-hour trading volume denoted in BASE currency|24H volume|
+|isFrozen|Integer|Y|Indicates if the market is currently enabled (0) or disabled (1).|Market enable or not|
+
+### Demo
+```lang=json
+{
+ "code": "0",
+ "message": null,
+ "data": {
+     "BTC_USDT": {
+         "base_id": "BTC",
+         "quote_id": "USDT",
+         "last_price": "60000",
+         "quote_volume": "0",
+         "base_volume": "0",
+         "isFrozen": 1
+     },
+     "ETH_USDT": {
+         "base_id": "ETH",
+         "quote_id": "USDT",
+         "last_price": "60000",
+         "quote_volume": "0",
+         "base_volume": "0",
+         "isFrozen": 1
+     }
+ }
+}
+```
+
+
+## <span id="117">Depth</span>
+The order book endpoint is to provide a complete level 2 order book (arranged by best asks/bids) with full depth returned for a given market pair.
+### Request 
+- GET /v2/public/orderbook/market_pair?market_pair=BTC_USDT&level=3&depth=100
+
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+|market_pair|String|Y|A pair such as “LTC_BTC”|Trading pair name|
+|depth|Integer|Y|Orders depth quantity: [0,5,10,20,50,100,500] Not defined or 0 = full order book Depth = 100 means 50 for each bid/ask side.|Depth|
+|level|Integer|Y|Level 1 – Only the best bid and ask. Level 2 – Arranged by best bids and asks. Level 3 – Complete order book, no aggregation.| Level |
+
+### Response
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+|timestamp|String|Y|Unix timestamp in milliseconds for when the last updated time occurred.|Server time|
+|bids|String|Y|An array containing 2 elements. The offer price and quantity for each bid order.|Bid|
+|asks|String|Y|An array containing 2 elements. The ask price and quantity for each ask order.|Ask|
+### Demo
+```lang=json
+{
+ "code": "0",
+ "message": null,
+ "data": {
+     "timestamp": "1622526449",
+     "bids": [
+         [
+             "10",
+             "0.1102"
+         ],
+         [
+             "20",
+             "0.1"
+         ]
+     ],
+     "asks": [
+         [
+             "60000",
+             "91.185787"
+         ],
+         [
+             "66000",
+             "0.30322"
+         ]
+     ]
+ }
+}
+```
+
+
+## <span id="118">Market Pair</span>
+The trades endpoint is to return data of 100 recently completed trades for a given market pair.
+### Request 
+- GET /v2/public/trades/market_pair?market_pair=BTC_USDT
+
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+|market_pair	|String	|Y	|A pair such as LTC_BTC.	|Trading Pair Name|
+### Response
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+|trade_id|Integer|Y|A unique ID associated with the trade for the currency pair transaction Note: Unix timestamp does not qualify as trade_id.|Order ID|
+|price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
+|base_volume|String|Y|Transaction amount in BASE currency.|Volume|
+|quote_volume|String|Y|Transaction amount in QUOTE currency.|Amount|
+|timestamp|String|Y|Unix timestamp in milliseconds for when the transaction occurred.|Timestamp|
+|type|String|Y|Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book.|Side|
+### Demo
+```lang=json
+{
+ "code": "0",
+ "message": null,
+ "data": [
+     {
+         "trade_id": 2101,
+         "price": "60000",
+         "base_volume": "0.003333",
+         "quote_volume": "0",
+         "timestamp": "1622526904",
+         "type": "buy"
+     },
+     {
+         "trade_id": 2100,
+         "price": "60000",
+         "base_volume": "0.008333",
+         "quote_volume": "0",
+         "timestamp": "1622526904",
+         "type": "buy"
+     }
+ ]
+}
+```
+
+## <span id="119">Historical Market Pair</span>
+The trades endpoint is to return data on historical completed trades for a given market pair.
+### Request 
+- GET /v2/public/trades/historical_trades?market_pair=BTC_USDT
+
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+|market_pair	|String	|Y	|A pair such as LTC_BTC.	|Trading Pair Name|
+|type	|String	|N	|To indicate nature of trade - buy/sell	|type|
+|limit	|Integer	|N	|Number of historical trades to retrieve from time of query. [100, 200, 500...]. default returns 100 history.	|limit|
+|start_time	|Long	|N	|Start time from which to query historical trades from	|start time|
+|end_time	|Long	|N	|End time for historical trades query	|end time|
+### Response
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+|trade_id|Integer|Y|A unique ID associated with the trade for the currency pair transaction Note: Unix timestamp does not qualify as trade_id.|Order ID|
+|price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
+|base_volume|String|Y|Transaction amount in BASE currency.|Volume|
+|quote_volume|String|Y|Transaction amount in QUOTE currency.|Amount|
+|timestamp|String|Y|Unix timestamp in milliseconds for when the transaction occurred.|Timestamp|
+|type|String|Y|Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book.|Side|
+### Demo
+```lang=json
+{
+ "code": "0",
+ "message": null,
+ "data": {
+    "buy":[
+     {
+         "trade_id": 2101,
+         "price": "60000",
+         "base_volume": "0.003333",
+         "quote_volume": "0",
+         "timestamp": "1622526904",
+         "type": "buy"
+     },
+     {
+         "trade_id": 2100,
+         "price": "60000",
+         "base_volume": "0.008333",
+         "quote_volume": "0",
+         "timestamp": "1622526904",
+         "type": "buy"
+     }],
+    "sell":[
+        {
+            "trade_id": 2101,
+            "price": "60000",
+            "base_volume": "0.003333",
+            "quote_volume": "0",
+            "timestamp": "1622526904",
+            "type": "sell"
+        },
+        {
+            "trade_id": 2100,
+            "price": "60000",
+            "base_volume": "0.008333",
+            "quote_volume": "0",
+            "timestamp": "1622526904",
+            "type": "sell"
+        }]
+ }
+}
+```
+
+
+
+
 
 
 
