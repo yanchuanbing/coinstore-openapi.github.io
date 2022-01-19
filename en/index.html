@@ -1167,27 +1167,25 @@ needs to be set.</strong></p>
 </ul>
 
 <blockquote>
-<p>Request Body
-<code>json
-{
-  &quot;ordId&quot;: 1722183748419690,
-  &quot;symbol&quot;:&quot;LUFFYUSDT&quot;
-}
-</code></p>
-
-<p>Response
-<code>json
-{
-    &quot;code&quot;: 0,
-    &quot;data&quot;: {
-        &quot;clientOrderId&quot;: &quot;b1b2ea5e00a84b888d419cb73f8eb203&quot;,
-        &quot;state&quot;: &quot;CANCELED&quot;,
-        &quot;ordId&quot;: 1722183748419690
-    }
-}
-</code></p>
+<p>Request Body</p>
 </blockquote>
-<h3 id='request-parameters-4'>Request Parameters</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ordId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1722183748419690</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"LUFFYUSDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1b2ea5e00a84b888d419cb73f8eb203"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELED"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ordId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1722183748419690</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameters-4'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1255,21 +1253,19 @@ needs to be set.</strong></p>
 </ul>
 
 <blockquote>
-<p>Request Body
-<code>json
-{
-  &quot;symbol&quot;:&quot;LUFFYUSDT&quot;
-}
-</code></p>
-
-<p>Response
-<code>json
-{
-    &quot;code&quot;: 0
-}
-</code></p>
+<p>Request Body</p>
 </blockquote>
-<h3 id='request-parameters-5'>Request Parameters</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"LUFFYUSDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameters-5'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1311,18 +1307,18 @@ needs to be set.</strong></p>
 <p>Create order</p>
 
 <blockquote>
-<p>Request Body
-<code>json
-{
-    &quot;symbol&quot;: &quot;LUFFYUSDT&quot;,
-    &quot;side&quot;: &quot;BUY&quot;,
-    &quot;ordType&quot;: &quot;LIMIT&quot;,
-    &quot;ordPrice&quot;: 9.2e-10,
-    &quot;ordQty&quot;: &quot;12323231243&quot;,
-    &quot;timestamp&quot;: 1642407805168
-}
-</code></p>
-
+<p>Request Body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUFFYUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ordType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ordPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.2e-10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ordQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12323231243"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642407805168</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1437,28 +1433,28 @@ needs to be set.</strong></p>
 <p>Batch ordering</p>
 
 <blockquote>
-<p>Request Body
-<code>json
-{
-    &quot;symbol&quot;: &quot;LUFFYUSDT&quot;,
-    &quot;orders&quot;: [
-        {
-            &quot;side&quot;: &quot;BUY&quot;,
-            &quot;ordType&quot;: &quot;LIMIT&quot;,
-            &quot;ordPrice&quot;: 9.2e-10,
-            &quot;ordQty&quot;: &quot;1&quot;
-        },
-        {
-            &quot;side&quot;: &quot;BUY&quot;,
-            &quot;ordType&quot;: &quot;LIMIT&quot;,
-            &quot;ordPrice&quot;: 9.2e-10,
-            &quot;ordQty&quot;: &quot;1&quot;
-        }
-    ],
-    &quot;timestamp&quot;: 1642574848089
-}
-</code></p>
-
+<p>Request Body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUFFYUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.2e-10</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.2e-10</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642574848089</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1608,14 +1604,14 @@ needs to be set.</strong></p>
 </ul>
 
 <blockquote>
-<p>Request Body
-<code>json
-{
-  &quot;orderIds&quot;: [1722364585836586,1722364585836585],
-  &quot;symbol&quot;:&quot;LUFFYUSDT&quot;
-}
-</code></p>
-
+<p>Request Body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"orderIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1722364585836586</span><span class="p">,</span><span class="mi">1722364585836585</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"LUFFYUSDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1947,44 +1943,42 @@ needs to be set.</strong></p>
 <p>Get depth data</p>
 
 <blockquote>
-<p>Response
-<code>json
-{
-    &quot;data&quot;: {
-        &quot;channel&quot;: &quot;4@depth@5&quot;,
-        &quot;level&quot;: 5,
-        &quot;a&quot;: [
-            [
-                &quot;41995&quot;,
-                &quot;0.018144&quot;,
-                -1
-            ],
-            [
-                &quot;41995.5&quot;,
-                &quot;0.008279&quot;,
-                -1
-            ]
-        ],
-        &quot;b&quot;: [
-            [
-                &quot;41991.5&quot;,
-                &quot;0.548567&quot;,
-                1
-            ],
-            [
-                &quot;41991&quot;,
-                &quot;0.013168&quot;,
-                1
-            ]
-        ],
-        &quot;symbol&quot;: &quot;BTCUSDT&quot;,
-        &quot;instrumentId&quot;: 4
-    },
-    &quot;code&quot;: 0
-}
-</code></p>
+<p>Response</p>
 </blockquote>
-<h3 id='http-request-11'>HTTP request:</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4@depth@5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"41995"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.018144"</span><span class="p">,</span><span class="w">
+                </span><span class="mi">-1</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"41995.5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.008279"</span><span class="p">,</span><span class="w">
+                </span><span class="mi">-1</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"b"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"41991.5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.548567"</span><span class="p">,</span><span class="w">
+                </span><span class="mi">1</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"41991"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.013168"</span><span class="p">,</span><span class="w">
+                </span><span class="mi">1</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-11'>HTTP request:</h3>
 <ul>
 <li>GET /v1/market/depth/<symbol></li>
 </ul>
@@ -2310,15 +2304,13 @@ needs to be set.</strong></p>
 <p>the server supports two forms of end pong response, namely websocket pong frame and pong message.</p>
 
 <blockquote>
-<p>Pong message format
-<code>lang=json
-{
-  &quot;op&quot;: &quot;pong&quot;,
-  &quot;epochMillis&quot;: 1604040975
-}
-</code></p>
+<p>Pong message format</p>
 </blockquote>
-<h4 id='websocket-pong-frame'>Websocket Pong frame</h4>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+  "op": "pong",
+  "epochMillis": 1604040975
+}
+</code></pre></div><h4 id='websocket-pong-frame'>Websocket Pong frame</h4>
 <ol>
 <li><p>https://tools.ietf.org/html/rfc6455#section-5.5.3 </p></li>
 <li><p>https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#Pings%E5%92%8CPongs%EF%BC%9AWebSockets%E7%9A%84%E5%BF%83%E8%B7%B3 </p></li>

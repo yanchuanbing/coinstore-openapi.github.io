@@ -1118,27 +1118,25 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </ul>
 
 <blockquote>
-<p>请求体
-<code>json
-{
-  &quot;ordId&quot;: 1722183748419690,
-  &quot;symbol&quot;:&quot;LUFFYUSDT&quot;
-}
-</code></p>
-
-<p>响应
-<code>json
-{
-    &quot;code&quot;: 0,
-    &quot;data&quot;: {
-        &quot;clientOrderId&quot;: &quot;b1b2ea5e00a84b888d419cb73f8eb203&quot;,
-        &quot;state&quot;: &quot;CANCELED&quot;,
-        &quot;ordId&quot;: 1722183748419690
-    }
-}
-</code></p>
+<p>请求体</p>
 </blockquote>
-<h3 id='1f9ac54b15-4'>请求参数</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ordId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1722183748419690</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"LUFFYUSDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1b2ea5e00a84b888d419cb73f8eb203"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELED"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ordId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1722183748419690</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='1f9ac54b15-4'>请求参数</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1200,21 +1198,19 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </ul>
 
 <blockquote>
-<p>请求体
-<code>json
-{
-  &quot;symbol&quot;:&quot;LUFFYUSDT&quot;
-}
-</code></p>
-
-<p>响应
-<code>json
-{
-    &quot;code&quot;: 0
-}
-</code></p>
+<p>请求体</p>
 </blockquote>
-<h3 id='1f9ac54b15-5'>请求参数</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"LUFFYUSDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='1f9ac54b15-5'>请求参数</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1253,18 +1249,18 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <p>创建订单</p>
 
 <blockquote>
-<p>请求体
-<code>json
-{
-    &quot;symbol&quot;: &quot;LUFFYUSDT&quot;,
-    &quot;side&quot;: &quot;BUY&quot;,
-    &quot;ordType&quot;: &quot;LIMIT&quot;,
-    &quot;ordPrice&quot;: 9.2e-10,
-    &quot;ordQty&quot;: &quot;12323231243&quot;,
-    &quot;timestamp&quot;: 1642407805168
-}
-</code></p>
-
+<p>请求体</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUFFYUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ordType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ordPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.2e-10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ordQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12323231243"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642407805168</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>响应</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1374,28 +1370,28 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <p>批量下单</p>
 
 <blockquote>
-<p>请求体
-<code>json
-{
-    &quot;symbol&quot;: &quot;LUFFYUSDT&quot;,
-    &quot;orders&quot;: [
-        {
-            &quot;side&quot;: &quot;BUY&quot;,
-            &quot;ordType&quot;: &quot;LIMIT&quot;,
-            &quot;ordPrice&quot;: 9.2e-10,
-            &quot;ordQty&quot;: &quot;1&quot;
-        },
-        {
-            &quot;side&quot;: &quot;BUY&quot;,
-            &quot;ordType&quot;: &quot;LIMIT&quot;,
-            &quot;ordPrice&quot;: 9.2e-10,
-            &quot;ordQty&quot;: &quot;1&quot;
-        }
-    ],
-    &quot;timestamp&quot;: 1642574848089
-}
-</code></p>
-
+<p>请求体</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUFFYUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.2e-10</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.2e-10</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642574848089</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>响应</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1537,14 +1533,14 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </ul>
 
 <blockquote>
-<p>请求体
-<code>json
-{
-  &quot;orderIds&quot;: [1722364585836586,1722364585836585],
-  &quot;symbol&quot;:&quot;LUFFYUSDT&quot;
-}
-</code></p>
-
+<p>请求体</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"orderIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1722364585836586</span><span class="p">,</span><span class="mi">1722364585836585</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"LUFFYUSDT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>响应</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
