@@ -413,6 +413,7 @@ Cancel orders
 - POST /trade/order/cancel
 
 > Request Body
+
 ```json
 {
   "ordId": 1722183748419690,
@@ -421,6 +422,7 @@ Cancel orders
 ```
 
 > Response
+
 ```json
 {
     "code": 0,
@@ -456,6 +458,7 @@ Cancel orders
 - POST /trade/order/cancelAll
 
 > Request Body
+
 ```json
 {
   "symbol":"LUFFYUSDT"
@@ -463,6 +466,7 @@ Cancel orders
 ```
 
 > Response
+
 ```json
 {
     "code": 0
@@ -487,6 +491,7 @@ Cancel orders
 Create order
 
 > Request Body
+
 ```json
 {
 	"symbol": "LUFFYUSDT",
@@ -541,6 +546,7 @@ Create order
 Batch ordering
 
 > Request Body
+
 ```json
 {
 	"symbol": "LUFFYUSDT",
@@ -619,6 +625,7 @@ Batch cancellation according to order id.
 - POST trade/order/cancelBatch
 
 > Request Body
+
 ```json
 {
   "orderIds": [1722364585836586,1722364585836585],
@@ -799,6 +806,7 @@ Get order information
 Get depth data
 
 > Response
+
 ```json
 {
 	"data": {
@@ -1101,6 +1109,7 @@ the following types of messages start from executing the `SUB` command of the co
 the server supports two forms of end pong response, namely websocket pong frame and pong message.
 
 > Pong message format
+
 ```lang=json
 {
   "op": "pong",
@@ -1128,6 +1137,7 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 ```
 
 ## **Subscribe/unsubscribe data stream in real time**
+
 > Subscribe an information stream
 
 ```lang=json
@@ -1291,6 +1301,7 @@ K-line stream pushes the requested k-line type (the latest k-line) every second.
 ```lang=json
  {"op":"SUB","channel":["4@kline@min_1"],"id":1}
 ```
+
 > Receive
 
 ```lang=json
@@ -1390,6 +1401,7 @@ Streamlined ticker information in the last 24 hours refreshed by Symbol
 ```lang=json
  {"op":"SUB","channel":["4@ticker"],"id":1}
 ```
+
 > Receive
 
 ```lang=json
@@ -1619,6 +1631,7 @@ This document covers the API endpoint details including spot exchange API and it
 
 ## <span id="114">Asset list</span>  
 The assets endpoint is to provide a detailed summary for each currency available on the exchange.
+
 > Response
 
 ```lang=json
@@ -1722,6 +1735,7 @@ The summary endpoint is to provide an overview of market data for all tickers an
 
 ## <span id="116">Ticker</span>
 The ticker endpoint is to provide a 24-hour pricing and volume summary for each market pair available on the exchange.
+
 > Response
 
 ```lang=json

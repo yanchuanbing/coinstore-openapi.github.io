@@ -447,6 +447,7 @@ HTTP常见的错误码如下：
 - POST /trade/order/cancel
 
 > 请求体
+
 ```json
 {
   "ordId": 1722183748419690,
@@ -455,6 +456,7 @@ HTTP常见的错误码如下：
 ```
 
 > 响应
+
 ```json
 {
     "code": 0,
@@ -490,6 +492,7 @@ HTTP常见的错误码如下：
 - POST /trade/order/cancelAll
 
 > 请求体
+
 ```json
 {
   "symbol":"LUFFYUSDT"
@@ -497,6 +500,7 @@ HTTP常见的错误码如下：
 ```
 
 > 响应
+
 ```json
 {
     "code": 0
@@ -521,6 +525,7 @@ HTTP常见的错误码如下：
 创建订单
 
 > 请求体
+
 ```json
 {
 	"symbol": "LUFFYUSDT",
@@ -576,6 +581,7 @@ HTTP常见的错误码如下：
 批量下单
 
 > 请求体
+
 ```json
 {
 	"symbol": "LUFFYUSDT",
@@ -653,6 +659,7 @@ HTTP常见的错误码如下：
 - POST trade/order/cancelBatch
 
 > 请求体
+
 ```json
 {
   "orderIds": [1722364585836586,1722364585836585],
@@ -1760,6 +1767,7 @@ The summary endpoint is to provide an overview of market data for all tickers an
 
 ## <span id="116">Ticker</span>
 The ticker endpoint is to provide a 24-hour pricing and volume summary for each market pair available on the exchange.
+
 > 响应
 
 ```lang=json
@@ -1806,6 +1814,7 @@ The ticker endpoint is to provide a 24-hour pricing and volume summary for each 
 
 ## <span id="117">Depth</span>
 The order book endpoint is to provide a complete level 2 order book (arranged by best asks/bids) with full depth returned for a given market pair.
+
 > 响应
 
 ```lang=json
@@ -1860,6 +1869,7 @@ The order book endpoint is to provide a complete level 2 order book (arranged by
 
 ## <span id="118">Market Pair</span>
 The trades endpoint is to return data of 100 recently completed trades for a given market pair.
+
 > 响应
 
 ```lang=json
@@ -1909,6 +1919,7 @@ The trades endpoint is to return data of 100 recently completed trades for a giv
 
 ## <span id="119">Historical Market Pair</span>
 The trades endpoint is to return data on historical completed trades for a given market pair.
+
 > 响应
 
 ```lang=json
