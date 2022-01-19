@@ -850,11 +850,9 @@ Get the latest price of all symbols
 
 #Websocket Ticker Data
 
-##  Introduction
+##  **Introduction**
 
 ### Access URL
-
-`
 wss://ws.coinstore.com/s/ws
 
 1. The baseurl of all wss interfaces is: wss://<host:port>/s/ws
@@ -865,31 +863,16 @@ wss://ws.coinstore.com/s/ws
 
 4. The server will send a ping frame every 3 minutes, and the clients should reply to the pong frame within 10 minutes, otherwise, the server will actively disconnect the link. Clients are allowed to send unpaired pong frames (that is, clients can send pong frames at a frequency higher than 10 minutes each time to maintain the link).
 
-`
 
-#### Description of Server Push Data Type
 
-#### Format Schema
+### Description of Server Push Data Type
 
-```lang=json
-{
-    "S": 1, // response message serial number at session level is reset upon session reconnection, which can be used to judge whether messages are missing.
-    "T": "resp", // response type, see `types' section for details
-    ...
-}
-```
-
-#### Types
-
- 1. Request-response message type
-
-** `echo`: The server will return a message for each message received in the same form to confirm that the message has been received.
-** `resp`: The server will return a message of processing result for each message received in the same form, marking the message processing. The return message includes the processing result.
+> Format Schema
 
 ```lang=json
 {
-    "S": 1,
-    "T": "echo|resp",
+    "S": 1, // session 级别的 response 消息序号，session 重连后重置，可用来判断是否漏消息
+    "T": "echo|resp", // 响应类型，详见 `Types` 部分
     "C": 200,  // code
     "M": "sub.channel.success",  // meaning of this code
     "sid": "3ae985ff-cadd-9c96-7a42-4ed29e77f83b",
@@ -898,22 +881,15 @@ wss://ws.coinstore.com/s/ws
 }
 ```
 
- 2. subscribe message type
+#### Types
 
+##### Request-response message type
+
+* `echo`: The server will return a message for each message received in the same form to confirm that the message has been received.
+* `resp`: The server will return a message of processing result for each message received in the same form, marking the message processing. The return message includes the processing result.
+
+##### subscribe message type
 the following types of messages start from executing the `SUB` command of the corresponding channel and end with executing the `UNSUB` command, and the messages are pushed if the data on the server side changes, with a minimum push interval of 100ms.
-
-** `kline`
-
-** `ticker`
-
-** `depth`
-
-** `trade`
-
-** `account`
-
-** `order`
-
 ```lang=json
 {
     "S": 1,
@@ -921,19 +897,23 @@ the following types of messages start from executing the `SUB` command of the co
     ...:  // see below for details on each data subscription format 
 }
 ```
+* `kline`
 
-#### Pong
+* `ticker`
 
+* `depth`
+
+* `trade`
+
+* `account`
+
+* `order`
+
+
+### Pong
 the server supports two forms of end pong response, namely websocket pong frame and pong message.
 
-#### Websocket Pong frame
-
-1. https://tools.ietf.org/html/rfc6455#section-5.5.3 
-
-2. https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#Pings%E5%92%8CPongs%EF%BC%9AWebSockets%E7%9A%84%E5%BF%83%E8%B7%B3 
-
-#### Pong message format
-
+> Pong message format
 ```lang=json
 {
   "op": "pong",
@@ -941,8 +921,15 @@ the server supports two forms of end pong response, namely websocket pong frame 
 }
 ```
 
+#### Websocket Pong frame
 
-#### Example
+1. https://tools.ietf.org/html/rfc6455#section-5.5.3 
+
+2. https://developer.mozilla.org/zh-CN/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#Pings%E5%92%8CPongs%EF%BC%9AWebSockets%E7%9A%84%E5%BF%83%E8%B7%B3 
+
+
+
+> Example
 
 ```lang=shell
 $>wscat -c 'ws://127.0.0.1:8080/s/ws'
@@ -954,21 +941,7 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 ```
 
 ## **Subscribe/unsubscribe data stream in real time**
-
-* The following data can be sent via websocket to subscribe or unsubscribe the data stream. Examples are as follows.
-* The id in the response content is an unsigned integer, which is the unique identifier of the current information.
-* If the result in the corresponding content is null, it means that the request was sent successfully.
-
-### Client `op` Types
-
-1. `SUB`
-2. `UNSUB`
-3. `LOGIN`
-4. `REQ`
-5. `LIST`
-6. ... (support new features in the future)
-
-### Subscribe an information stream
+> Subscribe an information stream
 
 ```lang=json
 {
@@ -981,7 +954,7 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 }
 ```
 
-### Unsubscribe an information stream
+> Unsubscribe an information stream
 
 ```lang=json
 {
@@ -993,7 +966,7 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 }
 ```
 
-### Subscribed information stream
+> Subscribed information stream
 
 ```lang=json
 {
@@ -1003,7 +976,21 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 }
 ```
 
-** Respon
+* The following data can be sent via websocket to subscribe or unsubscribe the data stream. Examples are as follows.
+* The id in the response content is an unsigned integer, which is the unique identifier of the current information.
+* If the result in the corresponding content is null, it means that the request was sent successfully.
+
+### Client `op` Types
+
+1. `SUB`
+2. `UNSUB`
+3. `LOGIN`
+4. `REQ`
+5. `LIST`
+
+
+
+> Respon
 
 ```lang=json
 {
@@ -1025,20 +1012,23 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 }
 ```
 
-NOTE: `<symbol>` Please use the id of the symbol for the parameter temporarily, and the name of the symbol can be used later.
+> NOTE: `<symbol>` Please use the id of the symbol for the parameter temporarily, and the name of the symbol can be used later.
 
-IMPORTANT:  Please use the symbol' field first, and the instrumentId' is marked as Deprecated'.
+> IMPORTANT:  Please use the symbol' field first, and the instrumentId' is marked as Deprecated'.
 
-NOTE:  All the time to return data is in `seconds'.
+> NOTE:  All the time to return data is in `seconds'.
 
 ## **Public ticker channel**
 
 ### **Trade by Trade**
 
-Stream Name: `<symbol>@trade`, eg: `88066@trade`
-param: `param": {"size":2}`
-e.g: ``{"op":" SUB","channel": ["28@trade"],"param": {"size":2},"id":1}``
+> Send
+
+```lang=json
+ {"op":"SUB","channel":["28@trade"],"param":{"size":2},"id":1}
+```
 > full-volume data:
+
 ```lang=json
  {
    "S": 15,
@@ -1072,6 +1062,7 @@ e.g: ``{"op":" SUB","channel": ["28@trade"],"param": {"size":2},"id":1}``
  }
 ```
 > incremental data:
+
 ```lang=json
 {
   "instrumentId": 88066,
@@ -1086,23 +1077,26 @@ e.g: ``{"op":" SUB","channel": ["28@trade"],"param": {"size":2},"id":1}``
 }
 ```
 
+#### Stream Name
+ `<symbol>@trade`
+ 
+ eg: `88066@trade`
+#### param
+`param": {"size":2}`
+
+
+
 
 
 ### **K-line Streams**
-
 K-line stream pushes the requested k-line type (the latest k-line) every second.
-Stream Name: `<symbol>@kline@<interval>`, eg: `88066@kline@min_1`
-interval optional values:
-** min_1
-** min_5
-** min_15
-** min_30
-** hour_1
-** hour_4
-** hour_12
-** day_1
-** week_1
-** mon_1
+
+> Send
+
+```lang=json
+ {"op":"SUB","channel":["4@kline@min_1"],"id":1}
+```
+> Receive
 
 ```lang=json
 {
@@ -1122,13 +1116,35 @@ interval optional values:
 }
 ```
 
-### **K-line Request**
+#### Stream Name
+`<symbol>@kline@<interval>`
 
-request historical k-line:
-param: `"{channel":" 88066@kline@min_1","endTime":1603766280,"limit":10}`,
-eg:  `{"op":" REQ","param": {"channel":" 88066@kline@min_1","limit":10},"id":1}`
-`limit`: No more than 200
-`endTime`: Optional, exclusive
+eg: `88066@kline@min_1`
+
+
+#### interval optional values
+* min_1
+* min_5
+* min_15
+* min_30
+* hour_1
+* hour_4
+* hour_12
+* day_1
+* week_1
+* mon_1
+
+
+
+### **K-line Request**
+request historical k-line
+
+> Send
+
+```lang=json
+ {"op":"REQ","param":{"channel":"4@kline@min_1","endTime":null,"limit":200},"id":1}
+```
+> Receive
 
 ```lang=json
 {
@@ -1154,11 +1170,24 @@ eg:  `{"op":" REQ","param": {"channel":" 88066@kline@min_1","limit":10},"id":1}`
 }
 ```
 
+#### param
+
+* `channel`: `<symbol>@kline@<interval>` ,eg:88066@kline@min_1
+* `limit`: No more than 200
+* `endTime`: Optional, exclusive
+
+
+
 
 ### **Ticker Information by Symbol**
-
 Streamlined ticker information in the last 24 hours refreshed by Symbol
-Stream Name: `<symbol>@ticker`, eg:  `88066@ticker`
+
+> Send
+
+```lang=json
+ {"op":"SUB","channel":["4@ticker"],"id":1}
+```
+> Receive
 
 ```lang=json
 {
@@ -1173,10 +1202,23 @@ Stream Name: `<symbol>@ticker`, eg:  `88066@ticker`
 }
 ```
 
-### **Ticker information of all symbols in the whole market**
+#### Stream Name
+`<symbol>@ticker`, eg:  `88066@ticker`
 
+
+### **Ticker information of all symbols in the whole market**
 Streamlined ticker information in the last 24 hours refreshed by Symbol
-Stream Name: `!@ticker`
+
+#### Stream Name
+`!@ticker`
+
+> Send
+
+```lang=json
+ {"op":"SUB","channel":["!@ticker"],"id":1}
+```
+
+> Receive
 
 ```lang=json
 {
@@ -1209,9 +1251,15 @@ Stream Name: `!@ticker`
 ```
 
 ### **Limited level depth information**
+Push limited level depth information every second or every 100ms. 
 
-Push limited level depth information every second or every 100ms. Levels indicates the levels of the buy or sell orders, and 5/10/20/50/100 level can be selected.
-Stream Names: `<symbol>@depth@<levels>` ~~or `<symbol>@depth@<levels>@100ms`. ~~, eg:  `88066@depth@50`
+> Send
+
+```lang=json
+ {"op":"SUB","channel":["4@depth@20"],"id":1}
+```
+
+> Receive
 
 ```lang=json
 {
@@ -1232,6 +1280,16 @@ Stream Names: `<symbol>@depth@<levels>` ~~or `<symbol>@depth@<levels>@100ms`. ~~
   ]
 }
 ```
+
+#### Stream Names
+`<symbol>@depth@<levels>`
+ 
+ eg:  `88066@depth@50`
+
+#### levels optional values
+Levels indicates the levels of the buy or sell orders, and 5/10/20/50/100 level can be selected.
+
+
 
 ## **User private data channel**
 
@@ -1359,24 +1417,8 @@ This document covers the API endpoint details including spot exchange API and it
 
 ## <span id="114">Asset list</span>  
 The assets endpoint is to provide a detailed summary for each currency available on the exchange.
+> Response
 
-### Request 
-- GET  /v2/public/assets
-
-### Response
-
-|    code    |  type   | example |  meaning  | remarks |
-| -----------| ------  | -----   | -----     | -----   |
-|name|String|Y|Full name of cryptocurrency.|Trading pair name|
-|unified_cryptoasset_id|Long|Y|Unique ID of cryptocurrency assigned by Unified Cryptoasset ID.|Trading pair ID|
-|can_withdraw|String|Y|Identifies whether withdrawals are enabled or disabled.|Withdraw enable or not|
-|can_deposit|String|Y|Identifies whether deposits are enabled or disabled.|Deposit enable or not|
-|min_withdraw|String|Y|Identifies the single minimum withdrawal amount of a cryptocurrency.|Minimum withdraw|
-|max_withdraw|String|Y|Identifies the single maximum withdrawal amount of a cryptocurrency.|Maximum withdraw|
-|maker_fee|String|Y|Fees applied when liquidity is added to the order book.|Maker trading fee|
-|taker_fee|String|Y|Fees applied when liquidity is removed from the order book.|Taker trading fee|
-
-### Demo
 ```lang=json
 {
  "code": "0",
@@ -1396,29 +1438,29 @@ The assets endpoint is to provide a detailed summary for each currency available
 }
 ```
 
-## <span id="115">Trading pair information</span>  
-The summary endpoint is to provide an overview of market data for all tickers and all market pairs on the exchange.
-
 ### Request 
-- GET /v2/public/summary
+- GET  /v2/public/assets
 
 ### Response
 
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
-|trading_pairs|String|Y|Identifier of a ticker with delimiter to separate base/quote, eg. BTC-USD (Price of BTC is quoted in USD)|Trading pair name|
-|last_price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
-|lowest_ask|String|Y|Lowest Ask price of base currency based on given quote currency|lowest ask price|
-|highest_bid|String|Y|Highest bid price of base currency based on given quote currency|Highest bid price|
-|base_volume|String|Y|24-hr volume of market pair denoted in BASE currency|24H volume|
-|quote_volume|String|Y|24-hr volume of market pair denoted in QUOTE currency|24H amount|
-|price_change_percent_24h|String|Y|24-hr % price change of market pair|24h change%|
-|highest_price_24h|String|Y|Highest price of base currency based on given quote currency in the last 24-hrs|24H high|
-|lowest_price_24h|String|Y|Lowest price of base currency based on given quote currency in the last 24-hrs|24H low|
-|base_currency|String|Y|Symbol/currency code of base currency, eg. BTC|base currency|
-|quote_currency|String|Y|Symbol/currency code of quote currency, eg. USD|quote currency|
+|name|String|Y|Full name of cryptocurrency.|Trading pair name|
+|unified_cryptoasset_id|Long|Y|Unique ID of cryptocurrency assigned by Unified Cryptoasset ID.|Trading pair ID|
+|can_withdraw|String|Y|Identifies whether withdrawals are enabled or disabled.|Withdraw enable or not|
+|can_deposit|String|Y|Identifies whether deposits are enabled or disabled.|Deposit enable or not|
+|min_withdraw|String|Y|Identifies the single minimum withdrawal amount of a cryptocurrency.|Minimum withdraw|
+|max_withdraw|String|Y|Identifies the single maximum withdrawal amount of a cryptocurrency.|Maximum withdraw|
+|maker_fee|String|Y|Fees applied when liquidity is added to the order book.|Maker trading fee|
+|taker_fee|String|Y|Fees applied when liquidity is removed from the order book.|Taker trading fee|
 
-### Demo
+
+
+## <span id="115">Trading pair information</span>  
+The summary endpoint is to provide an overview of market data for all tickers and all market pairs on the exchange.
+
+> Response
+
 ```lang=json
 {
  "code": "0",
@@ -1454,25 +1496,32 @@ The summary endpoint is to provide an overview of market data for all tickers an
 }
 ```
 
-
-## <span id="116">Ticker</span>
-The ticker endpoint is to provide a 24-hour pricing and volume summary for each market pair available on the exchange.
-
 ### Request 
-- GET /v2/public/ticker
+- GET /v2/public/summary
 
 ### Response
 
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
-|base_id|String|Y|The quote pair Unified Cryptoasset ID.|Quote currency ID|
-|quote_id|String|Y|The base pair Unified Cryptoasset ID.|Base currency ID|
+|trading_pairs|String|Y|Identifier of a ticker with delimiter to separate base/quote, eg. BTC-USD (Price of BTC is quoted in USD)|Trading pair name|
 |last_price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
-|quote_volume|String|Y|24 hour trading volume denoted in QUOTE currency|24H amount|
-|base_volume|String|Y|24-hour trading volume denoted in BASE currency|24H volume|
-|isFrozen|Integer|Y|Indicates if the market is currently enabled (0) or disabled (1).|Market enable or not|
+|lowest_ask|String|Y|Lowest Ask price of base currency based on given quote currency|lowest ask price|
+|highest_bid|String|Y|Highest bid price of base currency based on given quote currency|Highest bid price|
+|base_volume|String|Y|24-hr volume of market pair denoted in BASE currency|24H volume|
+|quote_volume|String|Y|24-hr volume of market pair denoted in QUOTE currency|24H amount|
+|price_change_percent_24h|String|Y|24-hr % price change of market pair|24h change%|
+|highest_price_24h|String|Y|Highest price of base currency based on given quote currency in the last 24-hrs|24H high|
+|lowest_price_24h|String|Y|Lowest price of base currency based on given quote currency in the last 24-hrs|24H low|
+|base_currency|String|Y|Symbol/currency code of base currency, eg. BTC|base currency|
+|quote_currency|String|Y|Symbol/currency code of quote currency, eg. USD|quote currency|
 
-### Demo
+
+
+
+## <span id="116">Ticker</span>
+The ticker endpoint is to provide a 24-hour pricing and volume summary for each market pair available on the exchange.
+> Response
+
 ```lang=json
 {
  "code": "0",
@@ -1498,27 +1547,28 @@ The ticker endpoint is to provide a 24-hour pricing and volume summary for each 
 }
 ```
 
-
-## <span id="117">Depth</span>
-The order book endpoint is to provide a complete level 2 order book (arranged by best asks/bids) with full depth returned for a given market pair.
 ### Request 
-- GET /v2/public/orderbook/market_pair?market_pair=BTC_USDT&level=3&depth=100
-
-|    code    |  type   | example |  meaning  | remarks |
-| -----------| ------  | -----   | -----     | -----   |
-|market_pair|String|Y|A pair such as “LTC_BTC”|Trading pair name|
-|depth|Integer|Y|Orders depth quantity: [0,5,10,20,50,100,500] Not defined or 0 = full order book Depth = 100 means 50 for each bid/ask side.|Depth|
-|level|Integer|Y|Level 1 – Only the best bid and ask. Level 2 – Arranged by best bids and asks. Level 3 – Complete order book, no aggregation.| Level |
+- GET /v2/public/ticker
 
 ### Response
 
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
-|timestamp|String|Y|Unix timestamp in milliseconds for when the last updated time occurred.|Server time|
-|bids|String|Y|An array containing 2 elements. The offer price and quantity for each bid order.|Bid|
-|asks|String|Y|An array containing 2 elements. The ask price and quantity for each ask order.|Ask|
+|base_id|String|Y|The quote pair Unified Cryptoasset ID.|Quote currency ID|
+|quote_id|String|Y|The base pair Unified Cryptoasset ID.|Base currency ID|
+|last_price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
+|quote_volume|String|Y|24 hour trading volume denoted in QUOTE currency|24H amount|
+|base_volume|String|Y|24-hour trading volume denoted in BASE currency|24H volume|
+|isFrozen|Integer|Y|Indicates if the market is currently enabled (0) or disabled (1).|Market enable or not|
 
-### Demo
+
+
+
+## <span id="117">Depth</span>
+The order book endpoint is to provide a complete level 2 order book (arranged by best asks/bids) with full depth returned for a given market pair.
+
+> Response
+
 ```lang=json
 {
  "code": "0",
@@ -1549,28 +1599,31 @@ The order book endpoint is to provide a complete level 2 order book (arranged by
 }
 ```
 
-
-## <span id="118">Market Pair</span>
-The trades endpoint is to return data of 100 recently completed trades for a given market pair.
 ### Request 
-- GET /v2/public/trades/market_pair?market_pair=BTC_USDT
+- GET /v2/public/orderbook/market_pair?market_pair=BTC_USDT&level=3&depth=100
 
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
-|market_pair	|String	|Y	|A pair such as LTC_BTC.	|Trading Pair Name|
+|market_pair|String|Y|A pair such as “LTC_BTC”|Trading pair name|
+|depth|Integer|Y|Orders depth quantity: [0,5,10,20,50,100,500] Not defined or 0 = full order book Depth = 100 means 50 for each bid/ask side.|Depth|
+|level|Integer|Y|Level 1 – Only the best bid and ask. Level 2 – Arranged by best bids and asks. Level 3 – Complete order book, no aggregation.| Level |
 
 ### Response
 
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
-|trade_id|Integer|Y|A unique ID associated with the trade for the currency pair transaction Note: Unix timestamp does not qualify as trade_id.|Order ID|
-|price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
-|base_volume|String|Y|Transaction amount in BASE currency.|Volume|
-|quote_volume|String|Y|Transaction amount in QUOTE currency.|Amount|
-|timestamp|String|Y|Unix timestamp in milliseconds for when the transaction occurred.|Timestamp|
-|type|String|Y|Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book.|Side|
+|timestamp|String|Y|Unix timestamp in milliseconds for when the last updated time occurred.|Server time|
+|bids|String|Y|An array containing 2 elements. The offer price and quantity for each bid order.|Bid|
+|asks|String|Y|An array containing 2 elements. The ask price and quantity for each ask order.|Ask|
 
-### Demo
+
+
+
+## <span id="118">Market Pair</span>
+The trades endpoint is to return data of 100 recently completed trades for a given market pair.
+
+> Response
+
 ```lang=json
 {
  "code": "0",
@@ -1596,18 +1649,12 @@ The trades endpoint is to return data of 100 recently completed trades for a giv
 }
 ```
 
-## <span id="119">Historical Market Pair</span>
-The trades endpoint is to return data on historical completed trades for a given market pair.
 ### Request 
-- GET /v2/public/trades/historical_trades?market_pair=BTC_USDT
+- GET /v2/public/trades/market_pair?market_pair=BTC_USDT
 
 |    code    |  type   | example |  meaning  | remarks |
 | -----------| ------  | -----   | -----     | -----   |
 |market_pair	|String	|Y	|A pair such as LTC_BTC.	|Trading Pair Name|
-|type	|String	|N	|To indicate nature of trade - buy/sell	|type|
-|limit	|Integer	|N	|Number of historical trades to retrieve from time of query. [100, 200, 500...]. default returns 100 history.	|limit|
-|start_time	|Long	|N	|Start time from which to query historical trades from	|start time|
-|end_time	|Long	|N	|End time for historical trades query	|end time|
 
 ### Response
 
@@ -1620,7 +1667,13 @@ The trades endpoint is to return data on historical completed trades for a given
 |timestamp|String|Y|Unix timestamp in milliseconds for when the transaction occurred.|Timestamp|
 |type|String|Y|Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book.|Side|
 
-### Demo
+
+
+## <span id="119">Historical Market Pair</span>
+The trades endpoint is to return data on historical completed trades for a given market pair.
+
+> Response
+
 ```lang=json
 {
  "code": "0",
@@ -1663,4 +1716,28 @@ The trades endpoint is to return data on historical completed trades for a given
  }
 }
 ```
+
+### Request 
+- GET /v2/public/trades/historical_trades?market_pair=BTC_USDT
+
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+|market_pair	|String	|Y	|A pair such as LTC_BTC.	|Trading Pair Name|
+|type	|String	|N	|To indicate nature of trade - buy/sell	|type|
+|limit	|Integer	|N	|Number of historical trades to retrieve from time of query. [100, 200, 500...]. default returns 100 history.	|limit|
+|start_time	|Long	|N	|Start time from which to query historical trades from	|start time|
+|end_time	|Long	|N	|End time for historical trades query	|end time|
+
+### Response
+
+|    code    |  type   | example |  meaning  | remarks |
+| -----------| ------  | -----   | -----     | -----   |
+|trade_id|Integer|Y|A unique ID associated with the trade for the currency pair transaction Note: Unix timestamp does not qualify as trade_id.|Order ID|
+|price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
+|base_volume|String|Y|Transaction amount in BASE currency.|Volume|
+|quote_volume|String|Y|Transaction amount in QUOTE currency.|Amount|
+|timestamp|String|Y|Unix timestamp in milliseconds for when the transaction occurred.|Timestamp|
+|type|String|Y|Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book.|Side|
+
+
 
