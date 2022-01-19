@@ -457,9 +457,6 @@
                     <a href="#trading-pair-information" class="toc-h2 toc-link" data-title="Trading pair information"><span id="115">Trading pair information</span></a>
                   </li>
                   <li>
-                    <a href="#97510c5887" class="toc-h2 toc-link" data-title=""><span id="115"></span></a>
-                  </li>
-                  <li>
                     <a href="#ticker-2" class="toc-h2 toc-link" data-title="Ticker"><span id="116">Ticker</span></a>
                   </li>
                   <li>
@@ -472,7 +469,7 @@
                     <a href="#historical-market-pair" class="toc-h2 toc-link" data-title="Historical Market Pair"><span id="119">Historical Market Pair</span></a>
                   </li>
                   <li>
-                    <a href="#demo-7" class="toc-h2 toc-link" data-title="Demo">Demo</a>
+                    <a href="#demo-6" class="toc-h2 toc-link" data-title="Demo">Demo</a>
                   </li>
               </ul>
           </li>
@@ -1445,7 +1442,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 </tbody></table>
 <h2 id='8b5706bd64'><span id="14">获取订单信息</span></h2>
-<p>.获取订单信息</p>
+<p>获取订单信息</p>
 <h3 id='http-9'>HTTP请求:</h3>
 <ul>
 <li>GET trade/order/orderInfo</li>
@@ -1600,10 +1597,9 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <p>市场所有交易对的Ticker</p>
 <h3 id='http-10'>HTTP请求:</h3>
 <ul>
-<li>GET /v1/market/tickers
-### 请求参数: </li>
+<li>GET /v1/market/tickers</li>
 </ul>
-
+<h3 id='2eb6f47757-2'>请求参数:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1736,10 +1732,9 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <p>获取深度数据</p>
 <h3 id='http-11'>HTTP请求:</h3>
 <ul>
-<li>GET /v1/market/depth/<symbol>
-### 请求参数: </li>
+<li>GET /v1/market/depth/<symbol></li>
 </ul>
-
+<h3 id='2eb6f47757-3'>请求参数:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1856,10 +1851,9 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <p>获取交易K线</p>
 <h3 id='http-12'>HTTP请求:</h3>
 <ul>
-<li>GET /v1/market/kline/<symbol>
-### 请求参数: </li>
+<li>GET /v1/market/kline/<symbol></li>
 </ul>
-
+<h3 id='2eb6f47757-4'>请求参数:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2017,10 +2011,9 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <p>获取最新成交记录</p>
 <h3 id='http-13'>HTTP请求:</h3>
 <ul>
-<li>GET /v1/market/trade/<symbol>
-### 请求参数: </li>
+<li>GET /v1/market/trade/<symbol></li>
 </ul>
-
+<h3 id='2eb6f47757-5'>请求参数:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2141,10 +2134,9 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <p>获取所有交易对最新价格</p>
 <h3 id='http-14'>HTTP请求:</h3>
 <ul>
-<li>GET /v1/ticker/price
-### 请求参数: </li>
+<li>GET /v1/ticker/price</li>
 </ul>
-
+<h3 id='2eb6f47757-6'>请求参数:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2639,10 +2631,9 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <p>The assets endpoint is to provide a detailed summary for each currency available on the exchange.</p>
 <h3 id='request'>Request</h3>
 <ul>
-<li>GET  /v2/public/assets
-### Response</li>
+<li>GET  /v2/public/assets</li>
 </ul>
-
+<h3 id='response'>Response</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2729,10 +2720,9 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <p>The summary endpoint is to provide an overview of market data for all tickers and all market pairs on the exchange.</p>
 <h3 id='request-2'>Request</h3>
 <ul>
-<li>GET /v2/public/summary
-### Response</li>
+<li>GET /v2/public/summary</li>
 </ul>
-
+<h3 id='response-2'>Response</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2852,61 +2842,13 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
      }
  ]
 }
-</code></pre></div><h2 id='97510c5887'><span id="115"></span></h2><h3 id='request-3'>Request</h3>
-<ul>
-<li>GET</li>
-</ul>
-<h3 id='response'>Response</h3>
-<table><thead>
-<tr>
-<th>code</th>
-<th>type</th>
-<th>example</th>
-<th>meaning</th>
-<th>remarks</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-<h3 id='demo-3'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
- "code": "0",
- "message": null,
- "data": [
-     {
-         "trading_pairs": "btcusdt",
-         "last_price": "60000",
-         "lowest_ask": "60000",
-         "highest_bid": "555",
-         "base_volume": "0",
-         "quote_volume": "0",
-         "price_change_percent_24h": "0",
-         "highest_price_24h": "60000",
-         "lowest_price_24h": "60000",
-         "base_currency": "BTC",
-         "quote_currency": "USDT"
-     },
-     {
-         "trading_pairs": "ethusdt",
-         "last_price": "60000",
-         "lowest_ask": "60000",
-         "highest_bid": "555",
-         "base_volume": "0",
-         "quote_volume": "0",
-         "price_change_percent_24h": "0",
-         "highest_price_24h": "60000",
-         "lowest_price_24h": "60000",
-         "base_currency": "ETH",
-         "quote_currency": "USDT"
-     }
- ]
-}
 </code></pre></div><h2 id='ticker-2'><span id="116">Ticker</span></h2>
 <p>The ticker endpoint is to provide a 24-hour pricing and volume summary for each market pair available on the exchange.</p>
-<h3 id='request-4'>Request</h3>
+<h3 id='request-3'>Request</h3>
 <ul>
-<li>GET /v2/public/ticker
-### Response</li>
+<li>GET /v2/public/ticker</li>
 </ul>
-
+<h3 id='response-3'>Response</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2959,7 +2901,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <td>Market enable or not</td>
 </tr>
 </tbody></table>
-<h3 id='demo-4'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+<h3 id='demo-3'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": {
@@ -2983,7 +2925,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 }
 </code></pre></div><h2 id='depth'><span id="117">Depth</span></h2>
 <p>The order book endpoint is to provide a complete level 2 order book (arranged by best asks/bids) with full depth returned for a given market pair.</p>
-<h3 id='request-5'>Request</h3>
+<h3 id='request-4'>Request</h3>
 <ul>
 <li>GET /v2/public/orderbook/market_pair?market_pair=BTC_USDT&amp;level=3&amp;depth=100</li>
 </ul>
@@ -3019,7 +2961,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <td>Level</td>
 </tr>
 </tbody></table>
-<h3 id='response-2'>Response</h3>
+<h3 id='response-4'>Response</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3051,7 +2993,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <td>Ask</td>
 </tr>
 </tbody></table>
-<h3 id='demo-5'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+<h3 id='demo-4'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": {
@@ -3080,7 +3022,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 }
 </code></pre></div><h2 id='market-pair'><span id="118">Market Pair</span></h2>
 <p>The trades endpoint is to return data of 100 recently completed trades for a given market pair.</p>
-<h3 id='request-6'>Request</h3>
+<h3 id='request-5'>Request</h3>
 <ul>
 <li>GET /v2/public/trades/market_pair?market_pair=BTC_USDT</li>
 </ul>
@@ -3102,7 +3044,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <td>Trading Pair Name</td>
 </tr>
 </tbody></table>
-<h3 id='response-3'>Response</h3>
+<h3 id='response-5'>Response</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3155,7 +3097,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <td>Side</td>
 </tr>
 </tbody></table>
-<h3 id='demo-6'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+<h3 id='demo-5'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": [
@@ -3179,7 +3121,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 }
 </code></pre></div><h2 id='historical-market-pair'><span id="119">Historical Market Pair</span></h2>
 <p>The trades endpoint is to return data on historical completed trades for a given market pair.</p>
-<h3 id='request-7'>Request</h3>
+<h3 id='request-6'>Request</h3>
 <ul>
 <li>GET /v2/public/trades/historical_trades?market_pair=BTC_USDT</li>
 </ul>
@@ -3229,7 +3171,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <td>end time</td>
 </tr>
 </tbody></table>
-<h3 id='response-4'>Response</h3>
+<h3 id='response-6'>Response</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3282,7 +3224,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <td>Side</td>
 </tr>
 </tbody></table>
-<h2 id='demo-7'>Demo</h2><div class="highlight"><pre class="highlight plaintext"><code>{
+<h2 id='demo-6'>Demo</h2><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": {

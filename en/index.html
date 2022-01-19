@@ -450,9 +450,6 @@
                     <a href="#trading-pair-information" class="toc-h2 toc-link" data-title="Trading pair information"><span id="115">Trading pair information</span></a>
                   </li>
                   <li>
-                    <a href="#97510c5887" class="toc-h2 toc-link" data-title=""><span id="115"></span></a>
-                  </li>
-                  <li>
                     <a href="#ticker-2" class="toc-h2 toc-link" data-title="Ticker"><span id="116">Ticker</span></a>
                   </li>
                   <li>
@@ -1696,10 +1693,9 @@ Note: The request parameters and request body are not sorted but directly splice
 <p>Ticker for all trading pairs in the market</p>
 <h3 id='http-request-10'>HTTP request:</h3>
 <ul>
-<li>GET /v1/market/tickers
-### Request parameters:</li>
+<li>GET /v1/market/tickers</li>
 </ul>
-
+<h3 id='request-parameters-10'>Request parameters:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1758,10 +1754,9 @@ Note: The request parameters and request body are not sorted but directly splice
 <p>Get depth data</p>
 <h3 id='http-request-11'>HTTP request:</h3>
 <ul>
-<li>GET /v1/market/depth/<symbol>
-### Request parameters:</li>
+<li>GET /v1/market/depth/<symbol></li>
 </ul>
-
+<h3 id='request-parameters-11'>Request parameters:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1838,10 +1833,9 @@ Note: The request parameters and request body are not sorted but directly splice
 </blockquote>
 <h3 id='http-request-12'>HTTP request:</h3>
 <ul>
-<li>GET /v1/market/kline/<symbol>
-### Request parameters:</li>
+<li>GET /v1/market/kline/<symbol></li>
 </ul>
-
+<h3 id='request-parameters-12'>Request parameters:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1921,10 +1915,9 @@ Note: The request parameters and request body are not sorted but directly splice
 <p>Get the latest trades record</p>
 <h3 id='http-request-13'>HTTP request:</h3>
 <ul>
-<li>GET /v1/market/trade/<symbol>
-### Request parameters:</li>
+<li>GET /v1/market/trade/<symbol></li>
 </ul>
-
+<h3 id='request-parameters-13'>Request parameters:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2009,7 +2002,7 @@ Note: The request parameters and request body are not sorted but directly splice
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-parameters-10'>Request Parameters:</h3>
+</span></code></pre></div><h3 id='request-parameters-14'>Request Parameters:</h3>
 <p>default: Query all symbols</p>
 
 <p>query the specified symbol: /v1/ticker/price;symbol=btcusdt,eosusdt,autusdt `</p>
@@ -2471,10 +2464,9 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 <p>The assets endpoint is to provide a detailed summary for each currency available on the exchange.</p>
 <h3 id='request'>Request</h3>
 <ul>
-<li>GET  /v2/public/assets
-### Response</li>
+<li>GET  /v2/public/assets</li>
 </ul>
-
+<h3 id='response'>Response</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2561,10 +2553,9 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 <p>The summary endpoint is to provide an overview of market data for all tickers and all market pairs on the exchange.</p>
 <h3 id='request-2'>Request</h3>
 <ul>
-<li>GET /v2/public/summary
-### Response</li>
+<li>GET /v2/public/summary</li>
 </ul>
-
+<h3 id='response-2'>Response</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2684,62 +2675,13 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
      }
  ]
 }
-</code></pre></div><h2 id='97510c5887'><span id="115"></span></h2><h3 id='request-3'>Request</h3>
-<ul>
-<li>GET
-### Response</li>
-</ul>
-
-<table><thead>
-<tr>
-<th>code</th>
-<th>type</th>
-<th>example</th>
-<th>meaning</th>
-<th>remarks</th>
-</tr>
-</thead><tbody>
-</tbody></table>
-<h3 id='demo-3'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
- "code": "0",
- "message": null,
- "data": [
-     {
-         "trading_pairs": "btcusdt",
-         "last_price": "60000",
-         "lowest_ask": "60000",
-         "highest_bid": "555",
-         "base_volume": "0",
-         "quote_volume": "0",
-         "price_change_percent_24h": "0",
-         "highest_price_24h": "60000",
-         "lowest_price_24h": "60000",
-         "base_currency": "BTC",
-         "quote_currency": "USDT"
-     },
-     {
-         "trading_pairs": "ethusdt",
-         "last_price": "60000",
-         "lowest_ask": "60000",
-         "highest_bid": "555",
-         "base_volume": "0",
-         "quote_volume": "0",
-         "price_change_percent_24h": "0",
-         "highest_price_24h": "60000",
-         "lowest_price_24h": "60000",
-         "base_currency": "ETH",
-         "quote_currency": "USDT"
-     }
- ]
-}
 </code></pre></div><h2 id='ticker-2'><span id="116">Ticker</span></h2>
 <p>The ticker endpoint is to provide a 24-hour pricing and volume summary for each market pair available on the exchange.</p>
-<h3 id='request-4'>Request</h3>
+<h3 id='request-3'>Request</h3>
 <ul>
-<li>GET /v2/public/ticker
-### Response</li>
+<li>GET /v2/public/ticker</li>
 </ul>
-
+<h3 id='response-3'>Response</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2792,7 +2734,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 <td>Market enable or not</td>
 </tr>
 </tbody></table>
-<h3 id='demo-4'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+<h3 id='demo-3'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": {
@@ -2816,7 +2758,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 }
 </code></pre></div><h2 id='depth'><span id="117">Depth</span></h2>
 <p>The order book endpoint is to provide a complete level 2 order book (arranged by best asks/bids) with full depth returned for a given market pair.</p>
-<h3 id='request-5'>Request</h3>
+<h3 id='request-4'>Request</h3>
 <ul>
 <li>GET /v2/public/orderbook/market_pair?market_pair=BTC_USDT&amp;level=3&amp;depth=100</li>
 </ul>
@@ -2852,7 +2794,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 <td>Level</td>
 </tr>
 </tbody></table>
-<h3 id='response'>Response</h3>
+<h3 id='response-4'>Response</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2884,7 +2826,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 <td>Ask</td>
 </tr>
 </tbody></table>
-<h3 id='demo-5'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+<h3 id='demo-4'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": {
@@ -2913,7 +2855,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 }
 </code></pre></div><h2 id='market-pair'><span id="118">Market Pair</span></h2>
 <p>The trades endpoint is to return data of 100 recently completed trades for a given market pair.</p>
-<h3 id='request-6'>Request</h3>
+<h3 id='request-5'>Request</h3>
 <ul>
 <li>GET /v2/public/trades/market_pair?market_pair=BTC_USDT</li>
 </ul>
@@ -2935,7 +2877,134 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 <td>Trading Pair Name</td>
 </tr>
 </tbody></table>
-<h3 id='response-2'>Response</h3>
+<h3 id='response-5'>Response</h3>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trade_id</td>
+<td>Integer</td>
+<td>Y</td>
+<td>A unique ID associated with the trade for the currency pair transaction Note: Unix timestamp does not qualify as trade_id.</td>
+<td>Order ID</td>
+</tr>
+<tr>
+<td>price</td>
+<td>String</td>
+<td>Y</td>
+<td>Last transacted price of base currency based on given quote currency</td>
+<td>Last price</td>
+</tr>
+<tr>
+<td>base_volume</td>
+<td>String</td>
+<td>Y</td>
+<td>Transaction amount in BASE currency.</td>
+<td>Volume</td>
+</tr>
+<tr>
+<td>quote_volume</td>
+<td>String</td>
+<td>Y</td>
+<td>Transaction amount in QUOTE currency.</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>String</td>
+<td>Y</td>
+<td>Unix timestamp in milliseconds for when the transaction occurred.</td>
+<td>Timestamp</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>Y</td>
+<td>Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book.</td>
+<td>Side</td>
+</tr>
+</tbody></table>
+<h3 id='demo-5'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+ "code": "0",
+ "message": null,
+ "data": [
+     {
+         "trade_id": 2101,
+         "price": "60000",
+         "base_volume": "0.003333",
+         "quote_volume": "0",
+         "timestamp": "1622526904",
+         "type": "buy"
+     },
+     {
+         "trade_id": 2100,
+         "price": "60000",
+         "base_volume": "0.008333",
+         "quote_volume": "0",
+         "timestamp": "1622526904",
+         "type": "buy"
+     }
+ ]
+}
+</code></pre></div><h2 id='historical-market-pair'><span id="119">Historical Market Pair</span></h2>
+<p>The trades endpoint is to return data on historical completed trades for a given market pair.</p>
+<h3 id='request-6'>Request</h3>
+<ul>
+<li>GET /v2/public/trades/historical_trades?market_pair=BTC_USDT</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market_pair</td>
+<td>String</td>
+<td>Y</td>
+<td>A pair such as LTC_BTC.</td>
+<td>Trading Pair Name</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>N</td>
+<td>To indicate nature of trade - buy/sell</td>
+<td>type</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>N</td>
+<td>Number of historical trades to retrieve from time of query. [100, 200, 500...]. default returns 100 history.</td>
+<td>limit</td>
+</tr>
+<tr>
+<td>start_time</td>
+<td>Long</td>
+<td>N</td>
+<td>Start time from which to query historical trades from</td>
+<td>start time</td>
+</tr>
+<tr>
+<td>end_time</td>
+<td>Long</td>
+<td>N</td>
+<td>End time for historical trades query</td>
+<td>end time</td>
+</tr>
+</tbody></table>
+<h3 id='response-6'>Response</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2989,133 +3058,6 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 </tr>
 </tbody></table>
 <h3 id='demo-6'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
- "code": "0",
- "message": null,
- "data": [
-     {
-         "trade_id": 2101,
-         "price": "60000",
-         "base_volume": "0.003333",
-         "quote_volume": "0",
-         "timestamp": "1622526904",
-         "type": "buy"
-     },
-     {
-         "trade_id": 2100,
-         "price": "60000",
-         "base_volume": "0.008333",
-         "quote_volume": "0",
-         "timestamp": "1622526904",
-         "type": "buy"
-     }
- ]
-}
-</code></pre></div><h2 id='historical-market-pair'><span id="119">Historical Market Pair</span></h2>
-<p>The trades endpoint is to return data on historical completed trades for a given market pair.</p>
-<h3 id='request-7'>Request</h3>
-<ul>
-<li>GET /v2/public/trades/historical_trades?market_pair=BTC_USDT</li>
-</ul>
-
-<table><thead>
-<tr>
-<th>code</th>
-<th>type</th>
-<th>example</th>
-<th>meaning</th>
-<th>remarks</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>market_pair</td>
-<td>String</td>
-<td>Y</td>
-<td>A pair such as LTC_BTC.</td>
-<td>Trading Pair Name</td>
-</tr>
-<tr>
-<td>type</td>
-<td>String</td>
-<td>N</td>
-<td>To indicate nature of trade - buy/sell</td>
-<td>type</td>
-</tr>
-<tr>
-<td>limit</td>
-<td>Integer</td>
-<td>N</td>
-<td>Number of historical trades to retrieve from time of query. [100, 200, 500...]. default returns 100 history.</td>
-<td>limit</td>
-</tr>
-<tr>
-<td>start_time</td>
-<td>Long</td>
-<td>N</td>
-<td>Start time from which to query historical trades from</td>
-<td>start time</td>
-</tr>
-<tr>
-<td>end_time</td>
-<td>Long</td>
-<td>N</td>
-<td>End time for historical trades query</td>
-<td>end time</td>
-</tr>
-</tbody></table>
-<h3 id='response-3'>Response</h3>
-<table><thead>
-<tr>
-<th>code</th>
-<th>type</th>
-<th>example</th>
-<th>meaning</th>
-<th>remarks</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>trade_id</td>
-<td>Integer</td>
-<td>Y</td>
-<td>A unique ID associated with the trade for the currency pair transaction Note: Unix timestamp does not qualify as trade_id.</td>
-<td>Order ID</td>
-</tr>
-<tr>
-<td>price</td>
-<td>String</td>
-<td>Y</td>
-<td>Last transacted price of base currency based on given quote currency</td>
-<td>Last price</td>
-</tr>
-<tr>
-<td>base_volume</td>
-<td>String</td>
-<td>Y</td>
-<td>Transaction amount in BASE currency.</td>
-<td>Volume</td>
-</tr>
-<tr>
-<td>quote_volume</td>
-<td>String</td>
-<td>Y</td>
-<td>Transaction amount in QUOTE currency.</td>
-<td>Amount</td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td>String</td>
-<td>Y</td>
-<td>Unix timestamp in milliseconds for when the transaction occurred.</td>
-<td>Timestamp</td>
-</tr>
-<tr>
-<td>type</td>
-<td>String</td>
-<td>Y</td>
-<td>Used to determine whether or not the transaction originated as a buy or sell. Buy – Identifies an ask was removed from the order book. Sell – Identifies a bid was removed from the order book.</td>
-<td>Side</td>
-</tr>
-</tbody></table>
-<h3 id='demo-7'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": {
