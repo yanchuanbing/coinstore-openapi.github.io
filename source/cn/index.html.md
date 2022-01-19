@@ -542,7 +542,7 @@ HTTP常见的错误码如下：
 
 
 ## <span id="14">获取订单信息</span>
-.获取订单信息
+获取订单信息
 
 ### HTTP请求: 
 - GET trade/order/orderInfo
@@ -596,6 +596,7 @@ HTTP常见的错误码如下：
  
 ### HTTP请求: 
 - GET /v1/market/tickers
+
 ### 请求参数: 
 
 |    code    |  type   | required |       comment        |
@@ -656,6 +657,7 @@ HTTP常见的错误码如下：
 
 ### HTTP请求: 
 - GET /v1/market/depth/<symbol>
+
 ### 请求参数: 
 
 |    code    |  type   | required |       comment        |
@@ -719,6 +721,7 @@ HTTP常见的错误码如下：
 
 ### HTTP请求: 
 - GET /v1/market/kline/<symbol>
+
 ### 请求参数: 
 
 |    code    |  type   | required |       comment        |
@@ -783,6 +786,7 @@ HTTP常见的错误码如下：
 
 ### HTTP请求: 
 - GET /v1/market/trade/<symbol>
+
 ### 请求参数: 
 
 |    code    |  type   | required |       comment        |
@@ -835,6 +839,7 @@ HTTP常见的错误码如下：
 
 ### HTTP请求: 
 - GET /v1/ticker/price
+
 ### 请求参数: 
 
 |    code    |  type   | required |       comment        |
@@ -1386,8 +1391,10 @@ This document covers the API endpoint details including spot exchange API and it
 
 ## <span id="114">Asset list</span>  
 The assets endpoint is to provide a detailed summary for each currency available on the exchange.
+
 ### Request 
 - GET  /v2/public/assets
+
 ### Response
 
 |    code    |  type   | example |  meaning  | remarks |
@@ -1423,8 +1430,10 @@ The assets endpoint is to provide a detailed summary for each currency available
 
 ## <span id="115">Trading pair information</span>  
 The summary endpoint is to provide an overview of market data for all tickers and all market pairs on the exchange.
+
 ### Request 
 - GET /v2/public/summary
+
 ### Response
 
 |    code    |  type   | example |  meaning  | remarks |
@@ -1477,55 +1486,14 @@ The summary endpoint is to provide an overview of market data for all tickers an
 }
 ```
 
-## <span id="115"></span>
-### Request 
-- GET
 
-### Response
-
-|    code    |  type   | example |  meaning  | remarks |
-| -----------| ------  | -----   | -----     | -----   |
-
-### Demo
-```lang=json
-{
- "code": "0",
- "message": null,
- "data": [
-     {
-         "trading_pairs": "btcusdt",
-         "last_price": "60000",
-         "lowest_ask": "60000",
-         "highest_bid": "555",
-         "base_volume": "0",
-         "quote_volume": "0",
-         "price_change_percent_24h": "0",
-         "highest_price_24h": "60000",
-         "lowest_price_24h": "60000",
-         "base_currency": "BTC",
-         "quote_currency": "USDT"
-     },
-     {
-         "trading_pairs": "ethusdt",
-         "last_price": "60000",
-         "lowest_ask": "60000",
-         "highest_bid": "555",
-         "base_volume": "0",
-         "quote_volume": "0",
-         "price_change_percent_24h": "0",
-         "highest_price_24h": "60000",
-         "lowest_price_24h": "60000",
-         "base_currency": "ETH",
-         "quote_currency": "USDT"
-     }
- ]
-}
-```
 
 ## <span id="116">Ticker</span>
 The ticker endpoint is to provide a 24-hour pricing and volume summary for each market pair available on the exchange.
+
 ### Request 
 - GET /v2/public/ticker
+
 ### Response
 
 |    code    |  type   | example |  meaning  | remarks |
@@ -1566,6 +1534,7 @@ The ticker endpoint is to provide a 24-hour pricing and volume summary for each 
 
 ## <span id="117">Depth</span>
 The order book endpoint is to provide a complete level 2 order book (arranged by best asks/bids) with full depth returned for a given market pair.
+
 ### Request 
 - GET /v2/public/orderbook/market_pair?market_pair=BTC_USDT&level=3&depth=100
 
@@ -1618,6 +1587,7 @@ The order book endpoint is to provide a complete level 2 order book (arranged by
 
 ## <span id="118">Market Pair</span>
 The trades endpoint is to return data of 100 recently completed trades for a given market pair.
+
 ### Request 
 - GET /v2/public/trades/market_pair?market_pair=BTC_USDT
 
@@ -1664,6 +1634,7 @@ The trades endpoint is to return data of 100 recently completed trades for a giv
 
 ## <span id="119">Historical Market Pair</span>
 The trades endpoint is to return data on historical completed trades for a given market pair.
+
 ### Request 
 - GET /v2/public/trades/historical_trades?market_pair=BTC_USDT
 

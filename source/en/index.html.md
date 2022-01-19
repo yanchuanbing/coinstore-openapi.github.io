@@ -563,6 +563,7 @@ Get order information
  
 ### HTTP request:
 - GET /v1/market/tickers
+
 ### Request parameters:
 
 | code | type | required | comment |
@@ -622,6 +623,7 @@ Get depth data
 
 ### HTTP request:
 - GET /v1/market/depth/<symbol>
+
 ### Request parameters:
 
 | code | type | required | comment |
@@ -684,6 +686,7 @@ Get trading K line
 
 ### HTTP request:
 - GET /v1/market/kline/<symbol>
+
 ### Request parameters:
 
 | code | type | required | comment |
@@ -748,6 +751,7 @@ Get the latest trades record
 
 ### HTTP request:
 - GET /v1/market/trade/<symbol>
+
 ### Request parameters:
 
 | code | type | required | comment |
@@ -1355,8 +1359,10 @@ This document covers the API endpoint details including spot exchange API and it
 
 ## <span id="114">Asset list</span>  
 The assets endpoint is to provide a detailed summary for each currency available on the exchange.
+
 ### Request 
 - GET  /v2/public/assets
+
 ### Response
 
 |    code    |  type   | example |  meaning  | remarks |
@@ -1392,8 +1398,10 @@ The assets endpoint is to provide a detailed summary for each currency available
 
 ## <span id="115">Trading pair information</span>  
 The summary endpoint is to provide an overview of market data for all tickers and all market pairs on the exchange.
+
 ### Request 
 - GET /v2/public/summary
+
 ### Response
 
 |    code    |  type   | example |  meaning  | remarks |
@@ -1446,54 +1454,13 @@ The summary endpoint is to provide an overview of market data for all tickers an
 }
 ```
 
-## <span id="115"></span>
-### Request 
-- GET
-### Response
-
-|    code    |  type   | example |  meaning  | remarks |
-| -----------| ------  | -----   | -----     | -----   |
-
-### Demo
-```lang=json
-{
- "code": "0",
- "message": null,
- "data": [
-     {
-         "trading_pairs": "btcusdt",
-         "last_price": "60000",
-         "lowest_ask": "60000",
-         "highest_bid": "555",
-         "base_volume": "0",
-         "quote_volume": "0",
-         "price_change_percent_24h": "0",
-         "highest_price_24h": "60000",
-         "lowest_price_24h": "60000",
-         "base_currency": "BTC",
-         "quote_currency": "USDT"
-     },
-     {
-         "trading_pairs": "ethusdt",
-         "last_price": "60000",
-         "lowest_ask": "60000",
-         "highest_bid": "555",
-         "base_volume": "0",
-         "quote_volume": "0",
-         "price_change_percent_24h": "0",
-         "highest_price_24h": "60000",
-         "lowest_price_24h": "60000",
-         "base_currency": "ETH",
-         "quote_currency": "USDT"
-     }
- ]
-}
-```
 
 ## <span id="116">Ticker</span>
 The ticker endpoint is to provide a 24-hour pricing and volume summary for each market pair available on the exchange.
+
 ### Request 
 - GET /v2/public/ticker
+
 ### Response
 
 |    code    |  type   | example |  meaning  | remarks |
