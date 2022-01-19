@@ -157,7 +157,8 @@ A licit request consists of the following parts:
 - X-CS-EXPIRES： Timestamp when you issued the request. For example: 1629291143107.
 - X-CS-SIGN: A string calculated from the signature, which is used to ensure that the signature is valid and not tampered with.
 
-> Note: X-CS-APIKEY, X-CS-EXPIRES and X-CS-SIGN are all in the request header, and 'Content-Type':'application/json’ needs to be set.
+**Note: X-CS-APIKEY, X-CS-EXPIRES and X-CS-SIGN are all in the request header, and 'Content-Type':'application/json' 
+needs to be set.**
 
 ## <span id="a3"> Return Format </span>
 
@@ -214,7 +215,7 @@ Get user assets balance
 - POST /spot/accountList
 
 
-> response 
+> Response 
 
 ```json
 {
@@ -270,10 +271,33 @@ Get current order
 - GET /trade/order/active
 
 
-> response
+> Response
 
 ```json
-
+{
+    "data": [
+        {
+            "symbol": "LUFFYUSDT",
+            "baseCurrency": "LUFFY",
+            "quoteCurrency": "USDT",
+            "timestamp": 1642402062196,
+            "side": "BUY",
+            "timeInForce": "GTC",
+            "accountId": 1138204,
+            "ordPrice": 9.1E-10,
+            "cumAmt": "0",
+            "cumQty": "0",
+            "leavesQty": "0",
+            "clOrdId": "b1b2ea5e00a84b888d419cb73f8eb203",
+            "ordAmt": "0",
+            "ordQty": "1",
+            "ordId": "1722183748419690",
+            "ordStatus": "SUBMITTED",
+            "ordType": "LIMIT"
+        }
+    ],
+    "code": 0
+}
 ```
 
 ### Request Parameters
@@ -315,10 +339,37 @@ Get all trading records
 - GET /trade/match/accountMatches
 
 
-> response
+> Response
 
 ```json
-
+{
+    "data": [
+        {
+            "id": 3984987,
+            "remainingQty": 0E-18,
+            "matchRole": 1,
+            "feeCurrencyId": 44,
+            "acturalFeeRate": 0.002000000000000000,
+            "role": 1,
+            "accountId": 1138204,
+            "instrumentId": 15,
+            "baseCurrencyId": 44,
+            "quoteCurrencyId": 30,
+            "execQty": 40.900000000000000000,
+            "orderState": 50,
+            "matchId": 258338866,
+            "orderId": 1717384395096065,
+            "side": 1,
+            "execAmt": 8.887161000000000000,
+            "selfDealingQty": 0E-18,
+            "tradeId": 11523732,
+            "fee": 0.081800000000000000,
+            "matchTime": 1637825389,
+            "seq": null
+        }
+    ],
+    "code": 0
+}
 ```
 
 ### Request Parameters
@@ -361,6 +412,26 @@ Cancel orders
 ### HTTP Request: 
 - POST /trade/order/cancel
 
+> Request Body
+```json
+{
+  "ordId": 1722183748419690,
+  "symbol":"LUFFYUSDT"
+}
+```
+
+> Response
+```json
+{
+    "code": 0,
+    "data": {
+        "clientOrderId": "b1b2ea5e00a84b888d419cb73f8eb203",
+        "state": "CANCELED",
+        "ordId": 1722183748419690
+    }
+}
+```
+
 ### Request Parameters
 
 |    code    |  type   | required |       comment        |
@@ -384,6 +455,20 @@ Cancel orders
 ### HTTP Request: 
 - POST /trade/order/cancelAll
 
+> Request Body
+```json
+{
+  "symbol":"LUFFYUSDT"
+}
+```
+
+> Response
+```json
+{
+    "code": 0
+}
+```
+
 ### Request Parameters
 
 |    code    |  type   | required |       comment        |
@@ -400,6 +485,29 @@ Cancel orders
 
 ## <span id="6"> Create order </span>
 Create order
+
+> Request Body
+```json
+{
+	"symbol": "LUFFYUSDT",
+	"side": "BUY",
+	"ordType": "LIMIT",
+	"ordPrice": 9.2e-10,
+	"ordQty": "12323231243",
+	"timestamp": 1642407805168
+}
+```
+
+> Response
+
+```json
+{
+    "code": "0",
+    "data": {
+        "order_id":11594964764657880
+    }
+}
+```
 
 ### HTTP Request: 
 - POST /trade/order/place
@@ -419,16 +527,6 @@ Create order
 | timestamp    | long     | true    |  |
 
 
-> response
-
-```json
-{
-    "code": "0",
-    "data": {
-        "order_id":11594964764657880
-    }
-}
-```
 
 ### Response Data
 
@@ -441,6 +539,47 @@ Create order
 
 ## <span id="13"> Batch ordering </span>
 Batch ordering
+
+> Request Body
+```json
+{
+	"symbol": "LUFFYUSDT",
+	"orders": [
+		{
+			"side": "BUY",
+			"ordType": "LIMIT",
+			"ordPrice": 9.2e-10,
+			"ordQty": "1"
+		},
+		{
+			"side": "BUY",
+			"ordType": "LIMIT",
+			"ordPrice": 9.2e-10,
+			"ordQty": "1"
+		}
+	],
+	"timestamp": 1642574848089
+}
+```
+
+> Response
+
+```json
+{
+    "code": 0,
+    "data": [
+        {
+            "ordId": 1722364585836585,
+            "clOrdId": "c09e68b49a724c8a95ef76526bf6bc05"
+        },
+        {
+            "ordId": 1722364585836586,
+            "clOrdId": "d0344830639d4f6d94be4110bf98c759"
+        }
+    ]
+}
+```
+
 ### HTTP Request: 
 - POST /trade/order/placeBatch
 
@@ -459,12 +598,7 @@ Batch ordering
 | ├─ ordQty    | long     | false    | limit order required, market price sell order required |
 | ├─ ordAmt    | long     | false    | market price buy order required |
 
-> response
 
-```json
-
-
-```
 
 ### Response Data
 
@@ -484,6 +618,29 @@ Batch cancellation according to order id.
 ### HTTP Request: 
 - POST trade/order/cancelBatch
 
+> Request Body
+```json
+{
+  "orderIds": [1722364585836586,1722364585836585],
+  "symbol":"LUFFYUSDT"
+}
+```
+
+> Response
+
+```json
+{
+    "data": {
+        "success": [
+            1722364585836586,
+            1722364585836585
+        ],
+        "reject": []
+    },
+    "code": 0
+}
+```
+
 ### Request Parameters
 
 |    code    |  type   | required |       comment        |
@@ -492,11 +649,7 @@ Batch cancellation according to order id.
 |orderIds| LIst| Y |[1,2,3]  |
 
 
-> response
 
-```json
-
-```
 
 ### Response Data
 
@@ -512,15 +665,37 @@ Batch cancellation according to order id.
 ## <span id="14">Get order information </span>
 Get order information
 
-### HTTP Request: 
-- GET trade/order/orderInfo
-
-
-> response
+> Response
 
 ```json
-
+{
+    "data": {
+        "baseCurrency": "LUFFY",
+        "quoteCurrency": "USDT",
+        "symbol": "LUFFYUSDT",
+        "timestamp": 1642574848089,
+        "side": "BUY",
+        "accountId": 1138204,
+        "ordId": 1722364585836586,
+        "clOrdId": "d0344830639d4f6d94be4110bf98c759",
+        "ordType": "LIMIT",
+        "ordState": "CANCELED",
+        "ordPrice": "0.00000000092",
+        "ordQty": "1",
+        "ordAmt": "0.00000000092",
+        "cumAmt": "0",
+        "cumQty": "0",
+        "leavesQty": "0",
+        "avgPrice": "0",
+        "feeCurrency": "LUFFY",
+        "timeInForce": "GTC"
+    },
+    "code": 0
+}
 ```
+
+### HTTP Request: 
+- GET trade/order/orderInfo
 
 ### Request Parameters:
 
@@ -560,7 +735,33 @@ Get order information
 
 ## <span id="7">Ticker</span>
  Ticker for all trading pairs in the market
+
+> Response
  
+```json
+ {
+ 	"data": [
+ 		{
+ 			"channel": "ticker",
+ 			"bidSize": "454.2",
+ 			"askSize": "542.6",
+ 			"count": 41723,
+ 			"volume": "24121351.85",
+ 			"amount": "1693799.10798965",
+ 			"close": "0.067998",
+ 			"open": "0.071842",
+ 			"high": "0.072453",
+ 			"low": "0.067985",
+ 			"bid": "0.0679",
+ 			"ask": "0.0681",
+ 			"symbol": "TRXUSDT",
+ 			"instrumentId": 2
+ 		}
+ 	],
+ 	"code": 0
+ }
+```
+
 ### HTTP request:
 - GET /v1/market/tickers
 
@@ -592,58 +793,10 @@ Get order information
 | ├─askSize| String | Amount to sell|
 
 
-> Response
- 
-```json
- {
- 	"data": [
- 		{
- 			"channel": "ticker",
- 			"bidSize": "454.2",
- 			"askSize": "542.6",
- 			"count": 41723,
- 			"volume": "24121351.85",
- 			"amount": "1693799.10798965",
- 			"close": "0.067998",
- 			"open": "0.071842",
- 			"high": "0.072453",
- 			"low": "0.067985",
- 			"bid": "0.0679",
- 			"ask": "0.0681",
- 			"symbol": "TRXUSDT",
- 			"instrumentId": 2
- 		}
- 	],
- 	"code": 0
- }
-```
+
  
 ## <span id="7">Get depth</span>
 Get depth data
-
-### HTTP request:
-- GET /v1/market/depth/<symbol>
-
-### Request parameters:
-
-| code | type | required | comment |
-| ---------- | ------- | -------- | -------------------- |
-|symbol | string | true | trading pair, such as "BTCUSDT" |
-|depth | int | false | The number of depths, such as "5, 10, 20, 50, 100", default 20 |
-
-### Response data:
-
-| code | type | comment |
-| ----------------- | ------ | ------------------------ ---------------- |
-| code | int | 0: success, other failure |
-| message | string | Error message |
-| data | Object| |
-| ├─channel| String |Identifier |
-| ├─level| Integer |Quantity |
-| ├─instrumentId| Integer |Pair ID |
-| ├─symbol| string |Trading pair |
-| ├─a | List | Sell order, [${price}, ${quantity}, ${direction}] ] |
-| ├─b | List | Buy order, [${price}, ${quantity}, ${direction}] ] |
 
 > Response
 ```json
@@ -681,9 +834,63 @@ Get depth data
 	"code": 0
 }
  ```
+ 
+### HTTP request:
+- GET /v1/market/depth/<symbol>
+
+### Request parameters:
+
+| code | type | required | comment |
+| ---------- | ------- | -------- | -------------------- |
+|symbol | string | true | trading pair, such as "BTCUSDT" |
+|depth | int | false | The number of depths, such as "5, 10, 20, 50, 100", default 20 |
+
+### Response data:
+
+| code | type | comment |
+| ----------------- | ------ | ------------------------ ---------------- |
+| code | int | 0: success, other failure |
+| message | string | Error message |
+| data | Object| |
+| ├─channel| String |Identifier |
+| ├─level| Integer |Quantity |
+| ├─instrumentId| Integer |Pair ID |
+| ├─symbol| string |Trading pair |
+| ├─a | List | Sell order, [${price}, ${quantity}, ${direction}] ] |
+| ├─b | List | Buy order, [${price}, ${quantity}, ${direction}] ] |
+
+
 ## <span id="7">Get K line</span>
 Get trading K line
 
+> Response
+
+```json
+{
+	"data": {
+		"channel": "4@kline@week_1",
+		"item": [
+			{
+				"endTime": 1641744059,
+				"amount": "98630624.103511453",
+				"interval": "week_1",
+				"startTime": 1641744000,
+				"firstTradeId": 14547884,
+				"lastTradeId": 14799534,
+				"volume": "2307.742209",
+				"close": "43196.0002",
+				"open": "41628.2582",
+				"high": "52250.3884",
+				"low": "39654.039"
+			}
+		],
+		"symbol": "BTCUSDT",
+		"instrumentId": 4
+	},
+	"code": 0
+}
+ ```
+ 
 ### HTTP request:
 - GET /v1/market/kline/<symbol>
 
@@ -719,36 +926,32 @@ Get trading K line
 | ├─├─low| String |Lowest transaction price |
 
 
-> Response
 
-```json
-{
-	"data": {
-		"channel": "4@kline@week_1",
-		"item": [
-			{
-				"endTime": 1641744059,
-				"amount": "98630624.103511453",
-				"interval": "week_1",
-				"startTime": 1641744000,
-				"firstTradeId": 14547884,
-				"lastTradeId": 14799534,
-				"volume": "2307.742209",
-				"close": "43196.0002",
-				"open": "41628.2582",
-				"high": "52250.3884",
-				"low": "39654.039"
-			}
-		],
-		"symbol": "BTCUSDT",
-		"instrumentId": 4
-	},
-	"code": 0
-}
- ```
 ## <span id="7">Latest trades</span>
 Get the latest trades record
 
+> Response
+ 
+ ```json
+ {
+ 	"data": [
+ 		{
+ 			"channel": "4@trade",
+ 			"time": 1642495112,
+ 			"volume": "0.011102",
+ 			"price": "41732.3305",
+ 			"tradeId": 14867136,
+ 			"takerSide": "BUY",
+ 			"seq": 14867136,
+ 			"ts": 1642495112000,
+ 			"symbol": "BTCUSDT",
+ 			"instrumentId": 4
+ 		}
+ 	],
+ 	"code": 0
+ }
+  ```
+  
 ### HTTP request:
 - GET /v1/market/trade/<symbol>
 
@@ -778,27 +981,7 @@ Get the latest trades record
 | ├─price| String | Last transaction price|                      
  
  
-> Response
- 
- ```json
- {
- 	"data": [
- 		{
- 			"channel": "4@trade",
- 			"time": 1642495112,
- 			"volume": "0.011102",
- 			"price": "41732.3305",
- 			"tradeId": 14867136,
- 			"takerSide": "BUY",
- 			"seq": 14867136,
- 			"ts": 1642495112000,
- 			"symbol": "BTCUSDT",
- 			"instrumentId": 4
- 		}
- 	],
- 	"code": 0
- }
-  ```
+
   
 ##  <span id="7"> Get the latest price of all symbols </span>
 Get the latest price of all symbols
@@ -807,7 +990,7 @@ Get the latest price of all symbols
 - GET /v1/ticker/price
 
 
-> response
+> Response
 
 ```json
 {
@@ -831,9 +1014,13 @@ Get the latest price of all symbols
 
 ### Request Parameters: 
 
- default: Query all symbols
+|    code    |  type   | required |       comment        |
+| ---------- | ------- | -------- | -------------------- |
+|symbol | string | true | Trading pairs, case-sensitive, comma-separated |
 
- query the specified symbol: /v1/ticker/price;symbol=btcusdt,eosusdt,autusdt `
+**default: Query all symbols**
+
+**query the specified symbol: /v1/ticker/price;symbol=btcusdt,eosusdt,autusdt**
 
 ### Response Data: 
 
@@ -1018,14 +1205,22 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 
 > NOTE:  All the time to return data is in `seconds'.
 
-## **Public ticker channel**
 
-### **Trade by Trade**
+## **Trade by Trade**
 
 > Send
 
 ```lang=json
- {"op":"SUB","channel":["28@trade"],"param":{"size":2},"id":1}
+ {
+ 	"op": "SUB",
+ 	"channel": [
+ 		"28@trade"
+ 	],
+ 	"param": {
+ 		"size": 2
+ 	},
+ 	"id": 1
+ }
 ```
 > full-volume data:
 
@@ -1077,18 +1272,18 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 }
 ```
 
-#### Stream Name
+### Stream Name
  `<symbol>@trade`
  
  eg: `88066@trade`
-#### param
+### param
 `param": {"size":2}`
 
 
 
 
 
-### **K-line Streams**
+## **K-line Streams**
 K-line stream pushes the requested k-line type (the latest k-line) every second.
 
 > Send
@@ -1116,13 +1311,13 @@ K-line stream pushes the requested k-line type (the latest k-line) every second.
 }
 ```
 
-#### Stream Name
+### Stream Name
 `<symbol>@kline@<interval>`
 
 eg: `88066@kline@min_1`
 
 
-#### interval optional values
+### interval optional values
 * min_1
 * min_5
 * min_15
@@ -1136,13 +1331,21 @@ eg: `88066@kline@min_1`
 
 
 
-### **K-line Request**
+## **K-line Request**
 request historical k-line
 
 > Send
 
 ```lang=json
- {"op":"REQ","param":{"channel":"4@kline@min_1","endTime":null,"limit":200},"id":1}
+ {
+ 	"op": "REQ",
+ 	"param": {
+ 		"channel": "4@kline@min_1",
+ 		"endTime": null,
+ 		"limit": 200
+ 	},
+ 	"id": 1
+ }
 ```
 > Receive
 
@@ -1170,7 +1373,7 @@ request historical k-line
 }
 ```
 
-#### param
+### param
 
 * `channel`: `<symbol>@kline@<interval>` ,eg:88066@kline@min_1
 * `limit`: No more than 200
@@ -1179,7 +1382,7 @@ request historical k-line
 
 
 
-### **Ticker Information by Symbol**
+## **Ticker Information by Symbol**
 Streamlined ticker information in the last 24 hours refreshed by Symbol
 
 > Send
@@ -1202,14 +1405,14 @@ Streamlined ticker information in the last 24 hours refreshed by Symbol
 }
 ```
 
-#### Stream Name
+### Stream Name
 `<symbol>@ticker`, eg:  `88066@ticker`
 
 
-### **Ticker information of all symbols in the whole market**
+## **Ticker information of all symbols in the whole market**
 Streamlined ticker information in the last 24 hours refreshed by Symbol
 
-#### Stream Name
+### Stream Name
 `!@ticker`
 
 > Send
@@ -1250,7 +1453,7 @@ Streamlined ticker information in the last 24 hours refreshed by Symbol
 }
 ```
 
-### **Limited level depth information**
+## **Depth information**
 Push limited level depth information every second or every 100ms. 
 
 > Send
@@ -1281,19 +1484,18 @@ Push limited level depth information every second or every 100ms.
 }
 ```
 
-#### Stream Names
+### Stream Names
 `<symbol>@depth@<levels>`
  
  eg:  `88066@depth@50`
 
-#### levels optional values
+### levels optional values
 Levels indicates the levels of the buy or sell orders, and 5/10/20/50/100 level can be selected.
 
 
 
-## **User private data channel**
 
-### **Login**
+## **Login**
 
 Specify subscription data when logging in
 
@@ -1313,7 +1515,7 @@ Specify subscription data when logging in
 }
 ```
 
-### **Account**
+## **Account**
 
 Stream Name: `<currency>@account`, or `!@account` all currency
 
@@ -1328,7 +1530,7 @@ Stream Name: `<currency>@account`, or `!@account` all currency
 
 ```
 
-### **Closing**
+## **Closing order**
 
 Stream Name: `<symbol>@order`, or `!@order` all symbol's
 

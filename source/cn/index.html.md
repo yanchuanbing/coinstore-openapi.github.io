@@ -195,7 +195,7 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 - X-CS-EXPIRES：您发出请求的时间戳。如：1629291143107。
 - X-CS-SIGN：签名计算得出的字符串，用于确保签名有效和未被篡改。
 
->注意：X-CS-APIKEY ，X-CS-EXPIRES ，X-CS-SIGN 三个参数都在请求头中，另外需要设置'Content-Type':'application/json'。
+**注意：X-CS-APIKEY ，X-CS-EXPIRES ，X-CS-SIGN 三个参数都在请求头中，另外需要设置'Content-Type':'application/json'。**
 
 ## <span id="a3">返回格式</span>
 
@@ -300,18 +300,38 @@ HTTP常见的错误码如下：
 # 订单相关
 
 ## <span id="2">获取当前订单</span>
-
 获取当前订单
 
 ### HTTP请求: 
-
 - GET /trade/order/active
-
 
 > 响应
 
 ```json
-
+{
+    "data": [
+        {
+            "symbol": "LUFFYUSDT",
+            "baseCurrency": "LUFFY",
+            "quoteCurrency": "USDT",
+            "timestamp": 1642402062196,
+            "side": "BUY",
+            "timeInForce": "GTC",
+            "accountId": 1138204,
+            "ordPrice": 9.1E-10,
+            "cumAmt": "0",
+            "cumQty": "0",
+            "leavesQty": "0",
+            "clOrdId": "b1b2ea5e00a84b888d419cb73f8eb203",
+            "ordAmt": "0",
+            "ordQty": "1",
+            "ordId": "1722183748419690",
+            "ordStatus": "SUBMITTED",
+            "ordType": "LIMIT"
+        }
+    ],
+    "code": 0
+}
 ```
 
 ### 请求参数
@@ -356,7 +376,34 @@ HTTP常见的错误码如下：
 > 响应
 
 ```json
-
+{
+    "data": [
+        {
+            "id": 3984987,
+            "remainingQty": 0E-18,
+            "matchRole": 1,
+            "feeCurrencyId": 44,
+            "acturalFeeRate": 0.002000000000000000,
+            "role": 1,
+            "accountId": 1138204,
+            "instrumentId": 15,
+            "baseCurrencyId": 44,
+            "quoteCurrencyId": 30,
+            "execQty": 40.900000000000000000,
+            "orderState": 50,
+            "matchId": 258338866,
+            "orderId": 1717384395096065,
+            "side": 1,
+            "execAmt": 8.887161000000000000,
+            "selfDealingQty": 0E-18,
+            "tradeId": 11523732,
+            "fee": 0.081800000000000000,
+            "matchTime": 1637825389,
+            "seq": null
+        }
+    ],
+    "code": 0
+}
 ```
 
 ### 请求参数
@@ -399,6 +446,26 @@ HTTP常见的错误码如下：
 ### HTTP请求: 
 - POST /trade/order/cancel
 
+> 请求体
+```json
+{
+  "ordId": 1722183748419690,
+  "symbol":"LUFFYUSDT"
+}
+```
+
+> 响应
+```json
+{
+    "code": 0,
+    "data": {
+        "clientOrderId": "b1b2ea5e00a84b888d419cb73f8eb203",
+        "state": "CANCELED",
+        "ordId": 1722183748419690
+    }
+}
+```
+
 ### 请求参数
 
 |    code    |  type   | required |       comment        |
@@ -422,6 +489,20 @@ HTTP常见的错误码如下：
 ### HTTP请求: 
 - POST /trade/order/cancelAll
 
+> 请求体
+```json
+{
+  "symbol":"LUFFYUSDT"
+}
+```
+
+> 响应
+```json
+{
+    "code": 0
+}
+```
+
 ### 请求参数
 
 |    code    |  type   | required |       comment        |
@@ -438,6 +519,29 @@ HTTP常见的错误码如下：
 
 ## <span id="6">创建订单</span>
 创建订单
+
+> 请求体
+```json
+{
+	"symbol": "LUFFYUSDT",
+	"side": "BUY",
+	"ordType": "LIMIT",
+	"ordPrice": 9.2e-10,
+	"ordQty": "12323231243",
+	"timestamp": 1642407805168
+}
+```
+
+> 响应
+
+```json
+{
+    "code": "0",
+    "data": {
+        "order_id":11594964764657880
+    }
+}
+``` 
 
 ### HTTP请求: 
 - POST /trade/order/place
@@ -457,16 +561,7 @@ HTTP常见的错误码如下：
 | timestamp    | long     | true    |时间戳  |                                                                    
 
 
-> 响应
-
-```json
-{
-    "code": "0",
-    "data": {
-        "order_id":11594964764657880
-    }
-}
-```                                 
+                                
 
 ### 响应数据
 
@@ -479,6 +574,47 @@ HTTP常见的错误码如下：
 
 ## <span id="13">批量下单</span>
 批量下单
+
+> 请求体
+```json
+{
+	"symbol": "LUFFYUSDT",
+	"orders": [
+		{
+			"side": "BUY",
+			"ordType": "LIMIT",
+			"ordPrice": 9.2e-10,
+			"ordQty": "1"
+		},
+		{
+			"side": "BUY",
+			"ordType": "LIMIT",
+			"ordPrice": 9.2e-10,
+			"ordQty": "1"
+		}
+	],
+	"timestamp": 1642574848089
+}
+```
+
+> 响应
+
+```json
+{
+    "code": 0,
+    "data": [
+        {
+            "ordId": 1722364585836585,
+            "clOrdId": "c09e68b49a724c8a95ef76526bf6bc05"
+        },
+        {
+            "ordId": 1722364585836586,
+            "clOrdId": "d0344830639d4f6d94be4110bf98c759"
+        }
+    ]
+}
+```
+
 ### HTTP请求: 
 - POST /trade/order/placeBatch
 
@@ -516,6 +652,29 @@ HTTP常见的错误码如下：
 ### HTTP请求: 
 - POST trade/order/cancelBatch
 
+> 请求体
+```json
+{
+  "orderIds": [1722364585836586,1722364585836585],
+  "symbol":"LUFFYUSDT"
+}
+```
+
+> 响应
+
+```json
+{
+    "data": {
+        "success": [
+            1722364585836586,
+            1722364585836585
+        ],
+        "reject": []
+    },
+    "code": 0
+}
+```
+
 ### 请求参数
 
 |    code    |  type   | required |       comment        |
@@ -524,11 +683,6 @@ HTTP常见的错误码如下：
 |orderIds| LIst| Y |[1,2,3]  |
 
 
-> 响应
-
-```json
-
-```
 
 ### 响应数据
 
@@ -544,15 +698,37 @@ HTTP常见的错误码如下：
 ## <span id="14">获取订单信息</span>
 获取订单信息
 
-### HTTP请求: 
-- GET trade/order/orderInfo
-
-
 > 响应
 
 ```json
-
+{
+    "data": {
+        "baseCurrency": "LUFFY",
+        "quoteCurrency": "USDT",
+        "symbol": "LUFFYUSDT",
+        "timestamp": 1642574848089,
+        "side": "BUY",
+        "accountId": 1138204,
+        "ordId": 1722364585836586,
+        "clOrdId": "d0344830639d4f6d94be4110bf98c759",
+        "ordType": "LIMIT",
+        "ordState": "CANCELED",
+        "ordPrice": "0.00000000092",
+        "ordQty": "1",
+        "ordAmt": "0.00000000092",
+        "cumAmt": "0",
+        "cumQty": "0",
+        "leavesQty": "0",
+        "avgPrice": "0",
+        "feeCurrency": "LUFFY",
+        "timeInForce": "GTC"
+    },
+    "code": 0
+}
 ```
+
+### HTTP请求: 
+- GET trade/order/orderInfo
 
 ### 请求参数:
 
@@ -597,6 +773,32 @@ HTTP常见的错误码如下：
 ### HTTP请求: 
 - GET /v1/market/tickers
 
+> 响应
+
+```json
+{
+  "data": [
+    {
+      "channel": "ticker",
+      "bidSize": "454.2",
+      "askSize": "542.6",
+      "count": 41723,
+      "volume": "24121351.85",
+      "amount": "1693799.10798965",
+      "close": "0.067998",
+      "open": "0.071842",
+      "high": "0.072453",
+      "low": "0.067985",
+      "bid": "0.0679",
+      "ask": "0.0681",
+      "symbol": "TRXUSDT",
+      "instrumentId": 2
+    }
+  ],
+  "code": 0
+}
+```
+
 ### 请求参数: 
 
 |    code    |  type   | required |       comment        |
@@ -626,58 +828,10 @@ HTTP常见的错误码如下：
                      
 
 
-> 响应
 
-```json
-{
-  "data": [
-    {
-      "channel": "ticker",
-      "bidSize": "454.2",
-      "askSize": "542.6",
-      "count": 41723,
-      "volume": "24121351.85",
-      "amount": "1693799.10798965",
-      "close": "0.067998",
-      "open": "0.071842",
-      "high": "0.072453",
-      "low": "0.067985",
-      "bid": "0.0679",
-      "ask": "0.0681",
-      "symbol": "TRXUSDT",
-      "instrumentId": 2
-    }
-  ],
-  "code": 0
-}
-```
  
 ##  <span id="7">获取深度</span>
 获取深度数据
-
-### HTTP请求: 
-- GET /v1/market/depth/<symbol>
-
-### 请求参数: 
-
-|    code    |  type   | required |       comment        |
-| ---------- | ------- | -------- | -------------------- |
-|symbol | string | true | 交易对，如“BTCUSDT” |
-|depth | int | false | 深度的数量，如“5, 10, 20, 50, 100”,默认20 |
-
-### 响应数据: 
-
-|       code        |  type   |                      comment                       |
-| ----------------- | ------ | ---------------------------------------- |
-| code            | int    |     0：成功，其他失败                                               |
-| message         | string       |    错误信息                                    |
-| data | Object|   |
-| ├─channel| String |标识  |
-| ├─level| Integer  |数量 |
-| ├─instrumentId| Integer  |交易对ID |
-| ├─symbol| string  |交易对 |
-| ├─a | List  |卖盘，[${价格}, ${数量}, ${方向}] ] |
-| ├─b | List  |买盘，[${价格}, ${数量}, ${方向}] ] |
 
 > 响应
 
@@ -716,9 +870,63 @@ HTTP常见的错误码如下：
 	"code": 0
 }
  ```
+ 
+### HTTP请求: 
+- GET /v1/market/depth/<symbol>
+
+### 请求参数: 
+
+|    code    |  type   | required |       comment        |
+| ---------- | ------- | -------- | -------------------- |
+|symbol | string | true | 交易对，如“BTCUSDT” |
+|depth | int | false | 深度的数量，如“5, 10, 20, 50, 100”,默认20 |
+
+### 响应数据: 
+
+|       code        |  type   |                      comment                       |
+| ----------------- | ------ | ---------------------------------------- |
+| code            | int    |     0：成功，其他失败                                               |
+| message         | string       |    错误信息                                    |
+| data | Object|   |
+| ├─channel| String |标识  |
+| ├─level| Integer  |数量 |
+| ├─instrumentId| Integer  |交易对ID |
+| ├─symbol| string  |交易对 |
+| ├─a | List  |卖盘，[${价格}, ${数量}, ${方向}] ] |
+| ├─b | List  |买盘，[${价格}, ${数量}, ${方向}] ] |
+
+
 ##  <span id="7">获取K线</span>
 获取交易K线
 
+> 响应
+
+```json
+{
+	"data": {
+		"channel": "4@kline@week_1",
+		"item": [
+			{
+				"endTime": 1641744059,
+				"amount": "98630624.103511453",
+				"interval": "week_1",
+				"startTime": 1641744000,
+				"firstTradeId": 14547884,
+				"lastTradeId": 14799534,
+				"volume": "2307.742209",
+				"close": "43196.0002",
+				"open": "41628.2582",
+				"high": "52250.3884",
+				"low": "39654.039"
+			}
+		],
+		"symbol": "BTCUSDT",
+		"instrumentId": 4
+	},
+	"code": 0
+}
+ ```
+ 
 ### HTTP请求: 
 - GET /v1/market/kline/<symbol>
 
@@ -754,38 +962,34 @@ HTTP常见的错误码如下：
 | ├─├─low|   String  |最低成交价 |             
 
 
-> 响应
 
-```json
-{
-	"data": {
-		"channel": "4@kline@week_1",
-		"item": [
-			{
-				"endTime": 1641744059,
-				"amount": "98630624.103511453",
-				"interval": "week_1",
-				"startTime": 1641744000,
-				"firstTradeId": 14547884,
-				"lastTradeId": 14799534,
-				"volume": "2307.742209",
-				"close": "43196.0002",
-				"open": "41628.2582",
-				"high": "52250.3884",
-				"low": "39654.039"
-			}
-		],
-		"symbol": "BTCUSDT",
-		"instrumentId": 4
-	},
-	"code": 0
-}
- ```
 ##  <span id="7">最新成交</span>
 获取最新成交记录
 
 ### HTTP请求: 
 - GET /v1/market/trade/<symbol>
+
+> 响应
+
+```json
+ {
+ 	"data": [
+ 		{
+ 			"channel": "4@trade",
+ 			"time": 1642495112,
+ 			"volume": "0.011102",
+ 			"price": "41732.3305",
+ 			"tradeId": 14867136,
+ 			"takerSide": "BUY",
+ 			"seq": 14867136,
+ 			"ts": 1642495112000,
+ 			"symbol": "BTCUSDT",
+ 			"instrumentId": 4
+ 		}
+ 	],
+ 	"code": 0
+ }
+```
 
 ### 请求参数: 
 
@@ -813,52 +1017,9 @@ HTTP常见的错误码如下：
 | ├─price|  String  | 末一笔成交价|                       
 
 
-> 响应
 
-```json
- {
- 	"data": [
- 		{
- 			"channel": "4@trade",
- 			"time": 1642495112,
- 			"volume": "0.011102",
- 			"price": "41732.3305",
- 			"tradeId": 14867136,
- 			"takerSide": "BUY",
- 			"seq": 14867136,
- 			"ts": 1642495112000,
- 			"symbol": "BTCUSDT",
- 			"instrumentId": 4
- 		}
- 	],
- 	"code": 0
- }
-```
 ##  <span id="7">获取所有交易对最新价格</span>
 获取所有交易对最新价格
-
-### HTTP请求: 
-- GET /v1/ticker/price
-
-### 请求参数: 
-
-|    code    |  type   | required |       comment        |
-| ---------- | ------- | -------- | -------------------- |
-|symbol | string | true | 交易对，区分大小写，逗号分割 |
-
-> 默认：查询所有交易对
-> 查询指定交易对: /v1/ticker/price;symbol=BTCUSDT,EOSUSDT,AUTUSDT `
-
-### 响应数据: 
-
-|       code        |  type   |                      comment                       |
-| ----------------- | ------ | ---------------------------------------- |
-| code            | int    |     0：成功，其他失败                                               |
-| message         | string       |    错误信息                                    |
-| data | List[]|   |
-| ├─id| long |  |
-| ├─symbol| string  |交易对 |
-| ├─price| string  |价格 |
 
 > 响应
 
@@ -879,7 +1040,32 @@ HTTP常见的错误码如下：
     }
   ]
 }
- ```  
+ ```
+ 
+### HTTP请求: 
+- GET /v1/ticker/price
+
+### 请求参数: 
+
+|    code    |  type   | required |       comment        |
+| ---------- | ------- | -------- | -------------------- |
+|symbol | string | true | 交易对，区分大小写，逗号分割 |
+
+**默认：查询所有交易对**
+**查询指定交易对: /v1/ticker/price;symbol=BTCUSDT,EOSUSDT,AUTUSDT**
+
+### 响应数据: 
+
+|       code        |  type   |                      comment                       |
+| ----------------- | ------ | ---------------------------------------- |
+| code            | int    |     0：成功，其他失败                                               |
+| message         | string       |    错误信息                                    |
+| data | List[]|   |
+| ├─id| long |  |
+| ├─symbol| string  |交易对 |
+| ├─price| string  |价格 |
+
+  
   
 # Websocket行情数据
 
@@ -1055,14 +1241,22 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 
 > NOTE:  所有返回数据的时间，单位都是 `秒`
 
-## **公共行情频道**
 
-### **逐笔交易**
+## **逐笔交易**
 
 > Send
 
 ```lang=json
- {"op":"SUB","channel":["28@trade"],"param":{"size":2},"id":1}
+ {
+ 	"op": "SUB",
+ 	"channel": [
+ 		"28@trade"
+ 	],
+ 	"param": {
+ 		"size": 2
+ 	},
+ 	"id": 1
+ }
 ```
 > Receive全量数据：
 
@@ -1114,19 +1308,19 @@ $>wscat -c 'ws://127.0.0.1:8080/s/ws'
 }
 ```
 
-#### Stream Name
+### Stream Name
 `<symbol>@trade`
 
 eg: `88066@trade`
  
-#### param
+### param
  `param":{"size":2}`
  
 
 
 
 
-### **K线 Streams**
+## **K线 Streams**
 K线stream逐秒推送所请求的K线种类(最新一根K线)的更新。
 
 > Send
@@ -1154,12 +1348,12 @@ K线stream逐秒推送所请求的K线种类(最新一根K线)的更新。
 }
 ```
 
-#### Stream Name
+### Stream Name
 `<symbol>@kline@<interval>`
   
 eg: `88066@kline@min_1`
 
-#### interval 可选值
+### interval 可选值
 * min_1
 * min_5
 * min_15
@@ -1172,13 +1366,21 @@ eg: `88066@kline@min_1`
 
 
 
-### **K线 Request**
+## **K线 Request**
 请求历史k线
 
 > Send
 
 ```lang=json
- {"op":"REQ","param":{"channel":"4@kline@min_1","endTime":null,"limit":200},"id":1}
+ {
+ 	"op": "REQ",
+ 	"param": {
+ 		"channel": "4@kline@min_1",
+ 		"endTime": null,
+ 		"limit": 200
+ 	},
+ 	"id": 1
+ }
 ```
 > Receive
 
@@ -1206,7 +1408,7 @@ eg: `88066@kline@min_1`
 }
 ```
 
-####  param
+###  param
 
 * `channel`: `<symbol>@kline@<interval>` ,eg:88066@kline@min_1
 * `limit`: 最大不超过 200
@@ -1216,7 +1418,7 @@ eg: `88066@kline@min_1`
 
 
 
-### **按 Symbol 的 Ticker信息**
+## **按 Symbol 的 Ticker信息**
 按Symbol刷新的最近24小时精简 ticker 信息
 
 > Send
@@ -1239,15 +1441,15 @@ eg: `88066@kline@min_1`
 }
 ```
 
-#### Stream 名称
+### Stream 名称
 `<symbol>@ticker`, eg:  `88066@ticker`
 
 
 
-### **全市场所有Symbol 的 Ticker信息**
+## **全市场所有Symbol 的 Ticker信息**
 按Symbol刷新的最近24小时精简ticker信息
 
-####  Stream 名称: 
+###  Stream 名称: 
 `!@ticker`
 
 > Send
@@ -1288,8 +1490,9 @@ eg: `88066@kline@min_1`
 }
 ```
 
-### **有限档深度信息**
+## **深度信息**
 每秒或每100毫秒推送有限档深度信息。
+
 > Send
 
 ```lang=json
@@ -1318,20 +1521,18 @@ eg: `88066@kline@min_1`
 }
 ```
 
-#### Stream Names
+### Stream Names
 `<symbol>@depth@<levels>` 
 
  eg:  `88066@depth@50`
  
-#### levels 可选值
+### levels 可选值
 levels表示几档买卖单信息, 可选 5/10/20/50/100档
 
 
 
 
-## **用户私有数据频道**
-
-### **登陆**
+## **登陆**
 登陆时可以同时指定订阅数据
 
 ```lang=json
@@ -1350,7 +1551,7 @@ levels表示几档买卖单信息, 可选 5/10/20/50/100档
 }
 ```
 
-### **账户**
+## **账户**
 
  Stream Name: `<currency>@account`, or `!@account` all currency
 
@@ -1365,7 +1566,7 @@ levels表示几档买卖单信息, 可选 5/10/20/50/100档
 
 ```
 
-### **成交**
+## **成交订单**
 
  Stream Name: `<symbol>@order`, or `!@order` all symbol's
 
@@ -1452,6 +1653,10 @@ levels表示几档买卖单信息, 可选 5/10/20/50/100档
 ## Introduction
 This document covers the API endpoint details including spot exchange API and it was full public access. The access address host is https://api.coinstore.com/
 
+
+## <span id="114">Asset list</span>  
+The assets endpoint is to provide a detailed summary for each currency available on the exchange.
+
 > 响应
 
 ```lang=json
@@ -1472,9 +1677,6 @@ This document covers the API endpoint details including spot exchange API and it
  }
 }
 ```
-
-## <span id="114">Asset list</span>  
-The assets endpoint is to provide a detailed summary for each currency available on the exchange.
 
 ### Request 
 - GET  /v2/public/assets
