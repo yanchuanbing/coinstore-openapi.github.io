@@ -1694,35 +1694,41 @@ Note: The request parameters and request body are not sorted but directly splice
 </tbody></table>
 <h1 id='ticker-related'>Ticker Related</h1><h2 id='ticker'><span id="7">Ticker</span></h2>
 <p>Ticker for all trading pairs in the market</p>
+<h3 id='http-request-10'>HTTP request:</h3>
+<ul>
+<li>GET /v1/market/tickers
+### Request parameters:</li>
+</ul>
 
-<p>### HTTP request:
- - GET /v1/market/tickers
- ### Request parameters:</p>
-
-<p>| code | type | required | comment |
- | ---------- | ------- | -------- | -------------------- |</p>
-
-<p>### Response data:</p>
-
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>required</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='response-data-10'>Response data:</h3>
 <p>| code | type | comment |
- | ----------------- | ------ | ------------------------ ---------------- |
- | code | int | 0: success, other failure |
- | message | string | Error message |
- | data | Object| |
- | ├─channel| String |Identifier |
- | ├─instrumentId| Integer |Pair ID |
- | ├─symbol| String |Trading pair |
- | ├─count | Integer |24h rolling transaction count |
- | ├─volume|String |24h transaction volume measured in quote currency |
- | ├─amount| String |24h transaction volume measured in base currency |
- | ├─close| String | Last transaction price|
- | ├─open| String | First transaction price|
- | ├─high| String | The highest transaction price|
- | ├─low| String | The lowest transaction price|
- | ├─bid| String | Buy one price|
- | ├─bidSize| String | Buy a quantity|
- | ├─ask| String | Sell one price|
- | ├─askSize| String | Amount to sell|</p>
+| ----------------- | ------ | ------------------------ ---------------- |
+| code | int | 0: success, other failure |
+| message | string | Error message |
+| data | Object| |
+| ├─channel| String |Identifier |
+| ├─instrumentId| Integer |Pair ID |
+| ├─symbol| String |Trading pair |
+| ├─count | Integer |24h rolling transaction count |
+| ├─volume|String |24h transaction volume measured in quote currency |
+| ├─amount| String |24h transaction volume measured in base currency |
+| ├─close| String | Last transaction price|
+| ├─open| String | First transaction price|
+| ├─high| String | The highest transaction price|
+| ├─low| String | The lowest transaction price|
+| ├─bid| String | Buy one price|
+| ├─bidSize| String | Buy a quantity|
+| ├─ask| String | Sell one price|
+| ├─askSize| String | Amount to sell|</p>
 
 <blockquote>
 <p>Response</p>
@@ -1750,7 +1756,7 @@ Note: The request parameters and request body are not sorted but directly splice
  </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='get-depth'><span id="7">Get depth</span></h2>
 <p>Get depth data</p>
-<h3 id='http-request-10'>HTTP request:</h3>
+<h3 id='http-request-11'>HTTP request:</h3>
 <ul>
 <li>GET /v1/market/depth/<symbol>
 ### Request parameters:</li>
@@ -1777,7 +1783,7 @@ Note: The request parameters and request body are not sorted but directly splice
 <td>The number of depths, such as &quot;5, 10, 20, 50, 100&quot;, default 20</td>
 </tr>
 </tbody></table>
-<h3 id='response-data-10'>Response data:</h3>
+<h3 id='response-data-11'>Response data:</h3>
 <p>| code | type | comment |
 | ----------------- | ------ | ------------------------ ---------------- |
 | code | int | 0: success, other failure |
@@ -1830,7 +1836,7 @@ Note: The request parameters and request body are not sorted but directly splice
 <h2 id='get-k-line'><span id="7">Get K line</span></h2>
 <p>Get trading K line</p>
 </blockquote>
-<h3 id='http-request-11'>HTTP request:</h3>
+<h3 id='http-request-12'>HTTP request:</h3>
 <ul>
 <li>GET /v1/market/kline/<symbol>
 ### Request parameters:</li>
@@ -1863,7 +1869,7 @@ Note: The request parameters and request body are not sorted but directly splice
 <td>Number of data bars, [1,2000]</td>
 </tr>
 </tbody></table>
-<h3 id='response-data-11'>Response data:</h3>
+<h3 id='response-data-12'>Response data:</h3>
 <p>| code | type | comment |
 | ----------------- | ------ | ------------------------ ---------------- |
 | code | int | 0: success, other failure |
@@ -1913,7 +1919,7 @@ Note: The request parameters and request body are not sorted but directly splice
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='latest-trades'><span id="7">Latest trades</span></h2>
 <p>Get the latest trades record</p>
-<h3 id='http-request-12'>HTTP request:</h3>
+<h3 id='http-request-13'>HTTP request:</h3>
 <ul>
 <li>GET /v1/market/trade/<symbol>
 ### Request parameters:</li>
@@ -1940,7 +1946,7 @@ Note: The request parameters and request body are not sorted but directly splice
 <td>Number of data bars, [1,100]</td>
 </tr>
 </tbody></table>
-<h3 id='response-data-12'>Response data:</h3>
+<h3 id='response-data-13'>Response data:</h3>
 <p>| code | type | comment |
 | ----------------- | ------ | ------------------------ ---------------- |
 | code | int | 0: success, other failure |
@@ -1979,7 +1985,7 @@ Note: The request parameters and request body are not sorted but directly splice
  </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='get-the-latest-price-of-all-symbols'><span id="7"> Get the latest price of all symbols </span></h2>
 <p>Get the latest price of all symbols</p>
-<h3 id='http-request-13'>HTTP Request:</h3>
+<h3 id='http-request-14'>HTTP Request:</h3>
 <ul>
 <li>GET /v1/ticker/price</li>
 </ul>
@@ -2004,12 +2010,10 @@ Note: The request parameters and request body are not sorted but directly splice
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-parameters-10'>Request Parameters:</h3>
-<blockquote>
 <p>default: Query all symbols</p>
 
 <p>query the specified symbol: /v1/ticker/price;symbol=btcusdt,eosusdt,autusdt `</p>
-</blockquote>
-<h3 id='response-data-13'>Response Data:</h3>
+<h3 id='response-data-14'>Response Data:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2093,9 +2097,7 @@ wss://ws.coinstore.com/s/ws</p>
 <li>subscribe message type</li>
 </ol>
 
-<blockquote>
 <p>the following types of messages start from executing the <code>SUB</code> command of the corresponding channel and end with executing the <code>UNSUB</code> command, and the messages are pushed if the data on the server side changes, with a minimum push interval of 100ms.</p>
-</blockquote>
 
 <p>** <code>kline</code></p>
 
@@ -2114,9 +2116,7 @@ wss://ws.coinstore.com/s/ws</p>
     ...:  // see below for details on each data subscription format 
 }
 </code></pre></div><h4 id='pong'>Pong</h4>
-<blockquote>
 <p>the server supports two forms of end pong response, namely websocket pong frame and pong message.</p>
-</blockquote>
 <h4 id='websocket-pong-frame'>Websocket Pong frame</h4>
 <ol>
 <li><p>https://tools.ietf.org/html/rfc6455#section-5.5.3 </p></li>
@@ -2193,11 +2193,12 @@ wss://ws.coinstore.com/s/ws</p>
 
 <p>NOTE:  All the time to return data is in `seconds&#39;.</p>
 <h2 id='public-ticker-channel'><strong>Public ticker channel</strong></h2><h3 id='trade-by-trade'><strong>Trade by Trade</strong></h3>
-<blockquote>
 <p>Stream Name: <code>&lt;symbol&gt;@trade</code>, eg: <code>88066@trade</code>
 param: <code>param&quot;: {&quot;size&quot;:2}</code>
-e.g: <code>{&quot;op&quot;:&quot; SUB&quot;,&quot;channel&quot;: [&quot;28@trade&quot;],&quot;param&quot;: {&quot;size&quot;:2},&quot;id&quot;:1}</code>
-full-volume data:
+e.g: <code>{&quot;op&quot;:&quot; SUB&quot;,&quot;channel&quot;: [&quot;28@trade&quot;],&quot;param&quot;: {&quot;size&quot;:2},&quot;id&quot;:1}</code></p>
+
+<blockquote>
+<p>full-volume data:
 <code>lang=json
  {
    &quot;S&quot;: 15,
@@ -2246,7 +2247,6 @@ incremental data:
 </code></p>
 </blockquote>
 <h3 id='k-line-streams'><strong>K-line Streams</strong></h3>
-<blockquote>
 <p>K-line stream pushes the requested k-line type (the latest k-line) every second.
 Stream Name: <code>&lt;symbol&gt;@kline@&lt;interval&gt;</code>, eg: <code>88066@kline@min_1</code>
 interval optional values:
@@ -2260,7 +2260,6 @@ interval optional values:
 ** day_1
 ** week_1
 ** mon_1</p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
    "instrumentId": 88066, 
    "startTime": 1603732500,  // start time of this k-line, unit: s
@@ -2277,13 +2276,11 @@ interval optional values:
     "amount": "1.0000",  // trading amount during this k-line period
 }
 </code></pre></div><h3 id='k-line-request'><strong>K-line Request</strong></h3>
-<blockquote>
 <p>request historical k-line:
 param: <code>&quot;{channel&quot;:&quot; 88066@kline@min_1&quot;,&quot;endTime&quot;:1603766280,&quot;limit&quot;:10}</code>,
 eg:  <code>{&quot;op&quot;:&quot; REQ&quot;,&quot;param&quot;: {&quot;channel&quot;:&quot; 88066@kline@min_1&quot;,&quot;limit&quot;:10},&quot;id&quot;:1}</code>
 <code>limit</code>: No more than 200
 <code>endTime</code>: Optional, exclusive</p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "channel": "88066@kline@min_1",
     "symbol": "USDTBTC",
@@ -2306,10 +2303,8 @@ eg:  <code>{&quot;op&quot;:&quot; REQ&quot;,&quot;param&quot;: {&quot;channel&qu
     ]
 }
 </code></pre></div><h3 id='ticker-information-by-symbol'><strong>Ticker Information by Symbol</strong></h3>
-<blockquote>
 <p>Streamlined ticker information in the last 24 hours refreshed by Symbol
 Stream Name: <code>&lt;symbol&gt;@ticker</code>, eg:  <code>88066@ticker</code></p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
   "instrumentId": 88066,
   "symbol": "USDTBTC",      // symbol
@@ -2321,10 +2316,8 @@ Stream Name: <code>&lt;symbol&gt;@ticker</code>, eg:  <code>88066@ticker</code><
   "amount": "18"          // trading amount within 24 hours
 }
 </code></pre></div><h3 id='ticker-information-of-all-symbols-in-the-whole-market'><strong>Ticker information of all symbols in the whole market</strong></h3>
-<blockquote>
 <p>Streamlined ticker information in the last 24 hours refreshed by Symbol
 Stream Name: <code>!@ticker</code></p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "data": [
         {
@@ -2353,10 +2346,8 @@ Stream Name: <code>!@ticker</code></p>
     ]
 }
 </code></pre></div><h3 id='limited-level-depth-information'><strong>Limited level depth information</strong></h3>
-<blockquote>
 <p>Push limited level depth information every second or every 100ms. Levels indicates the levels of the buy or sell orders, and 5/10/20/50/100 level can be selected.
 Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;symbol&gt;@depth@&lt;levels&gt;@100ms</code>. ~~, eg:  <code>88066@depth@50</code></p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
   "level": 5,
   "instrumentId": 88066,
@@ -2375,9 +2366,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
   ]
 }
 </code></pre></div><h2 id='user-private-data-channel'><strong>User private data channel</strong></h2><h3 id='login'><strong>Login</strong></h3>
-<blockquote>
 <p>Specify subscription data when logging in</p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "op": "LOGIN",
     "channel": [
@@ -2392,9 +2381,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
     "id": 2
 }
 </code></pre></div><h3 id='account'><strong>Account</strong></h3>
-<blockquote>
 <p>Stream Name: <code>&lt;currency&gt;@account</code>, or <code>!@account</code> all currency</p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "accountId": 12,
     "currency": "BTC",
@@ -2404,9 +2391,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 }
 
 </code></pre></div><h3 id='closing'><strong>Closing</strong></h3>
-<blockquote>
 <p>Stream Name: <code>&lt;symbol&gt;@order</code>, or <code>!@order</code> all symbol&#39;s</p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     // increment
 
@@ -2577,80 +2562,237 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 <h3 id='request-2'>Request</h3>
 <ul>
 <li>GET /v2/public/summary
-### Response
-|    code    |  type   | example |  meaning  | remarks |
-| -----------| ------  | -----   | -----     | -----   |
-|trading_pairs|String|Y|Identifier of a ticker with delimiter to separate base/quote, eg. BTC-USD (Price of BTC is quoted in USD)|Trading pair name|
-|last_price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
-|lowest_ask|String|Y|Lowest Ask price of base currency based on given quote currency|lowest ask price|
-|highest_bid|String|Y|Highest bid price of base currency based on given quote currency|Highest bid price|
-|base_volume|String|Y|24-hr volume of market pair denoted in BASE currency|24H volume|
-|quote_volume|String|Y|24-hr volume of market pair denoted in QUOTE currency|24H amount|
-|price_change_percent_24h|String|Y|24-hr % price change of market pair|24h change%|
-|highest_price_24h|String|Y|Highest price of base currency based on given quote currency in the last 24-hrs|24H high|
-|lowest_price_24h|String|Y|Lowest price of base currency based on given quote currency in the last 24-hrs|24H low|
-|base_currency|String|Y|Symbol/currency code of base currency, eg. BTC|base currency|
-|quote_currency|String|Y|Symbol/currency code of quote currency, eg. USD|quote currency|</li>
+### Response</li>
 </ul>
-<h3 id='demo-2'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>
+
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trading_pairs</td>
+<td>String</td>
+<td>Y</td>
+<td>Identifier of a ticker with delimiter to separate base/quote, eg. BTC-USD (Price of BTC is quoted in USD)</td>
+<td>Trading pair name</td>
+</tr>
+<tr>
+<td>last_price</td>
+<td>String</td>
+<td>Y</td>
+<td>Last transacted price of base currency based on given quote currency</td>
+<td>Last price</td>
+</tr>
+<tr>
+<td>lowest_ask</td>
+<td>String</td>
+<td>Y</td>
+<td>Lowest Ask price of base currency based on given quote currency</td>
+<td>lowest ask price</td>
+</tr>
+<tr>
+<td>highest_bid</td>
+<td>String</td>
+<td>Y</td>
+<td>Highest bid price of base currency based on given quote currency</td>
+<td>Highest bid price</td>
+</tr>
+<tr>
+<td>base_volume</td>
+<td>String</td>
+<td>Y</td>
+<td>24-hr volume of market pair denoted in BASE currency</td>
+<td>24H volume</td>
+</tr>
+<tr>
+<td>quote_volume</td>
+<td>String</td>
+<td>Y</td>
+<td>24-hr volume of market pair denoted in QUOTE currency</td>
+<td>24H amount</td>
+</tr>
+<tr>
+<td>price_change_percent_24h</td>
+<td>String</td>
+<td>Y</td>
+<td>24-hr % price change of market pair</td>
+<td>24h change%</td>
+</tr>
+<tr>
+<td>highest_price_24h</td>
+<td>String</td>
+<td>Y</td>
+<td>Highest price of base currency based on given quote currency in the last 24-hrs</td>
+<td>24H high</td>
+</tr>
+<tr>
+<td>lowest_price_24h</td>
+<td>String</td>
+<td>Y</td>
+<td>Lowest price of base currency based on given quote currency in the last 24-hrs</td>
+<td>24H low</td>
+</tr>
+<tr>
+<td>base_currency</td>
+<td>String</td>
+<td>Y</td>
+<td>Symbol/currency code of base currency, eg. BTC</td>
+<td>base currency</td>
+</tr>
+<tr>
+<td>quote_currency</td>
+<td>String</td>
+<td>Y</td>
+<td>Symbol/currency code of quote currency, eg. USD</td>
+<td>quote currency</td>
+</tr>
+</tbody></table>
+<h3 id='demo-2'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+ "code": "0",
+ "message": null,
+ "data": [
+     {
+         "trading_pairs": "btcusdt",
+         "last_price": "60000",
+         "lowest_ask": "60000",
+         "highest_bid": "555",
+         "base_volume": "0",
+         "quote_volume": "0",
+         "price_change_percent_24h": "0",
+         "highest_price_24h": "60000",
+         "lowest_price_24h": "60000",
+         "base_currency": "BTC",
+         "quote_currency": "USDT"
+     },
+     {
+         "trading_pairs": "ethusdt",
+         "last_price": "60000",
+         "lowest_ask": "60000",
+         "highest_bid": "555",
+         "base_volume": "0",
+         "quote_volume": "0",
+         "price_change_percent_24h": "0",
+         "highest_price_24h": "60000",
+         "lowest_price_24h": "60000",
+         "base_currency": "ETH",
+         "quote_currency": "USDT"
+     }
+ ]
+}
 </code></pre></div><h2 id='97510c5887'><span id="115"></span></h2><h3 id='request-3'>Request</h3>
 <ul>
 <li>GET
-### Response
-|    code    |  type   | example |  meaning  | remarks |
-| -----------| ------  | -----   | -----     | -----   |
-### Demo
-<code>lang=json
-{
-&quot;code&quot;: &quot;0&quot;,
-&quot;message&quot;: null,
-&quot;data&quot;: [
- {
-     &quot;trading_pairs&quot;: &quot;btcusdt&quot;,
-     &quot;last_price&quot;: &quot;60000&quot;,
-     &quot;lowest_ask&quot;: &quot;60000&quot;,
-     &quot;highest_bid&quot;: &quot;555&quot;,
-     &quot;base_volume&quot;: &quot;0&quot;,
-     &quot;quote_volume&quot;: &quot;0&quot;,
-     &quot;price_change_percent_24h&quot;: &quot;0&quot;,
-     &quot;highest_price_24h&quot;: &quot;60000&quot;,
-     &quot;lowest_price_24h&quot;: &quot;60000&quot;,
-     &quot;base_currency&quot;: &quot;BTC&quot;,
-     &quot;quote_currency&quot;: &quot;USDT&quot;
- },
- {
-     &quot;trading_pairs&quot;: &quot;ethusdt&quot;,
-     &quot;last_price&quot;: &quot;60000&quot;,
-     &quot;lowest_ask&quot;: &quot;60000&quot;,
-     &quot;highest_bid&quot;: &quot;555&quot;,
-     &quot;base_volume&quot;: &quot;0&quot;,
-     &quot;quote_volume&quot;: &quot;0&quot;,
-     &quot;price_change_percent_24h&quot;: &quot;0&quot;,
-     &quot;highest_price_24h&quot;: &quot;60000&quot;,
-     &quot;lowest_price_24h&quot;: &quot;60000&quot;,
-     &quot;base_currency&quot;: &quot;ETH&quot;,
-     &quot;quote_currency&quot;: &quot;USDT&quot;
- }
-]
-}
-</code></li>
+### Response</li>
 </ul>
-<h2 id='ticker-2'><span id="116">Ticker</span></h2>
+
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='demo-3'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+ "code": "0",
+ "message": null,
+ "data": [
+     {
+         "trading_pairs": "btcusdt",
+         "last_price": "60000",
+         "lowest_ask": "60000",
+         "highest_bid": "555",
+         "base_volume": "0",
+         "quote_volume": "0",
+         "price_change_percent_24h": "0",
+         "highest_price_24h": "60000",
+         "lowest_price_24h": "60000",
+         "base_currency": "BTC",
+         "quote_currency": "USDT"
+     },
+     {
+         "trading_pairs": "ethusdt",
+         "last_price": "60000",
+         "lowest_ask": "60000",
+         "highest_bid": "555",
+         "base_volume": "0",
+         "quote_volume": "0",
+         "price_change_percent_24h": "0",
+         "highest_price_24h": "60000",
+         "lowest_price_24h": "60000",
+         "base_currency": "ETH",
+         "quote_currency": "USDT"
+     }
+ ]
+}
+</code></pre></div><h2 id='ticker-2'><span id="116">Ticker</span></h2>
 <p>The ticker endpoint is to provide a 24-hour pricing and volume summary for each market pair available on the exchange.</p>
 <h3 id='request-4'>Request</h3>
 <ul>
 <li>GET /v2/public/ticker
-### Response
-|    code    |  type   | example |  meaning  | remarks |
-| -----------| ------  | -----   | -----     | -----   |
-|base_id|String|Y|The quote pair Unified Cryptoasset ID.|Quote currency ID|
-|quote_id|String|Y|The base pair Unified Cryptoasset ID.|Base currency ID|
-|last_price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
-|quote_volume|String|Y|24 hour trading volume denoted in QUOTE currency|24H amount|
-|base_volume|String|Y|24-hour trading volume denoted in BASE currency|24H volume|
-|isFrozen|Integer|Y|Indicates if the market is currently enabled (0) or disabled (1).|Market enable or not|</li>
+### Response</li>
 </ul>
-<h3 id='demo-3'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>base_id</td>
+<td>String</td>
+<td>Y</td>
+<td>The quote pair Unified Cryptoasset ID.</td>
+<td>Quote currency ID</td>
+</tr>
+<tr>
+<td>quote_id</td>
+<td>String</td>
+<td>Y</td>
+<td>The base pair Unified Cryptoasset ID.</td>
+<td>Base currency ID</td>
+</tr>
+<tr>
+<td>last_price</td>
+<td>String</td>
+<td>Y</td>
+<td>Last transacted price of base currency based on given quote currency</td>
+<td>Last price</td>
+</tr>
+<tr>
+<td>quote_volume</td>
+<td>String</td>
+<td>Y</td>
+<td>24 hour trading volume denoted in QUOTE currency</td>
+<td>24H amount</td>
+</tr>
+<tr>
+<td>base_volume</td>
+<td>String</td>
+<td>Y</td>
+<td>24-hour trading volume denoted in BASE currency</td>
+<td>24H volume</td>
+</tr>
+<tr>
+<td>isFrozen</td>
+<td>Integer</td>
+<td>Y</td>
+<td>Indicates if the market is currently enabled (0) or disabled (1).</td>
+<td>Market enable or not</td>
+</tr>
+</tbody></table>
+<h3 id='demo-4'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": {
@@ -2742,7 +2884,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 <td>Ask</td>
 </tr>
 </tbody></table>
-<h3 id='demo-4'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+<h3 id='demo-5'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": {
@@ -2846,7 +2988,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 <td>Side</td>
 </tr>
 </tbody></table>
-<h3 id='demo-5'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+<h3 id='demo-6'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": [
@@ -2973,7 +3115,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> ~~or <code>&lt;sy
 <td>Side</td>
 </tr>
 </tbody></table>
-<h3 id='demo-6'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+<h3 id='demo-7'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": {

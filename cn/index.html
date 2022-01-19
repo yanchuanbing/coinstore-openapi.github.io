@@ -417,6 +417,9 @@
                     <a href="#k" class="toc-h2 toc-link" data-title="获取K线"><span id="7">获取K线</span></a>
                   </li>
                   <li>
+                    <a href="#586cd0d257" class="toc-h2 toc-link" data-title="最新成交"><span id="7">最新成交</span></a>
+                  </li>
+                  <li>
                     <a href="#1a3223149b" class="toc-h2 toc-link" data-title="获取所有交易对最新价格"><span id="7">获取所有交易对最新价格</span></a>
                   </li>
               </ul>
@@ -467,6 +470,9 @@
                   </li>
                   <li>
                     <a href="#historical-market-pair" class="toc-h2 toc-link" data-title="Historical Market Pair"><span id="119">Historical Market Pair</span></a>
+                  </li>
+                  <li>
+                    <a href="#demo-7" class="toc-h2 toc-link" data-title="Demo">Demo</a>
                   </li>
               </ul>
           </li>
@@ -1592,63 +1598,143 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tbody></table>
 <h1 id='43ee760de5'>行情相关</h1><h2 id='ticker'><span id="7">Ticker</span></h2>
 <p>市场所有交易对的Ticker</p>
+<h3 id='http-10'>HTTP请求:</h3>
+<ul>
+<li>GET /v1/market/tickers
+### 请求参数: </li>
+</ul>
 
-<p>### HTTP请求: 
- - GET /v1/market/tickers
- ### 请求参数: </p>
-
-<p>|    code    |  type   | required |       comment        |
- | ---------- | ------- | -------- | -------------------- |</p>
-
-<p>### 响应数据: </p>
-
-<p>|       code        |  type   |                      comment                       |
- | ----------------- | ------ | ---------------------------------------- |
- | code            | int    |     0：成功，其他失败                                               |
- | message         | string       |    错误信息                                    |
- | data | Object|   |
- | ├─channel| String |标识  |
- | ├─instrumentId| Integer  |交易对ID |
- | ├─symbol| String  |交易对 |
- | ├─count | Integer  |24h滚动交易笔数 |
- | ├─volume|String  |24h以报价币种计量的交易量 |<br>
- | ├─amount|  String  |24h以基础币种计量的交易量 |<br>
- | ├─close|  String  | 末一笔成交价| 
- | ├─open|  String  | 第一笔成交价| 
- | ├─high|  String  | 最高一笔成交价| 
- | ├─low|  String  | 最低一笔成交价| 
- | ├─bid|  String  | 买一价| 
- | ├─bidSize|  String  | 买一量| 
- | ├─ask|  String  | 卖一价| 
- | ├─askSize|  String  | 卖一量| </p>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>required</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='f3324f4e0c-2'>响应数据:</h3>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>int</td>
+<td>0：成功，其他失败</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>错误信息</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td></td>
+</tr>
+<tr>
+<td>├─channel</td>
+<td>String</td>
+<td>标识</td>
+</tr>
+<tr>
+<td>├─instrumentId</td>
+<td>Integer</td>
+<td>交易对ID</td>
+</tr>
+<tr>
+<td>├─symbol</td>
+<td>String</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>├─count</td>
+<td>Integer</td>
+<td>24h滚动交易笔数</td>
+</tr>
+<tr>
+<td>├─volume</td>
+<td>String</td>
+<td>24h以报价币种计量的交易量</td>
+</tr>
+<tr>
+<td>├─amount</td>
+<td>String</td>
+<td>24h以基础币种计量的交易量</td>
+</tr>
+<tr>
+<td>├─close</td>
+<td>String</td>
+<td>末一笔成交价</td>
+</tr>
+<tr>
+<td>├─open</td>
+<td>String</td>
+<td>第一笔成交价</td>
+</tr>
+<tr>
+<td>├─high</td>
+<td>String</td>
+<td>最高一笔成交价</td>
+</tr>
+<tr>
+<td>├─low</td>
+<td>String</td>
+<td>最低一笔成交价</td>
+</tr>
+<tr>
+<td>├─bid</td>
+<td>String</td>
+<td>买一价</td>
+</tr>
+<tr>
+<td>├─bidSize</td>
+<td>String</td>
+<td>买一量</td>
+</tr>
+<tr>
+<td>├─ask</td>
+<td>String</td>
+<td>卖一价</td>
+</tr>
+<tr>
+<td>├─askSize</td>
+<td>String</td>
+<td>卖一量</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>响应</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"bidSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"454.2"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"askSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"542.6"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">41723</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24121351.85"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693799.10798965"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.067998"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.071842"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.072453"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.067985"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0679"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0681"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRXUSDT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
- </span><span class="p">}</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bidSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"454.2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"askSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"542.6"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">41723</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24121351.85"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693799.10798965"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.067998"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.071842"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.072453"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.067985"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0679"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0681"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRXUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='cf51bf082d'><span id="7">获取深度</span></h2>
 <p>获取深度数据</p>
-<h3 id='http-10'>HTTP请求:</h3>
+<h3 id='http-11'>HTTP请求:</h3>
 <ul>
 <li>GET /v1/market/depth/<symbol>
 ### 请求参数: </li>
@@ -1675,7 +1761,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>深度的数量，如“5, 10, 20, 50, 100”,默认20</td>
 </tr>
 </tbody></table>
-<h3 id='f3324f4e0c-2'>响应数据:</h3>
+<h3 id='f3324f4e0c-3'>响应数据:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1768,7 +1854,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='k'><span id="7">获取K线</span></h2>
 <p>获取交易K线</p>
-<h3 id='http-11'>HTTP请求:</h3>
+<h3 id='http-12'>HTTP请求:</h3>
 <ul>
 <li>GET /v1/market/kline/<symbol>
 ### 请求参数: </li>
@@ -1801,7 +1887,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>数据条数，[1,2000]</td>
 </tr>
 </tbody></table>
-<h3 id='f3324f4e0c-3'>响应数据:</h3>
+<h3 id='f3324f4e0c-4'>响应数据:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1927,35 +2013,109 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>##  <span id="7">最新成交</span>
- 获取最新成交记录</p>
+</span></code></pre></div><h2 id='586cd0d257'><span id="7">最新成交</span></h2>
+<p>获取最新成交记录</p>
+<h3 id='http-13'>HTTP请求:</h3>
+<ul>
+<li>GET /v1/market/trade/<symbol>
+### 请求参数: </li>
+</ul>
 
-<p>### HTTP请求: 
- - GET /v1/market/trade/<symbol>
- ### 请求参数: </p>
-
-<p>|    code    |  type   | required |       comment        |
- | ---------- | ------- | -------- | -------------------- |
- |symbol | string | true | 交易对，如“BTCUSDT” |
- |size | Integer | false | 数据条数，[1,100] |
- ### 响应数据: </p>
-
-<p>|       code        |  type   |                      comment                       |
- | ----------------- | ------ | ---------------------------------------- |
- | code            | int    |     0：成功，其他失败                                               |
- | message         | string       |    错误信息                                    |
- | data | Object|   |
- | ├─channel| String |标识  |
- | ├─instrumentId| Integer  |交易对ID |
- | ├─symbol| String  |交易对 |
- | ├─interval | String  |K线间隔 |
- | ├─time| Long |时间，单位 s |<br>
- | ├─ts|Long  |时间，单位 ms |<br>
- | ├─tradeId|Long |第一笔成交ID |<br>
- | ├─takerSide|String  |方向 &quot;BUY&quot;，&quot;SELL&quot; |<br>
- | ├─volume|  String  |成交量 |<br>
- | ├─price|  String  | 末一笔成交价|                       </p>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>required</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>交易对，如“BTCUSDT”</td>
+</tr>
+<tr>
+<td>size</td>
+<td>Integer</td>
+<td>false</td>
+<td>数据条数，[1,100]</td>
+</tr>
+</tbody></table>
+<h3 id='f3324f4e0c-5'>响应数据:</h3>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>int</td>
+<td>0：成功，其他失败</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>错误信息</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td></td>
+</tr>
+<tr>
+<td>├─channel</td>
+<td>String</td>
+<td>标识</td>
+</tr>
+<tr>
+<td>├─instrumentId</td>
+<td>Integer</td>
+<td>交易对ID</td>
+</tr>
+<tr>
+<td>├─symbol</td>
+<td>String</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>├─interval</td>
+<td>String</td>
+<td>K线间隔</td>
+</tr>
+<tr>
+<td>├─time</td>
+<td>Long</td>
+<td>时间，单位 s</td>
+</tr>
+<tr>
+<td>├─ts</td>
+<td>Long</td>
+<td>时间，单位 ms</td>
+</tr>
+<tr>
+<td>├─tradeId</td>
+<td>Long</td>
+<td>第一笔成交ID</td>
+</tr>
+<tr>
+<td>├─takerSide</td>
+<td>String</td>
+<td>方向 &quot;BUY&quot;，&quot;SELL&quot;</td>
+</tr>
+<tr>
+<td>├─volume</td>
+<td>String</td>
+<td>成交量</td>
+</tr>
+<tr>
+<td>├─price</td>
+<td>String</td>
+<td>末一笔成交价</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>响应</p>
@@ -1979,7 +2139,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
  </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='1a3223149b'><span id="7">获取所有交易对最新价格</span></h2>
 <p>获取所有交易对最新价格</p>
-<h3 id='http-12'>HTTP请求:</h3>
+<h3 id='http-14'>HTTP请求:</h3>
 <ul>
 <li>GET /v1/ticker/price
 ### 请求参数: </li>
@@ -2005,7 +2165,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <p>默认：查询所有交易对
 查询指定交易对: /v1/ticker/price;symbol=BTCUSDT,EOSUSDT,AUTUSDT `</p>
 </blockquote>
-<h3 id='f3324f4e0c-4'>响应数据:</h3>
+<h3 id='f3324f4e0c-6'>响应数据:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2202,11 +2362,12 @@ wss://ws.coinstore.com/s/ws</p>
 
 <p>NOTE:  所有返回数据的时间，单位都是 <code>秒</code></p>
 <h2 id='edf11a92a0'><strong>公共行情频道</strong></h2><h3 id='04e6f7872c'><strong>逐笔交易</strong></h3>
-<blockquote>
 <p>Stream Name: <code>&lt;symbol&gt;@trade</code>, eg: <code>88066@trade</code>
-param: <code>param&quot;:{&quot;size&quot;:2}</code>
-e.g: <code>{&quot;op&quot;:&quot;SUB&quot;,&quot;channel&quot;:[&quot;28@trade&quot;],&quot;param&quot;:{&quot;size&quot;:2},&quot;id&quot;:1}</code>
-全量数据：
+ param: <code>param&quot;:{&quot;size&quot;:2}</code>
+ e.g: <code>{&quot;op&quot;:&quot;SUB&quot;,&quot;channel&quot;:[&quot;28@trade&quot;],&quot;param&quot;:{&quot;size&quot;:2},&quot;id&quot;:1}</code></p>
+
+<blockquote>
+<p>全量数据：
 <code>lang=json
  {
    &quot;S&quot;: 15,
@@ -2255,7 +2416,6 @@ e.g: <code>{&quot;op&quot;:&quot;SUB&quot;,&quot;channel&quot;:[&quot;28@trade&q
 </code></p>
 </blockquote>
 <h3 id='k-streams'><strong>K线 Streams</strong></h3>
-<blockquote>
 <p>K线stream逐秒推送所请求的K线种类(最新一根K线)的更新。
 Stream Name: <code>&lt;symbol&gt;@kline@&lt;interval&gt;</code>, eg: <code>88066@kline@min_1</code>
 interval 可选值:
@@ -2268,7 +2428,6 @@ interval 可选值:
 ** hour_12
 ** day_1
 ** week_1</p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
    "instrumentId": 88066, 
    "startTime": 1603732500,  // 这根 k线的开始时间，单位 s
@@ -2285,13 +2444,11 @@ interval 可选值:
     "amount": "1.0000",  // 这根K线期间成交额
 }
 </code></pre></div><h3 id='k-request'><strong>K线 Request</strong></h3>
-<blockquote>
 <p>请求历史k线：
 param: <code>&quot;{channel&quot;:&quot;88066@kline@min_1&quot;,&quot;endTime&quot;:1603766280,&quot;limit&quot;:10}</code>,
 eg:  <code>{&quot;op&quot;:&quot;REQ&quot;,&quot;param&quot;:{&quot;channel&quot;:&quot;88066@kline@min_1&quot;,&quot;limit&quot;:10},&quot;id&quot;:1}</code>
 <code>limit</code>: 最大不超过 200
 <code>endTime</code>: 可选，exclusive</p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "channel": "88066@kline@min_1",
     "symbol": "USDTBTC",
@@ -2314,10 +2471,8 @@ eg:  <code>{&quot;op&quot;:&quot;REQ&quot;,&quot;param&quot;:{&quot;channel&quot
     ]
 }
 </code></pre></div><h3 id='symbol-ticker'><strong>按 Symbol 的 Ticker信息</strong></h3>
-<blockquote>
 <p>按Symbol刷新的最近24小时精简 ticker 信息
 Stream 名称: <code>&lt;symbol&gt;@ticker</code>, eg:  <code>88066@ticker</code></p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
   "instrumentId": 88066,
   "symbol": "USDTBTC",      // 交易对
@@ -2329,10 +2484,8 @@ Stream 名称: <code>&lt;symbol&gt;@ticker</code>, eg:  <code>88066@ticker</code
   "amount": "18"          // 24小时内成交额
 }
 </code></pre></div><h3 id='symbol-ticker-2'><strong>全市场所有Symbol 的 Ticker信息</strong></h3>
-<blockquote>
 <p>按Symbol刷新的最近24小时精简ticker信息
 Stream 名称: <code>!@ticker</code></p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "data": [
         {
@@ -2361,10 +2514,8 @@ Stream 名称: <code>!@ticker</code></p>
     ]
 }
 </code></pre></div><h3 id='3b1eaace8a'><strong>有限档深度信息</strong></h3>
-<blockquote>
 <p>每秒或每100毫秒推送有限档深度信息。levels表示几档买卖单信息, 可选 5/10/20/50/100档
 Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&lt;symbol&gt;@depth@&lt;levels&gt;@100ms</code>.</del>, eg:  <code>88066@depth@50</code></p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
   "level": 5,
   "instrumentId": 88066,
@@ -2383,9 +2534,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
   ]
 }
 </code></pre></div><h2 id='050d3ff583'><strong>用户私有数据频道</strong></h2><h3 id='0de2270bc5'><strong>登陆</strong></h3>
-<blockquote>
 <p>登陆时可以同时指定订阅数据</p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "op": "LOGIN",
     "channel": [
@@ -2400,9 +2549,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
     "id": 2
 }
 </code></pre></div><h3 id='2f616316f3'><strong>账户</strong></h3>
-<blockquote>
 <p>Stream Name: <code>&lt;currency&gt;@account</code>, or <code>!@account</code> all currency</p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "accountId": 12,
     "currency": "BTC",
@@ -2412,9 +2559,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 }
 
 </code></pre></div><h3 id='46ef91185e'><strong>成交</strong></h3>
-<blockquote>
 <p>Stream Name: <code>&lt;symbol&gt;@order</code>, or <code>!@order</code> all symbol&#39;s</p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     // increment
 
@@ -2585,80 +2730,236 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <h3 id='request-2'>Request</h3>
 <ul>
 <li>GET /v2/public/summary
-### Response
-|    code    |  type   | example |  meaning  | remarks |
-| -----------| ------  | -----   | -----     | -----   |
-|trading_pairs|String|Y|Identifier of a ticker with delimiter to separate base/quote, eg. BTC-USD (Price of BTC is quoted in USD)|Trading pair name|
-|last_price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
-|lowest_ask|String|Y|Lowest Ask price of base currency based on given quote currency|lowest ask price|
-|highest_bid|String|Y|Highest bid price of base currency based on given quote currency|Highest bid price|
-|base_volume|String|Y|24-hr volume of market pair denoted in BASE currency|24H volume|
-|quote_volume|String|Y|24-hr volume of market pair denoted in QUOTE currency|24H amount|
-|price_change_percent_24h|String|Y|24-hr % price change of market pair|24h change%|
-|highest_price_24h|String|Y|Highest price of base currency based on given quote currency in the last 24-hrs|24H high|
-|lowest_price_24h|String|Y|Lowest price of base currency based on given quote currency in the last 24-hrs|24H low|
-|base_currency|String|Y|Symbol/currency code of base currency, eg. BTC|base currency|
-|quote_currency|String|Y|Symbol/currency code of quote currency, eg. USD|quote currency|</li>
+### Response</li>
 </ul>
-<h3 id='demo-2'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>
+
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>trading_pairs</td>
+<td>String</td>
+<td>Y</td>
+<td>Identifier of a ticker with delimiter to separate base/quote, eg. BTC-USD (Price of BTC is quoted in USD)</td>
+<td>Trading pair name</td>
+</tr>
+<tr>
+<td>last_price</td>
+<td>String</td>
+<td>Y</td>
+<td>Last transacted price of base currency based on given quote currency</td>
+<td>Last price</td>
+</tr>
+<tr>
+<td>lowest_ask</td>
+<td>String</td>
+<td>Y</td>
+<td>Lowest Ask price of base currency based on given quote currency</td>
+<td>lowest ask price</td>
+</tr>
+<tr>
+<td>highest_bid</td>
+<td>String</td>
+<td>Y</td>
+<td>Highest bid price of base currency based on given quote currency</td>
+<td>Highest bid price</td>
+</tr>
+<tr>
+<td>base_volume</td>
+<td>String</td>
+<td>Y</td>
+<td>24-hr volume of market pair denoted in BASE currency</td>
+<td>24H volume</td>
+</tr>
+<tr>
+<td>quote_volume</td>
+<td>String</td>
+<td>Y</td>
+<td>24-hr volume of market pair denoted in QUOTE currency</td>
+<td>24H amount</td>
+</tr>
+<tr>
+<td>price_change_percent_24h</td>
+<td>String</td>
+<td>Y</td>
+<td>24-hr % price change of market pair</td>
+<td>24h change%</td>
+</tr>
+<tr>
+<td>highest_price_24h</td>
+<td>String</td>
+<td>Y</td>
+<td>Highest price of base currency based on given quote currency in the last 24-hrs</td>
+<td>24H high</td>
+</tr>
+<tr>
+<td>lowest_price_24h</td>
+<td>String</td>
+<td>Y</td>
+<td>Lowest price of base currency based on given quote currency in the last 24-hrs</td>
+<td>24H low</td>
+</tr>
+<tr>
+<td>base_currency</td>
+<td>String</td>
+<td>Y</td>
+<td>Symbol/currency code of base currency, eg. BTC</td>
+<td>base currency</td>
+</tr>
+<tr>
+<td>quote_currency</td>
+<td>String</td>
+<td>Y</td>
+<td>Symbol/currency code of quote currency, eg. USD</td>
+<td>quote currency</td>
+</tr>
+</tbody></table>
+<h3 id='demo-2'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+ "code": "0",
+ "message": null,
+ "data": [
+     {
+         "trading_pairs": "btcusdt",
+         "last_price": "60000",
+         "lowest_ask": "60000",
+         "highest_bid": "555",
+         "base_volume": "0",
+         "quote_volume": "0",
+         "price_change_percent_24h": "0",
+         "highest_price_24h": "60000",
+         "lowest_price_24h": "60000",
+         "base_currency": "BTC",
+         "quote_currency": "USDT"
+     },
+     {
+         "trading_pairs": "ethusdt",
+         "last_price": "60000",
+         "lowest_ask": "60000",
+         "highest_bid": "555",
+         "base_volume": "0",
+         "quote_volume": "0",
+         "price_change_percent_24h": "0",
+         "highest_price_24h": "60000",
+         "lowest_price_24h": "60000",
+         "base_currency": "ETH",
+         "quote_currency": "USDT"
+     }
+ ]
+}
 </code></pre></div><h2 id='97510c5887'><span id="115"></span></h2><h3 id='request-3'>Request</h3>
 <ul>
-<li>GET
-### Response
-|    code    |  type   | example |  meaning  | remarks |
-| -----------| ------  | -----   | -----     | -----   |
-### Demo
-<code>lang=json
-{
-&quot;code&quot;: &quot;0&quot;,
-&quot;message&quot;: null,
-&quot;data&quot;: [
- {
-     &quot;trading_pairs&quot;: &quot;btcusdt&quot;,
-     &quot;last_price&quot;: &quot;60000&quot;,
-     &quot;lowest_ask&quot;: &quot;60000&quot;,
-     &quot;highest_bid&quot;: &quot;555&quot;,
-     &quot;base_volume&quot;: &quot;0&quot;,
-     &quot;quote_volume&quot;: &quot;0&quot;,
-     &quot;price_change_percent_24h&quot;: &quot;0&quot;,
-     &quot;highest_price_24h&quot;: &quot;60000&quot;,
-     &quot;lowest_price_24h&quot;: &quot;60000&quot;,
-     &quot;base_currency&quot;: &quot;BTC&quot;,
-     &quot;quote_currency&quot;: &quot;USDT&quot;
- },
- {
-     &quot;trading_pairs&quot;: &quot;ethusdt&quot;,
-     &quot;last_price&quot;: &quot;60000&quot;,
-     &quot;lowest_ask&quot;: &quot;60000&quot;,
-     &quot;highest_bid&quot;: &quot;555&quot;,
-     &quot;base_volume&quot;: &quot;0&quot;,
-     &quot;quote_volume&quot;: &quot;0&quot;,
-     &quot;price_change_percent_24h&quot;: &quot;0&quot;,
-     &quot;highest_price_24h&quot;: &quot;60000&quot;,
-     &quot;lowest_price_24h&quot;: &quot;60000&quot;,
-     &quot;base_currency&quot;: &quot;ETH&quot;,
-     &quot;quote_currency&quot;: &quot;USDT&quot;
- }
-]
-}
-</code></li>
+<li>GET</li>
 </ul>
-<h2 id='ticker-2'><span id="116">Ticker</span></h2>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+<h3 id='demo-3'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+ "code": "0",
+ "message": null,
+ "data": [
+     {
+         "trading_pairs": "btcusdt",
+         "last_price": "60000",
+         "lowest_ask": "60000",
+         "highest_bid": "555",
+         "base_volume": "0",
+         "quote_volume": "0",
+         "price_change_percent_24h": "0",
+         "highest_price_24h": "60000",
+         "lowest_price_24h": "60000",
+         "base_currency": "BTC",
+         "quote_currency": "USDT"
+     },
+     {
+         "trading_pairs": "ethusdt",
+         "last_price": "60000",
+         "lowest_ask": "60000",
+         "highest_bid": "555",
+         "base_volume": "0",
+         "quote_volume": "0",
+         "price_change_percent_24h": "0",
+         "highest_price_24h": "60000",
+         "lowest_price_24h": "60000",
+         "base_currency": "ETH",
+         "quote_currency": "USDT"
+     }
+ ]
+}
+</code></pre></div><h2 id='ticker-2'><span id="116">Ticker</span></h2>
 <p>The ticker endpoint is to provide a 24-hour pricing and volume summary for each market pair available on the exchange.</p>
 <h3 id='request-4'>Request</h3>
 <ul>
 <li>GET /v2/public/ticker
-### Response
-|    code    |  type   | example |  meaning  | remarks |
-| -----------| ------  | -----   | -----     | -----   |
-|base_id|String|Y|The quote pair Unified Cryptoasset ID.|Quote currency ID|
-|quote_id|String|Y|The base pair Unified Cryptoasset ID.|Base currency ID|
-|last_price|String|Y|Last transacted price of base currency based on given quote currency|Last price|
-|quote_volume|String|Y|24 hour trading volume denoted in QUOTE currency|24H amount|
-|base_volume|String|Y|24-hour trading volume denoted in BASE currency|24H volume|
-|isFrozen|Integer|Y|Indicates if the market is currently enabled (0) or disabled (1).|Market enable or not|</li>
+### Response</li>
 </ul>
-<h3 id='demo-3'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>example</th>
+<th>meaning</th>
+<th>remarks</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>base_id</td>
+<td>String</td>
+<td>Y</td>
+<td>The quote pair Unified Cryptoasset ID.</td>
+<td>Quote currency ID</td>
+</tr>
+<tr>
+<td>quote_id</td>
+<td>String</td>
+<td>Y</td>
+<td>The base pair Unified Cryptoasset ID.</td>
+<td>Base currency ID</td>
+</tr>
+<tr>
+<td>last_price</td>
+<td>String</td>
+<td>Y</td>
+<td>Last transacted price of base currency based on given quote currency</td>
+<td>Last price</td>
+</tr>
+<tr>
+<td>quote_volume</td>
+<td>String</td>
+<td>Y</td>
+<td>24 hour trading volume denoted in QUOTE currency</td>
+<td>24H amount</td>
+</tr>
+<tr>
+<td>base_volume</td>
+<td>String</td>
+<td>Y</td>
+<td>24-hour trading volume denoted in BASE currency</td>
+<td>24H volume</td>
+</tr>
+<tr>
+<td>isFrozen</td>
+<td>Integer</td>
+<td>Y</td>
+<td>Indicates if the market is currently enabled (0) or disabled (1).</td>
+<td>Market enable or not</td>
+</tr>
+</tbody></table>
+<h3 id='demo-4'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": {
@@ -2718,7 +3019,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <td>Level</td>
 </tr>
 </tbody></table>
-<h3 id='response'>Response</h3>
+<h3 id='response-2'>Response</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2750,7 +3051,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <td>Ask</td>
 </tr>
 </tbody></table>
-<h3 id='demo-4'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+<h3 id='demo-5'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": {
@@ -2801,7 +3102,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <td>Trading Pair Name</td>
 </tr>
 </tbody></table>
-<h3 id='response-2'>Response</h3>
+<h3 id='response-3'>Response</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2854,7 +3155,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <td>Side</td>
 </tr>
 </tbody></table>
-<h3 id='demo-5'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+<h3 id='demo-6'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": [
@@ -2928,7 +3229,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <td>end time</td>
 </tr>
 </tbody></table>
-<h3 id='response-3'>Response</h3>
+<h3 id='response-4'>Response</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2981,7 +3282,7 @@ Stream Names: <code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> <del>或 <code>&l
 <td>Side</td>
 </tr>
 </tbody></table>
-<h3 id='demo-6'>Demo</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+<h2 id='demo-7'>Demo</h2><div class="highlight"><pre class="highlight plaintext"><code>{
  "code": "0",
  "message": null,
  "data": {
