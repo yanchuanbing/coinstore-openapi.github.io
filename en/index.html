@@ -427,10 +427,31 @@
                     <a href="#subscribe-unsubscribe-data-stream-in-real-time" class="toc-h2 toc-link" data-title="Subscribe/unsubscribe data stream in real time"><strong>Subscribe/unsubscribe data stream in real time</strong></a>
                   </li>
                   <li>
-                    <a href="#public-ticker-channel" class="toc-h2 toc-link" data-title="Public ticker channel"><strong>Public ticker channel</strong></a>
+                    <a href="#trade-by-trade" class="toc-h2 toc-link" data-title="Trade by Trade"><strong>Trade by Trade</strong></a>
                   </li>
                   <li>
-                    <a href="#user-private-data-channel" class="toc-h2 toc-link" data-title="User private data channel"><strong>User private data channel</strong></a>
+                    <a href="#k-line-streams" class="toc-h2 toc-link" data-title="K-line Streams"><strong>K-line Streams</strong></a>
+                  </li>
+                  <li>
+                    <a href="#k-line-request" class="toc-h2 toc-link" data-title="K-line Request"><strong>K-line Request</strong></a>
+                  </li>
+                  <li>
+                    <a href="#ticker-information-by-symbol" class="toc-h2 toc-link" data-title="Ticker Information by Symbol"><strong>Ticker Information by Symbol</strong></a>
+                  </li>
+                  <li>
+                    <a href="#ticker-information-of-all-symbols-in-the-whole-market" class="toc-h2 toc-link" data-title="Ticker information of all symbols in the whole market"><strong>Ticker information of all symbols in the whole market</strong></a>
+                  </li>
+                  <li>
+                    <a href="#depth-information" class="toc-h2 toc-link" data-title="Depth information"><strong>Depth information</strong></a>
+                  </li>
+                  <li>
+                    <a href="#login" class="toc-h2 toc-link" data-title="Login"><strong>Login</strong></a>
+                  </li>
+                  <li>
+                    <a href="#account" class="toc-h2 toc-link" data-title="Account"><strong>Account</strong></a>
+                  </li>
+                  <li>
+                    <a href="#closing-order" class="toc-h2 toc-link" data-title="Closing order"><strong>Closing order</strong></a>
                   </li>
                   <li>
                     <a href="#dictionary" class="toc-h2 toc-link" data-title="Dictionary"><strong>Dictionary</strong></a>
@@ -463,7 +484,7 @@
                   </li>
               </ul>
           </li>
-        <li class="create_api"><a target="_blank" href="https://www.wbf.live/personal/apiManagement"></a></li>
+        <li class="create_api"><a target="_blank" href="https://www.coinstore.com/#/user/bindAuth/ManagementAPI"></a></li>
       </ul>
     </div>
     <div class="page-wrapper">
@@ -598,9 +619,8 @@ Note: The request parameters and request body are not sorted but directly splice
 - X-CS-EXPIRES： Timestamp when you issued the request. For example: 1629291143107.
 - X-CS-SIGN: A string calculated from the signature, which is used to ensure that the signature is valid and not tampered with.</p>
 
-<blockquote>
-<p>Note: X-CS-APIKEY, X-CS-EXPIRES and X-CS-SIGN are all in the request header, and &#39;Content-Type&#39;:&#39;application/json’ needs to be set.</p>
-</blockquote>
+<p><strong>Note: X-CS-APIKEY, X-CS-EXPIRES and X-CS-SIGN are all in the request header, and &#39;Content-Type&#39;:&#39;application/json&#39; 
+needs to be set.</strong></p>
 <h2 id='return-format'><span id="a3"> Return Format </span></h2>
 <p>All interface returns are in JSON format. There are three fields in the first layer of JSON: code, msg and data. The first two fields indicate the request status and description, and the actual business data is in the data field.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -672,7 +692,7 @@ Note: The request parameters and request body are not sorted but directly splice
 </ul>
 
 <blockquote>
-<p>response </p>
+<p>Response </p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -777,9 +797,32 @@ Note: The request parameters and request body are not sorted but directly splice
 </ul>
 
 <blockquote>
-<p>response</p>
+<p>Response</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUFFYUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"baseCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUFFY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quoteCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642402062196</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1138204</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.1E-10</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cumAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cumQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"leavesQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"clOrdId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1b2ea5e00a84b888d419cb73f8eb203"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1722183748419690"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBMITTED"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -928,9 +971,36 @@ Note: The request parameters and request body are not sorted but directly splice
 </ul>
 
 <blockquote>
-<p>response</p>
+<p>Response</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3984987</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"remainingQty"</span><span class="p">:</span><span class="w"> </span><span class="mi">0E-18</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"matchRole"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"feeCurrencyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"acturalFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.002000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1138204</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"baseCurrencyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quoteCurrencyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"execQty"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.900000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"matchId"</span><span class="p">:</span><span class="w"> </span><span class="mi">258338866</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1717384395096065</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"execAmt"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.887161000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"selfDealingQty"</span><span class="p">:</span><span class="w"> </span><span class="mi">0E-18</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">11523732</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.081800000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"matchTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1637825389</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"seq"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-parameters-3'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -1095,6 +1165,28 @@ Note: The request parameters and request body are not sorted but directly splice
 <ul>
 <li>POST /trade/order/cancel</li>
 </ul>
+
+<blockquote>
+<p>Request Body
+<code>json
+{
+  &quot;ordId&quot;: 1722183748419690,
+  &quot;symbol&quot;:&quot;LUFFYUSDT&quot;
+}
+</code></p>
+
+<p>Response
+<code>json
+{
+    &quot;code&quot;: 0,
+    &quot;data&quot;: {
+        &quot;clientOrderId&quot;: &quot;b1b2ea5e00a84b888d419cb73f8eb203&quot;,
+        &quot;state&quot;: &quot;CANCELED&quot;,
+        &quot;ordId&quot;: 1722183748419690
+    }
+}
+</code></p>
+</blockquote>
 <h3 id='request-parameters-4'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -1161,6 +1253,22 @@ Note: The request parameters and request body are not sorted but directly splice
 <ul>
 <li>POST /trade/order/cancelAll</li>
 </ul>
+
+<blockquote>
+<p>Request Body
+<code>json
+{
+  &quot;symbol&quot;:&quot;LUFFYUSDT&quot;
+}
+</code></p>
+
+<p>Response
+<code>json
+{
+    &quot;code&quot;: 0
+}
+</code></p>
+</blockquote>
 <h3 id='request-parameters-5'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -1201,7 +1309,29 @@ Note: The request parameters and request body are not sorted but directly splice
 </tbody></table>
 <h2 id='create-order'><span id="6"> Create order </span></h2>
 <p>Create order</p>
-<h3 id='http-request-6'>HTTP Request:</h3>
+
+<blockquote>
+<p>Request Body
+<code>json
+{
+    &quot;symbol&quot;: &quot;LUFFYUSDT&quot;,
+    &quot;side&quot;: &quot;BUY&quot;,
+    &quot;ordType&quot;: &quot;LIMIT&quot;,
+    &quot;ordPrice&quot;: 9.2e-10,
+    &quot;ordQty&quot;: &quot;12323231243&quot;,
+    &quot;timestamp&quot;: 1642407805168
+}
+</code></p>
+
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="mi">11594964764657880</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-6'>HTTP Request:</h3>
 <ul>
 <li>POST /trade/order/place</li>
 </ul>
@@ -1269,17 +1399,7 @@ Note: The request parameters and request body are not sorted but directly splice
 <td></td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="mi">11594964764657880</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='response-data-6'>Response Data</h3>
+<h3 id='response-data-6'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1315,7 +1435,46 @@ Note: The request parameters and request body are not sorted but directly splice
 </tbody></table>
 <h2 id='batch-ordering'><span id="13"> Batch ordering </span></h2>
 <p>Batch ordering</p>
-<h3 id='http-request-7'>HTTP Request:</h3>
+
+<blockquote>
+<p>Request Body
+<code>json
+{
+    &quot;symbol&quot;: &quot;LUFFYUSDT&quot;,
+    &quot;orders&quot;: [
+        {
+            &quot;side&quot;: &quot;BUY&quot;,
+            &quot;ordType&quot;: &quot;LIMIT&quot;,
+            &quot;ordPrice&quot;: 9.2e-10,
+            &quot;ordQty&quot;: &quot;1&quot;
+        },
+        {
+            &quot;side&quot;: &quot;BUY&quot;,
+            &quot;ordType&quot;: &quot;LIMIT&quot;,
+            &quot;ordPrice&quot;: 9.2e-10,
+            &quot;ordQty&quot;: &quot;1&quot;
+        }
+    ],
+    &quot;timestamp&quot;: 1642574848089
+}
+</code></p>
+
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"ordId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1722364585836585</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"clOrdId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c09e68b49a724c8a95ef76526bf6bc05"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"ordId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1722364585836586</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"clOrdId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0344830639d4f6d94be4110bf98c759"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-7'>HTTP Request:</h3>
 <ul>
 <li>POST /trade/order/placeBatch</li>
 </ul>
@@ -1389,13 +1548,7 @@ Note: The request parameters and request body are not sorted but directly splice
 <td>market price buy order required</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
-
-</span></code></pre></div><h3 id='response-data-7'>Response Data</h3>
+<h3 id='response-data-7'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1453,7 +1606,29 @@ Note: The request parameters and request body are not sorted but directly splice
 <ul>
 <li>POST trade/order/cancelBatch</li>
 </ul>
-<h3 id='request-parameters-8'>Request Parameters</h3>
+
+<blockquote>
+<p>Request Body
+<code>json
+{
+  &quot;orderIds&quot;: [1722364585836586,1722364585836585],
+  &quot;symbol&quot;:&quot;LUFFYUSDT&quot;
+}
+</code></p>
+
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">1722364585836586</span><span class="p">,</span><span class="w">
+            </span><span class="mi">1722364585836585</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"reject"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameters-8'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1475,12 +1650,7 @@ Note: The request parameters and request body are not sorted but directly splice
 <td>[1,2,3]</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
-</span></code></pre></div><h3 id='response-data-8'>Response Data</h3>
+<h3 id='response-data-8'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1522,16 +1692,39 @@ Note: The request parameters and request body are not sorted but directly splice
 </tbody></table>
 <h2 id='get-order-information'><span id="14">Get order information </span></h2>
 <p>Get order information</p>
-<h3 id='http-request-9'>HTTP Request:</h3>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"baseCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUFFY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quoteCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUFFYUSDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642574848089</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1138204</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ordId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1722364585836586</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"clOrdId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0344830639d4f6d94be4110bf98c759"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ordType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ordState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELED"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ordPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000092"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ordQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ordAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000092"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cumAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cumQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"leavesQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avgPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"feeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUFFY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-9'>HTTP Request:</h3>
 <ul>
 <li>GET trade/order/orderInfo</li>
 </ul>
-
-<blockquote>
-<p>response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
-</span></code></pre></div><h3 id='request-parameters-9'>Request Parameters:</h3>
+<h3 id='request-parameters-9'>Request Parameters:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1691,7 +1884,32 @@ Note: The request parameters and request body are not sorted but directly splice
 </tbody></table>
 <h1 id='ticker-related'>Ticker Related</h1><h2 id='ticker'><span id="7">Ticker</span></h2>
 <p>Ticker for all trading pairs in the market</p>
-<h3 id='http-request-10'>HTTP request:</h3>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"bidSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"454.2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"askSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"542.6"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">41723</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24121351.85"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693799.10798965"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.067998"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.071842"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.072453"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.067985"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0679"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0681"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRXUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-10'>HTTP request:</h3>
 <ul>
 <li>GET /v1/market/tickers</li>
 </ul>
@@ -1725,71 +1943,8 @@ Note: The request parameters and request body are not sorted but directly splice
 | ├─bidSize| String | Buy a quantity|
 | ├─ask| String | Sell one price|
 | ├─askSize| String | Amount to sell|</p>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"bidSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"454.2"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"askSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"542.6"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">41723</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24121351.85"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693799.10798965"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.067998"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.071842"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.072453"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.067985"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0679"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0681"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRXUSDT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
- </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='get-depth'><span id="7">Get depth</span></h2>
+<h2 id='get-depth'><span id="7">Get depth</span></h2>
 <p>Get depth data</p>
-<h3 id='http-request-11'>HTTP request:</h3>
-<ul>
-<li>GET /v1/market/depth/<symbol></li>
-</ul>
-<h3 id='request-parameters-11'>Request parameters:</h3>
-<table><thead>
-<tr>
-<th>code</th>
-<th>type</th>
-<th>required</th>
-<th>comment</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>true</td>
-<td>trading pair, such as &quot;BTCUSDT&quot;</td>
-</tr>
-<tr>
-<td>depth</td>
-<td>int</td>
-<td>false</td>
-<td>The number of depths, such as &quot;5, 10, 20, 50, 100&quot;, default 20</td>
-</tr>
-</tbody></table>
-<h3 id='response-data-11'>Response data:</h3>
-<p>| code | type | comment |
-| ----------------- | ------ | ------------------------ ---------------- |
-| code | int | 0: success, other failure |
-| message | string | Error message |
-| data | Object| |
-| ├─channel| String |Identifier |
-| ├─level| Integer |Quantity |
-| ├─instrumentId| Integer |Pair ID |
-| ├─symbol| string |Trading pair |
-| ├─a | List | Sell order, [${price}, ${quantity}, ${direction}] ] |
-| ├─b | List | Buy order, [${price}, ${quantity}, ${direction}] ] |</p>
 
 <blockquote>
 <p>Response
@@ -1828,10 +1983,75 @@ Note: The request parameters and request body are not sorted but directly splice
     &quot;code&quot;: 0
 }
 </code></p>
+</blockquote>
+<h3 id='http-request-11'>HTTP request:</h3>
+<ul>
+<li>GET /v1/market/depth/<symbol></li>
+</ul>
+<h3 id='request-parameters-11'>Request parameters:</h3>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>required</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>trading pair, such as &quot;BTCUSDT&quot;</td>
+</tr>
+<tr>
+<td>depth</td>
+<td>int</td>
+<td>false</td>
+<td>The number of depths, such as &quot;5, 10, 20, 50, 100&quot;, default 20</td>
+</tr>
+</tbody></table>
+<h3 id='response-data-11'>Response data:</h3>
+<p>| code | type | comment |
+| ----------------- | ------ | ------------------------ ---------------- |
+| code | int | 0: success, other failure |
+| message | string | Error message |
+| data | Object| |
+| ├─channel| String |Identifier |
+| ├─level| Integer |Quantity |
+| ├─instrumentId| Integer |Pair ID |
+| ├─symbol| string |Trading pair |
+| ├─a | List | Sell order, [${price}, ${quantity}, ${direction}] ] |
+| ├─b | List | Buy order, [${price}, ${quantity}, ${direction}] ] |</p>
 <h2 id='get-k-line'><span id="7">Get K line</span></h2>
 <p>Get trading K line</p>
+
+<blockquote>
+<p>Response</p>
 </blockquote>
-<h3 id='http-request-12'>HTTP request:</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4@kline@week_1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641744059</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98630624.103511453"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"week_1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641744000</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"firstTradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14547884</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"lastTradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14799534</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2307.742209"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43196.0002"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41628.2582"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52250.3884"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39654.039"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-12'>HTTP request:</h3>
 <ul>
 <li>GET /v1/market/kline/<symbol></li>
 </ul>
@@ -1884,36 +2104,30 @@ Note: The request parameters and request body are not sorted but directly splice
 | ├─├─open| String | First transaction price|
 | ├─├─high| String |Highest transaction price |
 | ├─├─low| String |Lowest transaction price |</p>
+<h2 id='latest-trades'><span id="7">Latest trades</span></h2>
+<p>Get the latest trades record</p>
 
 <blockquote>
 <p>Response</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4@kline@week_1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641744059</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98630624.103511453"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"week_1"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641744000</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"firstTradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14547884</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"lastTradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14799534</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2307.742209"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43196.0002"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41628.2582"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52250.3884"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39654.039"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4@trade"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642495112</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.011102"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41732.3305"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14867136</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"takerSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">14867136</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642495112000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='latest-trades'><span id="7">Latest trades</span></h2>
-<p>Get the latest trades record</p>
-<h3 id='http-request-13'>HTTP request:</h3>
+ </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-13'>HTTP request:</h3>
 <ul>
 <li>GET /v1/market/trade/<symbol></li>
 </ul>
@@ -1955,28 +2169,7 @@ Note: The request parameters and request body are not sorted but directly splice
 | ├─takerSide|String |Direction &quot;BUY&quot;, &quot;SELL&quot; |
 | ├─volume| String |Volume |
 | ├─price| String | Last transaction price|                      </p>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4@trade"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642495112</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.011102"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41732.3305"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14867136</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"takerSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">14867136</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642495112000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
- </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='get-the-latest-price-of-all-symbols'><span id="7"> Get the latest price of all symbols </span></h2>
+<h2 id='get-the-latest-price-of-all-symbols'><span id="7"> Get the latest price of all symbols </span></h2>
 <p>Get the latest price of all symbols</p>
 <h3 id='http-request-14'>HTTP Request:</h3>
 <ul>
@@ -1984,7 +2177,7 @@ Note: The request parameters and request body are not sorted but directly splice
 </ul>
 
 <blockquote>
-<p>response</p>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -2003,9 +2196,25 @@ Note: The request parameters and request body are not sorted but directly splice
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-parameters-14'>Request Parameters:</h3>
-<p>default: Query all symbols</p>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>required</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>Trading pairs, case-sensitive, comma-separated</td>
+</tr>
+</tbody></table>
 
-<p>query the specified symbol: /v1/ticker/price;symbol=btcusdt,eosusdt,autusdt `</p>
+<p><strong>default: Query all symbols</strong></p>
+
+<p><strong>query the specified symbol: /v1/ticker/price;symbol=btcusdt,eosusdt,autusdt</strong></p>
 <h3 id='response-data-14'>Response Data:</h3>
 <table><thead>
 <tr>
@@ -2199,11 +2408,20 @@ Note: The request parameters and request body are not sorted but directly splice
 
 <p>NOTE:  All the time to return data is in `seconds&#39;.</p>
 </blockquote>
-<h2 id='public-ticker-channel'><strong>Public ticker channel</strong></h2><h3 id='trade-by-trade'><strong>Trade by Trade</strong></h3>
+<h2 id='trade-by-trade'><strong>Trade by Trade</strong></h2>
 <blockquote>
 <p>Send</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code> {"op":"SUB","channel":["28@trade"],"param":{"size":2},"id":1}
+<div class="highlight"><pre class="highlight plaintext"><code> {
+    "op": "SUB",
+    "channel": [
+        "28@trade"
+    ],
+    "param": {
+        "size": 2
+    },
+    "id": 1
+ }
 </code></pre></div>
 <blockquote>
 <p>full-volume data:</p>
@@ -2253,13 +2471,13 @@ Note: The request parameters and request body are not sorted but directly splice
   "ts": 1612685313400, // unit: ms
   "seq": 9935         // unique auto-increment serial number
 }
-</code></pre></div><h4 id='stream-name'>Stream Name</h4>
+</code></pre></div><h3 id='stream-name'>Stream Name</h3>
 <p><code>&lt;symbol&gt;@trade</code></p>
 
 <p>eg: <code>88066@trade</code></p>
-<h4 id='param'>param</h4>
+<h3 id='param'>param</h3>
 <p><code>param&quot;: {&quot;size&quot;:2}</code></p>
-<h3 id='k-line-streams'><strong>K-line Streams</strong></h3>
+<h2 id='k-line-streams'><strong>K-line Streams</strong></h2>
 <p>K-line stream pushes the requested k-line type (the latest k-line) every second.</p>
 
 <blockquote>
@@ -2285,11 +2503,11 @@ Note: The request parameters and request body are not sorted but directly splice
     "volume": "1000",    // trading volume during this K line period
     "amount": "1.0000",  // trading amount during this k-line period
 }
-</code></pre></div><h4 id='stream-name-2'>Stream Name</h4>
+</code></pre></div><h3 id='stream-name-2'>Stream Name</h3>
 <p><code>&lt;symbol&gt;@kline@&lt;interval&gt;</code></p>
 
 <p>eg: <code>88066@kline@min_1</code></p>
-<h4 id='interval-optional-values'>interval optional values</h4>
+<h3 id='interval-optional-values'>interval optional values</h3>
 <ul>
 <li>min_1</li>
 <li>min_5</li>
@@ -2302,13 +2520,21 @@ Note: The request parameters and request body are not sorted but directly splice
 <li>week_1</li>
 <li>mon_1</li>
 </ul>
-<h3 id='k-line-request'><strong>K-line Request</strong></h3>
+<h2 id='k-line-request'><strong>K-line Request</strong></h2>
 <p>request historical k-line</p>
 
 <blockquote>
 <p>Send</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code> {"op":"REQ","param":{"channel":"4@kline@min_1","endTime":null,"limit":200},"id":1}
+<div class="highlight"><pre class="highlight plaintext"><code> {
+    "op": "REQ",
+    "param": {
+        "channel": "4@kline@min_1",
+        "endTime": null,
+        "limit": 200
+    },
+    "id": 1
+ }
 </code></pre></div>
 <blockquote>
 <p>Receive</p>
@@ -2334,13 +2560,13 @@ Note: The request parameters and request body are not sorted but directly splice
         ...
     ]
 }
-</code></pre></div><h4 id='param-2'>param</h4>
+</code></pre></div><h3 id='param-2'>param</h3>
 <ul>
 <li><code>channel</code>: <code>&lt;symbol&gt;@kline@&lt;interval&gt;</code> ,eg:88066@kline@min_1</li>
 <li><code>limit</code>: No more than 200</li>
 <li><code>endTime</code>: Optional, exclusive</li>
 </ul>
-<h3 id='ticker-information-by-symbol'><strong>Ticker Information by Symbol</strong></h3>
+<h2 id='ticker-information-by-symbol'><strong>Ticker Information by Symbol</strong></h2>
 <p>Streamlined ticker information in the last 24 hours refreshed by Symbol</p>
 
 <blockquote>
@@ -2361,11 +2587,11 @@ Note: The request parameters and request body are not sorted but directly splice
   "volume": "10000",       // trading volume within 24 hours
   "amount": "18"          // trading amount within 24 hours
 }
-</code></pre></div><h4 id='stream-name-3'>Stream Name</h4>
+</code></pre></div><h3 id='stream-name-3'>Stream Name</h3>
 <p><code>&lt;symbol&gt;@ticker</code>, eg:  <code>88066@ticker</code></p>
-<h3 id='ticker-information-of-all-symbols-in-the-whole-market'><strong>Ticker information of all symbols in the whole market</strong></h3>
+<h2 id='ticker-information-of-all-symbols-in-the-whole-market'><strong>Ticker information of all symbols in the whole market</strong></h2>
 <p>Streamlined ticker information in the last 24 hours refreshed by Symbol</p>
-<h4 id='stream-name-4'>Stream Name</h4>
+<h3 id='stream-name-4'>Stream Name</h3>
 <p><code>!@ticker</code></p>
 
 <blockquote>
@@ -2403,7 +2629,7 @@ Note: The request parameters and request body are not sorted but directly splice
         ...
     ]
 }
-</code></pre></div><h3 id='limited-level-depth-information'><strong>Limited level depth information</strong></h3>
+</code></pre></div><h2 id='depth-information'><strong>Depth information</strong></h2>
 <p>Push limited level depth information every second or every 100ms. </p>
 
 <blockquote>
@@ -2431,13 +2657,13 @@ Note: The request parameters and request body are not sorted but directly splice
     ]
   ]
 }
-</code></pre></div><h4 id='stream-names'>Stream Names</h4>
+</code></pre></div><h3 id='stream-names'>Stream Names</h3>
 <p><code>&lt;symbol&gt;@depth@&lt;levels&gt;</code></p>
 
 <p>eg:  <code>88066@depth@50</code></p>
-<h4 id='levels-optional-values'>levels optional values</h4>
+<h3 id='levels-optional-values'>levels optional values</h3>
 <p>Levels indicates the levels of the buy or sell orders, and 5/10/20/50/100 level can be selected.</p>
-<h2 id='user-private-data-channel'><strong>User private data channel</strong></h2><h3 id='login'><strong>Login</strong></h3>
+<h2 id='login'><strong>Login</strong></h2>
 <p>Specify subscription data when logging in</p>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "op": "LOGIN",
@@ -2452,7 +2678,7 @@ Note: The request parameters and request body are not sorted but directly splice
     }
     "id": 2
 }
-</code></pre></div><h3 id='account'><strong>Account</strong></h3>
+</code></pre></div><h2 id='account'><strong>Account</strong></h2>
 <p>Stream Name: <code>&lt;currency&gt;@account</code>, or <code>!@account</code> all currency</p>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "accountId": 12,
@@ -2462,7 +2688,7 @@ Note: The request parameters and request body are not sorted but directly splice
     "timestamp": 1602493840  // unit: s
 }
 
-</code></pre></div><h3 id='closing'><strong>Closing</strong></h3>
+</code></pre></div><h2 id='closing-order'><strong>Closing order</strong></h2>
 <p>Stream Name: <code>&lt;symbol&gt;@order</code>, or <code>!@order</code> all symbol&#39;s</p>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     // increment

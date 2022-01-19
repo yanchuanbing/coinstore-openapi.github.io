@@ -434,10 +434,31 @@
                     <a href="#61d816b5c6" class="toc-h2 toc-link" data-title="实时订阅/取消数据流"><strong>实时订阅/取消数据流</strong></a>
                   </li>
                   <li>
-                    <a href="#edf11a92a0" class="toc-h2 toc-link" data-title="公共行情频道"><strong>公共行情频道</strong></a>
+                    <a href="#04e6f7872c" class="toc-h2 toc-link" data-title="逐笔交易"><strong>逐笔交易</strong></a>
                   </li>
                   <li>
-                    <a href="#050d3ff583" class="toc-h2 toc-link" data-title="用户私有数据频道"><strong>用户私有数据频道</strong></a>
+                    <a href="#k-streams" class="toc-h2 toc-link" data-title="K线 Streams"><strong>K线 Streams</strong></a>
+                  </li>
+                  <li>
+                    <a href="#k-request" class="toc-h2 toc-link" data-title="K线 Request"><strong>K线 Request</strong></a>
+                  </li>
+                  <li>
+                    <a href="#symbol-ticker" class="toc-h2 toc-link" data-title="按 Symbol 的 Ticker信息"><strong>按 Symbol 的 Ticker信息</strong></a>
+                  </li>
+                  <li>
+                    <a href="#symbol-ticker-2" class="toc-h2 toc-link" data-title="全市场所有Symbol 的 Ticker信息"><strong>全市场所有Symbol 的 Ticker信息</strong></a>
+                  </li>
+                  <li>
+                    <a href="#b98f66bf84" class="toc-h2 toc-link" data-title="深度信息"><strong>深度信息</strong></a>
+                  </li>
+                  <li>
+                    <a href="#0de2270bc5" class="toc-h2 toc-link" data-title="登陆"><strong>登陆</strong></a>
+                  </li>
+                  <li>
+                    <a href="#2f616316f3" class="toc-h2 toc-link" data-title="账户"><strong>账户</strong></a>
+                  </li>
+                  <li>
+                    <a href="#500beb389a" class="toc-h2 toc-link" data-title="成交订单"><strong>成交订单</strong></a>
                   </li>
                   <li>
                     <a href="#42702c21cd" class="toc-h2 toc-link" data-title="字典"><strong>字典</strong></a>
@@ -470,7 +491,7 @@
                   </li>
               </ul>
           </li>
-        <li class="create_api"><a target="_blank" href="https://www.wbf.live/personal/apiManagement">创建 API Key</a></li>
+        <li class="create_api"><a target="_blank" href="https://www.coinstore.com/#/user/bindAuth/ManagementAPI">创建 API Key</a></li>
       </ul>
     </div>
     <div class="page-wrapper">
@@ -601,9 +622,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 - X-CS-EXPIRES：您发出请求的时间戳。如：1629291143107。
 - X-CS-SIGN：签名计算得出的字符串，用于确保签名有效和未被篡改。</p>
 
-<blockquote>
-<p>注意：X-CS-APIKEY ，X-CS-EXPIRES ，X-CS-SIGN 三个参数都在请求头中，另外需要设置&#39;Content-Type&#39;:&#39;application/json&#39;。</p>
-</blockquote>
+<p><strong>注意：X-CS-APIKEY ，X-CS-EXPIRES ，X-CS-SIGN 三个参数都在请求头中，另外需要设置&#39;Content-Type&#39;:&#39;application/json&#39;。</strong></p>
 <h2 id='3ee119c599'><span id="a3">返回格式</span></h2>
 <p>所有的接口返回都是JSON格式。在JSON的第一层有3个字段code，msg和data。前两个字段表示请求状态和描述，实际的业务数据在data字段里。</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -773,7 +792,30 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <blockquote>
 <p>响应</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUFFYUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"baseCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUFFY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quoteCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642402062196</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1138204</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.1E-10</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cumAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cumQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"leavesQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"clOrdId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1b2ea5e00a84b888d419cb73f8eb203"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1722183748419690"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBMITTED"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ordType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='1f9ac54b15-2'>请求参数</h3>
 <table><thead>
 <tr>
@@ -904,7 +946,34 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <blockquote>
 <p>响应</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3984987</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"remainingQty"</span><span class="p">:</span><span class="w"> </span><span class="mi">0E-18</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"matchRole"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"feeCurrencyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"acturalFeeRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.002000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1138204</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"baseCurrencyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"quoteCurrencyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"execQty"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.900000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"orderState"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"matchId"</span><span class="p">:</span><span class="w"> </span><span class="mi">258338866</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1717384395096065</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"execAmt"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.887161000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"selfDealingQty"</span><span class="p">:</span><span class="w"> </span><span class="mi">0E-18</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">11523732</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.081800000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"matchTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1637825389</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"seq"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='1f9ac54b15-3'>请求参数</h3>
 <table><thead>
 <tr>
@@ -1047,6 +1116,28 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <ul>
 <li>POST /trade/order/cancel</li>
 </ul>
+
+<blockquote>
+<p>请求体
+<code>json
+{
+  &quot;ordId&quot;: 1722183748419690,
+  &quot;symbol&quot;:&quot;LUFFYUSDT&quot;
+}
+</code></p>
+
+<p>响应
+<code>json
+{
+    &quot;code&quot;: 0,
+    &quot;data&quot;: {
+        &quot;clientOrderId&quot;: &quot;b1b2ea5e00a84b888d419cb73f8eb203&quot;,
+        &quot;state&quot;: &quot;CANCELED&quot;,
+        &quot;ordId&quot;: 1722183748419690
+    }
+}
+</code></p>
+</blockquote>
 <h3 id='1f9ac54b15-4'>请求参数</h3>
 <table><thead>
 <tr>
@@ -1107,6 +1198,22 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <ul>
 <li>POST /trade/order/cancelAll</li>
 </ul>
+
+<blockquote>
+<p>请求体
+<code>json
+{
+  &quot;symbol&quot;:&quot;LUFFYUSDT&quot;
+}
+</code></p>
+
+<p>响应
+<code>json
+{
+    &quot;code&quot;: 0
+}
+</code></p>
+</blockquote>
 <h3 id='1f9ac54b15-5'>请求参数</h3>
 <table><thead>
 <tr>
@@ -1144,7 +1251,29 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tbody></table>
 <h2 id='df83685cc8'><span id="6">创建订单</span></h2>
 <p>创建订单</p>
-<h3 id='http-6'>HTTP请求:</h3>
+
+<blockquote>
+<p>请求体
+<code>json
+{
+    &quot;symbol&quot;: &quot;LUFFYUSDT&quot;,
+    &quot;side&quot;: &quot;BUY&quot;,
+    &quot;ordType&quot;: &quot;LIMIT&quot;,
+    &quot;ordPrice&quot;: 9.2e-10,
+    &quot;ordQty&quot;: &quot;12323231243&quot;,
+    &quot;timestamp&quot;: 1642407805168
+}
+</code></p>
+
+<p>响应</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="mi">11594964764657880</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-6'>HTTP请求:</h3>
 <ul>
 <li>POST /trade/order/place</li>
 </ul>
@@ -1212,17 +1341,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>时间戳</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>响应</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"order_id"</span><span class="p">:</span><span class="mi">11594964764657880</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='2213f4c32f-6'>响应数据</h3>
+<h3 id='2213f4c32f-6'>响应数据</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1253,7 +1372,46 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tbody></table>
 <h2 id='77aaf08979'><span id="13">批量下单</span></h2>
 <p>批量下单</p>
-<h3 id='http-7'>HTTP请求:</h3>
+
+<blockquote>
+<p>请求体
+<code>json
+{
+    &quot;symbol&quot;: &quot;LUFFYUSDT&quot;,
+    &quot;orders&quot;: [
+        {
+            &quot;side&quot;: &quot;BUY&quot;,
+            &quot;ordType&quot;: &quot;LIMIT&quot;,
+            &quot;ordPrice&quot;: 9.2e-10,
+            &quot;ordQty&quot;: &quot;1&quot;
+        },
+        {
+            &quot;side&quot;: &quot;BUY&quot;,
+            &quot;ordType&quot;: &quot;LIMIT&quot;,
+            &quot;ordPrice&quot;: 9.2e-10,
+            &quot;ordQty&quot;: &quot;1&quot;
+        }
+    ],
+    &quot;timestamp&quot;: 1642574848089
+}
+</code></p>
+
+<p>响应</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"ordId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1722364585836585</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"clOrdId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c09e68b49a724c8a95ef76526bf6bc05"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"ordId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1722364585836586</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"clOrdId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0344830639d4f6d94be4110bf98c759"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-7'>HTTP请求:</h3>
 <ul>
 <li>POST /trade/order/placeBatch</li>
 </ul>
@@ -1377,7 +1535,29 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <ul>
 <li>POST trade/order/cancelBatch</li>
 </ul>
-<h3 id='1f9ac54b15-8'>请求参数</h3>
+
+<blockquote>
+<p>请求体
+<code>json
+{
+  &quot;orderIds&quot;: [1722364585836586,1722364585836585],
+  &quot;symbol&quot;:&quot;LUFFYUSDT&quot;
+}
+</code></p>
+
+<p>响应</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">1722364585836586</span><span class="p">,</span><span class="w">
+            </span><span class="mi">1722364585836585</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"reject"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='1f9ac54b15-8'>请求参数</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1399,12 +1579,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>[1,2,3]</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>响应</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
-</span></code></pre></div><h3 id='2213f4c32f-8'>响应数据</h3>
+<h3 id='2213f4c32f-8'>响应数据</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1440,16 +1615,39 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tbody></table>
 <h2 id='8b5706bd64'><span id="14">获取订单信息</span></h2>
 <p>获取订单信息</p>
-<h3 id='http-9'>HTTP请求:</h3>
-<ul>
-<li>GET trade/order/orderInfo</li>
-</ul>
 
 <blockquote>
 <p>响应</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
-</span></code></pre></div><h3 id='2eb6f47757'>请求参数:</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"baseCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUFFY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quoteCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUFFYUSDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642574848089</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1138204</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ordId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1722364585836586</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"clOrdId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d0344830639d4f6d94be4110bf98c759"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ordType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ordState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELED"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ordPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000092"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ordQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ordAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000092"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cumAmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cumQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"leavesQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"avgPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"feeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LUFFY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-9'>HTTP请求:</h3>
+<ul>
+<li>GET trade/order/orderInfo</li>
+</ul>
+<h3 id='2eb6f47757'>请求参数:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1596,7 +1794,32 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <ul>
 <li>GET /v1/market/tickers</li>
 </ul>
-<h3 id='2eb6f47757-2'>请求参数:</h3>
+
+<blockquote>
+<p>响应</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bidSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"454.2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"askSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"542.6"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">41723</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24121351.85"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693799.10798965"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.067998"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.071842"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.072453"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.067985"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0679"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0681"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRXUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='2eb6f47757-2'>请求参数:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1700,34 +1923,46 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>卖一量</td>
 </tr>
 </tbody></table>
+<h2 id='cf51bf082d'><span id="7">获取深度</span></h2>
+<p>获取深度数据</p>
 
 <blockquote>
 <p>响应</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticker"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"bidSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"454.2"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"askSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"542.6"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">41723</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24121351.85"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1693799.10798965"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.067998"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.071842"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.072453"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.067985"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0679"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0681"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRXUSDT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4@depth@5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"41995"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.018144"</span><span class="p">,</span><span class="w">
+                </span><span class="mi">-1</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"41995.5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.008279"</span><span class="p">,</span><span class="w">
+                </span><span class="mi">-1</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"b"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"41991.5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.548567"</span><span class="p">,</span><span class="w">
+                </span><span class="mi">1</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"41991"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"0.013168"</span><span class="p">,</span><span class="w">
+                </span><span class="mi">1</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='cf51bf082d'><span id="7">获取深度</span></h2>
-<p>获取深度数据</p>
-<h3 id='http-11'>HTTP请求:</h3>
+</span></code></pre></div><h3 id='http-11'>HTTP请求:</h3>
 <ul>
 <li>GET /v1/market/depth/<symbol></li>
 </ul>
@@ -1807,46 +2042,36 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>买盘，[${价格}, ${数量}, ${方向}] ]</td>
 </tr>
 </tbody></table>
+<h2 id='k'><span id="7">获取K线</span></h2>
+<p>获取交易K线</p>
 
 <blockquote>
 <p>响应</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4@depth@5"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"41995"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"0.018144"</span><span class="p">,</span><span class="w">
-                </span><span class="mi">-1</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"41995.5"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"0.008279"</span><span class="p">,</span><span class="w">
-                </span><span class="mi">-1</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"b"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"41991.5"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"0.548567"</span><span class="p">,</span><span class="w">
-                </span><span class="mi">1</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"41991"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"0.013168"</span><span class="p">,</span><span class="w">
-                </span><span class="mi">1</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+        </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4@kline@week_1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641744059</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98630624.103511453"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"week_1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641744000</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"firstTradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14547884</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"lastTradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14799534</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2307.742209"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43196.0002"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41628.2582"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52250.3884"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39654.039"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='k'><span id="7">获取K线</span></h2>
-<p>获取交易K线</p>
-<h3 id='http-12'>HTTP请求:</h3>
+</span></code></pre></div><h3 id='http-12'>HTTP请求:</h3>
 <ul>
 <li>GET /v1/market/kline/<symbol></li>
 </ul>
@@ -1977,40 +2202,34 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>最低成交价</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>响应</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4@kline@week_1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"item"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641744059</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98630624.103511453"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"week_1"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641744000</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"firstTradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14547884</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"lastTradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14799534</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2307.742209"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43196.0002"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41628.2582"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"52250.3884"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39654.039"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='586cd0d257'><span id="7">最新成交</span></h2>
+<h2 id='586cd0d257'><span id="7">最新成交</span></h2>
 <p>获取最新成交记录</p>
 <h3 id='http-13'>HTTP请求:</h3>
 <ul>
 <li>GET /v1/market/trade/<symbol></li>
 </ul>
-<h3 id='2eb6f47757-5'>请求参数:</h3>
+
+<blockquote>
+<p>响应</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4@trade"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642495112</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.011102"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41732.3305"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14867136</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"takerSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">14867136</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642495112000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='2eb6f47757-5'>请求参数:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2106,30 +2325,29 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>末一笔成交价</td>
 </tr>
 </tbody></table>
+<h2 id='1a3223149b'><span id="7">获取所有交易对最新价格</span></h2>
+<p>获取所有交易对最新价格</p>
 
 <blockquote>
 <p>响应</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4@trade"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642495112</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.011102"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41732.3305"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"tradeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14867136</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"takerSide"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">14867136</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1642495112000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"instrumentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
- </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='1a3223149b'><span id="7">获取所有交易对最新价格</span></h2>
-<p>获取所有交易对最新价格</p>
-<h3 id='http-14'>HTTP请求:</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-14'>HTTP请求:</h3>
 <ul>
 <li>GET /v1/ticker/price</li>
 </ul>
@@ -2150,10 +2368,8 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </tr>
 </tbody></table>
 
-<blockquote>
-<p>默认：查询所有交易对
-查询指定交易对: /v1/ticker/price;symbol=BTCUSDT,EOSUSDT,AUTUSDT `</p>
-</blockquote>
+<p><strong>默认：查询所有交易对</strong>
+<strong>查询指定交易对: /v1/ticker/price;symbol=BTCUSDT,EOSUSDT,AUTUSDT</strong></p>
 <h3 id='f3324f4e0c-6'>响应数据:</h3>
 <table><thead>
 <tr>
@@ -2193,27 +2409,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>价格</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>响应</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AUTUSDT"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='websocket'>Websocket行情数据</h1><h2 id='36d1a17821'><strong>简介</strong></h2><h3 id='url'>接入URL</h3>
+<h1 id='websocket'>Websocket行情数据</h1><h2 id='36d1a17821'><strong>简介</strong></h2><h3 id='url'>接入URL</h3>
 <p>wss://ws.coinstore.com/s/ws</p>
 
 <ol>
@@ -2358,11 +2554,20 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 
 <p>NOTE:  所有返回数据的时间，单位都是 <code>秒</code></p>
 </blockquote>
-<h2 id='edf11a92a0'><strong>公共行情频道</strong></h2><h3 id='04e6f7872c'><strong>逐笔交易</strong></h3>
+<h2 id='04e6f7872c'><strong>逐笔交易</strong></h2>
 <blockquote>
 <p>Send</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code> {"op":"SUB","channel":["28@trade"],"param":{"size":2},"id":1}
+<div class="highlight"><pre class="highlight plaintext"><code> {
+    "op": "SUB",
+    "channel": [
+        "28@trade"
+    ],
+    "param": {
+        "size": 2
+    },
+    "id": 1
+ }
 </code></pre></div>
 <blockquote>
 <p>Receive全量数据：</p>
@@ -2412,13 +2617,13 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
   "ts": 1612685313400, // 单位 ms
   "seq": 9935         // 唯一自增序号
 }
-</code></pre></div><h4 id='stream-name'>Stream Name</h4>
+</code></pre></div><h3 id='stream-name'>Stream Name</h3>
 <p><code>&lt;symbol&gt;@trade</code></p>
 
 <p>eg: <code>88066@trade</code></p>
-<h4 id='param'>param</h4>
+<h3 id='param'>param</h3>
 <p><code>param&quot;:{&quot;size&quot;:2}</code></p>
-<h3 id='k-streams'><strong>K线 Streams</strong></h3>
+<h2 id='k-streams'><strong>K线 Streams</strong></h2>
 <p>K线stream逐秒推送所请求的K线种类(最新一根K线)的更新。</p>
 
 <blockquote>
@@ -2444,11 +2649,11 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
     "volume": "1000",    // 这根K线期间成交量
     "amount": "1.0000",  // 这根K线期间成交额
 }
-</code></pre></div><h4 id='stream-name-2'>Stream Name</h4>
+</code></pre></div><h3 id='stream-name-2'>Stream Name</h3>
 <p><code>&lt;symbol&gt;@kline@&lt;interval&gt;</code></p>
 
 <p>eg: <code>88066@kline@min_1</code></p>
-<h4 id='interval'>interval 可选值</h4>
+<h3 id='interval'>interval 可选值</h3>
 <ul>
 <li>min_1</li>
 <li>min_5</li>
@@ -2460,13 +2665,21 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <li>day_1</li>
 <li>week_1</li>
 </ul>
-<h3 id='k-request'><strong>K线 Request</strong></h3>
+<h2 id='k-request'><strong>K线 Request</strong></h2>
 <p>请求历史k线</p>
 
 <blockquote>
 <p>Send</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code> {"op":"REQ","param":{"channel":"4@kline@min_1","endTime":null,"limit":200},"id":1}
+<div class="highlight"><pre class="highlight plaintext"><code> {
+    "op": "REQ",
+    "param": {
+        "channel": "4@kline@min_1",
+        "endTime": null,
+        "limit": 200
+    },
+    "id": 1
+ }
 </code></pre></div>
 <blockquote>
 <p>Receive</p>
@@ -2492,13 +2705,13 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
         ...
     ]
 }
-</code></pre></div><h4 id='param-2'>param</h4>
+</code></pre></div><h3 id='param-2'>param</h3>
 <ul>
 <li><code>channel</code>: <code>&lt;symbol&gt;@kline@&lt;interval&gt;</code> ,eg:88066@kline@min_1</li>
 <li><code>limit</code>: 最大不超过 200</li>
 <li><code>endTime</code>: 可选，exclusive</li>
 </ul>
-<h3 id='symbol-ticker'><strong>按 Symbol 的 Ticker信息</strong></h3>
+<h2 id='symbol-ticker'><strong>按 Symbol 的 Ticker信息</strong></h2>
 <p>按Symbol刷新的最近24小时精简 ticker 信息</p>
 
 <blockquote>
@@ -2519,11 +2732,11 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
   "volume": "10000",       // 24小时内成交量
   "amount": "18"          // 24小时内成交额
 }
-</code></pre></div><h4 id='stream'>Stream 名称</h4>
+</code></pre></div><h3 id='stream'>Stream 名称</h3>
 <p><code>&lt;symbol&gt;@ticker</code>, eg:  <code>88066@ticker</code></p>
-<h3 id='symbol-ticker-2'><strong>全市场所有Symbol 的 Ticker信息</strong></h3>
+<h2 id='symbol-ticker-2'><strong>全市场所有Symbol 的 Ticker信息</strong></h2>
 <p>按Symbol刷新的最近24小时精简ticker信息</p>
-<h4 id='stream-2'>Stream 名称:</h4>
+<h3 id='stream-2'>Stream 名称:</h3>
 <p><code>!@ticker</code></p>
 
 <blockquote>
@@ -2561,7 +2774,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
         ...
     ]
 }
-</code></pre></div><h3 id='3b1eaace8a'><strong>有限档深度信息</strong></h3>
+</code></pre></div><h2 id='b98f66bf84'><strong>深度信息</strong></h2>
 <p>每秒或每100毫秒推送有限档深度信息。</p>
 
 <blockquote>
@@ -2589,13 +2802,13 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
     ]
   ]
 }
-</code></pre></div><h4 id='stream-names'>Stream Names</h4>
+</code></pre></div><h3 id='stream-names'>Stream Names</h3>
 <p><code>&lt;symbol&gt;@depth@&lt;levels&gt;</code> </p>
 
 <p>eg:  <code>88066@depth@50</code></p>
-<h4 id='levels'>levels 可选值</h4>
+<h3 id='levels'>levels 可选值</h3>
 <p>levels表示几档买卖单信息, 可选 5/10/20/50/100档</p>
-<h2 id='050d3ff583'><strong>用户私有数据频道</strong></h2><h3 id='0de2270bc5'><strong>登陆</strong></h3>
+<h2 id='0de2270bc5'><strong>登陆</strong></h2>
 <p>登陆时可以同时指定订阅数据</p>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "op": "LOGIN",
@@ -2610,7 +2823,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
     }
     "id": 2
 }
-</code></pre></div><h3 id='2f616316f3'><strong>账户</strong></h3>
+</code></pre></div><h2 id='2f616316f3'><strong>账户</strong></h2>
 <p>Stream Name: <code>&lt;currency&gt;@account</code>, or <code>!@account</code> all currency</p>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     "accountId": 12,
@@ -2620,7 +2833,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
     "timestamp": 1602493840  // 单位 s
 }
 
-</code></pre></div><h3 id='46ef91185e'><strong>成交</strong></h3>
+</code></pre></div><h2 id='500beb389a'><strong>成交订单</strong></h2>
 <p>Stream Name: <code>&lt;symbol&gt;@order</code>, or <code>!@order</code> all symbol&#39;s</p>
 <div class="highlight"><pre class="highlight plaintext"><code>{
     // increment
@@ -2697,6 +2910,8 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </ul>
 <h1 id='other-api'>Other API</h1><h2 id='introduction'>Introduction</h2>
 <p>This document covers the API endpoint details including spot exchange API and it was full public access. The access address host is https://api.coinstore.com/</p>
+<h2 id='asset-list'><span id="114">Asset list</span></h2>
+<p>The assets endpoint is to provide a detailed summary for each currency available on the exchange.</p>
 
 <blockquote>
 <p>响应</p>
@@ -2717,9 +2932,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
      }
  }
 }
-</code></pre></div><h2 id='asset-list'><span id="114">Asset list</span></h2>
-<p>The assets endpoint is to provide a detailed summary for each currency available on the exchange.</p>
-<h3 id='request'>Request</h3>
+</code></pre></div><h3 id='request'>Request</h3>
 <ul>
 <li>GET  /v2/public/assets</li>
 </ul>
