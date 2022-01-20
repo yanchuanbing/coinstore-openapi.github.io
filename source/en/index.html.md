@@ -844,7 +844,7 @@ Get depth data
  ```
  
 ### HTTP request:
-- GET /v1/market/depth/<symbol>
+- GET /v1/market/depth/{symbol}
 
 ### Request parameters:
 
@@ -900,7 +900,7 @@ Get trading K line
  ```
  
 ### HTTP request:
-- GET /v1/market/kline/<symbol>
+- GET /v1/market/kline/{symbol}
 
 ### Request parameters:
 
@@ -961,7 +961,7 @@ Get the latest trades record
   ```
   
 ### HTTP request:
-- GET /v1/market/trade/<symbol>
+- GET /v1/market/trade/{symbol}
 
 ### Request parameters:
 

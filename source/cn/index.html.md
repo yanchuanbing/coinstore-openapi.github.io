@@ -879,7 +879,7 @@ HTTP常见的错误码如下：
  ```
  
 ### HTTP请求: 
-- GET /v1/market/depth/<symbol>
+- GET /v1/market/depth/{symbol}
 
 ### 请求参数: 
 
@@ -935,7 +935,7 @@ HTTP常见的错误码如下：
  ```
  
 ### HTTP请求: 
-- GET /v1/market/kline/<symbol>
+- GET /v1/market/kline/{symbol}
 
 ### 请求参数: 
 
@@ -974,7 +974,7 @@ HTTP常见的错误码如下：
 获取最新成交记录
 
 ### HTTP请求: 
-- GET /v1/market/trade/<symbol>
+- GET /v1/market/trade/{symbol}
 
 > 响应
 
