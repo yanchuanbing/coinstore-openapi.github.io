@@ -1369,6 +1369,8 @@ HTTP常见的错误码如下：
 wss://ws-futures.coinstore.com/socket.io/?EIO=3&transport=websocket
 `
 ### 鉴权
+注：signature: 签名方式同restful
+
 ```
 [
     "auth",
@@ -1384,7 +1386,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&transport=websocket
     }
 ]
 ```
->注：signature: 签名方式同restful
+
 ### 订阅
 根据是否需要鉴权之后来进行业务topic的订阅，下面式是订阅的标准格式，在相关ws接口说明里有详细的说明
 
@@ -1457,27 +1459,27 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&transport=websocket
 |	indicator	|	SUB	|	获取行情数据	|	否	|
 |	match	|	SUB	|	获取当前委托、持仓、资产	|	是	|
 
-## socket推送
 
-### 获取K线
-#### 订阅topic: future_kline
->数据格式中的symbol值为：合约ID
+## 获取K线
 
-ranges的取值范围： 
-```
+### 订阅topic: future_kline
+数据格式中的symbol值为：合约ID
 
-** 1Min = 60000
-** 5Min = 300000
-** 15Min = 900000
-** 30Min = 1800000
-** 1Hour = 3600000
-** 4Hour = 14400000
-** 12Hour = 43200000
-** 1Day = 86400000
-** 1Week = 604800000
-```
+### ranges的取值范围： 
 
-消息订阅格式如下所示：
+* 1Min = 60000
+* 5Min = 300000
+* 15Min = 900000
+* 30Min = 1800000
+* 1Hour = 3600000
+* 4Hour = 14400000
+* 12Hour = 43200000
+* 1Day = 86400000
+* 1Week = 604800000
+
+
+> 消息订阅格式如下所示：
+
 ```
 {
     "header": {
@@ -1504,7 +1506,7 @@ ranges的取值范围：
 ```
 	
 
-#### 返回结构
+### 返回结构
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
@@ -1512,11 +1514,13 @@ ranges的取值范围：
 |range      | String    |  范围             |
 |lines      |object []  |    [ [${时间戳}, ${开市价格}, ${最高价格}, ${最低价格}, ${闭市价格}, ${成交量}] ]   |
 
-### 获取逐笔成交
-#### 订阅topic: future_tick
->数据格式中的symbol值为：合约ID
+## 获取逐笔成交
 
-消息订阅格式如下所示：
+#### 订阅topic: future_tick
+数据格式中的symbol值为：合约ID
+
+> 消息订阅格式如下所示：
+
 ```
 {
     "header": {
@@ -1539,18 +1543,20 @@ ranges的取值范围：
 }
 ```
 
-#### 返回结构
+### 返回结构
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
 |contractId |long       |合约ID               |
 |trades      |object []  |    [ [${时间戳}, ${成交价格}, ${成交数量}, ${方向(1 多； 2 空)}] ] ]   |
 
-### 获取行情快照买卖档位
-#### 订阅topic: future_snapshot_depth
->数据格式中的symbol值为：合约ID
+## 获取行情快照买卖档位
 
-消息订阅格式如下所示：
+### 订阅topic: future_snapshot_depth
+数据格式中的symbol值为：合约ID
+
+> 消息订阅格式如下所示：
+
 ```
 {
     "header": {
@@ -1573,7 +1579,7 @@ ranges的取值范围：
 }
 ```
 
-#### 返回结构
+### 返回结构
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
@@ -1581,11 +1587,13 @@ ranges的取值范围：
 |bids      |object []  | 买档位数据列表   [ [${价格}, ${数量}] ] ]   |
 |asks      |object []  |  卖档位数据列表  [ [${价格}, ${数量}] ] ]   |
 
-### 获取行情快照基础数据
-#### 订阅topic: indicator
->数据格式中的symbol值为：合约ID
+## 获取行情快照基础数据
 
-消息订阅格式如下所示：
+### 订阅topic: indicator
+数据格式中的symbol值为：合约ID
+
+> 消息订阅格式如下所示：
+
 ```
 {
     "header": {
@@ -1608,7 +1616,7 @@ ranges的取值范围：
 }
 ```
 
-#### 返回结构
+### 返回结构
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
@@ -1616,11 +1624,11 @@ ranges的取值范围：
 | markets |List<Market>|  行情概况 |
 | account | List<Account>|  私有数据  |
 
->注意：未登录时 accounts为null
->注意：订阅时 params.symbols 为空，则 indicators 为 null
->注意：topic默认频率 1s, markets 默认频率 3s，即每3秒有2次推送消息 markets 为null
+**注意：未登录时 accounts为null**
+**注意：订阅时 params.symbols 为空，则 indicators 为 null**
+**注意：topic默认频率 1s, markets 默认频率 3s，即每3秒有2次推送消息 markets 为null**
 
-##### Indicator
+#### Indicator
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
@@ -1637,7 +1645,7 @@ ranges的取值范围：
 | fr| BigDecimal| 资金费率 |
 | pfr| BigDecimal| 预测资金费率 |
 
-##### Market
+#### Market
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
@@ -1646,7 +1654,7 @@ ranges的取值范围：
 | pcr |  BigDecimal|24小时涨跌幅率 |
 | tv |  Long|  24小时成交量 |
 | tt| Long| 24小时成交额 |
-##### Account
+#### Account
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
@@ -1655,7 +1663,7 @@ ranges的取值范围：
 | assets| List<Asset>| 资产信息 |
 | posis| List<Posi>| 仓位信息  |
 
-##### Asset
+#### Asset
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
@@ -1663,7 +1671,7 @@ ranges的取值范围：
 | avail| BigDecimal| 可用余额 |
 | upnl| BigDecimal| 全仓未实现盈亏 |
 
-##### Posi
+#### Posi
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
@@ -1672,12 +1680,14 @@ ranges的取值范围：
 | upnl| BigDecimal| 未实现盈亏 |
 | adl| int| ADL等级 |
 | mp|  BigDecimal| 标记价 |
-* 注意：pid为 3012推送仓位的id
 
-### 获取私有数据
-#### 订阅topic: match
+**注意：pid为 3012推送仓位的id**
 
-消息订阅格式如下所示：
+## 获取私有数据
+### 订阅topic: match
+
+> 消息订阅格式如下所示：
+
 ```
 {
     "header": {
@@ -1693,9 +1703,9 @@ ranges的取值范围：
 }
 ```
 
-#### 返回结构
+### 返回结构
 
-##### 资产
+#### 资产
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
@@ -1708,7 +1718,7 @@ ranges的取值范围：
 |initMargin      |double  |  已占用保证金  |
 |closeProfitLoss      |double  |  已实现盈亏  |
 
-#####持仓
+####持仓
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
@@ -1729,7 +1739,7 @@ ranges的取值范围：
 | ├─liquidationPrice      |double  |  预估强平价  |
 | ├─unRealizedProfit      |double  |  未实现盈亏  |
 
-#####持仓配置
+####持仓配置
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|
@@ -1740,7 +1750,7 @@ ranges的取值范围：
 | ├─leverage      |int  |  杠杆倍数, 0为自动模式  |
 | ├─isolated      |boolean  |  保证金类型 默认 false 全仓 |
 
-#####当前委托
+####当前委托
 
 |    code    |  type   |      comment         |
 |------------|---------|----------------------|

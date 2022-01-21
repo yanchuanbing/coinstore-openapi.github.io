@@ -30,7 +30,7 @@ spot_goods_active: active
 
 spot_goods_url: 'index.html'
 
-contract: Perpetual Contract
+contract: Perpetual Swap
 
 contract_url: 'futures.html'
 
@@ -190,35 +190,35 @@ Example 3: Mixed Request
 
 ## <span id="a3"> Request Format </span>
 All API requests are restful, and there are only two methods at present: GET and POST.
-- GET request: all parameters are in path parameters;
-- POST request: Parameters can be set in the path, and they can be sent in JSON format to the request body. If there are no parameters, {} needs to be sent.
+- GET request: All parameters are in path parameters
+- POST request: Parameters can be set in the path, and they can be sent in JSON format to the request body. If there are no parameters,{} needs to be sent
 
 A licit request consists of the following parts:
-- method request address: i.e. the access server address api.coinstore.com. https://api.coinstore.com/api/trade/order/place - required and optional parameters.
+- method request address: Access server address api.coinstore.com，e.g. https://api.coinstore.com/api/trade/order/place
 - Required and optional parameters.
 - X-CS-APIKEY: API Key applied by the user.
-- X-CS-EXPIRES： Timestamp when you issued the request. For example: 1629291143107.
+- X-CS-EXPIRES: Timestamp when you issued the request. For example:1629291143107.
 - X-CS-SIGN: A string calculated from the signature, which is used to ensure that the signature is valid and not tampered with.
 
 **Note: X-CS-APIKEY, X-CS-EXPIRES and X-CS-SIGN are all in the request header, and 'Content-Type':'application/json' 
 needs to be set.**
 
-## <span id="a3"> Return Format </span>
+## <span id="a3">Return Format</span>
 
 All interface returns are in JSON format. There are three fields in the first layer of JSON: code, msg and data. The first two fields indicate the request status and description, and the actual business data is in the data field.
 
 ```json
 {
     "code": "0",
-    "message": "suc",
+    "msg": "suc",
     "data": // per API response data in nested JSON object
 }
 ```
 The following is an example of a return format:
 
-| field | data type  | description       |
+| field| data type  | description       |
 | ---- | -----  | ---------- |
-| code | string | return status |
+| code | int | 0：success, other: failure     |
 | message  | string | status or error description |
 | data | object | transaction data  |
 
@@ -236,7 +236,7 @@ Common error codes for HTTP are as follows:
 
 - 429 too many visits
 
-- 500 internal server error –
+- 500 internal server error
 
 **Transaction Status Code**
 
