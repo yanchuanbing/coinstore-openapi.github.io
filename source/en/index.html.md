@@ -1,4 +1,47 @@
-﻿# Introduction
+﻿---
+title: Coinstore官方API文档
+
+language_tabs: # must be one of https://git.io/vQNgJ
+  
+
+toc_footers:
+
+includes:
+  
+language: 简体中文
+
+other_language: English
+
+url: /en
+
+present_url: /cn
+
+active: active
+
+other_active:
+
+menu: 菜单
+
+create_api: 创建 API Key
+
+spot_goods: 现货
+
+spot_goods_active: active
+
+spot_goods_url: 'index.html'
+
+contract: 永续合约
+
+contract_url: 'futures.html'
+
+searchText: 搜索
+
+search: true
+
+code_clipboard: true
+---
+
+# Introduction
 
 Welcome to Coinstore Developer Documentation. It is the only official documentation of Coinstore API.
 

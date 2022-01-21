@@ -8,7 +8,7 @@ toc_footers:
 
 includes:
   
-language: 简体中文111
+language: 简体中文
 
 other_language: English
 
