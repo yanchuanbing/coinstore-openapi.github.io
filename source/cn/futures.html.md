@@ -12,9 +12,9 @@ language: 简体中文
 
 other_language: English
 
-present_url: /cn
-
 url: /en
+
+present_url: /cn
 
 active: active
 
