@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Coinstore官方API文档</title>
+    <title>Coinstore official API document</title>
     <link href="../images/favicon-ab07c47e.ico" rel="icon" type="image/ico">
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -295,12 +295,12 @@
         <ul>
           <li class="">
               <a href="index.html">
-                现货
+                Spot
               </a>
           </li>
           <li class="active">
             <a href="futures.html">
-              永续合约
+              Perpetual Swap
             </a>
           </li>
         </ul>
@@ -329,187 +329,199 @@
     </a>
     <div class="toc-wrapper">
         <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="搜索">
+          <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#45fa4e00db" class="toc-h1 toc-link" data-title="介绍">介绍</a>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#9e033de16f" class="toc-h1 toc-link" data-title="快速开始">快速开始</a>
+            <a href="#quick-start" class="toc-h1 toc-link" data-title="Quick Start">Quick Start</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#c1ae0a8486" class="toc-h2 toc-link" data-title="接入准备">接入准备</a>
+                    <a href="#access-preparation" class="toc-h2 toc-link" data-title="Access Preparation">Access Preparation</a>
                   </li>
                   <li>
-                    <a href="#5076603a3e" class="toc-h2 toc-link" data-title="接口类型">接口类型</a>
+                    <a href="#interface-type" class="toc-h2 toc-link" data-title="Interface Type">Interface Type</a>
                   </li>
                   <li>
-                    <a href="#urls" class="toc-h2 toc-link" data-title="接入URLs">接入URLs</a>
+                    <a href="#access-urls" class="toc-h2 toc-link" data-title="Access URLs">Access URLs</a>
                   </li>
                   <li>
-                    <a href="#586f3bcbf4" class="toc-h2 toc-link" data-title="签名认证"><span id="a4">签名认证</span></a>
+                    <a href="#signature-authentication" class="toc-h2 toc-link" data-title=" Signature Authentication "><span id="a4"> Signature Authentication </span></a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#api" class="toc-h1 toc-link" data-title="API接入说明">API接入说明</a>
+            <a href="#api-access-instructions" class="toc-h1 toc-link" data-title="API Access Instructions">API Access Instructions</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#5b7654a66a" class="toc-h2 toc-link" data-title="请求格式"><span id="a3">请求格式</span></a>
+                    <a href="#request-format" class="toc-h2 toc-link" data-title=" Request Format "><span id="a3"> Request Format </span></a>
                   </li>
                   <li>
-                    <a href="#3ee119c599" class="toc-h2 toc-link" data-title="返回格式"><span id="a3">返回格式</span></a>
+                    <a href="#return-format" class="toc-h2 toc-link" data-title="Return Format"><span id="a3">Return Format</span></a>
                   </li>
                   <li>
-                    <a href="#a38a81c9d5" class="toc-h2 toc-link" data-title="错误信息">错误信息</a>
+                    <a href="#error-message" class="toc-h2 toc-link" data-title="Error Message">Error Message</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#41654e0268" class="toc-h1 toc-link" data-title="基础信息">基础信息</a>
+            <a href="#basic-information" class="toc-h1 toc-link" data-title="Basic Information">Basic Information</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#f7ef3ab8ca" class="toc-h2 toc-link" data-title="币种币对信息"><span id="1">币种币对信息</span></a>
+                    <a href="#currency-amp-contract-information" class="toc-h2 toc-link" data-title="Currency &amp; contract information"><span id="1">Currency &amp; contract information</span></a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#2a0d0be224" class="toc-h1 toc-link" data-title="账户相关">账户相关</a>
+            <a href="#account-related" class="toc-h1 toc-link" data-title="Account Related">Account Related</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#7c2f2901d7" class="toc-h2 toc-link" data-title="资产余额"><span id="1">资产余额</span></a>
+                    <a href="#assets-balance" class="toc-h2 toc-link" data-title="Assets Balance"><span id="1">Assets Balance</span></a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#7985d3eb44" class="toc-h1 toc-link" data-title="仓位相关">仓位相关</a>
+            <a href="#position-related" class="toc-h1 toc-link" data-title="Position Related">Position Related</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#716dfaa4eb" class="toc-h2 toc-link" data-title="仓位查询"><span id="1">仓位查询</span></a>
+                    <a href="#position-query" class="toc-h2 toc-link" data-title="Position Query"><span id="1">Position Query</span></a>
                   </li>
                   <li>
-                    <a href="#b773f9957e" class="toc-h2 toc-link" data-title="调整保证金"><span id="1">调整保证金</span></a>
+                    <a href="#adjusted-margin" class="toc-h2 toc-link" data-title="Adjusted Margin"><span id="1">Adjusted Margin</span></a>
                   </li>
                   <li>
-                    <a href="#2e01aa3e57" class="toc-h2 toc-link" data-title="调整杠杆倍数"><span id="1">调整杠杆倍数</span></a>
+                    <a href="#adjusted-leverage-rate" class="toc-h2 toc-link" data-title="Adjusted leverage rate"><span id="1">Adjusted leverage rate</span></a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#96a5882bf8" class="toc-h1 toc-link" data-title="订单相关">订单相关</a>
+            <a href="#order-related" class="toc-h1 toc-link" data-title="Order Related">Order Related</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#d92f5192e4" class="toc-h2 toc-link" data-title="创建订单"><span id="1">创建订单</span></a>
+                    <a href="#create-order" class="toc-h2 toc-link" data-title="Create order"><span id="1">Create order</span></a>
                   </li>
                   <li>
-                    <a href="#2152241f96" class="toc-h2 toc-link" data-title="获取当前订单"><span id="2">获取当前订单</span></a>
+                    <a href="#get-active-order" class="toc-h2 toc-link" data-title="Get active order"><span id="2">Get active order</span></a>
                   </li>
                   <li>
-                    <a href="#08819af8ba" class="toc-h2 toc-link" data-title="取消委托单"><span id="3">取消委托单</span></a>
+                    <a href="#cancel-orders" class="toc-h2 toc-link" data-title="Cancel orders"><span id="3">Cancel orders</span></a>
                   </li>
                   <li>
-                    <a href="#caef340d80" class="toc-h2 toc-link" data-title="一键撤单"><span id="5">一键撤单</span></a>
+                    <a href="#one-click-cancellation" class="toc-h2 toc-link" data-title="One-click cancellation"><span id="5">One-click cancellation</span></a>
                   </li>
                   <li>
-                    <a href="#77aaf08979" class="toc-h2 toc-link" data-title="批量下单"><span id="13">批量下单</span></a>
+                    <a href="#place-batch" class="toc-h2 toc-link" data-title="Place batch"><span id="13">Place batch</span></a>
                   </li>
                   <li>
-                    <a href="#id" class="toc-h2 toc-link" data-title="根据订单id批量进行撤单"><span id="27">根据订单id批量进行撤单</span></a>
+                    <a href="#batch-cancellation-according-to-order-id" class="toc-h2 toc-link" data-title="Batch cancellation according to order id"><span id="27">Batch cancellation according to order id</span></a>
                   </li>
                   <li>
-                    <a href="#8b3c19df49" class="toc-h2 toc-link" data-title="获取用户最新成交"><span id="3">获取用户最新成交</span></a>
+                    <a href="#get-user-39-s-latest-trade" class="toc-h2 toc-link" data-title="Get user's latest trade"><span id="3">Get user's latest trade</span></a>
                   </li>
                   <li>
-                    <a href="#274ba04bb9" class="toc-h2 toc-link" data-title="用户强减记录"><span id="3">用户强减记录</span></a>
+                    <a href="#user-forced-reduction" class="toc-h2 toc-link" data-title="User forced reduction"><span id="3">User forced reduction</span></a>
                   </li>
                   <li>
-                    <a href="#db55aab9f9" class="toc-h2 toc-link" data-title="用户强平记录"><span id="3">用户强平记录</span></a>
+                    <a href="#user-liquidation-record" class="toc-h2 toc-link" data-title="User liquidation record"><span id="3">User liquidation record</span></a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#43ee760de5" class="toc-h1 toc-link" data-title="行情相关">行情相关</a>
+            <a href="#ticker-related" class="toc-h1 toc-link" data-title="Ticker Related">Ticker Related</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#k" class="toc-h2 toc-link" data-title="获取历史K线"><span id="7">获取历史K线</span></a>
+                    <a href="#get-historical-k-line" class="toc-h2 toc-link" data-title="Get historical K-line"><span id="7">Get historical K-line</span></a>
                   </li>
                   <li>
-                    <a href="#0a8d744c83" class="toc-h2 toc-link" data-title="查询行情快照"><span id="7">查询行情快照</span></a>
+                    <a href="#query-ticker-snapshot" class="toc-h2 toc-link" data-title="Query ticker snapshot"><span id="7">Query ticker snapshot</span></a>
                   </li>
                   <li>
-                    <a href="#1690314e40" class="toc-h2 toc-link" data-title="获取最新成交"><span id="7">获取最新成交</span></a>
+                    <a href="#get-latest-trade" class="toc-h2 toc-link" data-title="Get latest trade"><span id="7">Get latest trade</span></a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#websocket" class="toc-h1 toc-link" data-title="Websocket行情数据">Websocket行情数据</a>
+            <a href="#websocket-ticker-data" class="toc-h1 toc-link" data-title="Websocket Ticker Data">Websocket Ticker Data</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#5ea2e0cde2" class="toc-h2 toc-link" data-title="简介">简介</a>
+                    <a href="#introduction-2" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
                   </li>
                   <li>
-                    <a href="#socket" class="toc-h2 toc-link" data-title="socket推送">socket推送</a>
+                    <a href="#get-k-line" class="toc-h2 toc-link" data-title="Get K-line">Get K-line</a>
+                  </li>
+                  <li>
+                    <a href="#get-trade-data-by-transaction" class="toc-h2 toc-link" data-title="Get trade data by transaction">Get trade data by transaction</a>
+                  </li>
+                  <li>
+                    <a href="#get-ticker-snapshot-and-bid-ask-level" class="toc-h2 toc-link" data-title="Get ticker snapshot and bid/ask level">Get ticker snapshot and bid/ask level</a>
+                  </li>
+                  <li>
+                    <a href="#get-basic-data-of-ticker-snapshot" class="toc-h2 toc-link" data-title="Get basic data of ticker snapshot">Get basic data of ticker snapshot</a>
+                  </li>
+                  <li>
+                    <a href="#get-private-data" class="toc-h2 toc-link" data-title="Get private data">Get private data</a>
                   </li>
               </ul>
           </li>
-        <li class="create_api"><a target="_blank" href="https://www.coinstore.com/#/user/bindAuth/ManagementAPI">创建 API Key</a></li>
+        <li class="create_api"><a target="_blank" href="https://www.coinstore.com/#/user/bindAuth/ManagementAPI">Create API KEY</a></li>
       </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='45fa4e00db'>介绍</h1>
-<p>欢迎使用Coinstore开发者文档，此文档是Coinstore API的唯一官方文档。</p>
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to Coinstore Developer Documentation. It is the only official documentation of Coinstore API.</p>
 
-<p>本文档提供了相关API的使用方法介绍。</p>
+<p>This documentation provides an introduction to the use of related APIs.</p>
 
-<p>RESTful API包含了资产，订单及行情等接口。</p>
+<p>RESTful API includes interfaces such as assets, orders and tickers.</p>
 
-<p>Websocket则提供了行情相关的接口及推送服务。</p>
+<p>Websocket provides ticker-related interface and push service.</p>
 
-<p>Coinstore API提供的服务会在此持续更新，请大家及时关注。</p>
-<h1 id='9e033de16f'>快速开始</h1><h2 id='c1ae0a8486'>接入准备</h2>
-<p>如需使用API，请先登录网页端，通过【用户中心】-【API管理】创建一个API key，再据此文档详情进行开发和交易。</p>
+<p>The services provided by Coinstore API will be continuously updated here, so stay tuned for updates.</p>
+<h1 id='quick-start'>Quick Start</h1><h2 id='access-preparation'>Access Preparation</h2>
+<p>To use API, please log into the webpage first, create an API key through [User Center] - [API Managment], and then develop and trade according to the details of this documentation.</p>
 
-<p>您可以点击 &#39;https://www.coinstore.com/#/user/bindAuth/ManagementAPI&#39; 创建 API Key。</p>
+<p>You can click &#39;https://www.coinstore.com/#/user/bindAuth/ManagementAPI&#39; to create an API Key.</p>
 
-<p>每个用户可创建5组API Key，每组API key可以绑定5个不同的IP地址。API key一旦绑定了IP地址，则只能从绑定的IP地址使用该API key调用API接口。出于安全考虑，强烈建议您为API key绑定相应的IP地址。</p>
+<p>Each user can create 5 groups of API Keys, and each group of API Keys can bind 5 different IP addresses. Once an API key binds an address, the API interface can only be called by using the API key from the bound IP address. For security reasons, it is strongly recommended that you bind the corresponding IP address for API key.</p>
 
-<p>创建成功后请务必记住以下信息：</p>
+<p>Please remember the following information upon successful creation:</p>
 
 <ul>
-<li><code>API Key</code>  API 访问密钥</li>
-<li><code>Secret Key</code> 签名认证加密所使用的密钥</li>
+<li><code>API Key</code>  API access key</li>
+<li><code>Secret Key</code> Key for encryption of signature authentication</li>
 </ul>
-<h2 id='5076603a3e'>接口类型</h2>
-<p>Coinstore为用户提供两种接口，您可根据自己的使用场景和偏好来选择适合的方式进行查询行情、交易。</p>
+<h2 id='interface-type'>Interface Type</h2>
+<p>Coinstore provides users with two interfaces, and you can choose the appropriate way to query the ticker and trade according to your own usage scenarios and preferences.</p>
 
 <p><strong>REST API</strong></p>
 
-<p>REST，即Representational State Transfer的缩写，是一种流行的互联网传输架构。它具有结构清晰、符合标准、易于理解、扩展方便的，正得到越来越多网站的采用。其优点如右：</p>
+<p>REST, the abbreviation of Representational State Transfer, is a popular Internet transmission architecture. It has the characteristics of clear structure, standards compliance, easy understanding and expansion, and is being adopted by more and more websites with the benefits as follows:</p>
 
 <ul>
-<li>在RESTful架构中，每一个URL代表一种资源；</li>
-<li>客户端和服务器之间，传递这种资源的某种表现层；</li>
-<li>客户端通过四个HTTP指令，对服务器端资源进行操作，实现“表现层状态转化”。 </li>
+<li>In RESTful architecture, each URL represents a resource;</li>
+<li>Some representation layer of this resource is transferred between the client and the server;</li>
+<li>The client operates the server-side resources through four HTTP instructions to realize &quot;presentation layer state transformation&quot;. </li>
 </ul>
 
-<p>交易或资产等一次性操作，建议开发者使用REST API进行操作</p>
+<p>Developers are advised to use REST API for one-time operations such as trades or assets.</p>
 
 <p><strong>WebSocket API</strong></p>
 
-<p>WebSocket是HTML5一种新的协议（Protocol）。它实现了客户端与服务器全双工通信，通过一次简单的握手就可以建立客户端和服务器连接，服务器可以根据业务规则主动推送信息给客户端。</p>
+<p>WebSocket is a new HTML5 Protocol. It realizes full-duplex communication between client and server, and the connection between client and server can be established by a simple handshake. The server can actively push information to the client according to business rules.</p>
 
-<p>市场行情和买卖深度等信息，建议开发者使用WebSocket API进行获取。</p>
-<h3 id='2ac5e3c5f6'>接口鉴权</h3>
-<p>以上两种接口均包含公共接口和私有接口两种类型。</p>
+<p>Developers are advised to use WebSocket API to obtain market tickers, asks/bids depth and other information.</p>
+<h3 id='interface-authentication'>Interface Authentication</h3>
+<p>The above two interfaces include public interface and private interface.</p>
 
-<p>公共接口可用于获取基础信息和行情数据。公共接口无需认证即可调用。</p>
+<p>Public interface can be used to obtain basic information and ticker data. Public interfaces can be called without authentication.</p>
 
-<p>私有接口可用于交易管理。每个私有请求必须使用您的API Key进行签名验证。</p>
-<h2 id='urls'>接入URLs</h2>
+<p>Private interface can be used for trading management. Every private request must use your API Key for signature verification.</p>
+<h2 id='access-urls'>Access URLs</h2>
 <p><strong>REST API</strong></p>
 
 <p><code>https://futures.coinstore.com/api</code></p>
@@ -518,146 +530,151 @@
 
 <p><code>wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket</code></p>
 
-<p>为保证API服务的稳定性，建议使用日本AWS云服务器进行访问。如使用中国大陆境内的客户端服务器，连接的稳定性将难以保证。</p>
-<h2 id='586f3bcbf4'><span id="a4">签名认证</span></h2>
-<p><strong>签名说明</strong></p>
+<p>To ensure the stability of API service, it is recommended to access using Japanese AWS cloud server. If the client server in Chinese mainland is used, it would be difficult to guarantee the stability of the connection.</p>
+<h2 id='signature-authentication'><span id="a4"> Signature Authentication </span></h2>
+<p><strong>Signature Description</strong></p>
 
-<p>API 请求在通过 internet 传输的过程中极有可能被篡改，为了确保请求未被更改，除公共接口（基础信息，行情数据）外的私有接口均必须使用您的 API Key 做签名认证，以校验参数或参数值在传输途中是否发生了更改。</p>
+<p>The API request is very likely to be tampered in the process of transmission through the Internet. In order to ensure that the request has not been changed, all private interfaces other than public interfaces (basic information, ticker data) must use your API Key for signature authentication to verify whether the parameters or parameter values have changed during transmission.</p>
 
-<p><strong>签名算法</strong></p>
+<p><strong>Signature Algorithm</strong></p>
 
-<p>使用HmacSHA256哈希函数作为签名函数
+<p>HmacSHA256 hash function is used as signature function.
 <code>
 Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 </code></p>
 
-<p><strong>签名步骤</strong></p>
+<p><strong>Signature Steps</strong></p>
 
-<p>1、签名有效字符串为请求参数和请求体</p>
+<ul>
+<li>The signature valid string consists of request parameters and request body.
+Note: The request parameters and request body are not sorted but directly spliced into a string as payload.</li>
+</ul>
+<div class="highlight"><pre class="highlight java tab-java"><code>  <span class="nc">Example</span> <span class="mi">1</span><span class="o">:</span> <span class="no">GET</span> <span class="nc">Request</span> <span class="nc">Query</span> <span class="nc">String</span>
+ <span class="o">?</span><span class="n">symbol</span><span class="o">=</span><span class="n">aaaa88</span><span class="o">&amp;</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span>
 
-<blockquote>
-<p>注意：请求参数和请求体不进行任何排序或者去除空格，直接拼接成字符串作为payload
-```
-实例1：GET请求查询字符串
- ?symbol=aaaa88&amp;size=10
- String payload = “symbol=aaaa88&amp;size=10”；</p>
-</blockquote>
+ <span class="nc">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="s">"symbol=aaaa88&amp;size=10"</span><span class="err">；</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">Example</span> <span class="mi">2</span><span class="o">:</span> <span class="no">POST</span> <span class="nc">Request</span> <span class="nc">Body</span>
+<span class="o">{</span><span class="s">"symbol"</span><span class="o">:</span><span class="s">"aaaa88"</span><span class="o">,</span><span class="s">"side"</span><span class="o">:</span><span class="s">"SELL"</span><span class="o">,</span><span class="s">"ordType"</span><span class="o">:</span><span class="s">"LIMIT"</span><span class="o">,</span><span class="s">"ordPrice"</span><span class="o">:</span><span class="mi">2</span><span class="o">,</span><span class="s">"ordQty"</span><span class="o">:</span><span class="mi">1</span><span class="o">,</span><span class="s">"timestamp"</span><span class="o">:</span><span class="mi">1627384801051</span><span class="o">}</span>
 
-<p>实例2 :Post请求体
- {&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,&quot;timestamp&quot;:1627384801051}
- String payload = “{&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,
- &quot;timestamp&quot;:1627384801051}”；</p>
 
-<p>实例3：混合请求
- ?symbol=aaaa88&amp;size=10
- {&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,&quot;timestamp&quot;:1627384801051}
- String payload = “symbol=aaaa88&amp;size=10{&quot;symbol&quot;:&quot;aaaa88&quot;,&quot;side&quot;:&quot;SELL&quot;,&quot;ordType&quot;:&quot;LIMIT&quot;,&quot;ordPrice&quot;:2,&quot;ordQty&quot;:1,
- &quot;timestamp&quot;:1627384801051}”；
-```
-2、使用签名函数对时间戳获得哈希值</p>
+ <span class="nc">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="s">"{"</span><span class="n">symbol</span><span class="s">":"</span><span class="n">aaaa88</span><span class="s">","</span><span class="n">side</span><span class="s">":"</span><span class="no">SELL</span><span class="s">","</span><span class="n">ordType</span><span class="s">":"</span><span class="no">LIMIT</span><span class="s">","</span><span class="n">ordPrice</span><span class="s">":2,"</span><span class="n">ordQty</span><span class="s">":1,
+ "</span><span class="n">timestamp</span><span class="s">":1627384801051}"</span><span class="err">；</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">Example</span> <span class="mi">3</span><span class="o">:</span> <span class="nc">Mixed</span> <span class="nc">Request</span>
+ <span class="o">?</span><span class="n">symbol</span><span class="o">=</span><span class="n">aaaa88</span><span class="o">&amp;</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span>
+<span class="o">{</span><span class="s">"symbol"</span><span class="o">:</span><span class="s">"aaaa88"</span><span class="o">,</span><span class="s">"side"</span><span class="o">:</span><span class="s">"SELL"</span><span class="o">,</span><span class="s">"ordType"</span><span class="o">:</span><span class="s">"LIMIT"</span><span class="o">,</span><span class="s">"ordPrice"</span><span class="o">:</span><span class="mi">2</span><span class="o">,</span><span class="s">"ordQty"</span><span class="o">:</span><span class="mi">1</span><span class="o">,</span><span class="s">"timestamp"</span><span class="o">:</span><span class="mi">1627384801051</span><span class="o">}</span>
 
-<blockquote>
-<p>注意： X-CS-EXPIRES为13位时间戳，需要除以30000获取一个类时间戳，对其进行签名函数计算，获得函数值作为第三步的秘钥<br>
-<code>
- String time = String.valueOf(X-CS-EXPIRES / 30_000);
- hmacSha256.init(new SecretKeySpec(Secret_Key.getBytes(), &quot;HmacSHA256&quot;));
- byte[] hash = hmacSha256.doFinal(time.getBytes());
- String key = Hex.toHexString(hash);
-</code>
-3、使用签名函数对签名有效字符串获得哈希值</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code> hmacSha256.reset();
- hmacSha256.init(new SecretKeySpec(key.getBytes(), "HmacSHA256"));
- hash = hmacSha256.doFinal(payload.getBytes());
- String sign= Hex.toHexString(hash);
-
-</code></pre></div><h1 id='api'>API接入说明</h1><h2 id='5b7654a66a'><span id="a3">请求格式</span></h2>
-<p>所有的API请求都是restful，目前只有两种方法：GET和POST。
-- GET请求：所有的参数都在路径参数里
-- POST请求: 路径里可以设置参数，参数可以以JSON格式发送在请求主体（body）里，没有参数的需要传{}</p>
-
-<p>一个合法的请求由以下几部分组成：
-- 方法请求地址：即访问服务器地址futures.coinstore.com，比如https://futures.coinstore.com/api/trade/order/place
-- 必须和可选参数。
-- X-CS-APIKEY： 即用户申请的API Key。
-- X-CS-EXPIRES：您发出请求的时间戳。如：1629291143107。
-- X-CS-SIGN：签名计算得出的字符串，用于确保签名有效和未被篡改。</p>
+ <span class="nc">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="s">"symbol=aaaa88&amp;size=10{"</span><span class="n">symbol</span><span class="s">":"</span> <span class="n">aaaa88</span><span class="s">","</span><span class="n">side</span><span class="s">":"</span> <span class="no">SELL</span><span class="s">","</span><span class="n">ordType</span><span class="s">":"</span> <span class="no">LIMIT</span><span class="s">","</span><span class="n">ordPrice</span><span class="s">":2,"</span><span class="n">ordQty</span><span class="s">":1,
+ "</span><span class="n">timestamp</span><span class="s">":1627384801051}"</span><span class="err">；</span>
+</code></pre></div>
+<ul>
+<li>Use signature function to calculate hash value for timestamp</li>
+</ul>
 
 <blockquote>
-<p>注意：X-CS-APIKEY ，X-CS-EXPIRES ，X-CS-SIGN 三个参数都在请求头中，另外需要设置&#39;Content-Type&#39;:&#39;application/json&#39;。</p>
+<p>Note: X-CS-EXPIRES is a 13-bit timestamp, which needs to be divided by 30000 to obtain a class timestamp. It is calculated by signature function to obtain the function value as the key of step 3 (the value of variable key in step 3).</p>
 </blockquote>
-<h2 id='3ee119c599'><span id="a3">返回格式</span></h2>
-<p>所有的接口返回都是JSON格式。在JSON的第一层有3个字段code，msg和data。前两个字段表示请求状态和描述，实际的业务数据在data字段里。</p>
+<div class="highlight"><pre class="highlight java tab-java"><code> <span class="nc">String</span> <span class="n">time</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="no">X</span><span class="o">-</span><span class="no">CS</span><span class="o">-</span><span class="no">EXPIRES</span> <span class="o">/</span> <span class="mi">30000</span><span class="o">);</span>
+ <span class="n">hmacSha256</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">new</span> <span class="nc">SecretKeySpec</span><span class="o">(</span><span class="n">Secret_Key</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(),</span> <span class="s">"HmacSHA256"</span><span class="o">));</span>
+ <span class="kt">byte</span><span class="o">[]</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">hmacSha256</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">time</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+ <span class="nc">String</span> <span class="n">key</span> <span class="o">=</span> <span class="nc">Hex</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
+</code></pre></div>
+<ul>
+<li>Use signature function to calculate hash value for valid string</li>
+</ul>
+
+<blockquote>
+<p>Note: The value of key is the hash value calculated in step 2.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight java tab-java"><code> <span class="n">hmacSha256</span><span class="o">.</span><span class="na">reset</span><span class="o">();</span>
+ <span class="n">hmacSha256</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">new</span> <span class="nc">SecretKeySpec</span><span class="o">(</span><span class="n">key</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(),</span> <span class="s">"HmacSHA256"</span><span class="o">));</span>
+ <span class="n">hash</span> <span class="o">=</span> <span class="n">hmacSha256</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">payload</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+ <span class="nc">String</span> <span class="n">sign</span><span class="o">=</span> <span class="nc">Hex</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
+</code></pre></div><h1 id='api-access-instructions'>API Access Instructions</h1><h2 id='request-format'><span id="a3"> Request Format </span></h2>
+<p>All API requests are restful, and there are only two methods at present: GET and POST.
+- GET request: All parameters are in path parameters
+- POST request: Parameters can be set in the path, and they can be sent in JSON format to the request body. If there are no parameters,{} needs to be sent</p>
+
+<p>A licit request consists of the following parts:
+- method request address: Access server address futures.coinstore.com，e.g. https://futures.coinstore.com/api/future/place
+- Required and optional parameters.
+- X-CS-APIKEY: API Key applied by the user.
+- X-CS-EXPIRES: Timestamp when you issued the request. For example:1629291143107.
+- X-CS-SIGN: A string calculated from the signature, which is used to ensure that the signature is valid and not tampered with.</p>
+
+<p><strong>Note: X-CS-APIKEY, X-CS-EXPIRES and X-CS-SIGN are all in the request header, and &#39;Content-Type&#39;:&#39;application/json&#39; 
+needs to be set.</strong></p>
+<h2 id='return-format'><span id="a3">Return Format</span></h2>
+<p>All interface returns are in JSON format. There are three fields in the first layer of JSON: code, message and data. The first two fields indicate the request status and description, and the actual business data is in the data field.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suc"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">per</span><span class="w"> </span><span class="err">API</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">data</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">nested</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">object</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>以下是一个返回格式的样例：</p>
+<p>The following is an example of a return format:</p>
 
 <table><thead>
 <tr>
-<th>字段</th>
-<th>数据类型</th>
-<th>描述</th>
+<th>field</th>
+<th>data type</th>
+<th>description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0：成功，其他失败</td>
+<td>0：success, other: failure</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>string</td>
-<td>状态或错误描述</td>
+<td>status or error description</td>
 </tr>
 <tr>
 <td>data</td>
 <td>object</td>
-<td>业务数据</td>
+<td>transaction data</td>
 </tr>
 </tbody></table>
-<h2 id='a38a81c9d5'>错误信息</h2>
-<p><strong>HTTP状态码</strong></p>
+<h2 id='error-message'>Error Message</h2>
+<p><strong>HTTP Status Code</strong></p>
 
-<p>HTTP常见的错误码如下：
-- 400 Bad Request – Invalid request forma 请求格式无效</p>
+<p>Common error codes for HTTP are as follows:
+- 400 Bad Request – Invalid request format</p>
 
 <ul>
-<li><p>401 signature failed – Invalid API Key 无效的API Key</p></li>
-<li><p>404 service not found 没有找到请求</p></li>
-<li><p>429 too many visits 请求太频繁被系统限流</p></li>
-<li><p>500 internal server error – 服务器内部错误</p></li>
+<li><p>401 signature failed – Invalid API Key</p></li>
+<li><p>404 service not found</p></li>
+<li><p>429 too many visits</p></li>
+<li><p>500 internal server error</p></li>
 </ul>
 
-<p><strong>业务状态码</strong></p>
+<p><strong>Transaction Status Code</strong></p>
 
-<p>如果失败，response msg 带有错误描述信息, 对应的状态码描述如下：</p>
+<p>In case of failure, the response message carries error description information, and the corresponding status code is described as follows:</p>
 
 <table><thead>
 <tr>
-<th>状态码</th>
-<th>说明</th>
-<th>备注</th>
+<th>status code</th>
+<th>description</th>
+<th>remarks</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>0</td>
-<td>成功</td>
-<td>code=0 成功， code &gt;0 失败</td>
+<td>success</td>
+<td>code=0 success, code &gt;0 failure</td>
 </tr>
 </tbody></table>
-<h1 id='41654e0268'>基础信息</h1><h2 id='f7ef3ab8ca'><span id="1">币种币对信息</span></h2>
-<p>获取币种币对信息</p>
-<h3 id='http'>HTTP请求:</h3>
+<h1 id='basic-information'>Basic Information</h1><h2 id='currency-amp-contract-information'><span id="1">Currency &amp; contract information</span></h2>
+<p>Get currency &amp; contract information</p>
+<h3 id='http-request'>HTTP Request:</h3>
 <ul>
 <li>POST  /api/configs/public</li>
 </ul>
 
 <blockquote>
-<p>响应 </p>
+<p>Response </p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -737,7 +754,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='1f9ac54b15'>请求参数</h3>
+</span></code></pre></div><h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -753,7 +770,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f'>响应数据</h3>
+<h3 id='response-data'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -764,32 +781,32 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0：成功，其他失败</td>
+<td>0：success, other: failure</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>String</td>
-<td>错误信息</td>
+<td>error message</td>
 </tr>
 <tr>
 <td>data</td>
 <td>Object</td>
-<td>业务数据</td>
+<td>transaction data</td>
 </tr>
 <tr>
 <td>- currencies</td>
 <td>List &lt;Currency&gt;</td>
-<td>币种列表</td>
+<td>currency list</td>
 </tr>
 <tr>
 <td>- contracts</td>
 <td>List &lt;Contract&gt;</td>
-<td>币对列表</td>
+<td>contract list</td>
 </tr>
 <tr>
 <td>- version</td>
 <td>Long</td>
-<td>版本号</td>
+<td>version</td>
 </tr>
 </tbody></table>
 <h4 id='currency'>Currency</h4>
@@ -803,22 +820,22 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>currencyId</td>
 <td>int</td>
-<td>币种id</td>
+<td>currency id</td>
 </tr>
 <tr>
 <td>name</td>
 <td>String</td>
-<td>币种名称</td>
+<td>currency name</td>
 </tr>
 <tr>
 <td>disableTransferIn</td>
 <td>boolean</td>
-<td>是否可以划转至合约  默认false 能划转</td>
+<td>whether transfer to futures, default: false, transfer possible</td>
 </tr>
 <tr>
 <td>disableTransferOut</td>
 <td>boolean</td>
-<td>是否可以划转至现货  默认false 能划转</td>
+<td>whether transfer to spot, default: false, transfer possible</td>
 </tr>
 </tbody></table>
 <h4 id='contract'>Contract</h4>
@@ -832,97 +849,97 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>contractId</td>
 <td>int</td>
-<td>合约id</td>
+<td>contract id</td>
 </tr>
 <tr>
 <td>currencyId</td>
 <td>int</td>
-<td>保证金货币id</td>
+<td>margin currency id</td>
 </tr>
 <tr>
 <td>name</td>
 <td>String</td>
-<td>合约名称 BTCUSDT</td>
+<td>contract name BTCUSDT</td>
 </tr>
 <tr>
 <td>displayName</td>
 <td>String</td>
-<td>合约显示名称 BTC/USDT</td>
+<td>contract display name BTC/USDT</td>
 </tr>
 <tr>
 <td>baseAsset</td>
 <td>String</td>
-<td>商品货币名称 BTC</td>
+<td>base asset name BTC</td>
 </tr>
 <tr>
 <td>quoteAsset</td>
 <td>String</td>
-<td>计价货币名称 USDT</td>
+<td>quote asset name USDT</td>
 </tr>
 <tr>
 <td>marginAsset</td>
 <td>String</td>
-<td>保证金货币名称 USDT</td>
+<td>margin asset name USDT</td>
 </tr>
 <tr>
 <td>tickSize</td>
 <td>BigDecimal</td>
-<td>最小报价单位</td>
+<td>tick size</td>
 </tr>
 <tr>
 <td>priceScale</td>
 <td>int</td>
-<td>价格精度</td>
+<td>price decimal</td>
 </tr>
 <tr>
 <td>maxOrderSize</td>
 <td>int</td>
-<td>单笔下单最大张数，默认0，无限制</td>
+<td>maximum order size, default 0, unlimited</td>
 </tr>
 <tr>
 <td>minOrderSize</td>
 <td>int</td>
-<td>单笔下单最小张数，默认0，无限制</td>
+<td>minimum order size, default 0, unlimited</td>
 </tr>
 <tr>
 <td>takerFeeRate</td>
 <td>BigDecimal</td>
-<td>Taker手续费率</td>
+<td>Taker fee rate</td>
 </tr>
 <tr>
 <td>makerFeeRate</td>
 <td>BigDecimal</td>
-<td>Maker手续费率</td>
+<td>Maker fee rate</td>
 </tr>
 <tr>
 <td>contractSize</td>
 <td>BigDecimal</td>
-<td>合约单位</td>
+<td>contract size</td>
 </tr>
 <tr>
 <td>minMaintRate</td>
 <td>BigDecimal</td>
-<td>最小维持保证金率</td>
+<td>minimum maintenance margin rate</td>
 </tr>
 <tr>
 <td>fundingInterval</td>
 <td>int</td>
-<td>互换频率 单位 秒</td>
+<td>funding interval, unit: second</td>
 </tr>
 <tr>
 <td>weight</td>
 <td>int</td>
-<td>排序权重  倒叙</td>
+<td>ranking weight  flashback</td>
 </tr>
 <tr>
 <td>tags</td>
 <td>String[]</td>
-<td>标签    mock, hot, new, ...</td>
+<td>tags    mock, hot, new, ...</td>
 </tr>
 <tr>
 <td>riskLimits</td>
 <td>RiskLimit[]</td>
-<td>风险限额</td>
+<td>risk limit</td>
 </tr>
 </tbody></table>
 <h4 id='risklimit'>RiskLimit</h4>
@@ -936,32 +953,32 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>maxSize</td>
 <td>long</td>
-<td>风险限额张数</td>
+<td>risk limits</td>
 </tr>
 <tr>
 <td>maintRate</td>
 <td>BigDecimal</td>
-<td>维持保证金率</td>
+<td>maintenance margin rate</td>
 </tr>
 <tr>
 <td>leverage</td>
 <td>int</td>
-<td>杠杆倍数</td>
+<td>leverage rate</td>
 </tr>
 </tbody></table>
-<h1 id='2a0d0be224'>账户相关</h1><h2 id='7c2f2901d7'><span id="1">资产余额</span></h2>
-<p>获取用户资产余额</p>
-<h3 id='http-2'>HTTP请求:</h3>
+<h1 id='account-related'>Account Related</h1><h2 id='assets-balance'><span id="1">Assets Balance</span></h2>
+<p>Get user assets balance</p>
+<h3 id='http-request-2'>HTTP Request:</h3>
 <ul>
 <li>POST  /api/future/queryAvail</li>
 </ul>
 
 <blockquote>
-<p>响应 </p>
+<p>Response </p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"currencyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
@@ -984,7 +1001,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='1f9ac54b15-2'>请求参数</h3>
+</span></code></pre></div><h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1000,7 +1017,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-2'>响应数据</h3>
+<h3 id='response-data-2'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1011,112 +1028,112 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0：成功，其他失败</td>
+<td>0: success, other: failure</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>String</td>
-<td>错误信息</td>
+<td>error information</td>
 </tr>
 <tr>
 <td>data</td>
 <td>Object []</td>
-<td>业务数据</td>
+<td>transaction data</td>
 </tr>
 <tr>
 <td>- currencyId</td>
 <td>string</td>
-<td>保证金id</td>
+<td>margin id</td>
 </tr>
 <tr>
 <td>- totalBalance</td>
 <td>string</td>
-<td>总资产</td>
+<td>total balance</td>
 </tr>
 <tr>
 <td>- available</td>
 <td>string</td>
-<td>可用资产</td>
+<td>available balance</td>
 </tr>
 <tr>
 <td>- frozenForTrade</td>
 <td>string</td>
-<td>委托冻结资产</td>
+<td>order frozen balance</td>
 </tr>
 <tr>
 <td>- initMargin</td>
 <td>string</td>
-<td>已占用保证金</td>
+<td>occupied margin</td>
 </tr>
 <tr>
 <td>- frozenInitMargin</td>
 <td>string</td>
-<td>委托冻结保证金</td>
+<td>order frozen margin</td>
 </tr>
 <tr>
 <td>- closeProfitLoss</td>
 <td>string</td>
-<td>已实现盈亏</td>
+<td>realized P&amp;L</td>
 </tr>
 <tr>
 <td>- dailyProfitLoss</td>
 <td>string</td>
-<td>当日已实现盈亏</td>
+<td>daily realized P&amp;L</td>
 </tr>
 <tr>
 <td>- closeProfitLoss</td>
 <td>string</td>
-<td>已实现盈亏</td>
+<td>realized P&amp;L</td>
 </tr>
 <tr>
 <td>- unRealizedProfit</td>
 <td>string</td>
-<td>未实现盈亏</td>
+<td>unrealized P&amp;L</td>
 </tr>
 <tr>
 <td>- accountEquity</td>
 <td>string</td>
-<td>净资产</td>
+<td>net asset</td>
 </tr>
 <tr>
 <td>- leverLevel</td>
 <td>string</td>
-<td>整体杠杆水平</td>
+<td>overall leverage level</td>
 </tr>
 <tr>
 <td>- unRealizedProfit</td>
 <td>string</td>
-<td>未实现盈亏</td>
+<td>unrealized P&amp;L</td>
 </tr>
 <tr>
 <td>- toBtc</td>
 <td>string</td>
-<td>btc资产价值</td>
+<td>btc asset value</td>
 </tr>
 <tr>
 <td>- accountId</td>
 <td>string</td>
-<td>账户id</td>
+<td>account id</td>
 </tr>
 <tr>
 <td>- accountType</td>
 <td>string</td>
-<td>账户类型  1  主账户</td>
+<td>account type  1  main account</td>
 </tr>
 </tbody></table>
-<h1 id='7985d3eb44'>仓位相关</h1><h2 id='716dfaa4eb'><span id="1">仓位查询</span></h2>
-<p>查询用户合约仓位</p>
-<h3 id='http-3'>HTTP请求:</h3>
+<h1 id='position-related'>Position Related</h1><h2 id='position-query'><span id="1">Position Query</span></h2>
+<p>Query user futures position</p>
+<h3 id='http-request-3'>HTTP Request:</h3>
 <ul>
 <li>GET  /api/future/queryPosi</li>
 </ul>
 
 <blockquote>
-<p>响应 </p>
+<p>Response </p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"lastPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3140.3"</span><span class="p">,</span><span class="w">
@@ -1145,7 +1162,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='1f9ac54b15-3'>请求参数</h3>
+</span></code></pre></div><h3 id='request-parameters-3'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1161,7 +1178,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-3'>响应数据</h3>
+<h3 id='response-data-3'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1172,131 +1189,132 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0：成功，其他失败</td>
+<td>0: success, other: failure</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>String</td>
-<td>错误信息</td>
+<td>error information</td>
 </tr>
 <tr>
 <td>data</td>
 <td>Object []</td>
-<td>业务数据</td>
+<td>transaction data</td>
 </tr>
 <tr>
 <td>- currencyId</td>
 <td>string</td>
-<td>保证金id</td>
+<td>margin id</td>
 </tr>
 <tr>
 <td>- posiQty</td>
 <td>string</td>
-<td>持仓量，大于0多头，小于0空头</td>
+<td>positions, &gt;0: long, &lt;0: short</td>
 </tr>
 <tr>
 <td>- openAmt</td>
 <td>string</td>
-<td>开仓金额</td>
+<td>open amount</td>
 </tr>
 <tr>
 <td>- initMargin</td>
 <td>string</td>
-<td>初始保证金</td>
+<td>initial margin</td>
 </tr>
 <tr>
 <td>- posiStatus</td>
 <td>string</td>
-<td>1正常，2等待强平</td>
+<td>1: normal, 2: to be liquidated</td>
 </tr>
 <tr>
 <td>- marginType</td>
 <td>string</td>
-<td>保证金类型，1全仓2逐仓</td>
+<td>margin type, 1: cross, 2: isolated</td>
 </tr>
 <tr>
 <td>- closeProfitLoss</td>
 <td>string</td>
-<td>已实现盈亏</td>
+<td>realized P&amp;L</td>
 </tr>
 <tr>
 <td>- initMarginRate</td>
 <td>string</td>
-<td>初始保证率</td>
+<td>initial margin rate</td>
 </tr>
 <tr>
 <td>- maintainMarginRate</td>
 <td>string</td>
-<td>维持保证金</td>
+<td>maintenance margin</td>
 </tr>
 <tr>
 <td>- frozenCloseQty</td>
 <td>string</td>
-<td>平仓委托冻结量</td>
+<td>frozen close position</td>
 </tr>
 <tr>
 <td>- frozenOpenQty</td>
 <td>string</td>
-<td>开仓委托冻结量</td>
+<td>frozen open position</td>
 </tr>
 <tr>
 <td>- extraMargin</td>
 <td>string</td>
-<td>额外保证金   deprecated</td>
+<td>extra margin   deprecated</td>
 </tr>
 <tr>
 <td>- contractUnit</td>
 <td>string</td>
-<td>合约单位</td>
+<td>contract unit</td>
 </tr>
 <tr>
 <td>- openPrice</td>
 <td>string</td>
-<td>开仓均价</td>
+<td>average open price</td>
 </tr>
 <tr>
 <td>- unRealizedProfit</td>
 <td>string</td>
-<td>未实现盈亏</td>
+<td>unrealized P&amp;L</td>
 </tr>
 <tr>
 <td>- liquidationPrice</td>
 <td>string</td>
-<td>预估强评价</td>
+<td>estimated liquidated price</td>
 </tr>
 <tr>
 <td>- lastPrice</td>
 <td>string</td>
-<td>最新成交价</td>
+<td>the latest trade price</td>
 </tr>
 <tr>
 <td>- markPrice</td>
 <td>string</td>
-<td>标记价格 * 持仓数量 * 合约面值</td>
+<td>marked price * total cont * futures face value</td>
 </tr>
 <tr>
 <td>- accountId</td>
 <td>string</td>
-<td>账户id</td>
+<td>account id</td>
 </tr>
 <tr>
 <td>- accountType</td>
 <td>string</td>
-<td>账户类型  1  主账户</td>
+<td>account type  1  main account</td>
 </tr>
 </tbody></table>
-<h2 id='b773f9957e'><span id="1">调整保证金</span></h2><h3 id='http-4'>HTTP请求:</h3>
+<h2 id='adjusted-margin'><span id="1">Adjusted Margin</span></h2><h3 id='http-request-4'>HTTP Request:</h3>
 <ul>
 <li>POST  /api/future/adjustMargin</li>
 </ul>
 
 <blockquote>
-<p>响应 </p>
+<p>Response </p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-</span></code></pre></div><h3 id='a526db39fb'>请求体</h3>
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-body'>Request Body</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1309,16 +1327,16 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>contractId</td>
 <td>int</td>
 <td>Y</td>
-<td>交易对ID</td>
+<td>symbol ID</td>
 </tr>
 <tr>
 <td>margin</td>
 <td>int</td>
 <td>Y</td>
-<td>保证金额（&gt;0 : 增加保证金，&lt;0 ：减少保证金）</td>
+<td>margin amount (&gt;0 : increase margin, &lt;0: decease margin)</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-4'>响应数据</h3>
+<h3 id='response-data-4'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1329,31 +1347,31 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0：成功，其他失败</td>
+<td>0: success, other: failure</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>String</td>
-<td>错误信息</td>
+<td>error information</td>
 </tr>
 <tr>
 <td>data</td>
 <td>Object []</td>
-<td>业务数据</td>
+<td>transaction data</td>
 </tr>
 </tbody></table>
-<h2 id='2e01aa3e57'><span id="1">调整杠杆倍数</span></h2><h3 id='http-5'>HTTP请求:</h3>
+<h2 id='adjusted-leverage-rate'><span id="1">Adjusted leverage rate</span></h2><h3 id='http-request-5'>HTTP Request:</h3>
 <ul>
 <li>POST  /api/configs/adjustPositionConfig</li>
 </ul>
 
 <blockquote>
-<p>响应 </p>
+<p>Response </p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-</span></code></pre></div><h3 id='a526db39fb-2'>请求体</h3>
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+</span></code></pre></div><h3 id='request-body-2'>Request Body</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1366,22 +1384,22 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>contractId</td>
 <td>int</td>
 <td>Y</td>
-<td>交易对ID</td>
+<td>symbol ID</td>
 </tr>
 <tr>
 <td>leverage</td>
 <td>int</td>
 <td>Y</td>
-<td>杠杆倍数, 0为自动模式  逐仓 不能为0</td>
+<td>leverage rate, 0 represents automatic mode, isolated mode can’t be 0</td>
 </tr>
 <tr>
 <td>isolated</td>
 <td>int</td>
 <td>Y</td>
-<td>保证金类型 默认 false 全仓  true 逐仓</td>
+<td>margin type, default false: cross, true: isolated</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-5'>响应数据</h3>
+<h3 id='response-data-5'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1392,26 +1410,26 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0：成功，其他失败</td>
+<td>0: success, other: failure</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>String</td>
-<td>错误信息</td>
+<td>error information</td>
 </tr>
 <tr>
 <td>data</td>
 <td>Object []</td>
-<td>业务数据</td>
+<td>transaction data</td>
 </tr>
 </tbody></table>
-<h1 id='96a5882bf8'>订单相关</h1><h2 id='d92f5192e4'><span id="1">创建订单</span></h2>
-<p>创建订单</p>
-<h3 id='http-6'>HTTP请求:</h3>
+<h1 id='order-related'>Order Related</h1><h2 id='create-order'><span id="1">Create order</span></h2>
+<p>Create order</p>
+<h3 id='http-request-6'>HTTP Request:</h3>
 <ul>
 <li>POST /api/trade/order/place</li>
 </ul>
-<h3 id='1f9ac54b15-4'>请求参数</h3>
+<h3 id='request-parameters-4'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1424,91 +1442,91 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>accountType</td>
 <td>int</td>
 <td>N</td>
-<td>账号类型</td>
+<td>account type</td>
 </tr>
 <tr>
 <td>clientOrderId</td>
 <td>string</td>
 <td>N</td>
-<td>客户端委托ID,如果不传使用uuid</td>
+<td>client order ID, uuid is used if not passed</td>
 </tr>
 <tr>
 <td>contractId</td>
 <td>int</td>
 <td>Y</td>
-<td>合约ID</td>
+<td>contract ID</td>
 </tr>
 <tr>
 <td>marginRate</td>
 <td>string</td>
 <td>Y</td>
-<td>保证金率，全仓时&gt;0，逐仓时&gt;0</td>
+<td>margin rate, cross&gt;0, isolated&gt;0</td>
 </tr>
 <tr>
 <td>leverage</td>
 <td>int</td>
 <td>Y</td>
-<td>保证金倍数</td>
+<td>margin rate</td>
 </tr>
 <tr>
 <td>marginType</td>
 <td>int</td>
 <td>Y</td>
-<td>保证金类型，全仓1，逐仓2</td>
+<td>margin type, 1: cross, 2: isolated</td>
 </tr>
 <tr>
 <td>orderSubType</td>
 <td>int</td>
 <td>Y</td>
-<td>0（默认值），1（被动委托），2（最近价触发条件委托），3（指数触发条件委托），4（标记价触发条件委托）</td>
+<td>0 (default value), 1 (passive order), 2 (latest price triggering conditional order), 3 (index triggering conditional order), 4 (marked price triggering conditional order)</td>
 </tr>
 <tr>
 <td>orderType</td>
 <td>int</td>
 <td>Y</td>
-<td>委托类型，1（限价），3（市价）</td>
+<td>order type, 1 (limit), 3 (market)</td>
 </tr>
 <tr>
 <td>positionEffect</td>
 <td>int</td>
 <td>Y</td>
-<td>开平标志，开仓1，平仓2  平仓单必须传2</td>
+<td>position effect, 1 (open), 2 (close), 2 must be passed for close orders</td>
 </tr>
 <tr>
 <td>price</td>
 <td>string</td>
 <td>N</td>
-<td>委托价格,order_type等于3（市价）时非必填</td>
+<td>order price, non required when order_type is 3 (market)</td>
 </tr>
 <tr>
 <td>quantity</td>
 <td>string</td>
 <td>Y</td>
-<td>委托数量</td>
+<td>order quantity</td>
 </tr>
 <tr>
 <td>side</td>
 <td>int</td>
 <td>Y</td>
-<td>买1，卖-1</td>
+<td>buy: 1, sell: -1</td>
 </tr>
 <tr>
 <td>stopPrice</td>
 <td>string</td>
 <td>optional</td>
-<td>止损价格，order_type等于3（市价）时非必填 //条件单时</td>
+<td>stop price, not required when order_type is 3 (market) //in case of conditional order</td>
 </tr>
 </tbody></table>
 
 <blockquote>
-<p>响应</p>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1712040078475777"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='2213f4c32f-6'>响应数据</h3>
+</span></code></pre></div><h3 id='response-data-6'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1519,32 +1537,32 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0：成功，其他失败</td>
+<td>0: success, other: failure</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>string</td>
-<td>错误信息</td>
+<td>error information</td>
 </tr>
 <tr>
 <td>data</td>
 <td>string</td>
-<td>订单id</td>
+<td>order id</td>
 </tr>
 </tbody></table>
-<h2 id='2152241f96'><span id="2">获取当前订单</span></h2>
-<p>获取当前订单</p>
-<h3 id='http-7'>HTTP请求:</h3>
+<h2 id='get-active-order'><span id="2">Get active order</span></h2>
+<p>Get active order</p>
+<h3 id='http-request-7'>HTTP Request:</h3>
 <ul>
 <li>GET /api/trade/order/active</li>
 </ul>
 
 <blockquote>
-<p>响应</p>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -1578,7 +1596,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='1f9ac54b15-5'>请求参数</h3>
+</span></code></pre></div><h3 id='request-parameters-5'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1594,7 +1612,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-7'>响应数据</h3>
+<h3 id='response-data-7'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1608,7 +1626,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>0</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -1620,91 +1638,91 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>- accountType</td>
 <td>int</td>
-<td>账号类型</td>
+<td>account type</td>
 </tr>
 <tr>
 <td>- clientOrderId</td>
 <td>string</td>
-<td>客户端委托ID,如果不传使用uuid</td>
+<td>client order ID, uuid is used if not passed</td>
 </tr>
 <tr>
 <td>- contractId</td>
 <td>int</td>
-<td>合约ID</td>
+<td>contract ID</td>
 </tr>
 <tr>
 <td>- marginRate</td>
 <td>string</td>
-<td>保证金率，全仓时&gt;0，逐仓时&gt;0</td>
+<td>margin rate, cross&gt;0, isolated&gt;0</td>
 </tr>
 <tr>
 <td>- leverage</td>
 <td>int</td>
-<td>保证金倍数</td>
+<td>margin rate</td>
 </tr>
 <tr>
 <td>- marginType</td>
 <td>int</td>
-<td>保证金类型，全仓1，逐仓2</td>
+<td>margin type, 1: cross, 2: isolated</td>
 </tr>
 <tr>
 <td>- minimalQuantity</td>
 <td>string</td>
-<td>最新成交数量，order_type等于3（市价）时非必填//前端不传</td>
+<td>the latest trade volume, not required when order_type is 3 (market)//not passed at front-end</td>
 </tr>
 <tr>
+<td></td>
 <td>- orderSubType</td>
 <td>int</td>
-<td>0（默认值），1（被动委托），2（最近价触发条件委托），3（指数触发条件委托），4（标记价触发条件委托）</td>
 </tr>
 <tr>
 <td>- orderType</td>
 <td>int</td>
-<td>委托类型，1（限价），3（市价）</td>
+<td>order type, 1 (limit), 3 (market)</td>
 </tr>
 <tr>
 <td>- positionEffect</td>
 <td>int</td>
-<td>开平标志，开仓1，平仓2</td>
+<td>position effect, 1 (open), 2 (close)</td>
 </tr>
 <tr>
 <td>- price</td>
 <td>string</td>
-<td>委托价格,order_type等于3（市价）时非必填</td>
+<td>non required when order_type is 3 (market)</td>
 </tr>
 <tr>
 <td>- quantity</td>
 <td>string</td>
-<td>委托数量</td>
+<td>order quantity</td>
 </tr>
 <tr>
 <td>- side</td>
 <td>int</td>
-<td>买1，卖-1</td>
+<td>buy: 1, sell: -1</td>
 </tr>
 <tr>
 <td>- stopCondition</td>
 <td>int</td>
-<td>止损,order_type等于3（市价）时非必填；值域：1（止盈，未启用），2（止损，未启用），3（只减仓，未启用） //前端不传</td>
+<td>stop loss, non required when order_type is 3 (market); range: 1 (take profit, not enabled), 2 (stop loss, not enabled), 3 (only reduction, not enabled) //not passed at front-end</td>
 </tr>
 <tr>
 <td>- stopPrice</td>
 <td>string</td>
-<td>止损价格，order_type等于3（市价）时非必填 //条件单时</td>
+<td>stop price, not required when order_type is 3 (market) //in case of conditional order</td>
 </tr>
 <tr>
 <td>- symbol</td>
 <td>string</td>
-<td>合约名称</td>
+<td>contract name</td>
 </tr>
 </tbody></table>
-<h2 id='08819af8ba'><span id="3">取消委托单</span></h2>
-<p>取消委托单</p>
-<h3 id='http-8'>HTTP请求:</h3>
+<h2 id='cancel-orders'><span id="3">Cancel orders</span></h2>
+<p>Cancel orders</p>
+<h3 id='http-request-8'>HTTP Request:</h3>
 <ul>
 <li>POST /api/trade/order/cancel</li>
 </ul>
-<h3 id='1f9ac54b15-6'>请求参数</h3>
+<h3 id='request-parameters-6'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1717,25 +1735,25 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>contractId</td>
 <td>int</td>
 <td>Y</td>
-<td>合约号</td>
+<td>contract Id</td>
 </tr>
 <tr>
 <td>originalOrderId</td>
 <td>long</td>
 <td>Y</td>
-<td>原始委托号sb</td>
+<td>original order Id sb</td>
 </tr>
 </tbody></table>
 
 <blockquote>
-<p>响应</p>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancel order success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='2213f4c32f-8'>响应数据</h3>
+</span></code></pre></div><h3 id='response-data-8'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1746,24 +1764,24 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0：成功，其他失败</td>
+<td>0: success, other: failure</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>string</td>
-<td>错误信息</td>
+<td>error message</td>
 </tr>
 <tr>
 <td>data</td>
 <td>string</td>
-<td>返回数据</td>
+<td>return data</td>
 </tr>
 </tbody></table>
-<h2 id='caef340d80'><span id="5">一键撤单</span></h2><h3 id='http-9'>HTTP请求:</h3>
+<h2 id='one-click-cancellation'><span id="5">One-click cancellation</span></h2><h3 id='http-request-9'>HTTP Request:</h3>
 <ul>
 <li>POST /api/trade/order/cancelAll</li>
 </ul>
-<h3 id='1f9ac54b15-7'>请求参数</h3>
+<h3 id='request-parameters-7'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1776,19 +1794,19 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>contractId</td>
 <td>int</td>
 <td>N</td>
-<td>不传撤销所有币对订单</td>
+<td>cancel all contract orders if not passed</td>
 </tr>
 </tbody></table>
 
 <blockquote>
-<p>响应</p>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancel all order success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='2213f4c32f-9'>响应数据</h3>
+</span></code></pre></div><h3 id='response-data-9'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1799,26 +1817,26 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0：成功，其他失败</td>
+<td>0: success, other: failure</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>string</td>
-<td>错误信息</td>
+<td>error message</td>
 </tr>
 <tr>
 <td>data</td>
 <td>string</td>
-<td>返回数据</td>
+<td>return data</td>
 </tr>
 </tbody></table>
-<h2 id='77aaf08979'><span id="13">批量下单</span></h2>
-<p>批量下单</p>
-<h3 id='http-10'>HTTP请求:</h3>
+<h2 id='place-batch'><span id="13">Place batch</span></h2>
+<p>Place batch</p>
+<h3 id='http-request-10'>HTTP Request:</h3>
 <ul>
 <li>POST /api/trade/order/placeBatch</li>
 </ul>
-<h3 id='1f9ac54b15-8'>请求参数</h3>
+<h3 id='request-parameters-8'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1837,95 +1855,95 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>- clientOrderId</td>
 <td>string</td>
 <td>N</td>
-<td>客户端委托ID,如果不传使用uuid</td>
+<td>client order ID, uuid is used if not passed</td>
 </tr>
 <tr>
 <td>- contractId</td>
 <td>int</td>
 <td>Y</td>
-<td>合约ID</td>
+<td>contract ID</td>
 </tr>
 <tr>
 <td>- initRate</td>
 <td>string</td>
 <td>Y</td>
-<td>保证金率，全仓时&gt;0，逐仓时&gt;0</td>
+<td>margin rate, cross&gt;0, isolated&gt;0</td>
 </tr>
 <tr>
 <td>- marginType</td>
 <td>int</td>
 <td>Y</td>
-<td>保证金类型，全仓1，逐仓2</td>
+<td>margin type, 1: cross, 2: isolated</td>
 </tr>
 <tr>
 <td>- orderSubType</td>
 <td>int</td>
 <td>Y</td>
-<td>0（默认值），1（被动委托）</td>
+<td>0 (default value), 1 (passive order)</td>
 </tr>
 <tr>
 <td>- orderType</td>
 <td>int</td>
 <td>Y</td>
-<td>委托类型，1（限价），3（市价）</td>
+<td>order type, 1 (limit), 3 (market)</td>
 </tr>
 <tr>
 <td>- positionEffect</td>
 <td>int</td>
 <td>Y</td>
-<td>开平标志，开仓1，平仓2  平仓单必须传2</td>
+<td>position effect, 1 (open), 2 (close), 2 must be passed for close orders</td>
 </tr>
 <tr>
 <td>- orderPrice</td>
 <td>string</td>
 <td>N</td>
-<td>委托价格,order_type等于3（市价）时非必填</td>
+<td>order price, non required when order_type is 3 (market)</td>
 </tr>
 <tr>
 <td>- orderQty</td>
 <td>string</td>
 <td>Y</td>
-<td>委托数量</td>
+<td>order quantity</td>
 </tr>
 <tr>
 <td>- side</td>
 <td>int</td>
 <td>Y</td>
-<td>买1，卖-1</td>
+<td>buy: 1, sell: -1</td>
 </tr>
 </tbody></table>
 
 <blockquote>
-<p>body
-<code>json
-{&quot;orders&quot;:[{
-  &quot;contractId&quot;: 100280034,
-  &quot;side&quot;: 1,
-  &quot;orderType&quot;: 1,
-  &quot;orderPrice&quot;: &quot;1&quot;,
-  &quot;orderQty&quot;: &quot;1&quot;,
-  &quot;positionEffect&quot;: 1,
-  &quot;marginType&quot;: 1,
-  &quot;initRate&quot;: 0,
-  &quot;orderSubType&quot;: 0
-},{
-  &quot;contractId&quot;: 100280034,
-  &quot;side&quot;: 1,
-  &quot;orderType&quot;: 1,
-  &quot;orderPrice&quot;: &quot;1&quot;,
-  &quot;orderQty&quot;: &quot;1&quot;,
-  &quot;positionEffect&quot;: 1,
-  &quot;marginType&quot;: 1,
-  &quot;initRate&quot;: 0,
-  &quot;orderSubType&quot;: 0
-}]}
-</code></p>
-
-<p>响应</p>
+<p>Request Body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"orders"</span><span class="p">:[{</span><span class="w">
+  </span><span class="nl">"contractId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100280034</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"positionEffect"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"marginType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"initRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderSubType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">},{</span><span class="w">
+  </span><span class="nl">"contractId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100280034</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"positionEffect"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"marginType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"initRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orderSubType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}]}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"reject"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
         </span><span class="nl">"succ"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1941,7 +1959,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='2213f4c32f-10'>响应数据</h3>
+</span></code></pre></div><h3 id='response-data-10'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -1952,36 +1970,36 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0：成功，其他失败</td>
+<td>0: success, other: failure</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>string</td>
-<td>错误信息</td>
+<td>error message</td>
 </tr>
 <tr>
 <td>data</td>
 <td>Object</td>
-<td>返回数据</td>
+<td>return data</td>
 </tr>
 <tr>
 <td>- reject</td>
 <td>Object[]</td>
-<td>失败订单  [客户端委托ID,错误code]</td>
+<td>rejected order  [client order ID, error code]</td>
 </tr>
 <tr>
 <td>- succ</td>
 <td>Object[]</td>
-<td>成功订单     [客户端委托ID,订单id]</td>
+<td>successful order     [client order ID, order id]</td>
 </tr>
 </tbody></table>
-<h2 id='id'><span id="27">根据订单id批量进行撤单</span></h2>
-<p>根据订单id批量进行撤单</p>
-<h3 id='http-11'>HTTP请求:</h3>
+<h2 id='batch-cancellation-according-to-order-id'><span id="27">Batch cancellation according to order id</span></h2>
+<p>Batch cancellation according to order id</p>
+<h3 id='http-request-11'>HTTP Request:</h3>
 <ul>
 <li>POST /api/trade/orders/del</li>
 </ul>
-<h3 id='1f9ac54b15-9'>请求参数</h3>
+<h3 id='request-parameters-9'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2000,34 +2018,34 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>- originalOrderId</td>
 <td>string</td>
 <td>Y</td>
-<td>客户端委托ID,如果不传使用uuid</td>
+<td>client order ID, uuid is used if not passed</td>
 </tr>
 <tr>
 <td>- contractId</td>
 <td>int</td>
 <td>Y</td>
-<td>合约ID</td>
+<td>contract ID</td>
 </tr>
 </tbody></table>
 
 <blockquote>
-<p>body
-<code>json
-{&quot;cancels&quot;:[{
-  &quot;contractId&quot;: 100280034,
-  &quot;originalOrderId&quot;: 1712125303587721
-},{
-  &quot;contractId&quot;: 100280034,
-  &quot;originalOrderId&quot;: 1712125303587722
-}
-]}
-</code></p>
-
-<p>响应</p>
+<p>Request Body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"cancels"</span><span class="p">:[{</span><span class="w">
+  </span><span class="nl">"contractId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100280034</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originalOrderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1712125303587721</span><span class="w">
+</span><span class="p">},{</span><span class="w">
+  </span><span class="nl">"contractId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100280034</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"originalOrderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1712125303587722</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">]}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"reject"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="p">[</span><span class="w">
@@ -2053,7 +2071,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='2213f4c32f-11'>响应数据</h3>
+</span></code></pre></div><h3 id='response-data-11'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2064,12 +2082,12 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>code</td>
 <td>string</td>
-<td>正常返回信息</td>
+<td>normal return information</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>string</td>
-<td>错误信息</td>
+<td>error message</td>
 </tr>
 <tr>
 <td>data</td>
@@ -2079,23 +2097,23 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>-succ</td>
 <td>Object[]</td>
-<td>成功的订单id集合         [客户端委托ID,订单id]</td>
+<td>set of successful order ids         [client order ID, order id]</td>
 </tr>
 <tr>
 <td>-reject</td>
 <td>Object[]</td>
-<td>失败的订单id集合        [客户端委托ID,错误code,订单id]</td>
+<td>set of rejected order ids        [client order ID, error code, order id]</td>
 </tr>
 </tbody></table>
-<h2 id='8b3c19df49'><span id="3">获取用户最新成交</span></h2>
-<p>获取全部成交记录</p>
-<h3 id='http-12'>HTTP请求:</h3>
+<h2 id='get-user-39-s-latest-trade'><span id="3">Get user&#39;s latest trade</span></h2>
+<p>Get all trade records</p>
+<h3 id='http-request-12'>HTTP Request:</h3>
 <ul>
 <li>GET /api/future/queryHisMatch</li>
 </ul>
 
 <blockquote>
-<p>响应</p>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -2130,9 +2148,9 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
     </span><span class="nl">"takerSide"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updateTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='1f9ac54b15-10'>请求参数</h3>
+</span></code></pre></div><h3 id='request-parameters-10'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2145,40 +2163,40 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>contractId</td>
 <td>int</td>
 <td>N</td>
-<td>合约id</td>
+<td>contract id</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>string</td>
 <td>N</td>
-<td>结束时间</td>
+<td>end time</td>
 </tr>
 <tr>
 <td>startTime</td>
 <td>string</td>
 <td>N</td>
-<td>开始时间</td>
+<td>start time</td>
 </tr>
 <tr>
 <td>pageNum</td>
 <td>string</td>
 <td>N</td>
-<td>页数</td>
+<td>page number</td>
 </tr>
 <tr>
 <td>pageSize</td>
 <td>string</td>
 <td>N</td>
-<td>每页数量</td>
+<td>page size</td>
 </tr>
 <tr>
 <td>side</td>
 <td>string</td>
 <td>N</td>
-<td>方向 -1上一页 1下一页</td>
+<td>side -1 Previous, 1 Next</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-12'>响应数据</h3>
+<h3 id='response-data-12'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2192,7 +2210,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>0</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -2204,153 +2222,153 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>- applId</td>
 <td>int</td>
-<td>期货ID,2</td>
+<td>futures ID, 2</td>
 </tr>
 <tr>
 <td>- matchTime</td>
 <td>Long</td>
-<td>成交时间</td>
+<td>trade time</td>
 </tr>
 <tr>
 <td>- contractId</td>
 <td>Long</td>
-<td>交易对ID、合约号</td>
+<td>symbol ID, contract ID</td>
 </tr>
 <tr>
 <td>- execId</td>
 <td>Long</td>
-<td>成交编号</td>
+<td>trade ID</td>
 </tr>
 <tr>
 <td>- bidUserId</td>
 <td>Long</td>
-<td>买方账号ID</td>
+<td>bid user ID</td>
 </tr>
 <tr>
 <td>- askUserId</td>
 <td>Long</td>
-<td>卖方账号ID</td>
+<td>ask user ID</td>
 </tr>
 <tr>
 <td>- bidOrderId</td>
 <td>Long</td>
-<td>买方委托号</td>
+<td>bid order ID</td>
 </tr>
 <tr>
 <td>- askOrderId</td>
 <td>Long</td>
-<td>卖方委托号</td>
+<td>ask order ID</td>
 </tr>
 <tr>
 <td>- matchPrice</td>
 <td>Double</td>
-<td>成交价</td>
+<td>trade price</td>
 </tr>
 <tr>
 <td>- matchQty</td>
 <td>int</td>
-<td>成交数量</td>
+<td>trade volume</td>
 </tr>
 <tr>
 <td>- matchAmt</td>
 <td>Double</td>
-<td>成交金额</td>
+<td>trade amount</td>
 </tr>
 <tr>
 <td>- bidFee</td>
 <td>Double</td>
-<td>买方手续费</td>
+<td>bid fee</td>
 </tr>
 <tr>
 <td>- askFee</td>
 <td>Double</td>
-<td>卖方手续费</td>
+<td>ask fee</td>
 </tr>
 <tr>
 <td>- takerSide</td>
 <td>int</td>
-<td>Taker方向,1: 买方吃单，-1：卖方吃单</td>
+<td>Taker side, 1: bid Taker, -1: ask Taker</td>
 </tr>
 <tr>
 <td>- side</td>
 <td>int</td>
-<td>买卖方向</td>
+<td>bid/ask side</td>
 </tr>
 <tr>
 <td>- updateTime</td>
 <td>Long</td>
-<td>最近更新时间</td>
+<td>last update time</td>
 </tr>
 <tr>
 <td>- bidPositionEffect</td>
 <td>int</td>
-<td>买方开平标志</td>
+<td>bid position effect</td>
 </tr>
 <tr>
 <td>- askPositionEffect</td>
 <td>int</td>
-<td>卖方开平标志</td>
+<td>ask position effect</td>
 </tr>
 <tr>
 <td>- bidMarginType</td>
 <td>int</td>
-<td>买方保证金类型</td>
+<td>bid margin type</td>
 </tr>
 <tr>
 <td>- askMarginType</td>
 <td>int</td>
-<td>卖方保证金类型</td>
+<td>ask margin type</td>
 </tr>
 <tr>
 <td>- bidInitRate</td>
 <td>Double</td>
-<td>买方初始保证金率</td>
+<td>bid initial margin rate</td>
 </tr>
 <tr>
 <td>- askInitRate</td>
 <td>Double</td>
-<td>卖方初始保证金率</td>
+<td>ask initial margin rate</td>
 </tr>
 <tr>
 <td>- bidMatchType</td>
 <td>int</td>
-<td>买方成交类型：0普通成交1强平成交2强减成交（破产方）3强减</td>
+<td>bid trade type: 0: ordinary trade, 1: liquidation trade, 2: forced deduction trade (bankrupt party) 3: forced deduction</td>
 </tr>
 <tr>
 <td>- askMatchType</td>
 <td>int</td>
-<td>卖方成交类型：0普通成交1强平成交2强减成交（破产方）3强减</td>
+<td>ask trade type: 0: ordinary trade, 1: liquidation trade, 2: forced deduction trade (bankrupt party) 3: forced deduction</td>
 </tr>
 <tr>
 <td>- bidPnlType</td>
 <td>int</td>
-<td>买方盈亏类型：0正常成交1正常平仓2强平3强减</td>
+<td>bid P&amp;L type: 0: ordinary trade, 1: ordinary close, 2: liquidation, 3: forced deduction</td>
 </tr>
 <tr>
 <td>- bidPnl</td>
 <td>Double</td>
-<td>买方平仓盈亏</td>
+<td>bid close P&amp;L</td>
 </tr>
 <tr>
 <td>- askPnlType</td>
 <td>int</td>
-<td>卖方盈亏类型：0正常成交1正常平仓2强平3强减</td>
+<td>ask P&amp;L type: 0: ordinary trade, 1: ordinary close, 2: liquidation, 3: forced deduction</td>
 </tr>
 <tr>
 <td>- askPnl</td>
 <td>Double</td>
-<td>卖方平仓盈亏</td>
+<td>ask close P&amp;L</td>
 </tr>
 </tbody></table>
-<h2 id='274ba04bb9'><span id="3">用户强减记录</span></h2>
-<p>获取全部成交记录</p>
-<h3 id='http-13'>HTTP请求:</h3>
+<h2 id='user-forced-reduction'><span id="3">User forced reduction</span></h2>
+<p>Get all trade records</p>
+<h3 id='http-request-13'>HTTP Request:</h3>
 <ul>
 <li>GET /api/future/queryFlOrders</li>
 </ul>
 
 <blockquote>
-<p>响应</p>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2387,7 +2405,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='1f9ac54b15-11'>请求参数</h3>
+</span></code></pre></div><h3 id='request-parameters-11'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2400,40 +2418,40 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>contractId</td>
 <td>int</td>
 <td>N</td>
-<td>合约id</td>
+<td>contract id</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>string</td>
 <td>N</td>
-<td>结束时间</td>
+<td>end time</td>
 </tr>
 <tr>
 <td>startTime</td>
 <td>string</td>
 <td>N</td>
-<td>开始时间</td>
+<td>start time</td>
 </tr>
 <tr>
 <td>pageNum</td>
 <td>string</td>
 <td>N</td>
-<td>页数</td>
+<td>page number</td>
 </tr>
 <tr>
 <td>pageSize</td>
 <td>string</td>
 <td>N</td>
-<td>每页数量</td>
+<td>page size</td>
 </tr>
 <tr>
 <td>side</td>
 <td>string</td>
 <td>N</td>
-<td>方向 -1上一页 1下一页</td>
+<td>side -1 Previous, 1 Next</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-13'>响应数据</h3>
+<h3 id='response-data-13'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2447,7 +2465,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>0</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -2459,113 +2477,113 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>- applId</td>
 <td>int</td>
-<td>期货ID,2</td>
+<td>futures ID,2</td>
 </tr>
 <tr>
 <td>- timestamp</td>
 <td>Long</td>
-<td>委托时间</td>
+<td>order time</td>
 </tr>
 <tr>
 <td>- contractId</td>
 <td>Long</td>
-<td>交易对ID、合约号</td>
+<td>symbol ID, contract ID</td>
 </tr>
 <tr>
 <td>- userId</td>
 <td>Long</td>
-<td>用户ID</td>
+<td>user ID</td>
 </tr>
 <tr>
 <td>- uuid</td>
 <td>String</td>
-<td>委托编号</td>
+<td>order ID</td>
 </tr>
 <tr>
 <td>- side</td>
 <td>int</td>
-<td>买卖方向</td>
+<td>bid/ask side</td>
 </tr>
 <tr>
 <td>- closeQty</td>
 <td>int</td>
-<td>委托量</td>
+<td>order quantity</td>
 </tr>
 <tr>
 <td>- closePrice</td>
 <td>Double</td>
-<td>委托量</td>
+<td>order quantity</td>
 </tr>
 <tr>
 <td>- closeAmt</td>
 <td>Double</td>
-<td>委托量</td>
+<td>order quantity</td>
 </tr>
 <tr>
 <td>- filledCurrency</td>
 <td>Double</td>
-<td>成交金额</td>
+<td>trade amount</td>
 </tr>
 <tr>
 <td>- filledQuantity</td>
 <td>int</td>
-<td>成交量</td>
+<td>filled volume</td>
 </tr>
 <tr>
 <td>- canceledQuantity</td>
 <td>int</td>
-<td>撤单数量</td>
+<td>canceled quantity</td>
 </tr>
 <tr>
 <td>- orderStatus</td>
 <td>int</td>
-<td>委托状态 4 成交</td>
+<td>order status, 4: trade</td>
 </tr>
 <tr>
 <td>- feeRatio</td>
 <td>Double</td>
-<td>手续费</td>
+<td>fee</td>
 </tr>
 <tr>
 <td>- marginType</td>
 <td>int</td>
-<td>保证金类型</td>
+<td>margin type</td>
 </tr>
 <tr>
 <td>- lossUserId</td>
 <td>int</td>
-<td>强减用户（亏损方）</td>
+<td>loss user</td>
 </tr>
 <tr>
 <td>- profitUserId</td>
 <td>int</td>
-<td>被强减用户（盈利方）</td>
+<td>profit user</td>
 </tr>
 <tr>
 <td>- execId</td>
 <td>int</td>
-<td>成交编号</td>
+<td>trade ID</td>
 </tr>
 <tr>
 <td>- lossMarginType</td>
 <td>int</td>
-<td>强减用户（亏损方）保证金类型</td>
+<td>loss user margin type</td>
 </tr>
 <tr>
 <td>- profitMarginType</td>
 <td>int</td>
-<td>被强减用户（盈利方）保证金类型</td>
+<td>profit user margin type</td>
 </tr>
 </tbody></table>
-<h2 id='db55aab9f9'><span id="3">用户强平记录</span></h2>
-<p>获取全部成交记录</p>
-<h3 id='http-14'>HTTP请求:</h3>
+<h2 id='user-liquidation-record'><span id="3">User liquidation record</span></h2>
+<p>Get all trade records</p>
+<h3 id='http-request-14'>HTTP Request:</h3>
 <ul>
 <li>GET /api/future/queryFcOrders</li>
 </ul>
 
 <blockquote>
-<p>响应</p>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2602,7 +2620,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='1f9ac54b15-12'>请求参数</h3>
+</span></code></pre></div><h3 id='request-parameters-12'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2615,40 +2633,40 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>contractId</td>
 <td>int</td>
 <td>N</td>
-<td>合约id</td>
+<td>contract id</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>string</td>
 <td>N</td>
-<td>结束时间</td>
+<td>end time</td>
 </tr>
 <tr>
 <td>startTime</td>
 <td>string</td>
 <td>N</td>
-<td>开始时间</td>
+<td>start time</td>
 </tr>
 <tr>
 <td>pageNum</td>
 <td>string</td>
 <td>N</td>
-<td>页数</td>
+<td>page number</td>
 </tr>
 <tr>
 <td>pageSize</td>
 <td>string</td>
 <td>N</td>
-<td>每页数量</td>
+<td>page size</td>
 </tr>
 <tr>
 <td>side</td>
 <td>string</td>
 <td>N</td>
-<td>方向 -1上一页 1下一页</td>
+<td>side -1 Previous, 1 Next</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-14'>响应数据</h3>
+<h3 id='response-data-14'>Response Data</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2662,7 +2680,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>0</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -2674,113 +2692,113 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>- applId</td>
 <td>int</td>
-<td>期货ID,2</td>
+<td>futures ID,2</td>
 </tr>
 <tr>
 <td>- timestamp</td>
 <td>Long</td>
-<td>委托时间</td>
+<td>order time</td>
 </tr>
 <tr>
 <td>- contractId</td>
 <td>Long</td>
-<td>交易对ID、合约号</td>
+<td>symbol ID, contract ID</td>
 </tr>
 <tr>
 <td>- userId</td>
 <td>Long</td>
-<td>用户ID</td>
+<td>user ID</td>
 </tr>
 <tr>
 <td>- uuid</td>
 <td>String</td>
-<td>委托编号</td>
+<td>order ID</td>
 </tr>
 <tr>
 <td>- side</td>
 <td>int</td>
-<td>买卖方向</td>
+<td>bid/ask side</td>
 </tr>
 <tr>
 <td>- closeQty</td>
 <td>int</td>
-<td>委托量</td>
+<td>order quantity</td>
 </tr>
 <tr>
 <td>- closePrice</td>
 <td>Double</td>
-<td>委托量</td>
+<td>order quantity</td>
 </tr>
 <tr>
 <td>- closeAmt</td>
 <td>Double</td>
-<td>委托量</td>
+<td>order quantity</td>
 </tr>
 <tr>
 <td>- filledCurrency</td>
 <td>Double</td>
-<td>成交金额</td>
+<td>trade amount</td>
 </tr>
 <tr>
 <td>- filledQuantity</td>
 <td>int</td>
-<td>成交量</td>
+<td>filled volume</td>
 </tr>
 <tr>
 <td>- canceledQuantity</td>
 <td>int</td>
-<td>撤单数量</td>
+<td>canceled quantity</td>
 </tr>
 <tr>
 <td>- orderStatus</td>
 <td>int</td>
-<td>委托状态 4 成交</td>
+<td>order status 4: trade</td>
 </tr>
 <tr>
 <td>- feeRatio</td>
 <td>Double</td>
-<td>手续费</td>
+<td>fee</td>
 </tr>
 <tr>
 <td>- marginType</td>
 <td>int</td>
-<td>保证金类型</td>
+<td>margin type</td>
 </tr>
 <tr>
 <td>- lossUserId</td>
 <td>int</td>
-<td>强减用户（亏损方）</td>
+<td>loss user</td>
 </tr>
 <tr>
 <td>- profitUserId</td>
 <td>int</td>
-<td>被强减用户（盈利方）</td>
+<td>profit user</td>
 </tr>
 <tr>
 <td>- execId</td>
 <td>int</td>
-<td>成交编号</td>
+<td>trade ID</td>
 </tr>
 <tr>
 <td>- lossMarginType</td>
 <td>int</td>
-<td>强减用户（亏损方）保证金类型</td>
+<td>loss user margin type</td>
 </tr>
 <tr>
 <td>- profitMarginType</td>
 <td>int</td>
-<td>被强减用户（盈利方）保证金类型</td>
+<td>profit user margin type</td>
 </tr>
 </tbody></table>
-<h1 id='43ee760de5'>行情相关</h1><h2 id='k'><span id="7">获取历史K线</span></h2><h3 id='http-15'>HTTP请求:</h3>
+<h1 id='ticker-related'>Ticker Related</h1><h2 id='get-historical-k-line'><span id="7">Get historical K-line</span></h2><h3 id='http-request-15'>HTTP Request:</h3>
 <ul>
 <li>GET /v1/futureQuot/queryCandlestick</li>
 </ul>
 
 <blockquote>
-<p>注意：返回结果是按时间正序</p>
+<p>Note: The return result is in time positive sequence</p>
 
-<p>响应</p>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -2798,7 +2816,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
         </span><span class="nl">"contractId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100280034</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='1f9ac54b15-13'>请求参数</h3>
+</span></code></pre></div><h3 id='request-parameters-13'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2811,28 +2829,28 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>contractId</td>
 <td>int</td>
 <td>Y</td>
-<td>合约id</td>
+<td>contract id</td>
 </tr>
 <tr>
 <td>range</td>
 <td>string</td>
 <td>Y</td>
-<td>K线类型      1Min : 60000  3Min : 180000  5Min : 300000  15Min : 900000  30Min : 1800000  1Hour : 3600000  2Hour : 7200000  4Hour : 14400000  6Hour : 21600000  12Hour : 43200000  1Day : 86400000  1Week : 604800000</td>
+<td>K-line type      1Min : 60000  3Min : 180000  5Min : 300000  15Min : 900000  30Min : 1800000  1Hour : 3600000  2Hour : 7200000  4Hour : 14400000  6Hour : 21600000  12Hour : 43200000  1Day : 86400000  1Week : 604800000</td>
 </tr>
 <tr>
 <td>end</td>
 <td>string</td>
 <td>N</td>
-<td>截止时间 默认当前时间，传第一条记录的时间，可以实现滚动翻页</td>
+<td>deadline defaults to the current time, time of transmitting the first record, scrolling page turn</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>string</td>
 <td>N</td>
-<td>查询记录条数  默认 1440</td>
+<td>number of query records, default: 1440</td>
 </tr>
 </tbody></table>
-<h3 id='f3324f4e0c'>响应数据:</h3>
+<h3 id='response-data-15'>Response Data:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2843,12 +2861,12 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0：成功，其他失败</td>
+<td>0: success, other: failure</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>string</td>
-<td>错误信息</td>
+<td>error message</td>
 </tr>
 <tr>
 <td>data</td>
@@ -2858,16 +2876,16 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>├─lines</td>
 <td>List[]</td>
-<td>[时间戳，开仓价，最高价格，最低价格，收盘价，成交张数]</td>
+<td>[timestamp, open price, high price, low price, close price, trade volume]</td>
 </tr>
 </tbody></table>
-<h2 id='0a8d744c83'><span id="7">查询行情快照</span></h2><h3 id='http-16'>HTTP请求:</h3>
+<h2 id='query-ticker-snapshot'><span id="7">Query ticker snapshot</span></h2><h3 id='http-request-16'>HTTP Request:</h3>
 <ul>
 <li>GET /v1/futureQuot/querySnapshot</li>
 </ul>
 
 <blockquote>
-<p>响应</p>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"contractId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100100000</span><span class="p">,</span><span class="w">
@@ -2898,7 +2916,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
         </span><span class="nl">"lp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51001"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='1f9ac54b15-14'>请求参数</h3>
+</span></code></pre></div><h3 id='request-parameters-14'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2911,10 +2929,10 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>contractId</td>
 <td>int</td>
 <td>Y</td>
-<td>合约id</td>
+<td>contract id</td>
 </tr>
 </tbody></table>
-<h3 id='f3324f4e0c-2'>响应数据:</h3>
+<h3 id='response-data-16'>Response Data:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -2925,12 +2943,12 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0：成功，其他失败</td>
+<td>0: success, other: failure</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>string</td>
-<td>错误信息</td>
+<td>error message</td>
 </tr>
 <tr>
 <td>data</td>
@@ -2940,83 +2958,83 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>├─cid</td>
 <td>Long</td>
-<td>交易对id</td>
+<td>symbol id</td>
 </tr>
 <tr>
 <td>├─ip</td>
 <td>Double</td>
-<td>指数价</td>
+<td>index price</td>
 </tr>
 <tr>
 <td>├─mp</td>
 <td>Double</td>
-<td>标记价</td>
+<td>marked price</td>
 </tr>
 <tr>
 <td>├─lp</td>
 <td>Double</td>
-<td>最新价</td>
+<td>latest price</td>
 </tr>
 <tr>
 <td>├─pv</td>
 <td>Long</td>
-<td>持仓量</td>
+<td>positions</td>
 </tr>
 <tr>
 <td>├─tv</td>
 <td>Long</td>
-<td>24小时成交量</td>
+<td>24-hour trade volume</td>
 </tr>
 <tr>
 <td>├─tt</td>
 <td>Long</td>
-<td>24小时成交额</td>
+<td>24-hour trade amount</td>
 </tr>
 <tr>
 <td>├─ph</td>
 <td>Double</td>
-<td>24小时最高价</td>
+<td>24-hour high price</td>
 </tr>
 <tr>
 <td>├─pl</td>
 <td>Double</td>
-<td>24小时最低价</td>
+<td>24-hour low price</td>
 </tr>
 <tr>
 <td>├─pcr</td>
 <td>Double</td>
-<td>24小时涨跌幅率</td>
+<td>24-hour change rate</td>
 </tr>
 <tr>
 <td>├─fr</td>
 <td>Double</td>
-<td>资金费率</td>
+<td>fund rate</td>
 </tr>
 <tr>
 <td>├─pfr</td>
 <td>Double</td>
-<td>预测资金费率</td>
+<td>predicted fund rate</td>
 </tr>
 <tr>
 <td>├─bids</td>
 <td>List</td>
-<td>买盘 [价格，张数]</td>
+<td>bids [price, conts]</td>
 </tr>
 <tr>
 <td>├─asks</td>
 <td>List</td>
-<td>买盘 [价格，张数]</td>
+<td>bids [price, conts]</td>
 </tr>
 </tbody></table>
-<h2 id='1690314e40'><span id="7">获取最新成交</span></h2><h3 id='http-17'>HTTP请求:</h3>
+<h2 id='get-latest-trade'><span id="7">Get latest trade</span></h2><h3 id='http-request-17'>HTTP Request:</h3>
 <ul>
 <li>GET /v1/futureQuot/queryTickTrade</li>
 </ul>
 
 <blockquote>
-<p>注意：返回结果是按时间正序</p>
+<p>Note: The return result is in time positive sequence</p>
 
-<p>响应</p>
+<p>Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -3037,7 +3055,7 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='1f9ac54b15-15'>请求参数</h3>
+</span></code></pre></div><h3 id='request-parameters-15'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3050,10 +3068,10 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <td>contractId</td>
 <td>int</td>
 <td>Y</td>
-<td>合约id</td>
+<td>contract id</td>
 </tr>
 </tbody></table>
-<h3 id='f3324f4e0c-3'>响应数据:</h3>
+<h3 id='response-data-17'>Response Data:</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3064,12 +3082,12 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>code</td>
 <td>int</td>
-<td>0：成功，其他失败</td>
+<td>0: success, other: failure</td>
 </tr>
 <tr>
-<td>msg</td>
+<td>message</td>
 <td>string</td>
-<td>错误信息</td>
+<td>error message</td>
 </tr>
 <tr>
 <td>data</td>
@@ -3079,14 +3097,16 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <tr>
 <td>├─trades</td>
 <td>List[]</td>
-<td>[时间戳，成交价，成交张数，成交方向（1多 -1空）]</td>
+<td>[timestamp, price, transaction quantity, side (1 long; -1 short)]</td>
 </tr>
 </tbody></table>
-<h1 id='websocket'>Websocket行情数据</h1><h2 id='5ea2e0cde2'>简介</h2><h3 id='url'>接入URL</h3>
+<h1 id='websocket-ticker-data'>Websocket Ticker Data</h1><h2 id='introduction-2'>Introduction</h2><h3 id='access-url'>Access URL</h3>
 <p><code>
 wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 </code></p>
-<h3 id='1da6708ecc'>鉴权</h3><div class="highlight"><pre class="highlight plaintext"><code>[
+<h3 id='authentication'>Authentication</h3>
+<p>Note: signature: in the same way as restful</p>
+<div class="highlight"><pre class="highlight plaintext"><code>[
     "auth",
     {
         "header": {
@@ -3099,12 +3119,8 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
         }
     }
 ]
-</code></pre></div>
-<blockquote>
-<p>注：signature: 签名方式同restful</p>
-<h3 id='5319af762d'>订阅</h3>
-<p>根据是否需要鉴权之后来进行业务topic的订阅，下面式是订阅的标准格式，在相关ws接口说明里有详细的说明</p>
-</blockquote>
+</code></pre></div><h3 id='subscription'>Subscription</h3>
+<p>The topic service is subscribed according to whether authentication is required. The following formula is the standard format of subscription, which is explained in detail in the relevant ws interface description</p>
 <div class="highlight"><pre class="highlight plaintext"><code>[
     "subscribe",
     {
@@ -3163,81 +3179,78 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
         }
     }
 ]
-</code></pre></div><h3 id='topic'>订阅 Topic 列表</h3>
+</code></pre></div><h3 id='subscribe-to-topic-list'>Subscribe to Topic List</h3>
 <table><thead>
 <tr>
 <th>topic</th>
-<th>类型</th>
-<th>描述</th>
-<th>需要验签</th>
+<th>type</th>
+<th>description</th>
+<th>signature required</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>future_tick</td>
 <td>SUB</td>
-<td>获取逐笔成交</td>
-<td>否</td>
+<td>get trade data by transaction</td>
+<td>No</td>
 </tr>
 <tr>
 <td>future_kline</td>
 <td>SUB</td>
-<td>获取K线</td>
-<td>否</td>
+<td>get K-line</td>
+<td>No</td>
 </tr>
 <tr>
 <td>future_snapshot_depth</td>
 <td>SUB</td>
-<td>获取行情快照买卖档位</td>
-<td>否</td>
+<td>get ticker snapshot and bid/ask level</td>
+<td>No</td>
 </tr>
 <tr>
 <td>indicator</td>
 <td>SUB</td>
-<td>获取行情数据</td>
-<td>否</td>
+<td>get ticker data</td>
+<td>No</td>
 </tr>
 <tr>
 <td>match</td>
 <td>SUB</td>
-<td>获取当前委托、持仓、资产</td>
-<td>是</td>
+<td>get open orders, positions and assets</td>
+<td>Yes</td>
 </tr>
 </tbody></table>
-<h2 id='socket'>socket推送</h2><h3 id='k-2'>获取K线</h3><h4 id='topic-future_kline'>订阅topic: future_kline</h4>
+<h2 id='get-k-line'>Get K-line</h2><h3 id='subscribe-to-topic-future_kline'>Subscribe to topic: future_kline</h3>
+<p>symbol value in the data format is: contract ID</p>
+<h3 id='ranges'>Ranges:</h3>
+<ul>
+<li>1Min = 60000</li>
+<li>5Min = 300000</li>
+<li>15Min = 900000</li>
+<li>30Min = 1800000</li>
+<li>1Hour = 3600000</li>
+<li>4Hour = 14400000</li>
+<li>12Hour = 43200000</li>
+<li>1Day = 86400000</li>
+<li>1Week = 604800000</li>
+</ul>
+
 <blockquote>
-<p>数据格式中的symbol值为：合约ID</p>
+<p>The message subscription format is as follows:</p>
 </blockquote>
-
-<p>ranges的取值范围： 
-```</p>
-
-<p>** 1Min = 60000
-** 5Min = 300000
-** 15Min = 900000
-** 30Min = 1800000
-** 1Hour = 3600000
-** 4Hour = 14400000
-** 12Hour = 43200000
-** 1Day = 86400000
-** 1Week = 604800000
-```</p>
-
-<p>消息订阅格式如下所示：
-<code>
-{
-    &quot;header&quot;: {
-        &quot;type&quot;: 1003
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "header": {
+        "type": 1003
     },
-    &quot;body&quot;: {
-        &quot;topics&quot;: [
+    "body": {
+        "topics": [
             {
-                &quot;topic&quot;: &quot;future_kline&quot;,
-                &quot;params&quot;: {
-                    &quot;symbols&quot;: [
+                "topic": "future_kline",
+                "params": {
+                    "symbols": [
                         {
-                            &quot;symbol&quot;: 100,
-                            &quot;ranges&quot;: [
-                                &quot;60000&quot;
+                            "symbol": 100,
+                            "ranges": [
+                                "60000"
                             ]
                         }
                     ]
@@ -3246,8 +3259,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
         ]
     }
 }
-</code></p>
-<h4 id='4ea192405d'>返回结构</h4>
+</code></pre></div><h3 id='return-structure'>Return Structure</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3258,38 +3270,37 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <tr>
 <td>contractId</td>
 <td>long</td>
-<td>合约ID</td>
+<td>contract ID</td>
 </tr>
 <tr>
 <td>range</td>
 <td>String</td>
-<td>范围</td>
+<td>range</td>
 </tr>
 <tr>
 <td>lines</td>
 <td>object []</td>
-<td>[ [${时间戳}, ${开市价格}, ${最高价格}, ${最低价格}, ${闭市价格}, ${成交量}] ]</td>
+<td>[ [${timestamp}, ${open price}, ${high price}, ${low price}, ${close price}, ${volume}] ]</td>
 </tr>
 </tbody></table>
-<h3 id='d07a7e664f'>获取逐笔成交</h3><h4 id='topic-future_tick'>订阅topic: future_tick</h4>
-<blockquote>
-<p>数据格式中的symbol值为：合约ID</p>
-</blockquote>
+<h2 id='get-trade-data-by-transaction'>Get trade data by transaction</h2><h3 id='subscribe-to-topic-future_tick'>Subscribe to topic: future_tick</h3>
+<p>Symbol value in the data format is: contract ID</p>
 
-<p>消息订阅格式如下所示：
-<code>
-{
-    &quot;header&quot;: {
-        &quot;type&quot;: 1003
+<blockquote>
+<p>The message subscription format is as follows:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "header": {
+        "type": 1003
     },
-    &quot;body&quot;: {
-        &quot;topics&quot;: [
+    "body": {
+        "topics": [
             {
-                &quot;topic&quot;: &quot;future_tick&quot;,
-                &quot;params&quot;: {
-                    &quot;symbols&quot;: [
+                "topic": "future_tick",
+                "params": {
+                    "symbols": [
                         {
-                            &quot;symbol&quot;: 100
+                            "symbol": 100
                         }
                     ]
                 }
@@ -3297,8 +3308,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
         ]
     }
 }
-</code></p>
-<h4 id='4ea192405d-2'>返回结构</h4>
+</code></pre></div><h3 id='return-structure-2'>Return Structure</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3309,33 +3319,32 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <tr>
 <td>contractId</td>
 <td>long</td>
-<td>合约ID</td>
+<td>contract ID</td>
 </tr>
 <tr>
 <td>trades</td>
 <td>object []</td>
-<td>[ [${时间戳}, ${成交价格}, ${成交数量}, ${方向(1 多； 2 空)}] ] ]</td>
+<td>[ [${timestamp}, ${price}, ${volume}, ${side(1 long; 2 short)}] ] ]</td>
 </tr>
 </tbody></table>
-<h3 id='707972a6ed'>获取行情快照买卖档位</h3><h4 id='topic-future_snapshot_depth'>订阅topic: future_snapshot_depth</h4>
-<blockquote>
-<p>数据格式中的symbol值为：合约ID</p>
-</blockquote>
+<h2 id='get-ticker-snapshot-and-bid-ask-level'>Get ticker snapshot and bid/ask level</h2><h3 id='subscribe-to-topic-future_snapshot_depth'>Subscribe to topic: future_snapshot_depth</h3>
+<p>Symbol value in the data format is: contract ID</p>
 
-<p>消息订阅格式如下所示：
-<code>
-{
-    &quot;header&quot;: {
-        &quot;type&quot;: 1003
+<blockquote>
+<p>The message subscription format is as follows:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "header": {
+        "type": 1003
     },
-    &quot;body&quot;: {
-        &quot;topics&quot;: [
+    "body": {
+        "topics": [
             {
-                &quot;topic&quot;: &quot;future_snapshot_depth&quot;,
-                &quot;params&quot;: {
-                    &quot;symbols&quot;: [
+                "topic": "future_snapshot_depth",
+                "params": {
+                    "symbols": [
                         {
-                            &quot;symbol&quot;: 100
+                            "symbol": 100
                         }
                     ]
                 }
@@ -3343,8 +3352,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
         ]
     }
 }
-</code></p>
-<h4 id='4ea192405d-3'>返回结构</h4>
+</code></pre></div><h3 id='return-structure-3'>Return Structure</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3355,38 +3363,37 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <tr>
 <td>contractId</td>
 <td>long</td>
-<td>合约ID</td>
+<td>contract ID</td>
 </tr>
 <tr>
 <td>bids</td>
 <td>object []</td>
-<td>买档位数据列表   [ [${价格}, ${数量}] ] ]</td>
+<td>bid level data list   [ [${price}, ${volume}] ] ]</td>
 </tr>
 <tr>
 <td>asks</td>
 <td>object []</td>
-<td>卖档位数据列表  [ [${价格}, ${数量}] ] ]</td>
+<td>ask level data list  [ [${price}, ${volume}] ] ]</td>
 </tr>
 </tbody></table>
-<h3 id='e601062c77'>获取行情快照基础数据</h3><h4 id='topic-indicator'>订阅topic: indicator</h4>
-<blockquote>
-<p>数据格式中的symbol值为：合约ID</p>
-</blockquote>
+<h2 id='get-basic-data-of-ticker-snapshot'>Get basic data of ticker snapshot</h2><h3 id='subscribe-to-topic-indicator'>Subscribe to topic: indicator</h3>
+<p>Symbol value in the data format is: contract ID</p>
 
-<p>消息订阅格式如下所示：
-<code>
-{
-    &quot;header&quot;: {
-        &quot;type&quot;: 1003
+<blockquote>
+<p>The message subscription format is as follows:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "header": {
+        "type": 1003
     },
-    &quot;body&quot;: {
-        &quot;topics&quot;: [
+    "body": {
+        "topics": [
             {
-                &quot;topic&quot;: &quot;indicator&quot;,
-                 &quot;params&quot;: {
-                       &quot;symbols&quot;: [
+                "topic": "indicator",
+                 "params": {
+                       "symbols": [
                            {
-                               &quot;symbol&quot;: 100
+                               "symbol": 100
                             }
                         ]
                  }
@@ -3394,8 +3401,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
         ]
     }
 }
-</code></p>
-<h4 id='4ea192405d-4'>返回结构</h4>
+</code></pre></div><h3 id='return-structure-4'>Return Structure</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3406,26 +3412,24 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <tr>
 <td>indicators</td>
 <td>List<Indicator></td>
-<td>交易对行情</td>
+<td>symbol ticker</td>
 </tr>
 <tr>
 <td>markets</td>
 <td>List<Market></td>
-<td>行情概况</td>
+<td>ticker overview</td>
 </tr>
 <tr>
 <td>account</td>
 <td>List<Account></td>
-<td>私有数据</td>
+<td>private data</td>
 </tr>
 </tbody></table>
 
-<blockquote>
-<p>注意：未登录时 accounts为null
-注意：订阅时 params.symbols 为空，则 indicators 为 null
-注意：topic默认频率 1s, markets 默认频率 3s，即每3秒有2次推送消息 markets 为null</p>
-</blockquote>
-<h5 id='indicator'>Indicator</h5>
+<p><strong>Note: Accounts is null when not logged in</strong>
+<strong>Note: If params.symbols is null when subscribing, indicators is null</strong>
+<strong>Note: Default interval of topic is 1s, and default interval of markets is 3s, that is, there are 2 push messages every 3 seconds in which markets is null</strong></p>
+<h4 id='indicator'>Indicator</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3436,65 +3440,65 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <tr>
 <td>cid</td>
 <td>Long</td>
-<td>交易对id</td>
+<td>symbol id</td>
 </tr>
 <tr>
 <td>ip</td>
 <td>BigDecimal</td>
-<td>指数价</td>
+<td>index price</td>
 </tr>
 <tr>
 <td>mp</td>
 <td>BigDecimal</td>
-<td>标记价</td>
+<td>marked price</td>
 </tr>
 <tr>
 <td>lp</td>
 <td>BigDecimal</td>
-<td>最新价</td>
+<td>latest price</td>
 </tr>
 <tr>
 <td>pv</td>
 <td>Long</td>
-<td>持仓量</td>
+<td>positions</td>
 </tr>
 <tr>
 <td>tv</td>
 <td>Long</td>
-<td>24小时成交量</td>
+<td>24-hour trade volume</td>
 </tr>
 <tr>
 <td>tt</td>
 <td>Long</td>
-<td>24小时成交额</td>
+<td>24-hour trade amount</td>
 </tr>
 <tr>
 <td>ph</td>
 <td>BigDecimal</td>
-<td>24小时最高价</td>
+<td>24-hour high price</td>
 </tr>
 <tr>
 <td>pl</td>
 <td>BigDecimal</td>
-<td>24小时最低价</td>
+<td>24-hour low price</td>
 </tr>
 <tr>
 <td>pcr</td>
 <td>BigDecimal</td>
-<td>24小时涨跌幅率</td>
+<td>24-hour change rate</td>
 </tr>
 <tr>
 <td>fr</td>
 <td>BigDecimal</td>
-<td>资金费率</td>
+<td>fund rate</td>
 </tr>
 <tr>
 <td>pfr</td>
 <td>BigDecimal</td>
-<td>预测资金费率</td>
+<td>predicted fund rate</td>
 </tr>
 </tbody></table>
-<h5 id='market'>Market</h5>
+<h4 id='market'>Market</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3505,30 +3509,30 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <tr>
 <td>cid</td>
 <td>Long</td>
-<td>交易对id</td>
+<td>symbol id</td>
 </tr>
 <tr>
 <td>lp</td>
 <td>BigDecimal</td>
-<td>最新价</td>
+<td>latest price</td>
 </tr>
 <tr>
 <td>pcr</td>
 <td>BigDecimal</td>
-<td>24小时涨跌幅率</td>
+<td>24-hour change rate</td>
 </tr>
 <tr>
 <td>tv</td>
 <td>Long</td>
-<td>24小时成交量</td>
+<td>24-hour trade volume</td>
 </tr>
 <tr>
 <td>tt</td>
 <td>Long</td>
-<td>24小时成交额</td>
+<td>24-hour trade amount</td>
 </tr>
 </tbody></table>
-<h5 id='account'>Account</h5>
+<h4 id='account'>Account</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3539,25 +3543,25 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <tr>
 <td>aid</td>
 <td>Long</td>
-<td>账号id 主账号或者子账号</td>
+<td>account id  master account or sub-account</td>
 </tr>
 <tr>
 <td>at</td>
 <td>int</td>
-<td>账号类型  1 主账号  10 体验金账号</td>
+<td>account type  1: master account  10: trial fund account</td>
 </tr>
 <tr>
 <td>assets</td>
 <td>List<Asset></td>
-<td>资产信息</td>
+<td>assets information</td>
 </tr>
 <tr>
 <td>posis</td>
 <td>List<Posi></td>
-<td>仓位信息</td>
+<td>positions information</td>
 </tr>
 </tbody></table>
-<h5 id='asset'>Asset</h5>
+<h4 id='asset'>Asset</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3568,20 +3572,20 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <tr>
 <td>cid</td>
 <td>Long</td>
-<td>币种ID</td>
+<td>currency ID</td>
 </tr>
 <tr>
 <td>avail</td>
 <td>BigDecimal</td>
-<td>可用余额</td>
+<td>available balance</td>
 </tr>
 <tr>
 <td>upnl</td>
 <td>BigDecimal</td>
-<td>全仓未实现盈亏</td>
+<td>unrealized P&amp;L in cross mode</td>
 </tr>
 </tbody></table>
-<h5 id='posi'>Posi</h5>
+<h4 id='posi'>Posi</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3592,50 +3596,48 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <tr>
 <td>pid</td>
 <td>Long</td>
-<td>仓位ID</td>
+<td>position ID</td>
 </tr>
 <tr>
 <td>flp</td>
 <td>BigDecimal</td>
-<td>强平价格</td>
+<td>liquidation price</td>
 </tr>
 <tr>
 <td>upnl</td>
 <td>BigDecimal</td>
-<td>未实现盈亏</td>
+<td>unrealized P&amp;L</td>
 </tr>
 <tr>
 <td>adl</td>
 <td>int</td>
-<td>ADL等级</td>
+<td>ADL grade</td>
 </tr>
 <tr>
 <td>mp</td>
 <td>BigDecimal</td>
-<td>标记价</td>
+<td>marked price</td>
 </tr>
 </tbody></table>
 
-<ul>
-<li>注意：pid为 3012推送仓位的id</li>
-</ul>
-<h3 id='8340d3206e'>获取私有数据</h3><h4 id='topic-match'>订阅topic: match</h4>
-<p>消息订阅格式如下所示：
-<code>
-{
-    &quot;header&quot;: {
-        &quot;type&quot;: 1003
+<p><strong>Note: pid is the id of 3012 push position</strong></p>
+<h2 id='get-private-data'>Get private data</h2><h3 id='subscribe-to-topic-match'>Subscribe to topic: match</h3>
+<blockquote>
+<p>The message subscription format is as follows:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "header": {
+        "type": 1003
     },
-    &quot;body&quot;: {
-        &quot;topics&quot;: [
+    "body": {
+        "topics": [
             {
-                &quot;topic&quot;: &quot;match&quot;
+                "topic": "match"
             }
         ]
     }
 }
-</code></p>
-<h4 id='4ea192405d-5'>返回结构</h4><h5 id='713fd96fb2'>资产</h5>
+</code></pre></div><h3 id='return-structure-5'>Return Structure</h3><h4 id='asset-2'>Asset</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3646,45 +3648,45 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <tr>
 <td>messageType</td>
 <td>int</td>
-<td>消息类型 3002</td>
+<td>message type 3002</td>
 </tr>
 <tr>
 <td>accountId</td>
 <td>long</td>
-<td>用户ID</td>
+<td>user ID</td>
 </tr>
 <tr>
 <td>currencyId</td>
 <td>long</td>
-<td>币种ID</td>
+<td>currency ID</td>
 </tr>
 <tr>
 <td>totalBalance</td>
 <td>double</td>
-<td>总资产</td>
+<td>total balance</td>
 </tr>
 <tr>
 <td>available</td>
 <td>double</td>
-<td>可用资产</td>
+<td>available balance</td>
 </tr>
 <tr>
 <td>frozenInitMargin</td>
 <td>double</td>
-<td>委托冻结保证金</td>
+<td>order frozen margin</td>
 </tr>
 <tr>
 <td>initMargin</td>
 <td>double</td>
-<td>已占用保证金</td>
+<td>occupied margin</td>
 </tr>
 <tr>
 <td>closeProfitLoss</td>
 <td>double</td>
-<td>已实现盈亏</td>
+<td>realized P&amp;L</td>
 </tr>
 </tbody></table>
-<h5 id='c4b496308a'>持仓</h5>
+<h4 id='positions'>Positions</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3695,85 +3697,85 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <tr>
 <td>messageType</td>
 <td>int</td>
-<td>消息类型 3012</td>
+<td>message type 3012</td>
 </tr>
 <tr>
 <td>accountId</td>
 <td>long</td>
-<td>用户ID</td>
+<td>user ID</td>
 </tr>
 <tr>
 <td>posis</td>
 <td>object[]</td>
-<td>持仓列表</td>
+<td>position list</td>
 </tr>
 <tr>
 <td>├─contractId</td>
 <td>long</td>
-<td>合约ID</td>
+<td>contract ID</td>
 </tr>
 <tr>
 <td>├─marginType</td>
 <td>int</td>
-<td>保证金类型，1全仓2逐仓</td>
+<td>margin type, 1: cross, 2: isolated</td>
 </tr>
 <tr>
 <td>├─initMarginRate</td>
 <td>String</td>
-<td>初始保证率</td>
+<td>initial margin rate</td>
 </tr>
 <tr>
 <td>├─maintainMarginRate</td>
 <td>String</td>
-<td>维持保证金</td>
+<td>maintenance margin</td>
 </tr>
 <tr>
 <td>├─initMargin</td>
 <td>String</td>
-<td>初始保证金</td>
+<td>initial margin</td>
 </tr>
 <tr>
 <td>├─extraMargin</td>
 <td>String</td>
-<td>额外保证金</td>
+<td>extra margin</td>
 </tr>
 <tr>
 <td>├─openAmt</td>
 <td>String</td>
-<td>开仓金额</td>
+<td>open amount</td>
 </tr>
 <tr>
 <td>├─openPrice</td>
 <td>String</td>
-<td>开仓均价</td>
+<td>average open price</td>
 </tr>
 <tr>
 <td>├─posiQty</td>
 <td>String</td>
-<td>持仓量，大于0多头，小于0空头</td>
+<td>positions, &gt;0: long, &lt;0: short</td>
 </tr>
 <tr>
 <td>├─contractUnit</td>
 <td>String</td>
-<td>合约单位</td>
+<td>contract unit</td>
 </tr>
 <tr>
 <td>├─closeProfitLoss</td>
 <td>String</td>
-<td>已实现盈亏</td>
+<td>realized P&amp;L</td>
 </tr>
 <tr>
 <td>├─liquidationPrice</td>
 <td>double</td>
-<td>预估强平价</td>
+<td>estimated liquidation price</td>
 </tr>
 <tr>
 <td>├─unRealizedProfit</td>
 <td>double</td>
-<td>未实现盈亏</td>
+<td>unrealized P&amp;L</td>
 </tr>
 </tbody></table>
-<h5 id='7f435f378c'>持仓配置</h5>
+<h4 id='position-configuration'>Position Configuration</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3784,35 +3786,35 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <tr>
 <td>messageType</td>
 <td>int</td>
-<td>消息类型 3022</td>
+<td>message type 3022</td>
 </tr>
 <tr>
 <td>accountId</td>
 <td>long</td>
-<td>用户ID</td>
+<td>user ID</td>
 </tr>
 <tr>
 <td>positionConfgs</td>
 <td>object[]</td>
-<td>持仓配置列表</td>
+<td>position configuration list</td>
 </tr>
 <tr>
 <td>├─contractId</td>
 <td>long</td>
-<td>合约ID</td>
+<td>contract ID</td>
 </tr>
 <tr>
 <td>├─leverage</td>
 <td>int</td>
-<td>杠杆倍数, 0为自动模式</td>
+<td>leverage rate, 0 represents automatic mode</td>
 </tr>
 <tr>
 <td>├─isolated</td>
 <td>boolean</td>
-<td>保证金类型 默认 false 全仓</td>
+<td>margin type, default false cros</td>
 </tr>
 </tbody></table>
-<h5 id='7454c3387f'>当前委托</h5>
+<h4 id='open-orders'>Open Orders</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3823,107 +3825,107 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <tr>
 <td>messageType</td>
 <td>int</td>
-<td>消息类型 3004</td>
+<td>message type 3004</td>
 </tr>
 <tr>
 <td>accountId</td>
 <td>long</td>
-<td>用户ID</td>
+<td>user ID</td>
 </tr>
 <tr>
 <td>contractId</td>
 <td>long</td>
-<td>合约ID</td>
+<td>contract ID</td>
 </tr>
 <tr>
 <td>orderId</td>
 <td>string</td>
-<td>委托号</td>
+<td>order ID</td>
 </tr>
 <tr>
 <td>clientOrderId</td>
 <td>string</td>
-<td>客户订单编号</td>
+<td>clients order ID</td>
 </tr>
 <tr>
 <td>price</td>
 <td>string</td>
-<td>委托价格</td>
+<td>order price</td>
 </tr>
 <tr>
 <td>quantity</td>
 <td>string</td>
-<td>委托数量</td>
+<td>order quantity</td>
 </tr>
 <tr>
 <td>leftQuantity</td>
 <td>string</td>
-<td>剩余数量</td>
+<td>remaining quantity</td>
 </tr>
 <tr>
 <td>side</td>
 <td>number</td>
-<td>买卖方向（1：买，-1：卖）</td>
+<td>bid/ask side (1: bid, -1: ask）</td>
 </tr>
 <tr>
 <td>placeTimestamp</td>
 <td>number</td>
-<td>委托时间</td>
+<td>order time</td>
 </tr>
 <tr>
 <td>matchAmt</td>
 <td>string</td>
-<td>成交金额</td>
+<td>trade amount</td>
 </tr>
 <tr>
 <td>matchQty</td>
 <td>string</td>
-<td>成交张数</td>
+<td>transaction quantity</td>
 </tr>
 <tr>
 <td>orderType</td>
 <td>number</td>
-<td>合约委托类型（1：限价，3：市价）</td>
+<td>contract order type (1: limit, 3: market）</td>
 </tr>
 <tr>
 <td>positionEffect</td>
 <td>number</td>
-<td>开平标志（1：开仓，2：平仓）</td>
+<td>position effect (1: open, 2: close）</td>
 </tr>
 <tr>
 <td>marginType</td>
 <td>number</td>
-<td>保证金类型（1、全仓，2：逐仓）</td>
+<td>margin type (1: cross, 2: isolated）</td>
 </tr>
 <tr>
 <td>initMarginRate</td>
 <td>string</td>
-<td>初始保证金率</td>
+<td>initial margin rate</td>
 </tr>
 <tr>
 <td>fcOrderId</td>
 <td>string</td>
-<td>强平委托号，空时为强平委托</td>
+<td>liquidation order ID, liquidation order when null</td>
 </tr>
 <tr>
 <td>markPrice</td>
 <td>string</td>
-<td>标记价格</td>
+<td>marked price</td>
 </tr>
 <tr>
 <td>feeRate</td>
 <td>string</td>
-<td>手续费率</td>
+<td>fee rate</td>
 </tr>
 <tr>
 <td>contractUnit</td>
 <td>string</td>
-<td>合约单位</td>
+<td>contract unit</td>
 </tr>
 <tr>
 <td>orderStatus</td>
 <td>int</td>
-<td>委托状态 0-未申报,1-正在申报,2-已申报未成交,3-部分成交,4-全部成交,5-部分撤单,6-全部撤单,7-撤单中,8-失效,11-缓存高于条件的委托,12-缓存低于条件的委托</td>
+<td>order status 0-undeclared, 1-declaring, 2-declared but not filled, 3-partially filled, 4-fully filled, 5-partially canceled, 6-fully canceled, 7-canceling, 8-failure, 11-buffer the orders higher than limit, 12-buffer the orders lower than limit</td>
 </tr>
 </tbody></table>
 

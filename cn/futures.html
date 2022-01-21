@@ -450,7 +450,19 @@
                     <a href="#5ea2e0cde2" class="toc-h2 toc-link" data-title="简介">简介</a>
                   </li>
                   <li>
-                    <a href="#socket" class="toc-h2 toc-link" data-title="socket推送">socket推送</a>
+                    <a href="#k-2" class="toc-h2 toc-link" data-title="获取K线">获取K线</a>
+                  </li>
+                  <li>
+                    <a href="#d07a7e664f" class="toc-h2 toc-link" data-title="获取逐笔成交">获取逐笔成交</a>
+                  </li>
+                  <li>
+                    <a href="#707972a6ed" class="toc-h2 toc-link" data-title="获取行情快照买卖档位">获取行情快照买卖档位</a>
+                  </li>
+                  <li>
+                    <a href="#e601062c77" class="toc-h2 toc-link" data-title="获取行情快照基础数据">获取行情快照基础数据</a>
+                  </li>
+                  <li>
+                    <a href="#8340d3206e" class="toc-h2 toc-link" data-title="获取私有数据">获取私有数据</a>
                   </li>
               </ul>
           </li>
@@ -3086,7 +3098,9 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 <p><code>
 wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 </code></p>
-<h3 id='1da6708ecc'>鉴权</h3><div class="highlight"><pre class="highlight plaintext"><code>[
+<h3 id='1da6708ecc'>鉴权</h3>
+<p>注：signature: 签名方式同restful</p>
+<div class="highlight"><pre class="highlight plaintext"><code>[
     "auth",
     {
         "header": {
@@ -3099,12 +3113,8 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
         }
     }
 ]
-</code></pre></div>
-<blockquote>
-<p>注：signature: 签名方式同restful</p>
-<h3 id='5319af762d'>订阅</h3>
+</code></pre></div><h3 id='5319af762d'>订阅</h3>
 <p>根据是否需要鉴权之后来进行业务topic的订阅，下面式是订阅的标准格式，在相关ws接口说明里有详细的说明</p>
-</blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>[
     "subscribe",
     {
@@ -3203,41 +3213,38 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <td>是</td>
 </tr>
 </tbody></table>
-<h2 id='socket'>socket推送</h2><h3 id='k-2'>获取K线</h3><h4 id='topic-future_kline'>订阅topic: future_kline</h4>
-<blockquote>
+<h2 id='k-2'>获取K线</h2><h3 id='topic-future_kline'>订阅topic: future_kline</h3>
 <p>数据格式中的symbol值为：合约ID</p>
+<h3 id='ranges'>ranges的取值范围：</h3>
+<ul>
+<li>1Min = 60000</li>
+<li>5Min = 300000</li>
+<li>15Min = 900000</li>
+<li>30Min = 1800000</li>
+<li>1Hour = 3600000</li>
+<li>4Hour = 14400000</li>
+<li>12Hour = 43200000</li>
+<li>1Day = 86400000</li>
+<li>1Week = 604800000</li>
+</ul>
+
+<blockquote>
+<p>消息订阅格式如下所示：</p>
 </blockquote>
-
-<p>ranges的取值范围： 
-```</p>
-
-<p>** 1Min = 60000
-** 5Min = 300000
-** 15Min = 900000
-** 30Min = 1800000
-** 1Hour = 3600000
-** 4Hour = 14400000
-** 12Hour = 43200000
-** 1Day = 86400000
-** 1Week = 604800000
-```</p>
-
-<p>消息订阅格式如下所示：
-<code>
-{
-    &quot;header&quot;: {
-        &quot;type&quot;: 1003
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "header": {
+        "type": 1003
     },
-    &quot;body&quot;: {
-        &quot;topics&quot;: [
+    "body": {
+        "topics": [
             {
-                &quot;topic&quot;: &quot;future_kline&quot;,
-                &quot;params&quot;: {
-                    &quot;symbols&quot;: [
+                "topic": "future_kline",
+                "params": {
+                    "symbols": [
                         {
-                            &quot;symbol&quot;: 100,
-                            &quot;ranges&quot;: [
-                                &quot;60000&quot;
+                            "symbol": 100,
+                            "ranges": [
+                                "60000"
                             ]
                         }
                     ]
@@ -3246,8 +3253,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
         ]
     }
 }
-</code></p>
-<h4 id='4ea192405d'>返回结构</h4>
+</code></pre></div><h3 id='4ea192405d'>返回结构</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3271,25 +3277,24 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <td>[ [${时间戳}, ${开市价格}, ${最高价格}, ${最低价格}, ${闭市价格}, ${成交量}] ]</td>
 </tr>
 </tbody></table>
-<h3 id='d07a7e664f'>获取逐笔成交</h3><h4 id='topic-future_tick'>订阅topic: future_tick</h4>
-<blockquote>
+<h2 id='d07a7e664f'>获取逐笔成交</h2><h4 id='topic-future_tick'>订阅topic: future_tick</h4>
 <p>数据格式中的symbol值为：合约ID</p>
-</blockquote>
 
-<p>消息订阅格式如下所示：
-<code>
-{
-    &quot;header&quot;: {
-        &quot;type&quot;: 1003
+<blockquote>
+<p>消息订阅格式如下所示：</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "header": {
+        "type": 1003
     },
-    &quot;body&quot;: {
-        &quot;topics&quot;: [
+    "body": {
+        "topics": [
             {
-                &quot;topic&quot;: &quot;future_tick&quot;,
-                &quot;params&quot;: {
-                    &quot;symbols&quot;: [
+                "topic": "future_tick",
+                "params": {
+                    "symbols": [
                         {
-                            &quot;symbol&quot;: 100
+                            "symbol": 100
                         }
                     ]
                 }
@@ -3297,8 +3302,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
         ]
     }
 }
-</code></p>
-<h4 id='4ea192405d-2'>返回结构</h4>
+</code></pre></div><h3 id='4ea192405d-2'>返回结构</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3317,25 +3321,24 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <td>[ [${时间戳}, ${成交价格}, ${成交数量}, ${方向(1 多； 2 空)}] ] ]</td>
 </tr>
 </tbody></table>
-<h3 id='707972a6ed'>获取行情快照买卖档位</h3><h4 id='topic-future_snapshot_depth'>订阅topic: future_snapshot_depth</h4>
-<blockquote>
+<h2 id='707972a6ed'>获取行情快照买卖档位</h2><h3 id='topic-future_snapshot_depth'>订阅topic: future_snapshot_depth</h3>
 <p>数据格式中的symbol值为：合约ID</p>
-</blockquote>
 
-<p>消息订阅格式如下所示：
-<code>
-{
-    &quot;header&quot;: {
-        &quot;type&quot;: 1003
+<blockquote>
+<p>消息订阅格式如下所示：</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "header": {
+        "type": 1003
     },
-    &quot;body&quot;: {
-        &quot;topics&quot;: [
+    "body": {
+        "topics": [
             {
-                &quot;topic&quot;: &quot;future_snapshot_depth&quot;,
-                &quot;params&quot;: {
-                    &quot;symbols&quot;: [
+                "topic": "future_snapshot_depth",
+                "params": {
+                    "symbols": [
                         {
-                            &quot;symbol&quot;: 100
+                            "symbol": 100
                         }
                     ]
                 }
@@ -3343,8 +3346,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
         ]
     }
 }
-</code></p>
-<h4 id='4ea192405d-3'>返回结构</h4>
+</code></pre></div><h3 id='4ea192405d-3'>返回结构</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3368,25 +3370,24 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <td>卖档位数据列表  [ [${价格}, ${数量}] ] ]</td>
 </tr>
 </tbody></table>
-<h3 id='e601062c77'>获取行情快照基础数据</h3><h4 id='topic-indicator'>订阅topic: indicator</h4>
-<blockquote>
+<h2 id='e601062c77'>获取行情快照基础数据</h2><h3 id='topic-indicator'>订阅topic: indicator</h3>
 <p>数据格式中的symbol值为：合约ID</p>
-</blockquote>
 
-<p>消息订阅格式如下所示：
-<code>
-{
-    &quot;header&quot;: {
-        &quot;type&quot;: 1003
+<blockquote>
+<p>消息订阅格式如下所示：</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "header": {
+        "type": 1003
     },
-    &quot;body&quot;: {
-        &quot;topics&quot;: [
+    "body": {
+        "topics": [
             {
-                &quot;topic&quot;: &quot;indicator&quot;,
-                 &quot;params&quot;: {
-                       &quot;symbols&quot;: [
+                "topic": "indicator",
+                 "params": {
+                       "symbols": [
                            {
-                               &quot;symbol&quot;: 100
+                               "symbol": 100
                             }
                         ]
                  }
@@ -3394,8 +3395,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
         ]
     }
 }
-</code></p>
-<h4 id='4ea192405d-4'>返回结构</h4>
+</code></pre></div><h3 id='4ea192405d-4'>返回结构</h3>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3420,12 +3420,10 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 </tr>
 </tbody></table>
 
-<blockquote>
-<p>注意：未登录时 accounts为null
-注意：订阅时 params.symbols 为空，则 indicators 为 null
-注意：topic默认频率 1s, markets 默认频率 3s，即每3秒有2次推送消息 markets 为null</p>
-</blockquote>
-<h5 id='indicator'>Indicator</h5>
+<p><strong>注意：未登录时 accounts为null</strong>
+<strong>注意：订阅时 params.symbols 为空，则 indicators 为 null</strong>
+<strong>注意：topic默认频率 1s, markets 默认频率 3s，即每3秒有2次推送消息 markets 为null</strong></p>
+<h4 id='indicator'>Indicator</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3494,7 +3492,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <td>预测资金费率</td>
 </tr>
 </tbody></table>
-<h5 id='market'>Market</h5>
+<h4 id='market'>Market</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3528,7 +3526,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <td>24小时成交额</td>
 </tr>
 </tbody></table>
-<h5 id='account'>Account</h5>
+<h4 id='account'>Account</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3557,7 +3555,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <td>仓位信息</td>
 </tr>
 </tbody></table>
-<h5 id='asset'>Asset</h5>
+<h4 id='asset'>Asset</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3581,7 +3579,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <td>全仓未实现盈亏</td>
 </tr>
 </tbody></table>
-<h5 id='posi'>Posi</h5>
+<h4 id='posi'>Posi</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3616,26 +3614,24 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 </tr>
 </tbody></table>
 
-<ul>
-<li>注意：pid为 3012推送仓位的id</li>
-</ul>
-<h3 id='8340d3206e'>获取私有数据</h3><h4 id='topic-match'>订阅topic: match</h4>
-<p>消息订阅格式如下所示：
-<code>
-{
-    &quot;header&quot;: {
-        &quot;type&quot;: 1003
+<p><strong>注意：pid为 3012推送仓位的id</strong></p>
+<h2 id='8340d3206e'>获取私有数据</h2><h3 id='topic-match'>订阅topic: match</h3>
+<blockquote>
+<p>消息订阅格式如下所示：</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "header": {
+        "type": 1003
     },
-    &quot;body&quot;: {
-        &quot;topics&quot;: [
+    "body": {
+        "topics": [
             {
-                &quot;topic&quot;: &quot;match&quot;
+                "topic": "match"
             }
         ]
     }
 }
-</code></p>
-<h4 id='4ea192405d-5'>返回结构</h4><h5 id='713fd96fb2'>资产</h5>
+</code></pre></div><h3 id='4ea192405d-5'>返回结构</h3><h4 id='713fd96fb2'>资产</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3684,7 +3680,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <td>已实现盈亏</td>
 </tr>
 </tbody></table>
-<h5 id='c4b496308a'>持仓</h5>
+<h4 id='c4b496308a'>持仓</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3773,7 +3769,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <td>未实现盈亏</td>
 </tr>
 </tbody></table>
-<h5 id='7f435f378c'>持仓配置</h5>
+<h4 id='7f435f378c'>持仓配置</h4>
 <table><thead>
 <tr>
 <th>code</th>
@@ -3812,7 +3808,7 @@ wss://ws-futures.coinstore.com/socket.io/?EIO=3&amp;transport=websocket
 <td>保证金类型 默认 false 全仓</td>
 </tr>
 </tbody></table>
-<h5 id='7454c3387f'>当前委托</h5>
+<h4 id='7454c3387f'>当前委托</h4>
 <table><thead>
 <tr>
 <th>code</th>
