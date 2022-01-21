@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Documentation</title>
+    <title>Official API Document Of Coinstore</title>
     <link href="../images/favicon-ab07c47e.ico" rel="icon" type="image/ico">
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -281,8 +281,11 @@
     </style>
     <link href="../stylesheets/screen-297dc653.css" rel="stylesheet" media="screen" />
     <link href="../stylesheets/print-62a209d5.css" rel="stylesheet" media="print" />
-      <script src="../javascripts/all_nosearch-ea811c3e.js"></script>
+      <script src="../javascripts/all-1decc47a.js"></script>
 
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
   </head>
 
   <body class="en en_index" data-languages="[]">
@@ -290,30 +293,30 @@
       <img src="../images/logo-b34a5437.png" class="logo" alt="" />
       <div class="tabs">
         <ul>
-          <li class="">
-              <a href="">
-                
+          <li class="active">
+              <a href="index.html">
+                Spot
               </a>
           </li>
           <li class="">
-            <a href="">
-              
+            <a href="futures.html">
+              Perpetual Contract
             </a>
           </li>
         </ul>
       </div>
       <div class="lang">
-        <span></span>
+        <span>English</span>
         <img src="../images/down-c11a96e5.png" class="down" alt="" />
         <ul class="lang-list">
-         <li class="">
-            <a href="">
-              
+         <li class="active">
+            <a href="/en">
+              English
             </a>
          </li>
          <li class="">
-            <a href="">
-              
+            <a href="/cn">
+              简体中文
             </a>
          </li>
         </ul>
@@ -325,6 +328,10 @@
       </span>
     </a>
     <div class="toc-wrapper">
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
@@ -484,7 +491,7 @@
                   </li>
               </ul>
           </li>
-        <li class="create_api"><a target="_blank" href="https://www.coinstore.com/#/user/bindAuth/ManagementAPI"></a></li>
+        <li class="create_api"><a target="_blank" href="https://www.coinstore.com/#/user/bindAuth/ManagementAPI">Create API KEY</a></li>
       </ul>
     </div>
     <div class="page-wrapper">
