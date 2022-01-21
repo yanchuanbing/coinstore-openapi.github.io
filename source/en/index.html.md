@@ -8,17 +8,17 @@ toc_footers:
 
 includes:
   
-language: English
+language: 简体中文
 
-other_language: 简体中文
-
-url: /cn
+other_language: English
 
 present_url: /en
 
-active: active
+url: /cn
 
-other_active:
+active: 
+
+other_active: active
 
 menu: 菜单
 
