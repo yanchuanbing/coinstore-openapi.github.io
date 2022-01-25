@@ -774,7 +774,7 @@ Get order information
 | ├─cumAmt| string |  | |
 | ├─cumQty| string |  | |
 | ├─leavesQty| string |  | |
-| ├─ordStatus | string |  | NOT_FOUND,SUBMITTING,SUBMITTED,PARTIAL_FILLED,CANCELED,FILLED |
+| ├─ordState | string |  | NOT_FOUND,SUBMITTING,SUBMITTED,PARTIAL_FILLED,CANCELED,FILLED |
 | ├─ordType | string |   | MARKET,LIMIT,POST_ONLY |
 | ├─timeInForce| string | GTC |   GTC,IOC,FOK |
 | ├─timestamp| long |  | |

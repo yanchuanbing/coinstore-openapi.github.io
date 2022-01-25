@@ -764,7 +764,7 @@ HTTP常见的错误码如下：
 | ├─cumAmt| String | 累计成交额 |
 | ├─cumQty| String | 累计成交量 |
 | ├─leavesQty| String | 剩余数量 |
-| ├─ordStatus | Stirng | 状态 NOT_FOUND, REJECTED, SUBMITTING, SUBMITTED, PARTIAL_FILLED, REPLACING, REPLACED, CANCELING, CANCELED, EXPIRED, STOPPED, FILLED |
+| ├─ordState | Stirng | 状态 NOT_FOUND, REJECTED, SUBMITTING, SUBMITTED, PARTIAL_FILLED, REPLACING, REPLACED, CANCELING, CANCELED, EXPIRED, STOPPED, FILLED |
 | ├─ordType | Stirng | 订单类型 MARKET,LIMIT,POST_ONLY  |
 | ├─flags| Stirng | 订单类型 POST_ONLY,REDUCE_ONLY,HIDDEN |
 | ├─timeInForce| Stirng | 成交限制类型 GTC,IOC,FOK |
