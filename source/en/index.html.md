@@ -751,8 +751,7 @@ Get order information
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-|clOrdId | string | false | ordId alternative |
-|ordId | long | false  | clOrdId alternative |
+|ordId | long | false  | order id |
 
 ### Response Data:
 

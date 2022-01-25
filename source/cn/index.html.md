@@ -741,8 +741,7 @@ HTTP常见的错误码如下：
 
 |    code    |  type   | required |       comment        |
 | ---------- | ------- | -------- | -------------------- |
-|clOrdId | string | false | ordId 二选一 |
-|ordId | long | false  | clOrdId 二选一 |
+|ordId | long | true  | 订单id |
 
 ### 响应数据:
 
