@@ -163,9 +163,6 @@ Example 3: Mixed Request
 
 > Note: X-CS-EXPIRES is a 13-bit timestamp, which needs to be divided by 30000 to obtain a class timestamp. It is calculated by signature function to obtain the function value as the key of step 3 (the value of variable key in step 3).
 
-**Python Example**
-
- https://coinstore-sg-encryption.s3.ap-southeast-1.amazonaws.com/filesUpload/ex1/public/coinstore.py.py
 
 ```java
  String time = String.valueOf(X-CS-EXPIRES / 30000);
@@ -188,6 +185,11 @@ Example 3: Mixed Request
  hash = hmacSha256.doFinal(payload.getBytes());
  String sign= Hex.toHexString(hash);
 ```
+
+**Python Example**
+
+ https://coinstore-sg-encryption.s3.ap-southeast-1.amazonaws.com/filesUpload/ex1/public/coinstore.py
+
 
 # API Access Instructions
 

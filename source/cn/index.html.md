@@ -184,7 +184,7 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 
 **Python示例**
 
- https://coinstore-sg-encryption.s3.ap-southeast-1.amazonaws.com/filesUpload/ex1/public/coinstore.py.py
+ https://coinstore-sg-encryption.s3.ap-southeast-1.amazonaws.com/filesUpload/ex1/public/coinstore.py
 
 # API接入说明
 
