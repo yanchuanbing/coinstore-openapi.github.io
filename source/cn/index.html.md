@@ -178,8 +178,13 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 ```
 
 3、使用签名函数对有效字符串计算哈希值
+ 
 
 >注意： key的值为第2步计算出来的哈希值。
+
+**Python示例**
+
+ https://coinstore-sg-encryption.s3.ap-southeast-1.amazonaws.com/filesUpload/ex1/public/coinstore.py.py
 
 # API接入说明
 
