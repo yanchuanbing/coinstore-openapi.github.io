@@ -598,10 +598,6 @@ Note: The request parameters and request body are not sorted but directly splice
 <blockquote>
 <p>Note: X-CS-EXPIRES is a 13-bit timestamp, which needs to be divided by 30000 to obtain a class timestamp. It is calculated by signature function to obtain the function value as the key of step 3 (the value of variable key in step 3).</p>
 </blockquote>
-
-<p><strong>Python Example</strong></p>
-
-<p>https://coinstore-sg-encryption.s3.ap-southeast-1.amazonaws.com/filesUpload/ex1/public/coinstore.py.py</p>
 <div class="highlight"><pre class="highlight java tab-java"><code> <span class="nc">String</span> <span class="n">time</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="no">X</span><span class="o">-</span><span class="no">CS</span><span class="o">-</span><span class="no">EXPIRES</span> <span class="o">/</span> <span class="mi">30000</span><span class="o">);</span>
  <span class="n">hmacSha256</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">new</span> <span class="nc">SecretKeySpec</span><span class="o">(</span><span class="n">Secret_Key</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(),</span> <span class="s">"HmacSHA256"</span><span class="o">));</span>
  <span class="kt">byte</span><span class="o">[]</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">hmacSha256</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">time</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
@@ -618,7 +614,11 @@ Note: The request parameters and request body are not sorted but directly splice
  <span class="n">hmacSha256</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="k">new</span> <span class="nc">SecretKeySpec</span><span class="o">(</span><span class="n">key</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(),</span> <span class="s">"HmacSHA256"</span><span class="o">));</span>
  <span class="n">hash</span> <span class="o">=</span> <span class="n">hmacSha256</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">payload</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
  <span class="nc">String</span> <span class="n">sign</span><span class="o">=</span> <span class="nc">Hex</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
-</code></pre></div><h1 id='api-access-instructions'>API Access Instructions</h1><h2 id='request-format'><span id="a3"> Request Format </span></h2>
+</code></pre></div>
+<p><strong>Python Example</strong></p>
+
+<p>https://coinstore-sg-encryption.s3.ap-southeast-1.amazonaws.com/filesUpload/ex1/public/coinstore.py</p>
+<h1 id='api-access-instructions'>API Access Instructions</h1><h2 id='request-format'><span id="a3"> Request Format </span></h2>
 <p>All API requests are restful, and there are only two methods at present: GET and POST.
 - GET request: All parameters are in path parameters
 - POST request: Parameters can be set in the path, and they can be sent in JSON format to the request body. If there are no parameters,{} needs to be sent</p>
