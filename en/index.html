@@ -1925,25 +1925,99 @@ needs to be set.</strong></p>
 </thead><tbody>
 </tbody></table>
 <h3 id='response-data-10'>Response data:</h3>
-<p>| code | type | comment |
-| ----------------- | ------ | ------------------------ ---------------- |
-| code | int | 0: success, other failure |
-| message | string | Error message |
-| data | Object| |
-| ├─channel| String |Identifier |
-| ├─instrumentId| Integer |Pair ID |
-| ├─symbol| String |Trading pair |
-| ├─count | Integer |24h rolling transaction count |
-| ├─volume|String |24h transaction volume measured in quote currency |
-| ├─amount| String |24h transaction volume measured in base currency |
-| ├─close| String | Last transaction price|
-| ├─open| String | First transaction price|
-| ├─high| String | The highest transaction price|
-| ├─low| String | The lowest transaction price|
-| ├─bid| String | Buy one price|
-| ├─bidSize| String | Buy a quantity|
-| ├─ask| String | Sell one price|
-| ├─askSize| String | Amount to sell|</p>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>int</td>
+<td>0: success, other failure</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td></td>
+</tr>
+<tr>
+<td>├─channel</td>
+<td>String</td>
+<td>Identifier</td>
+</tr>
+<tr>
+<td>├─instrumentId</td>
+<td>Integer</td>
+<td>Pair ID</td>
+</tr>
+<tr>
+<td>├─symbol</td>
+<td>String</td>
+<td>Trading pair</td>
+</tr>
+<tr>
+<td>├─count</td>
+<td>Integer</td>
+<td>24h rolling transaction count</td>
+</tr>
+<tr>
+<td>├─volume</td>
+<td>String</td>
+<td>24h transaction volume measured in quote currency</td>
+</tr>
+<tr>
+<td>├─amount</td>
+<td>String</td>
+<td>24h transaction volume measured in base currency</td>
+</tr>
+<tr>
+<td>├─close</td>
+<td>String</td>
+<td>Last transaction price</td>
+</tr>
+<tr>
+<td>├─open</td>
+<td>String</td>
+<td>First transaction price</td>
+</tr>
+<tr>
+<td>├─high</td>
+<td>String</td>
+<td>The highest transaction price</td>
+</tr>
+<tr>
+<td>├─low</td>
+<td>String</td>
+<td>The lowest transaction price</td>
+</tr>
+<tr>
+<td>├─bid</td>
+<td>String</td>
+<td>Buy one price</td>
+</tr>
+<tr>
+<td>├─bidSize</td>
+<td>String</td>
+<td>Buy a quantity</td>
+</tr>
+<tr>
+<td>├─ask</td>
+<td>String</td>
+<td>Sell one price</td>
+</tr>
+<tr>
+<td>├─askSize</td>
+<td>String</td>
+<td>Amount to sell</td>
+</tr>
+</tbody></table>
 <h2 id='get-depth'><span id="7">Get depth</span></h2>
 <p>Get depth data</p>
 
@@ -2010,17 +2084,59 @@ needs to be set.</strong></p>
 </tr>
 </tbody></table>
 <h3 id='response-data-11'>Response data:</h3>
-<p>| code | type | comment |
-| ----------------- | ------ | ------------------------ ---------------- |
-| code | int | 0: success, other failure |
-| message | string | Error message |
-| data | Object| |
-| ├─channel| String |Identifier |
-| ├─level| Integer |Quantity |
-| ├─instrumentId| Integer |Pair ID |
-| ├─symbol| string |Trading pair |
-| ├─a | List | Sell order, [${price}, ${quantity}, ${direction}] ] |
-| ├─b | List | Buy order, [${price}, ${quantity}, ${direction}] ] |</p>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>int</td>
+<td>0: success, other failure</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td></td>
+</tr>
+<tr>
+<td>├─channel</td>
+<td>String</td>
+<td>Identifier</td>
+</tr>
+<tr>
+<td>├─level</td>
+<td>Integer</td>
+<td>Quantity</td>
+</tr>
+<tr>
+<td>├─instrumentId</td>
+<td>Integer</td>
+<td>Pair ID</td>
+</tr>
+<tr>
+<td>├─symbol</td>
+<td>string</td>
+<td>Trading pair</td>
+</tr>
+<tr>
+<td>├─a</td>
+<td>List</td>
+<td>Sell order, [${price}, ${quantity}, ${direction}] ]</td>
+</tr>
+<tr>
+<td>├─b</td>
+<td>List</td>
+<td>Buy order, [${price}, ${quantity}, ${direction}] ]</td>
+</tr>
+</tbody></table>
 <h2 id='get-k-line'><span id="7">Get K line</span></h2>
 <p>Get trading K line</p>
 
@@ -2083,26 +2199,104 @@ needs to be set.</strong></p>
 </tr>
 </tbody></table>
 <h3 id='response-data-12'>Response data:</h3>
-<p>| code | type | comment |
-| ----------------- | ------ | ------------------------ ---------------- |
-| code | int | 0: success, other failure |
-| message | string | Error message |
-| data | Object| |
-| ├─channel| String |Identifier |
-| ├─instrumentId| Integer |Pair ID |
-| ├─symbol| String |Trading pair |
-| ├─item | List |K-line collection |
-| ├─├─interval | String |K line interval |
-| ├─├─endTime| Long |End time, unit s |
-| ├─├─amount|String |Amount |
-| ├─├─startTime|Long |Start time, unit s|
-| ├─├─firstTradeId|Long |First Trade ID |
-| ├─├─lastTradeId|Long |Last Trade ID |
-| ├─├─volume| String |Volume|
-| ├─├─close| String | Last transaction price|
-| ├─├─open| String | First transaction price|
-| ├─├─high| String |Highest transaction price |
-| ├─├─low| String |Lowest transaction price |</p>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>int</td>
+<td>0: success, other failure</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td></td>
+</tr>
+<tr>
+<td>├─channel</td>
+<td>String</td>
+<td>Identifier</td>
+</tr>
+<tr>
+<td>├─instrumentId</td>
+<td>Integer</td>
+<td>Pair ID</td>
+</tr>
+<tr>
+<td>├─symbol</td>
+<td>String</td>
+<td>Trading pair</td>
+</tr>
+<tr>
+<td>├─item</td>
+<td>List</td>
+<td>K-line collection</td>
+</tr>
+<tr>
+<td>├─├─interval</td>
+<td>String</td>
+<td>K line interval</td>
+</tr>
+<tr>
+<td>├─├─endTime</td>
+<td>Long</td>
+<td>End time, unit s</td>
+</tr>
+<tr>
+<td>├─├─amount</td>
+<td>String</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td>├─├─startTime</td>
+<td>Long</td>
+<td>Start time, unit s</td>
+</tr>
+<tr>
+<td>├─├─firstTradeId</td>
+<td>Long</td>
+<td>First Trade ID</td>
+</tr>
+<tr>
+<td>├─├─lastTradeId</td>
+<td>Long</td>
+<td>Last Trade ID</td>
+</tr>
+<tr>
+<td>├─├─volume</td>
+<td>String</td>
+<td>Volume</td>
+</tr>
+<tr>
+<td>├─├─close</td>
+<td>String</td>
+<td>Last transaction price</td>
+</tr>
+<tr>
+<td>├─├─open</td>
+<td>String</td>
+<td>First transaction price</td>
+</tr>
+<tr>
+<td>├─├─high</td>
+<td>String</td>
+<td>Highest transaction price</td>
+</tr>
+<tr>
+<td>├─├─low</td>
+<td>String</td>
+<td>Lowest transaction price</td>
+</tr>
+</tbody></table>
 <h2 id='latest-trades'><span id="7">Latest trades</span></h2>
 <p>Get the latest trades record</p>
 
@@ -2153,21 +2347,79 @@ needs to be set.</strong></p>
 </tr>
 </tbody></table>
 <h3 id='response-data-13'>Response data:</h3>
-<p>| code | type | comment |
-| ----------------- | ------ | ------------------------ ---------------- |
-| code | int | 0: success, other failure |
-| message | string | Error message |
-| data | Object| |
-| ├─channel| String |Identifier |
-| ├─instrumentId| Integer |Pair ID |
-| ├─symbol| String |Trading pair |
-| ├─interval | String |K line interval |
-| ├─time| Long |Time, unit s |
-| ├─ts|Long |Time, unit ms |
-| ├─tradeId|Long |The ID of the first transaction |
-| ├─takerSide|String |Direction &quot;BUY&quot;, &quot;SELL&quot; |
-| ├─volume| String |Volume |
-| ├─price| String | Last transaction price|                      </p>
+<table><thead>
+<tr>
+<th>code</th>
+<th>type</th>
+<th>comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>int</td>
+<td>0: success, other failure</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td></td>
+</tr>
+<tr>
+<td>├─channel</td>
+<td>String</td>
+<td>Identifier</td>
+</tr>
+<tr>
+<td>├─instrumentId</td>
+<td>Integer</td>
+<td>Pair ID</td>
+</tr>
+<tr>
+<td>├─symbol</td>
+<td>String</td>
+<td>Trading pair</td>
+</tr>
+<tr>
+<td>├─interval</td>
+<td>String</td>
+<td>K line interval</td>
+</tr>
+<tr>
+<td>├─time</td>
+<td>Long</td>
+<td>Time, unit s</td>
+</tr>
+<tr>
+<td>├─ts</td>
+<td>Long</td>
+<td>Time, unit ms</td>
+</tr>
+<tr>
+<td>├─tradeId</td>
+<td>Long</td>
+<td>The ID of the first transaction</td>
+</tr>
+<tr>
+<td>├─takerSide</td>
+<td>String</td>
+<td>Direction &quot;BUY&quot;, &quot;SELL&quot;</td>
+</tr>
+<tr>
+<td>├─volume</td>
+<td>String</td>
+<td>Volume</td>
+</tr>
+<tr>
+<td>├─price</td>
+<td>String</td>
+<td>Last transaction price</td>
+</tr>
+</tbody></table>
 <h2 id='get-the-latest-price-of-all-symbols'><span id="7"> Get the latest price of all symbols </span></h2>
 <p>Get the latest price of all symbols</p>
 <h3 id='http-request-14'>HTTP Request:</h3>
