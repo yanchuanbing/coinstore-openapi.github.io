@@ -827,7 +827,7 @@ Get order information
 ### Response data:
 
 | code | type | comment |
-| ----------------- | ------ | ------------------------ ---------------- |
+| ----------------- | ------ | ---------------------------------------- |
 | code | int | 0: success, other failure |
 | message | string | Error message |
 | data | Object| |
@@ -903,7 +903,7 @@ Get depth data
 ### Response data:
 
 | code | type | comment |
-| ----------------- | ------ | ------------------------ ---------------- |
+| ----------------- | ------ | ---------------------------------------- |
 | code | int | 0: success, other failure |
 | message | string | Error message |
 | data | Object| |
@@ -960,7 +960,7 @@ Get trading K line
 ### Response data:
 
 | code | type | comment |
-| ----------------- | ------ | ------------------------ ---------------- |
+| ----------------- | ------ | ---------------------------------------- |
 | code | int | 0: success, other failure |
 | message | string | Error message |
 | data | Object| |
@@ -1020,7 +1020,7 @@ Get the latest trades record
 ### Response data:
 
 | code | type | comment |
-| ----------------- | ------ | ------------------------ ---------------- |
+| ----------------- | ------ | ---------------------------------------- |
 | code | int | 0: success, other failure |
 | message | string | Error message |
 | data | Object| |
