@@ -125,7 +125,7 @@ Mac hmacSha256 = Mac.getInstance("HmacSHA256");
 
 **Signature Steps**
     
-- The signature valid string consists of request parameters and request body.
+1. The signature valid string consists of request parameters and request body.
 Note: The request parameters and request body are not sorted but directly spliced into a string as payload.
 
  ```java
@@ -159,7 +159,7 @@ Example 3: Mixed Request
 
 
 
-- Use signature function to calculate hash value for timestamp
+2. Use signature function to calculate hash value for timestamp
 
 > Note: X-CS-EXPIRES is a 13-bit timestamp, which needs to be divided by 30000 to obtain a class timestamp. It is calculated by signature function to obtain the function value as the key of step 3 (the value of variable key in step 3).
 
@@ -175,7 +175,7 @@ Example 3: Mixed Request
 
 
 
-- Use signature function to calculate hash value for valid string
+3. Use signature function to calculate hash value for valid string
 
 > Note: The value of key is the hash value calculated in step 2.
 
