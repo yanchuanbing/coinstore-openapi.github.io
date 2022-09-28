@@ -545,10 +545,10 @@ Mac hmacSha256 = Mac.getInstance(&quot;HmacSHA256&quot;);
 
 <p><strong>Signature Steps</strong></p>
 
-<ul>
+<ol>
 <li>The signature valid string consists of request parameters and request body.
 Note: The request parameters and request body are not sorted but directly spliced into a string as payload.</li>
-</ul>
+</ol>
 <div class="highlight"><pre class="highlight java tab-java"><code>  <span class="nc">Example</span> <span class="mi">1</span><span class="o">:</span> <span class="no">GET</span> <span class="nc">Request</span> <span class="nc">Query</span> <span class="nc">String</span>
  <span class="o">?</span><span class="n">symbol</span><span class="o">=</span><span class="n">aaaa88</span><span class="o">&amp;</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span>
 
@@ -566,9 +566,9 @@ Note: The request parameters and request body are not sorted but directly splice
  <span class="nc">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="s">"symbol=aaaa88&amp;size=10{"</span><span class="n">symbol</span><span class="s">":"</span> <span class="n">aaaa88</span><span class="s">","</span><span class="n">side</span><span class="s">":"</span> <span class="no">SELL</span><span class="s">","</span><span class="n">ordType</span><span class="s">":"</span> <span class="no">LIMIT</span><span class="s">","</span><span class="n">ordPrice</span><span class="s">":2,"</span><span class="n">ordQty</span><span class="s">":1,
  "</span><span class="n">timestamp</span><span class="s">":1627384801051}"</span><span class="err">；</span>
 </code></pre></div>
-<ul>
+<ol>
 <li>Use signature function to calculate hash value for timestamp</li>
-</ul>
+</ol>
 
 <blockquote>
 <p>Note: X-CS-EXPIRES is a 13-bit timestamp, which needs to be divided by 30000 to obtain a class timestamp. It is calculated by signature function to obtain the function value as the key of step 3 (the value of variable key in step 3).</p>
@@ -578,9 +578,9 @@ Note: The request parameters and request body are not sorted but directly splice
  <span class="kt">byte</span><span class="o">[]</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">hmacSha256</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">time</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
  <span class="nc">String</span> <span class="n">key</span> <span class="o">=</span> <span class="nc">Hex</span><span class="o">.</span><span class="na">toHexString</span><span class="o">(</span><span class="n">hash</span><span class="o">);</span>
 </code></pre></div>
-<ul>
+<ol>
 <li>Use signature function to calculate hash value for valid string</li>
-</ul>
+</ol>
 
 <blockquote>
 <p>Note: The value of key is the hash value calculated in step 2.</p>
