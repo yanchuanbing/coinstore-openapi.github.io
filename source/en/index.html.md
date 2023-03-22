@@ -308,6 +308,77 @@ Get user assets balance
 |- balance | Decimal  | | Amoun |
 |- type | Decimal | |Account status 1: available 4: deactivated |
 
+
+
+
+# Funding Related
+
+## <span id="2">Fund transfer</span>
+
+> Currently supporting contract<->spot transfer, API domain name address `https://futures.api.coinstore.com/api`  Call support for ApiKey and Token
+
+### HTTP Request:
+- POST /common/account/transfer
+
+### Request Parameters
+
+|       param        |  type  |                  required                       | comment                                                                                                                                                                                                                                        |
+| ---- | ----- |---------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| amount | String      | Y| Transfer quantity, incorrect quantity, error code returned `102150400`                                                                                                                                                                         |
+| currencyCode | String      | Y| Transfer currency, such as `USDT`, incorrect currency or unsupported return error code `101040502` Currently, transfer currencies are supported: `USDT`、`BOBC`、`DREAMS`                                                                        |
+| clientId | String      | N| The combination of customer defined ID letters (case sensitive) and numbers can be pure letters, pure numbers, and the length should be between 1-32 bits. The format does not meet the requirements, and an error code is returned `101040502` |
+| transferType | String      | Y| Transfer direction, contract ->spot: `future-to-spot`, spot ->contract: `spot to future`, non secondary types return error codes `101040502`                                                                                                    |
+
+**Currencies currently supported for transfer**
+> USDT、BOBC、DREAMS
+
+####  Request Data
+
+```json
+{
+    "currencyCode":"USDT",
+    "amount":"5",
+    "transferType":"spot-to-future",
+    "clientId":"SFT1679454569469"
+}
+```
+
+### Response Data
+
+Fail:
+
+```json
+{
+  "code": 101040502,
+  "msg": "request field missing",
+  "data": null
+}
+```
+Success:
+
+```json
+{
+    "code": 200,
+    "msg": null,
+    "data":0
+}
+```
+#### Other response code description
+
+
+|       code       | remark                                                                                              |
+| ---- |-----------------------------------------------------------------------------------------------------|
+| 200| Transfer succeeded                                                                                  |
+| 102150400| Incorrect transfer quantity                                                                         |
+| 101040502| Possible incorrect currency name, user-defined ID, transfer type, and unsupported transfer currency |
+| 102150808| Possible insufficient balance, duplicate orders                                                     |
+| 102150400| Transfer Fail                                                                                       |
+
+
+
+
+
+
 # Order Related
 
 ## <span id="2"> Get current orders </span>
